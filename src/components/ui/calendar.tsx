@@ -1,5 +1,13 @@
+/**
+ * File: src/components/ui/calendar.tsx
+ * Module: ui
+ * Purpose: Calendar primitive (react-day-picker) with Tailwind styling.
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - Keep this component stateless; style via `classNames` mapping.
+ */
 import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
 import { cn } from "@/lib/utils"

@@ -10,6 +10,7 @@
  */
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { sansthanLocations } from "@/data/sansthan-data";
 import { AmenityList } from "@/features/locations/components/AmenityList";
@@ -47,7 +48,13 @@ export default async function LocationDetailPage({ params }: PageProps) {
 
           <div className="aspect-video bg-muted rounded-xl overflow-hidden relative">
              {location.images[0] ? (
-                <img src={location.images[0]} alt={location.name} className="object-cover w-full h-full" />
+                <Image
+                  src={location.images[0]}
+                  alt={location.name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  className="object-cover object-center"
+                />
              ) : (
                 <div className="w-full h-full bg-brand-saffron/10 flex items-center justify-center text-brand-maroon/50 font-medium text-lg">
                    Image Not Available
@@ -70,24 +77,26 @@ export default async function LocationDetailPage({ params }: PageProps) {
            <div>
             <h2 className="text-2xl font-bold font-heading text-brand-maroon mb-4">Room Types</h2>
             <div className="border rounded-lg overflow-hidden">
-              <table className="w-full text-sm text-left">
-                <thead className="bg-muted text-muted-foreground font-medium">
-                  <tr>
-                    <th className="p-4">Type</th>
-                    <th className="p-4">Capacity</th>
-                    <th className="p-4">AC</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  {location.facilities.map((facility, idx) => (
-                    <tr key={idx}>
-                      <td className="p-4 font-medium">{facility.name}</td>
-                      <td className="p-4">{facility.capacity} Persons</td>
-                      <td className="p-4">{facility.ac ? "Yes" : "No"}</td>
+              <div className="overflow-x-auto">
+                <table className="min-w-[520px] w-full text-sm text-left">
+                  <thead className="bg-muted text-muted-foreground font-medium">
+                    <tr>
+                      <th className="p-3 sm:p-4">Type</th>
+                      <th className="p-3 sm:p-4">Capacity</th>
+                      <th className="p-3 sm:p-4">AC</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y">
+                    {location.facilities.map((facility, idx) => (
+                      <tr key={idx}>
+                        <td className="p-3 sm:p-4 font-medium">{facility.name}</td>
+                        <td className="p-3 sm:p-4">{facility.capacity} Persons</td>
+                        <td className="p-3 sm:p-4">{facility.ac ? "Yes" : "No"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
