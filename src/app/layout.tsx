@@ -13,6 +13,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -89,8 +90,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
+  
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics gaId={gaId} />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased flex flex-col min-h-screen`}
       >
