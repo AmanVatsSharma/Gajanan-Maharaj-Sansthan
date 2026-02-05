@@ -6,9 +6,10 @@
  * Last-updated: 2026-02-05
  * Notes:
  * - Uses `Button asChild` for Links to avoid nested interactive elements.
- * - Image rendering will be upgraded to Next `Image` in performance polish.
+ * - Uses Next `Image` for optimized rendering and better CLS.
  */
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Location } from "@/data/sansthan-data";
@@ -25,10 +26,12 @@ export function LocationCard({ location }: LocationCardProps) {
          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors z-10" />
          {/* Image placeholder or actual image */}
          {location.images[0] ? (
-            <img 
-              src={location.images[0]} 
-              alt={location.name} 
-              className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500" 
+            <Image
+              src={location.images[0]}
+              alt={location.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
             />
          ) : (
             <div className="w-full h-full bg-brand-saffron/10 flex items-center justify-center text-brand-maroon/40 font-medium">
