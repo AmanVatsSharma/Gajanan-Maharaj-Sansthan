@@ -25,10 +25,10 @@ todos:
     status: completed
   - id: local_seo
     content: Enhance location-specific content and ensure NAP consistency
-    status: in_progress
+    status: completed
   - id: faq_schema
     content: Create FAQ section with structured data for booking-related questions
-    status: pending
+    status: in_progress
   - id: monitoring
     content: Set up Search Console monitoring and submit enhanced sitemap
     status: pending

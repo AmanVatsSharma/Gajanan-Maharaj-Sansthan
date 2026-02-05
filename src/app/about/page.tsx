@@ -1,4 +1,28 @@
+/**
+ * File: src/app/about/page.tsx
+ * Module: app
+ * Purpose: About page with Sansthan history, mission, and values
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - Entity-building SEO page
+ * - Includes organization information for search engines
+ */
 import { sansthanHistory } from "@/data/sansthan-data";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = generatePageMetadata({
+  title: "About Shri Gajanan Maharaj Sansthan | History & Mission",
+  description: "Learn about Shri Gajanan Maharaj Sansthan, established in 1908. Discover our history, mission, values, and commitment to serving devotees with discipline, cleanliness, and devotion.",
+  keywords: [
+    "gajanan maharaj sansthan",
+    "shegaon temple history",
+    "gajanan maharaj trust",
+    "sansthan mission",
+    "hindu temple organization",
+  ],
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

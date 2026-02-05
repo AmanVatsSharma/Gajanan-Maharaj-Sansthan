@@ -6,9 +6,19 @@
  * Last-updated: 2026-02-05
  * Notes:
  * - This page prepares a booking request; it does not confirm a booking.
+ * - High-intent transactional page for accommodation bookings
  */
 import { BookingWizard } from "@/features/booking/components/BookingWizard";
 import { Suspense } from "react";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { PRIMARY_KEYWORDS, LONGTAIL_KEYWORDS } from "@/lib/seo/constants";
+
+export const metadata = generatePageMetadata({
+  title: "Book Accommodation | Temple Stay Booking Request",
+  description: "Book temple accommodation at Shri Gajanan Maharaj Sansthan locations. Submit your booking request for Bhakt Niwas in Shegaon, Pandharpur, Trimbakeshwar, and Omkareshwar. Family-friendly facilities with traditional hospitality.",
+  keywords: [...PRIMARY_KEYWORDS, ...LONGTAIL_KEYWORDS, "book temple room", "dharamshala reservation"],
+  path: "/booking",
+});
 
 export default function BookingPage() {
   return (
