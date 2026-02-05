@@ -9,6 +9,7 @@
  * - CTAs use `Button asChild` to avoid nested interactive elements.
  */
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 export function Hero() {
@@ -17,8 +18,14 @@ export function Hero() {
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/40 to-black/80 z-10" />
-        {/* Placeholder for actual image */}
-        <div className="h-full w-full bg-[url('/gallery/0c23d827-555f-47ee-9cc8-f05072f21e48.jpeg')] bg-cover bg-center scale-105 animate-in fade-in duration-2000" />
+        <Image
+          src="/gallery/0c23d827-555f-47ee-9cc8-f05072f21e48.jpeg"
+          alt="Shri Gajanan Maharaj Temple, Shegaon"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center scale-105 animate-in fade-in duration-2000"
+        />
       </div>
 
       <div className="container relative z-20 text-center text-white pt-20">
