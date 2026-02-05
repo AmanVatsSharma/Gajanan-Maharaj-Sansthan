@@ -17,7 +17,7 @@ import { Sparkles, MapPin } from "lucide-react";
 
 export function CTABanner() {
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Premium gradient background */}
       <div className="absolute inset-0 bg-linear-to-br from-brand-saffron via-brand-gold to-brand-maroon" />
       
@@ -70,10 +70,10 @@ export function CTABanner() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 mb-8"
+            className="inline-flex items-center gap-1.5 md:gap-2 px-3.5 py-1.5 md:px-5 md:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 mb-6 md:mb-8"
           >
-            <Sparkles className="h-4 w-4" />
-            <span className="font-semibold text-sm uppercase tracking-wider">
+            <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4" />
+            <span className="font-semibold text-xs md:text-sm uppercase tracking-wider">
               Begin Your Journey
             </span>
           </motion.div>
@@ -84,7 +84,7 @@ export function CTABanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl md:text-6xl font-bold font-heading mb-6 leading-tight text-balance"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold font-heading mb-5 md:mb-6 px-4 leading-tight text-balance"
           >
             Experience Divine Grace and Spiritual Serenity
           </motion.h2>
@@ -95,7 +95,7 @@ export function CTABanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto px-4 leading-relaxed"
           >
             Book your stay at our premium accommodations and immerse yourself in the spiritual atmosphere of Shri Gajanan Maharaj&apos;s divine presence.
           </motion.p>
@@ -106,12 +106,12 @@ export function CTABanner() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4"
           >
             <Button
               asChild
               size="lg"
-              className="min-w-[240px] h-16 text-lg rounded-full bg-white text-brand-maroon hover:bg-white/90 shadow-2xl hover:scale-105 transition-all duration-300"
+              className="min-w-[200px] sm:min-w-[240px] h-14 md:h-16 text-base md:text-lg rounded-full bg-white text-brand-maroon hover:bg-white/90 shadow-2xl hover:scale-105 transition-all duration-300"
             >
               <Link href="/booking">
                 Book Accommodation
@@ -121,10 +121,10 @@ export function CTABanner() {
               asChild
               size="lg"
               variant="outline"
-              className="min-w-[240px] h-16 text-lg rounded-full border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
+              className="min-w-[200px] sm:min-w-[240px] h-14 md:h-16 text-base md:text-lg rounded-full border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
             >
               <Link href="/locations">
-                <MapPin className="mr-2 h-5 w-5" />
+                <MapPin className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                 Explore Locations
               </Link>
             </Button>
@@ -136,13 +136,13 @@ export function CTABanner() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-10 flex items-center justify-center gap-6 text-sm text-white/70"
+            className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs md:text-sm text-white/70"
           >
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-white" />
               <span>Trusted Since 1908</span>
             </div>
-            <div className="w-px h-4 bg-white/30" />
+            <div className="hidden sm:block w-px h-4 bg-white/30" />
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-white" />
               <span>1M+ Devotees Annually</span>

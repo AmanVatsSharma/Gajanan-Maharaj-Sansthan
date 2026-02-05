@@ -1,17 +1,25 @@
 /**
  * File: src/components/ui/whatsapp-button.tsx
  * Module: ui
- * Purpose: Floating WhatsApp CTA button for quick contact.
+ * Purpose: Floating WhatsApp CTA button for quick contact with analytics tracking.
  * Author: Aman Sharma / Novologic/ Cursor AI
  * Last-updated: 2026-02-05
  * Notes:
- * - Uses `Button asChild` to render a single interactive element (anchor).
+ * - Uses `Button asChild` to render a single interactive element (anchor)
+ * - Tracks WhatsApp clicks for conversion analytics
  */
+"use client";
+
 import { WHATSAPP_LINK } from "@/data/contact";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick } from "@/lib/analytics/events";
 
 export function WhatsAppButton() {
+  const handleClick = () => {
+    trackWhatsAppClick("floating_button");
+  };
+
   return (
     <Button
       asChild
@@ -23,6 +31,7 @@ export function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
+        onClick={handleClick}
       >
         <MessageCircle className="h-8 w-8 text-white" />
         <span className="sr-only">Chat on WhatsApp</span>
