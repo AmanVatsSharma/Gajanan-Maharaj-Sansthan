@@ -100,7 +100,7 @@ function Counter({ end, duration = 2 }: CounterProps) {
 
 export function ImpactStats() {
   return (
-    <section className="relative py-20 md:py-28 bg-linear-to-b from-background via-brand-saffron/5 to-background overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-28 bg-linear-to-b from-background via-brand-saffron/5 to-background overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-[10%] w-64 h-64 rounded-full bg-brand-gold/10 blur-3xl" />
@@ -114,23 +114,23 @@ export function ImpactStats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-brand-saffron/10 border border-brand-saffron/20 mb-4">
-            <span className="text-brand-maroon font-semibold text-sm uppercase tracking-wider">
+          <div className="inline-block px-3 py-1 md:px-4 rounded-full bg-brand-saffron/10 border border-brand-saffron/20 mb-3 md:mb-4">
+            <span className="text-brand-maroon font-semibold text-xs md:text-sm uppercase tracking-wider">
               Our Impact
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-maroon mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-brand-maroon mb-3 md:mb-4 px-4">
             Serving with Devotion
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
             Continuing the legacy of Shri Gajanan Maharaj through dedicated service to humanity
           </p>
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -142,32 +142,32 @@ export function ImpactStats() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="relative h-full bg-card rounded-2xl p-8 border border-border/50 hover:border-brand-saffron/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+                <div className="relative h-full bg-card rounded-2xl p-6 md:p-8 border border-border/50 hover:border-brand-saffron/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 bg-linear-to-br from-brand-saffron/0 via-brand-gold/0 to-brand-maroon/0 group-hover:from-brand-saffron/5 group-hover:via-brand-gold/5 group-hover:to-brand-maroon/5 transition-all duration-500" />
                   
                   {/* Content */}
                   <div className="relative z-10">
                     {/* Icon */}
-                    <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-saffron/10 group-hover:bg-brand-saffron/20 transition-colors duration-300">
-                      <Icon className="h-8 w-8 text-brand-saffron" />
+                    <div className="mb-5 md:mb-6 inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-brand-saffron/10 group-hover:bg-brand-saffron/20 transition-colors duration-300">
+                      <Icon className="h-7 w-7 md:h-8 md:w-8 text-brand-saffron" />
                     </div>
 
                     {/* Number */}
                     <div className="mb-2">
-                      <span className="text-5xl md:text-6xl font-bold font-heading text-brand-maroon">
+                      <span className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-brand-maroon">
                         <Counter end={stat.value} />
                         {stat.suffix}
                       </span>
                     </div>
 
                     {/* Label */}
-                    <h3 className="text-lg font-semibold text-foreground mb-1">
+                    <h3 className="text-base md:text-lg font-semibold text-foreground mb-1">
                       {stat.label}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                       {stat.description}
                     </p>
                   </div>
@@ -186,14 +186,14 @@ export function ImpactStats() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex justify-center mt-16"
+          className="flex justify-center mt-12 md:mt-16"
         >
           <div className="flex items-center gap-2">
-            <div className="w-12 h-px bg-linear-to-r from-transparent to-brand-gold/50" />
-            <div className="w-2 h-2 rounded-full bg-brand-gold" />
-            <div className="w-8 h-px bg-brand-gold/50" />
-            <div className="w-2 h-2 rounded-full bg-brand-gold" />
-            <div className="w-12 h-px bg-linear-to-l from-transparent to-brand-gold/50" />
+            <div className="w-8 md:w-12 h-px bg-linear-to-r from-transparent to-brand-gold/50" />
+            <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-brand-gold" />
+            <div className="w-6 md:w-8 h-px bg-brand-gold/50" />
+            <div className="w-1.5 md:w-2 h-1.5 md:h-2 rounded-full bg-brand-gold" />
+            <div className="w-8 md:w-12 h-px bg-linear-to-l from-transparent to-brand-gold/50" />
           </div>
         </motion.div>
       </div>
