@@ -13,19 +13,19 @@ todos:
     status: completed
   - id: google_analytics
     content: Integrate Google Analytics 4 with event tracking for bookings and interactions
-    status: in_progress
+    status: completed
   - id: image_optimization
     content: Convert images to Next.js Image component with proper alt texts and sizing
-    status: pending
+    status: completed
   - id: technical_seo
     content: Add canonical URLs, meta robots, and improve heading hierarchy
-    status: pending
+    status: completed
   - id: performance
     content: Optimize Core Web Vitals (LCP, CLS, INP) and update next.config.ts
-    status: pending
+    status: completed
   - id: local_seo
     content: Enhance location-specific content and ensure NAP consistency
-    status: pending
+    status: in_progress
   - id: faq_schema
     content: Create FAQ section with structured data for booking-related questions
     status: pending
