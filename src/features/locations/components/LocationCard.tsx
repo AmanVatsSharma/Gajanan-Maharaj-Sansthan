@@ -28,7 +28,7 @@ export function LocationCard({ location }: LocationCardProps) {
          {location.images[0] ? (
             <Image
               src={location.images[0]}
-              alt={location.name}
+              alt={`${location.name} ${location.city} - Shri Gajanan Maharaj Sansthan temple accommodation and facilities`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
