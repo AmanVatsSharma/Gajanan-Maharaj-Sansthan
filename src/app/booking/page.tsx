@@ -12,6 +12,8 @@ import { BookingWizard } from "@/features/booking/components/BookingWizard";
 import { Suspense } from "react";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { PRIMARY_KEYWORDS, LONGTAIL_KEYWORDS } from "@/lib/seo/constants";
+import { FAQ } from "@/components/seo/FAQ";
+import { bookingFAQs } from "@/data/faq";
 
 export const metadata = generatePageMetadata({
   title: "Book Accommodation | Temple Stay Booking Request",
@@ -33,6 +35,15 @@ export default function BookingPage() {
       <Suspense fallback={<div>Loading booking form...</div>}>
         <BookingWizard />
       </Suspense>
+
+      {/* FAQ Section */}
+      <div className="mt-20 pt-16 border-t">
+        <FAQ
+          faqs={bookingFAQs}
+          title="Frequently Asked Questions"
+          description="Common questions about booking accommodation at Shri Gajanan Maharaj Sansthan"
+        />
+      </div>
     </div>
   );
 }

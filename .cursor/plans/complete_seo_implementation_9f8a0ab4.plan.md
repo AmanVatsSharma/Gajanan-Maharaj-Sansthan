@@ -28,10 +28,10 @@ todos:
     status: completed
   - id: faq_schema
     content: Create FAQ section with structured data for booking-related questions
-    status: in_progress
+    status: completed
   - id: monitoring
     content: Set up Search Console monitoring and submit enhanced sitemap
-    status: pending
+    status: completed
 isProject: false
 ---
 
