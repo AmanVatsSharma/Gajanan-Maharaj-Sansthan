@@ -7,19 +7,19 @@ export function Footer() {
       {/* Decorative Border */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gold via-brand-saffron to-brand-gold opacity-80" />
       
-      <div className="container py-12 md:py-16 pt-16">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold font-heading">Shri Gajanan Maharaj Sansthan</h3>
+      <div className="container py-10 md:py-12 lg:py-16 pt-12 md:pt-16">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-3 md:space-y-4">
+            <h3 className="text-base md:text-lg font-bold font-heading">Shri Gajanan Maharaj Sansthan</h3>
             <p className="text-sm text-gray-200 italic">
               &quot;Gan Gan Ganaat Bote&quot;
             </p>
-            <p className="text-sm text-gray-200">
+            <p className="text-sm text-gray-200 leading-relaxed">
               Official website for devotee services and accommodation booking.
             </p>
           </div>
           
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Quick Links</h4>
             <ul className="space-y-2 text-sm text-gray-200">
               <li><Link href="/" className="hover:text-brand-gold transition-colors">Home</Link></li>
@@ -29,7 +29,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Locations</h4>
             <ul className="space-y-2 text-sm text-gray-200">
               <li>Shegaon</li>
@@ -40,13 +40,15 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Contact</h4>
-            <p className="text-sm text-gray-200">
-              {CONTACT_DETAILS.headOffice.address.split(',').map((line, i) => (
-                <span key={i} className="block">{line.trim()},</span>
+            <div className="text-sm text-gray-200 leading-relaxed">
+              {CONTACT_DETAILS.headOffice.address.split(',').map((line, i, arr) => (
+                <span key={i} className="block">
+                  {line.trim()}{i < arr.length - 1 ? ',' : ''}
+                </span>
               ))}
-            </p>
+            </div>
             <p className="text-sm text-gray-200">
               Phone: {CONTACT_DETAILS.headOffice.phone}
             </p>
@@ -56,7 +58,7 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-gray-300">
+        <div className="mt-10 md:mt-12 border-t border-white/10 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-300">
           <p>&copy; {new Date().getFullYear()} Shri Gajanan Maharaj Sansthan. All rights reserved.</p>
         </div>
       </div>

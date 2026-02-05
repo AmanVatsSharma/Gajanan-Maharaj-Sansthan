@@ -31,9 +31,6 @@ const nextConfig: NextConfig = {
   // Enable compression
   compress: true,
 
-  // Optimize production builds
-  swcMinify: true,
-
   // Power efficient build
   poweredByHeader: false,
 
