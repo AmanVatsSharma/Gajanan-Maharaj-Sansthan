@@ -1,6 +1,30 @@
+/**
+ * File: src/app/contact/page.tsx
+ * Module: app
+ * Purpose: Contact page with office details, phone numbers, and location map
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - Includes contact structured data for local SEO
+ * - NAP (Name, Address, Phone) consistency maintained
+ */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, MapPin, Clock, Smartphone } from "lucide-react";
 import { CONTACT_DETAILS } from "@/data/contact";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+
+export const metadata = generatePageMetadata({
+  title: "Contact Us | Shri Gajanan Maharaj Sansthan",
+  description: "Get in touch with Shri Gajanan Maharaj Sansthan. Find phone numbers, address, and office hours for booking inquiries and general information. Located in Shegaon, Maharashtra.",
+  keywords: [
+    "gajanan maharaj contact",
+    "shegaon temple phone number",
+    "bhakt niwas booking contact",
+    "sansthan address",
+    "temple office hours",
+  ],
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
