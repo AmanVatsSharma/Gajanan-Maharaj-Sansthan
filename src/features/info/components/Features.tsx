@@ -50,7 +50,7 @@ const features: Feature[] = [
 
 export function Features() {
   return (
-    <section className="relative py-20 md:py-28 bg-background overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-28 bg-background overflow-hidden">
       {/* Decorative top border pattern */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-brand-gold/40 to-transparent" />
       
@@ -67,23 +67,23 @@ export function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-brand-maroon/10 border border-brand-maroon/20 mb-4">
-            <span className="text-brand-maroon font-semibold text-sm uppercase tracking-wider">
+          <div className="inline-block px-3 py-1 md:px-4 rounded-full bg-brand-maroon/10 border border-brand-maroon/20 mb-3 md:mb-4">
+            <span className="text-brand-maroon font-semibold text-xs md:text-sm uppercase tracking-wider">
               Our Services
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-maroon mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-brand-maroon mb-3 md:mb-4 px-4">
             Serving with Devotion
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
             Dedicated to the service of humanity and devotees with discipline, devotion, and dignity
           </p>
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -102,23 +102,23 @@ export function Features() {
                   {/* Shine effect on hover */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-linear-to-r from-transparent via-white/10 to-transparent" />
                   
-                  <CardHeader className="text-center pb-4 pt-8 relative z-10">
+                  <CardHeader className="text-center pb-3 md:pb-4 pt-6 md:pt-8 px-4 md:px-6 relative z-10">
                     {/* Icon container */}
                     <motion.div 
-                      className="mx-auto bg-brand-saffron/10 p-5 rounded-2xl mb-6 w-20 h-20 flex items-center justify-center group-hover:bg-brand-saffron/20 group-hover:scale-110 transition-all duration-300 shadow-md group-hover:shadow-lg"
+                      className="mx-auto bg-brand-saffron/10 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center group-hover:bg-brand-saffron/20 group-hover:scale-110 transition-all duration-300 shadow-md group-hover:shadow-lg"
                       whileHover={{ rotate: [0, -5, 5, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Icon className="h-10 w-10 text-brand-saffron" />
+                      <Icon className="h-8 w-8 md:h-10 md:w-10 text-brand-saffron" />
                     </motion.div>
                     
-                    <CardTitle className="text-xl font-bold text-brand-maroon group-hover:text-brand-maroon transition-colors">
+                    <CardTitle className="text-lg md:text-xl font-bold text-brand-maroon group-hover:text-brand-maroon transition-colors">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>
                   
-                  <CardContent className="text-center text-muted-foreground px-6 pb-8 relative z-10">
-                    <p className="leading-relaxed text-sm">
+                  <CardContent className="text-center text-muted-foreground px-5 md:px-6 pb-6 md:pb-8 relative z-10">
+                    <p className="leading-relaxed text-sm md:text-base">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -137,9 +137,9 @@ export function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center mt-12 md:mt-16"
         >
-          <p className="text-sm text-muted-foreground italic">
+          <p className="text-xs md:text-sm text-muted-foreground italic">
             &quot;Service to humanity is service to God&quot;
           </p>
         </motion.div>

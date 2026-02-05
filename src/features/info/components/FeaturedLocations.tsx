@@ -55,7 +55,7 @@ const featuredLocations: Location[] = [
 
 export function FeaturedLocations() {
   return (
-    <section className="relative py-20 md:py-28 bg-linear-to-b from-background via-muted/30 to-background overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-28 bg-linear-to-b from-background via-muted/30 to-background overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 right-[10%] w-96 h-96 rounded-full bg-brand-saffron/20 blur-3xl" />
@@ -69,23 +69,23 @@ export function FeaturedLocations() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
-            <span className="text-brand-maroon font-semibold text-sm uppercase tracking-wider">
+          <div className="inline-block px-3 py-1 md:px-4 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-3 md:mb-4">
+            <span className="text-brand-maroon font-semibold text-xs md:text-sm uppercase tracking-wider">
               Sacred Destinations
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-brand-maroon mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-brand-maroon mb-3 md:mb-4 px-4">
             Our Locations
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
             Discover our facilities across holy pilgrimage sites, each offering peaceful accommodation and spiritual solace
           </p>
         </motion.div>
 
         {/* Locations grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {featuredLocations.map((location, index) => (
             <motion.div
               key={location.id}
@@ -97,19 +97,19 @@ export function FeaturedLocations() {
             >
               <div className="relative h-full bg-card rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 {/* Image container */}
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative h-64 md:h-72 overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent z-10" />
                   <Image
                     src={location.image}
                     alt={location.name}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   />
                   
                   {/* Floating badge */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <div className="px-3 py-1.5 rounded-full bg-brand-gold/90 backdrop-blur-sm shadow-lg">
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4 z-20">
+                    <div className="px-2.5 py-1 md:px-3 md:py-1.5 rounded-full bg-brand-gold/90 backdrop-blur-sm shadow-lg">
                       <span className="text-xs font-semibold text-white uppercase tracking-wide">
                         {location.highlight}
                       </span>
@@ -117,38 +117,38 @@ export function FeaturedLocations() {
                   </div>
 
                   {/* Location pin */}
-                  <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-white" />
-                    <span className="text-sm font-medium text-white">
+                  <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 z-20 flex items-center gap-1.5 md:gap-2">
+                    <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 text-white" />
+                    <span className="text-xs md:text-sm font-medium text-white">
                       {location.city}
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold font-heading text-brand-maroon mb-3 group-hover:text-brand-saffron transition-colors">
+                <div className="p-5 md:p-6">
+                  <h3 className="text-xl md:text-2xl font-bold font-heading text-brand-maroon mb-2 md:mb-3 group-hover:text-brand-saffron transition-colors">
                     {location.name}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-sm md:text-base text-muted-foreground mb-5 md:mb-6 leading-relaxed">
                     {location.description}
                   </p>
 
                   {/* Action buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 sm:gap-3">
                     <Button
                       asChild
                       variant="outline"
-                      className="flex-1 rounded-full border-brand-maroon/20 hover:border-brand-saffron/40 hover:bg-brand-saffron/5 group/btn"
+                      className="flex-1 rounded-full border-brand-maroon/20 hover:border-brand-saffron/40 hover:bg-brand-saffron/5 group/btn h-10 md:h-11 text-xs md:text-sm"
                     >
                       <Link href={`/locations/${location.id}`}>
                         <span>Explore</span>
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-1.5 md:ml-2 h-3.5 w-3.5 md:h-4 md:w-4 group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
                     </Button>
                     <Button
                       asChild
-                      className="flex-1 rounded-full bg-brand-saffron hover:bg-brand-saffron/90 text-white shadow-md hover:shadow-lg"
+                      className="flex-1 rounded-full bg-brand-saffron hover:bg-brand-saffron/90 text-white shadow-md hover:shadow-lg h-10 md:h-11 text-xs md:text-sm"
                     >
                       <Link href={`/booking?location=${location.id}`}>
                         Book Now
@@ -170,17 +170,17 @@ export function FeaturedLocations() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-12"
+          className="text-center mt-10 md:mt-12"
         >
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full px-8 border-brand-maroon/20 hover:border-brand-saffron/40 hover:bg-brand-saffron/5"
+            className="rounded-full px-6 md:px-8 h-12 md:h-14 border-brand-maroon/20 hover:border-brand-saffron/40 hover:bg-brand-saffron/5 text-sm md:text-base"
           >
             <Link href="/locations">
               View All Locations
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
             </Link>
           </Button>
         </motion.div>

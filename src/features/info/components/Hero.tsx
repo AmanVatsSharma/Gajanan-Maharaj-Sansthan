@@ -34,7 +34,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-b from-black/75 via-black/50 to-black/80 z-10" />
         <Image
           src="/gallery/0c23d827-555f-47ee-9cc8-f05072f21e48.jpeg"
-          alt="Shri Gajanan Maharaj Temple, Shegaon"
+          alt="Shri Gajanan Maharaj Temple Shegaon - Main entrance and temple complex with devotees"
           fill
           priority
           sizes="100vw"
@@ -75,7 +75,7 @@ export function Hero() {
       </div>
 
       <motion.div 
-        className="container relative z-20 text-center text-white px-4 py-20"
+        className="container relative z-20 text-center text-white px-4 py-16 sm:py-20"
         style={{ opacity }}
       >
         {/* Enhanced badge with glow effect */}
@@ -83,9 +83,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-block mb-8"
+          className="inline-block mb-6 md:mb-8"
         >
-          <div className="relative inline-flex items-center gap-2 px-5 py-2 border border-brand-gold/60 rounded-full bg-black/40 backdrop-blur-md shadow-lg">
+          <div className="relative inline-flex items-center gap-2 px-4 py-1.5 md:px-5 md:py-2 border border-brand-gold/60 rounded-full bg-black/40 backdrop-blur-md shadow-lg">
             <motion.div
               className="absolute inset-0 rounded-full bg-brand-gold/20 blur-xl"
               animate={{
@@ -98,8 +98,8 @@ export function Hero() {
                 ease: "easeInOut",
               }}
             />
-            <Sparkles className="h-4 w-4 text-brand-gold relative z-10" />
-            <span className="text-brand-gold font-semibold tracking-wider text-sm uppercase relative z-10">
+            <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4 text-brand-gold relative z-10" />
+            <span className="text-brand-gold font-semibold tracking-wider text-xs md:text-sm uppercase relative z-10">
               Official Website
             </span>
           </div>
@@ -110,7 +110,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-6 text-2xl md:text-4xl font-medium tracking-wider text-brand-gold font-serif italic"
+          className="mb-4 md:mb-6 text-xl md:text-3xl lg:text-4xl font-medium tracking-wide md:tracking-wider text-brand-gold font-serif italic"
         >
           <span className="inline-block">|| Gan Gan Ganaat Bote ||</span>
         </motion.h2>
@@ -120,7 +120,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-6 text-5xl md:text-7xl lg:text-8xl font-bold font-heading text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/80 drop-shadow-2xl text-balance leading-tight"
+          className="mb-5 md:mb-6 text-4xl md:text-6xl lg:text-8xl font-bold font-heading text-transparent bg-clip-text bg-linear-to-b from-white via-white to-white/80 drop-shadow-2xl text-balance leading-tight px-2"
         >
           Shri Gajanan Maharaj Sansthan
         </motion.h1>
@@ -130,7 +130,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mb-12 text-lg md:text-2xl text-gray-100/90 max-w-3xl mx-auto font-light leading-relaxed"
+          className="mb-10 md:mb-12 text-base md:text-xl lg:text-2xl text-gray-100/90 max-w-3xl mx-auto font-light leading-relaxed px-2"
         >
           Experience spiritual serenity and divine grace. Plan your visit for Darshan and comfortable stay at our Bhakta Niwas.
         </motion.p>
@@ -140,13 +140,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2"
         >
           <Button 
             asChild 
             size="lg" 
             variant="premium" 
-            className="min-w-[240px] text-lg h-16 rounded-full shadow-2xl shadow-brand-saffron/20 hover:shadow-brand-saffron/40 hover:scale-105 transition-all duration-300"
+            className="min-w-[200px] sm:min-w-[240px] text-base md:text-lg h-14 md:h-16 rounded-full shadow-2xl shadow-brand-saffron/20 hover:shadow-brand-saffron/40 hover:scale-105 transition-all duration-300"
           >
             <Link href="/booking">Book Accommodation</Link>
           </Button>
@@ -154,7 +154,7 @@ export function Hero() {
             asChild
             size="lg"
             variant="outline"
-            className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-md min-w-[240px] text-lg h-16 rounded-full hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+            className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-md min-w-[200px] sm:min-w-[240px] text-base md:text-lg h-14 md:h-16 rounded-full hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
           >
             <Link href="/locations">Explore Locations</Link>
           </Button>
@@ -165,7 +165,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-12 text-sm text-gray-300/70 font-light"
+          className="mt-10 md:mt-12 text-xs md:text-sm text-gray-300/70 font-light"
         >
           Serving devotees since 1908
         </motion.p>
