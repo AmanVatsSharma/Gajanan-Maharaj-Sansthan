@@ -1,3 +1,12 @@
+/**
+ * File: src/components/ui/card.tsx
+ * Module: ui
+ * Purpose: Card primitives used across the site UI.
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - `CardTitle` defaults to the heading font for a premium, consistent look.
+ */
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
@@ -35,7 +44,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn("font-heading font-semibold leading-none tracking-tight", className)}
     {...props}
   />
 ))

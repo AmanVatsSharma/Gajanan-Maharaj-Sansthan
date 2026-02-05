@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
+  --font-heading: var(--font-playfair);
   
   --color-brand-saffron: var(--brand-saffron);
   --color-brand-maroon: var(--brand-maroon);
