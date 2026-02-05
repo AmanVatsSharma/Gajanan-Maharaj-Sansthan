@@ -1,6 +1,30 @@
+/**
+ * File: src/app/locations/page.tsx
+ * Module: app/locations
+ * Purpose: Locations listing page showing all Sansthan accommodations
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - Important landing page for location-based searches
+ * - Links to all individual location detail pages
+ */
 import { LocationCard } from "@/features/locations/components/LocationCard";
 import { sansthanLocations } from "@/data/sansthan-data";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { LOCATION_KEYWORDS } from "@/lib/seo/constants";
+
+export const metadata = generatePageMetadata({
+  title: "All Locations | Temple Accommodation Across India",
+  description: "Explore Shri Gajanan Maharaj Sansthan accommodation locations across Maharashtra and Madhya Pradesh. Find temple stays in Shegaon, Pandharpur, Trimbakeshwar, and Omkareshwar with modern facilities.",
+  keywords: [
+    ...Object.values(LOCATION_KEYWORDS).flat(),
+    "temple locations",
+    "bhakt niwas network",
+    "sansthan branches",
+  ],
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   return (

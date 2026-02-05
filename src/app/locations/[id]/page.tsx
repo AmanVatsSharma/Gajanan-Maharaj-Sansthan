@@ -6,7 +6,8 @@
  * Last-updated: 2026-02-05
  * Notes:
  * - Booking CTA routes to the booking request flow.
- * - Table/mobile layout + image optimization will be refined in performance polish.
+ * - Dynamic metadata generation for each location
+ * - Includes structured data for local SEO
  */
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -16,9 +17,45 @@ import { sansthanLocations } from "@/data/sansthan-data";
 import { AmenityList } from "@/features/locations/components/AmenityList";
 import { MapPin, Phone, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { generateLocationMetadata } from "@/lib/seo/metadata";
+import { LOCATION_KEYWORDS } from "@/lib/seo/constants";
+import {
+  getPlaceOfWorshipSchema,
+  getLocalBusinessSchema,
+  getLodgingBusinessSchema,
+} from "@/lib/seo/structured-data";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+/**
+ * Generate dynamic metadata for each location
+ */
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const location = sansthanLocations.find((l) => l.id === id);
+
+  if (!location) {
+    return {
+      title: "Location Not Found",
+    };
+  }
+
+  const cityKey = location.city.toLowerCase() as keyof typeof LOCATION_KEYWORDS;
+  const locationKeywords = LOCATION_KEYWORDS[cityKey] || [];
+
+  return generateLocationMetadata(
+    location.name,
+    location.city,
+    location.description,
+    location.images[0] || "/images/shegaon-temple.jpg",
+    location.id,
+    locationKeywords
+  );
 }
 
 export default async function LocationDetailPage({ params }: PageProps) {
@@ -29,11 +66,27 @@ export default async function LocationDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  // Generate structured data schemas for this location
+  const placeOfWorshipSchema = getPlaceOfWorshipSchema(location);
+  const localBusinessSchema = getLocalBusinessSchema(location);
+  const lodgingBusinessSchema = getLodgingBusinessSchema(location);
+
   return (
-    <div className="container py-12">
-      <Link href="/locations" className="inline-flex items-center text-sm text-muted-foreground hover:text-brand-saffron mb-6">
-        <ArrowLeft className="h-4 w-4 mr-1" /> Back to Locations
-      </Link>
+    <>
+      <StructuredData
+        data={[placeOfWorshipSchema, localBusinessSchema, lodgingBusinessSchema]}
+      />
+      <div className="container py-12">
+        <Breadcrumbs
+          items={[
+            { name: "Locations", url: "/locations" },
+            { name: location.name, url: `/locations/${location.id}` },
+          ]}
+          className="mb-6"
+        />
+        <Link href="/locations" className="inline-flex items-center text-sm text-muted-foreground hover:text-brand-saffron mb-6">
+          <ArrowLeft className="h-4 w-4 mr-1" /> Back to Locations
+        </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
@@ -50,10 +103,11 @@ export default async function LocationDetailPage({ params }: PageProps) {
              {location.images[0] ? (
                 <Image
                   src={location.images[0]}
-                  alt={location.name}
+                  alt={`${location.name} ${location.city} - Temple accommodation building exterior and entrance view`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 66vw"
                   className="object-cover object-center"
+                  priority
                 />
              ) : (
                 <div className="w-full h-full bg-brand-saffron/10 flex items-center justify-center text-brand-maroon/50 font-medium text-lg">
@@ -139,6 +193,7 @@ export default async function LocationDetailPage({ params }: PageProps) {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
