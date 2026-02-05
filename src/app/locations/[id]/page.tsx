@@ -1,3 +1,13 @@
+/**
+ * File: src/app/locations/[id]/page.tsx
+ * Module: locations
+ * Purpose: Location detail page with facilities and booking CTA.
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - Booking CTA routes to the booking request flow.
+ * - Table/mobile layout + image optimization will be refined in performance polish.
+ */
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -89,11 +99,12 @@ export default async function LocationDetailPage({ params }: PageProps) {
               <CardTitle>Booking Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Link href={`/booking?location=${location.id}`} className="w-full block">
-                <Button className="w-full bg-brand-saffron hover:bg-brand-saffron/90 text-white h-12 text-lg">
-                  Book Accommodation
-                </Button>
-              </Link>
+              <Button
+                asChild
+                className="w-full bg-brand-saffron hover:bg-brand-saffron/90 text-white h-12 text-lg"
+              >
+                <Link href={`/booking?location=${location.id}`}>Book Accommodation</Link>
+              </Button>
               <div className="text-xs text-muted-foreground text-center">
                 * Booking subject to availability and Sansthan rules.
               </div>
