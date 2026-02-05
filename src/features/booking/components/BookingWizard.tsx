@@ -1,7 +1,17 @@
+/**
+ * File: src/features/booking/components/BookingWizard.tsx
+ * Module: booking
+ * Purpose: Guided booking request wizard (WhatsApp + call based).
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-05
+ * Notes:
+ * - This does not confirm a booking. It prepares a request for WhatsApp/call.
+ * - Keep this flow mobile-first: one clear action per step.
+ */
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { type Resolver, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { bookingSchema, BookingFormValues } from "../schema";
 import { Button } from "@/components/ui/button";
@@ -13,9 +23,10 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { sansthanLocations, bookingRules } from "@/data/sansthan-data";
+import { CONTACT_DETAILS, WHATSAPP_LINK } from "@/data/contact";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { CalendarIcon, CheckCircle2, Loader2 } from "lucide-react";
+import { CalendarIcon, CheckCircle2, Loader2, PhoneCall, MessageCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,11 +35,13 @@ export function BookingWizard() {
   const defaultLocationId = searchParams.get("location") || "";
 
   const [step, setStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [bookingId, setBookingId] = useState<string | null>(null);
+  const [isPreparing, setIsPreparing] = useState(false);
+  const [requestUrl, setRequestUrl] = useState<string | null>(null);
+
+  const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 
   const form = useForm<BookingFormValues>({
-    resolver: zodResolver(bookingSchema) as any,
+    resolver: zodResolver(bookingSchema) as unknown as Resolver<BookingFormValues>,
     defaultValues: {
       locationId: defaultLocationId,
       guests: 2,
@@ -40,6 +53,17 @@ export function BookingWizard() {
   const { watch, trigger } = form;
   const selectedLocationId = watch("locationId");
   const selectedLocation = sansthanLocations.find(l => l.id === selectedLocationId);
+
+  const resetWizard = () => {
+    setRequestUrl(null);
+    setIsPreparing(false);
+    setStep(1);
+    form.reset({
+      locationId: defaultLocationId,
+      guests: 2,
+      acceptedRules: false,
+    });
+  };
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof BookingFormValues)[] = [];
@@ -59,16 +83,44 @@ export function BookingWizard() {
     setStep(step - 1);
   };
 
-  const onSubmit = async () => {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setBookingId(`BKG-${Math.floor(Math.random() * 10000)}`);
-    setIsSubmitting(false);
+  const onSubmit = async (values: BookingFormValues) => {
+    setIsPreparing(true);
+
+    const locationLabel = selectedLocation
+      ? `${selectedLocation.name}${selectedLocation.city ? `, ${selectedLocation.city}` : ""}`
+      : values.locationId;
+    const from = format(values.dateRange.from, "dd MMM yyyy");
+    const to = format(values.dateRange.to, "dd MMM yyyy");
+
+    const message = [
+      "🙏 Gan Gan Ganaat Bote 🙏",
+      "",
+      "Accommodation Booking Request",
+      `Name: ${values.primaryGuestName}`,
+      `Mobile: ${values.mobile}`,
+      `Location: ${locationLabel}`,
+      `Dates: ${from} to ${to}`,
+      `Guests: ${values.guests}`,
+      `Room type: ${values.roomType}`,
+      "",
+      "I accept the Sansthan rules and will carry valid ID proof. Kindly confirm availability and next steps.",
+    ].join("\n");
+
+    const separator = WHATSAPP_LINK.includes("?") ? "&" : "?";
+    const url = `${WHATSAPP_LINK}${separator}text=${encodeURIComponent(message)}`;
+
+    setRequestUrl(url);
+    setIsPreparing(false);
     setStep(4);
+
+    try {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch {
+      window.location.href = url;
+    }
   };
 
-  if (step === 4 && bookingId) {
+  if (step === 4 && requestUrl) {
     return (
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
@@ -83,23 +135,33 @@ export function BookingWizard() {
                 animate={{ scale: 1 }} 
                 transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
               >
-                <CheckCircle2 className="h-24 w-24 text-green-500" />
+                <CheckCircle2 className="h-24 w-24 text-brand-saffron" />
               </motion.div>
             </div>
-            <h2 className="text-3xl font-bold font-heading text-brand-maroon">Booking Confirmed!</h2>
+            <h2 className="text-3xl font-bold font-heading text-brand-maroon">Request Ready on WhatsApp</h2>
             <p className="text-muted-foreground text-lg">
-              Your booking request has been received.
+              We&apos;ve prepared your booking request message. Please review it in WhatsApp and press <span className="font-medium">Send</span>.
             </p>
-            <div className="bg-muted p-6 rounded-lg max-w-sm mx-auto border border-brand-maroon/10">
-              <p className="text-sm text-muted-foreground uppercase tracking-wide">Booking Reference</p>
-              <p className="text-2xl font-mono font-bold text-brand-maroon">{bookingId}</p>
-            </div>
             <p className="text-sm text-muted-foreground max-w-md mx-auto">
-              A confirmation SMS has been sent to your mobile number.
+              Final confirmation is provided by the Sansthan office based on availability and rules.
               Please carry a valid ID proof during check-in.
             </p>
-            <Button onClick={() => window.location.reload()} className="bg-brand-saffron hover:bg-brand-saffron/90 text-white">
-              Make Another Booking
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+              <Button asChild variant="premium" className="rounded-full h-12 px-6 text-base">
+                <a href={requestUrl} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="h-4 w-4" />
+                  Open WhatsApp Again
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full h-12 px-6 text-base border-brand-maroon/20">
+                <a href={bookingCallHref}>
+                  <PhoneCall className="h-4 w-4" />
+                  Call Booking Helpline
+                </a>
+              </Button>
+            </div>
+            <Button onClick={resetWizard} variant="outline" className="rounded-full h-11 border-brand-maroon/20">
+              Start New Request
             </Button>
           </CardContent>
         </Card>
@@ -401,27 +463,58 @@ export function BookingWizard() {
                 )}
               </AnimatePresence>
 
-              <div className="flex justify-between pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 {step > 1 && (
-                  <Button type="button" variant="outline" onClick={prevStep}>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={prevStep}
+                    className="w-full sm:w-auto border-brand-maroon/20"
+                  >
                     Back
                   </Button>
                 )}
+
                 {step < 3 ? (
-                  <Button type="button" onClick={nextStep} className="ml-auto bg-brand-saffron hover:bg-brand-saffron/90 text-white">
+                  <Button
+                    type="button"
+                    onClick={nextStep}
+                    className="w-full sm:w-auto sm:ml-auto bg-brand-saffron hover:bg-brand-saffron/90 text-white"
+                  >
                     Next Step
                   </Button>
                 ) : (
-                  <Button type="submit" className="ml-auto bg-brand-saffron hover:bg-brand-saffron/90 text-white" disabled={isSubmitting}>
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Processing
-                      </>
-                    ) : (
-                      "Confirm Booking"
-                    )}
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:ml-auto">
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full sm:w-auto h-11 rounded-full border-brand-maroon/20"
+                    >
+                      <a href={bookingCallHref}>
+                        <PhoneCall className="h-4 w-4" />
+                        Call Helpline
+                      </a>
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      variant="premium"
+                      className="w-full sm:w-auto h-11 rounded-full"
+                      disabled={isPreparing}
+                    >
+                      {isPreparing ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Preparing...
+                        </>
+                      ) : (
+                        <>
+                          <MessageCircle className="h-4 w-4" />
+                          Send on WhatsApp
+                        </>
+                      )}
+                    </Button>
+                  </div>
                 )}
               </div>
             </form>
