@@ -9,6 +9,7 @@
 
 **Files:**
 - `components/Hero.tsx` — premium hero with parallax, enhanced animations, decorative elements
+- `components/RoomTypesSection.tsx` — “rooms” style section (no pricing) with location filter + WhatsApp/Call CTAs
 - `components/ImpactStats.tsx` — animated statistics showcasing Sansthan's service impact
 - `components/Features.tsx` — enhanced services grid with hover effects and gradient overlays
 - `components/FeaturedLocations.tsx` — showcase of main pilgrimage destinations
@@ -29,13 +30,16 @@
 flowchart TD
   user[User] --> home[HomePage]
   home --> hero[Hero_Parallax]
+  home --> quickCheckout[QuickCheckoutWidget]
   hero --> stats[ImpactStats_AnimatedCounters]
   stats --> features[Features_EnhancedCards]
   features --> locations[FeaturedLocations_3Cards]
+  locations --> rooms[RoomTypesSection]
   locations --> testimonials[Testimonials_DevoteeQuotes]
   testimonials --> visit[PlanYourVisit_PracticalInfo]
   visit --> cta[CTABanner_FinalConversion]
   hero --> booking[BookingRequest]
+  quickCheckout --> contact[WhatsAppOrCall]
   locations --> locationDetail[LocationDetailPage]
 ```
 
@@ -66,3 +70,4 @@ flowchart TD
 
 **Change-log:**
 - 2026-02-05: Complete premium redesign with 7 new sections, parallax hero, animated stats, testimonials, visit planning info, and enhanced features grid.
+- 2026-02-06: Added hero WhatsApp/Call CTAs, homepage quick checkout widget, and “Room Types” cards section (no pricing).
