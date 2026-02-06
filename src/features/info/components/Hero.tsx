@@ -15,7 +15,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { Sparkles, MessageCircle, PhoneCall } from "lucide-react";
+import { CONTACT_DETAILS, WHATSAPP_LINK } from "@/data/contact";
+import { trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics/events";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -23,6 +25,15 @@ export function Hero() {
   // Parallax transforms
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
+  const heroWhatsAppMessage = [
+    "🙏 Gan Gan Ganaat Bote 🙏",
+    "",
+    "Accommodation booking enquiry",
+    "Kindly guide me for availability and booking process.",
+  ].join("\n");
+  const heroWhatsAppHref = `${WHATSAPP_LINK}?text=${encodeURIComponent(heroWhatsAppMessage)}`;
 
   return (
     <div className="relative flex min-h-[90vh] svh:min-h-[90svh] items-center justify-center overflow-hidden">
@@ -142,22 +153,67 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2"
         >
-          <Button 
-            asChild 
-            size="lg" 
-            variant="premium" 
-            className="min-w-[200px] sm:min-w-[240px] text-base md:text-lg h-14 md:h-16 rounded-full shadow-2xl shadow-brand-saffron/20 hover:shadow-brand-saffron/40 hover:scale-105 transition-all duration-300"
+          <Button
+            asChild
+            size="lg"
+            className="bg-[#25D366] hover:bg-[#128C7E] text-white border border-white/20 backdrop-blur-md min-w-[200px] sm:min-w-[240px] text-base md:text-lg h-14 md:h-16 rounded-full shadow-2xl shadow-black/20 hover:shadow-black/30 hover:scale-105 transition-all duration-300"
           >
-            <Link href="/booking">Book Accommodation</Link>
+            <a
+              href={heroWhatsAppHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp for accommodation booking"
+              onClick={() => trackWhatsAppClick("hero_primary")}
+            >
+              <MessageCircle className="h-5 w-5 md:h-6 md:w-6" />
+              WhatsApp Booking
+            </a>
           </Button>
+
           <Button
             asChild
             size="lg"
             variant="outline"
             className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/40 backdrop-blur-md min-w-[200px] sm:min-w-[240px] text-base md:text-lg h-14 md:h-16 rounded-full hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/locations">Explore Locations</Link>
+            <a
+              href={bookingCallHref}
+              aria-label="Call the booking helpline"
+              onClick={() => trackPhoneClick(CONTACT_DETAILS.booking.mobile, "homepage_hero")}
+            >
+              <PhoneCall className="h-5 w-5 md:h-6 md:w-6" />
+              Call Now
+            </a>
           </Button>
+        </motion.div>
+
+        {/* Secondary navigation to detailed flow / sections */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.15 }}
+          className="mt-6 md:mt-7 flex flex-col sm:flex-row items-center justify-center gap-2.5 md:gap-4 text-xs md:text-sm text-gray-200/80"
+        >
+          <a
+            href="#quick-checkout"
+            className="underline underline-offset-4 hover:text-white transition-colors"
+          >
+            Check availability below
+          </a>
+          <span className="hidden sm:inline text-white/30">•</span>
+          <Link
+            href="/booking"
+            className="underline underline-offset-4 hover:text-white transition-colors"
+          >
+            Fill detailed booking request
+          </Link>
+          <span className="hidden sm:inline text-white/30">•</span>
+          <Link
+            href="/locations"
+            className="underline underline-offset-4 hover:text-white transition-colors"
+          >
+            Explore locations
+          </Link>
         </motion.div>
 
         {/* Trust indicator */}
