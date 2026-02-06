@@ -3,10 +3,11 @@
  * Module: booking
  * Purpose: Guided booking request wizard (WhatsApp + call based).
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-06
  * Notes:
  * - This does not confirm a booking. It prepares a request for WhatsApp/call.
  * - Keep this flow mobile-first: one clear action per step.
+ * - Separate check-in and check-out date pickers with auto-close on selection.
  */
 "use client";
 
