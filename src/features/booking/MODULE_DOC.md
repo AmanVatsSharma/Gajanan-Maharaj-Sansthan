@@ -60,3 +60,4 @@ flowchart TD
 - 2026-02-05: Reworked booking flow to WhatsApp/call request workflow; removed fake “booking confirmed” UI.
 - 2026-02-06: Added homepage “Check Out” widget (location → WhatsApp/Call) to mirror the reference site’s booking entry pattern.
 
+- 2026-02-06: Enhanced calendar UX: auto-close on date selection, mobile-optimized compact layout (2rem cells), improved weekday label alignment.
