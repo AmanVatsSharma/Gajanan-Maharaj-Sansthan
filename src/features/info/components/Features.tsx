@@ -83,7 +83,7 @@ export function Features() {
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -102,23 +102,23 @@ export function Features() {
                   {/* Shine effect on hover */}
                   <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-linear-to-r from-transparent via-white/10 to-transparent" />
                   
-                  <CardHeader className="text-center pb-3 md:pb-4 pt-6 md:pt-8 px-4 md:px-6 relative z-10">
+                  <CardHeader className="text-center pb-2 sm:pb-3 md:pb-4 pt-4 sm:pt-5 md:pt-8 px-3 sm:px-4 md:px-6 relative z-10">
                     {/* Icon container */}
                     <motion.div 
-                      className="mx-auto bg-brand-saffron/10 p-4 md:p-5 rounded-2xl mb-5 md:mb-6 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center group-hover:bg-brand-saffron/20 group-hover:scale-110 transition-all duration-300 shadow-md group-hover:shadow-lg"
+                      className="mx-auto bg-brand-saffron/10 p-2.5 sm:p-3 md:p-5 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 md:mb-6 w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 flex items-center justify-center group-hover:bg-brand-saffron/20 group-hover:scale-110 transition-all duration-300 shadow-md group-hover:shadow-lg"
                       whileHover={{ rotate: [0, -5, 5, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Icon className="h-8 w-8 md:h-10 md:w-10 text-brand-saffron" />
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-10 md:w-10 text-brand-saffron" />
                     </motion.div>
                     
-                    <CardTitle className="text-lg md:text-xl font-bold text-brand-maroon group-hover:text-brand-maroon transition-colors">
+                    <CardTitle className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-brand-maroon group-hover:text-brand-maroon transition-colors leading-tight">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>
                   
-                  <CardContent className="text-center text-muted-foreground px-5 md:px-6 pb-6 md:pb-8 relative z-10">
-                    <p className="leading-relaxed text-sm md:text-base">
+                  <CardContent className="text-center text-muted-foreground px-3 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-8 relative z-10">
+                    <p className="leading-relaxed text-xs sm:text-sm md:text-base">
                       {feature.description}
                     </p>
                   </CardContent>
