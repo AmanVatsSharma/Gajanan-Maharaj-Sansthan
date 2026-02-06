@@ -40,12 +40,12 @@ function Calendar({
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
         head_cell:
-          "text-muted-foreground rounded-md w-10 h-10 sm:w-9 sm:h-9 font-normal text-[0.7rem] sm:text-[0.8rem] flex items-center justify-center",
+          "text-muted-foreground rounded-md w-8 h-8 sm:w-9 sm:h-9 font-normal text-[0.7rem] sm:text-[0.8rem] flex items-center justify-center",
         row: "flex w-full mt-1.5 sm:mt-2",
-        cell: "h-10 w-10 sm:h-9 sm:w-9 text-center text-xs sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        cell: "h-8 w-8 sm:h-9 sm:w-9 text-center text-xs sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-10 w-10 sm:h-9 sm:w-9 p-0 font-normal aria-selected:opacity-100 touch-manipulation min-w-0"
+          "h-8 w-8 sm:h-9 sm:w-9 p-0 font-normal aria-selected:opacity-100 touch-manipulation min-w-0"
         ),
         day_range_end: "day-range-end",
         day_selected:
