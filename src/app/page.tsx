@@ -9,9 +9,11 @@
  * - Each section is independently animated and mobile-responsive
  */
 import { Hero } from "@/features/info/components/Hero";
+import { BookingCheckoutWidget } from "@/features/booking/components/BookingCheckoutWidget";
 import { ImpactStats } from "@/features/info/components/ImpactStats";
 import { Features } from "@/features/info/components/Features";
 import { FeaturedLocations } from "@/features/info/components/FeaturedLocations";
+import { RoomTypesSection } from "@/features/info/components/RoomTypesSection";
 import { Testimonials } from "@/features/info/components/Testimonials";
 import { PlanYourVisit } from "@/features/info/components/PlanYourVisit";
 import { CTABanner } from "@/features/info/components/CTABanner";
@@ -35,11 +37,14 @@ export default function Home() {
       <StructuredData data={organizationSchema} />
       <div className="flex flex-col">
         <Hero />
+        <BookingCheckoutWidget />
         <ImpactStats />
         <SectionDivider variant="ornate" />
         <Features />
         <SectionDivider variant="default" />
         <FeaturedLocations />
+        <SectionDivider variant="default" />
+        <RoomTypesSection />
         <SectionDivider variant="ornate" />
         <Testimonials />
         <SectionDivider variant="minimal" />

@@ -7,9 +7,11 @@
 **Entry points:**
 - `src/app/booking/page.tsx`
 - `src/features/booking/components/BookingWizard.tsx`
+- `src/features/booking/components/BookingCheckoutWidget.tsx` (rendered on homepage: `src/app/page.tsx`)
 
 **Files:**
 - `components/BookingWizard.tsx` — 3-step wizard UI, validations, WhatsApp/call CTAs
+- `components/BookingCheckoutWidget.tsx` — homepage inline “Check Out” widget (location → WhatsApp/Call)
 - `schema.ts` — Zod validation schema for booking request fields
 - `MODULE_DOC.md` — this document
 
@@ -17,15 +19,22 @@
 
 ```mermaid
 flowchart TD
-  user[User] --> bookingPage[BookingPage]
+  user[User] --> home[HomePage]
+  home --> quickCheckout[BookingCheckoutWidget]
+  quickCheckout --> waQuick[WhatsApp_wa_me]
+  quickCheckout --> callQuick[Call_tel]
+
+  user --> bookingPage[BookingPage]
   bookingPage --> wizard[BookingWizard]
   wizard --> step1[Step1_StayDetails]
   step1 --> step2[Step2_RoomType]
   step2 --> step3[Step3_GuestInfo_Rules]
   step3 --> compose[ComposeWhatsAppMessage]
-  compose --> wa[WhatsApp_wa_me]
+  compose --> waWizard[WhatsApp_wa_me]
   step3 --> call[Call_Helpline]
-  wa --> office[SansthanOffice]
+  waQuick --> office[SansthanOffice]
+  callQuick --> office
+  waWizard --> office
   call --> office
   office --> confirm[ConfirmAvailability]
 ```
@@ -34,6 +43,7 @@ flowchart TD
 - **Validation**: `zod` schema in `schema.ts` enforces required fields and basic constraints (dates, mobile format, rule acceptance).
 - **Privacy**: the form collects ID proof info, but the WhatsApp message only states that the user will carry valid ID proof (no ID number is embedded in the URL/message).
 - **No backend**: this module does not confirm or create bookings; it prepares a request for WhatsApp/calls.
+- **Quick checkout**: `BookingCheckoutWidget` provides a minimal homepage flow to select a location and contact via WhatsApp/Call.
 
 **Dependencies:**
 - **Data**: `src/data/sansthan-data.ts`, `src/data/contact.ts`
@@ -48,4 +58,5 @@ flowchart TD
 
 **Change-log:**
 - 2026-02-05: Reworked booking flow to WhatsApp/call request workflow; removed fake “booking confirmed” UI.
+- 2026-02-06: Added homepage “Check Out” widget (location → WhatsApp/Call) to mirror the reference site’s booking entry pattern.
 
