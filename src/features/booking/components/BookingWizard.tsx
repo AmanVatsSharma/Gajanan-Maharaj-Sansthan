@@ -270,29 +270,38 @@ export function BookingWizard() {
                                   <Button
                                     variant={"outline"}
                                     className={cn(
-                                      "w-full pl-3 text-left font-normal",
+                                      "w-full pl-3 pr-3 text-left font-normal min-h-10 sm:min-h-9",
                                       !field.value && "text-muted-foreground"
                                     )}
                                   >
-                                    {field.value?.from ? (
-                                      field.value.to ? (
-                                        <>
-                                          {format(field.value.from, "LLL dd, y")} -{" "}
-                                          {format(field.value.to, "LLL dd, y")}
-                                        </>
+                                    <span className="truncate block text-left">
+                                      {field.value?.from ? (
+                                        field.value.to ? (
+                                          <>
+                                            {format(field.value.from, "dd MMM")} – {format(field.value.to, "dd MMM y")}
+                                          </>
+                                        ) : (
+                                          format(field.value.from, "dd MMM y")
+                                        )
                                       ) : (
-                                        format(field.value.from, "LLL dd, y")
-                                      )
-                                    ) : (
-                                      <span>Pick a date</span>
-                                    )}
-                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                        "Pick dates"
+                                      )}
+                                    </span>
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50 shrink-0" />
                                   </Button>
                                 </FormControl>
                               </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0" align="start">
+                              <PopoverContent
+                                className="w-[min(100vw-1.5rem,380px)] p-0 sm:w-auto"
+                                align="center"
+                                side="bottom"
+                                sideOffset={8}
+                                avoidCollisions
+                                collisionPadding={12}
+                              >
                                 <Calendar
                                   mode="range"
+                                  numberOfMonths={1}
                                   selected={field.value}
                                   onSelect={field.onChange}
                                   disabled={(date) =>
