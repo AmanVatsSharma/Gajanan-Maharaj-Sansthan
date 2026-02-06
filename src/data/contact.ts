@@ -14,10 +14,9 @@ export const CONTACT_DETAILS = {
     },
   },
   booking: {
-    // User requested mobile number for calling and WhatsApp
-    // Using a placeholder that should be updated with the real number
-    mobile: "+919876543210", 
-    whatsapp: "+919876543210",
+    // Primary booking/WhatsApp number — single source for site-wide call/wa.me links
+    mobile: "+918679304702",
+    whatsapp: "+918679304702",
     helpline: "07265-252018",
   },
   social: {

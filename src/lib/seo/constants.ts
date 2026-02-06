@@ -3,11 +3,14 @@
  * Module: lib/seo
  * Purpose: SEO-related constants including keywords, site info, and configuration
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-06
  * Notes:
  * - Centralized SEO configuration for consistency across pages
  * - Keywords organized by category for better targeting
+ * - Primary phone comes from @/data/contact (single source of truth)
  */
+
+import { CONTACT_DETAILS } from "@/data/contact";
 
 export const SITE_CONFIG = {
   name: "Shri Gajanan Maharaj Sansthan",
@@ -24,7 +27,7 @@ export const ORGANIZATION_INFO = {
   alternateName: "Gajanan Maharaj Mandir Shegaon",
   logo: "/logo/logo.png",
   email: "contact@gajananmaharaj.org",
-  phone: "+91-7265-252018",
+  phone: CONTACT_DETAILS.booking.mobile,
   address: {
     streetAddress: "Shri Gajanan Maharaj Temple Complex",
     addressLocality: "Shegaon",
