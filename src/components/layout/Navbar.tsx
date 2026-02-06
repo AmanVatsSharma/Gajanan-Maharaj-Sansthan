@@ -11,6 +11,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, MessageCircle, PhoneCall } from "lucide-react";
@@ -57,10 +58,18 @@ export function Navbar() {
       )}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3">
+          <Image
+            src="/file.svg"
+            alt="Shri Gajanan Maharaj Sansthan Logo"
+            width={isScrolled ? 40 : 50}
+            height={isScrolled ? 40 : 50}
+            className="transition-all duration-300"
+            priority
+          />
           <span
             className={cn(
-              "font-bold tracking-tight text-brand-saffron font-serif transition-all duration-300",
+              "font-bold tracking-tight text-brand-saffron font-serif transition-all duration-300 hidden sm:inline",
               isScrolled ? "text-xl" : "text-2xl"
             )}
           >
@@ -107,9 +116,18 @@ export function Navbar() {
 
             <DialogContent className="left-auto right-0 top-0 translate-x-0 translate-y-0 h-dvh w-[88vw] max-w-sm gap-0 p-0 rounded-none sm:rounded-l-2xl border-l">
               <DialogHeader className="p-6 pb-4 border-b text-left">
-                <DialogTitle className="font-serif text-lg text-brand-maroon">
-                  Shri Gajanan Maharaj Sansthan
-                </DialogTitle>
+                <div className="flex items-center gap-3 mb-2">
+                  <Image
+                    src="/file.svg"
+                    alt="Shri Gajanan Maharaj Sansthan Logo"
+                    width={40}
+                    height={40}
+                    className="shrink-0"
+                  />
+                  <DialogTitle className="font-serif text-lg text-brand-maroon">
+                    Shri Gajanan Maharaj Sansthan
+                  </DialogTitle>
+                </div>
                 <p className="text-sm text-muted-foreground italic">
                   &quot;Gan Gan Ganaat Bote&quot;
                 </p>
