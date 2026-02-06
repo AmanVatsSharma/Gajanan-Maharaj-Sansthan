@@ -62,3 +62,4 @@ flowchart TD
 
 - 2026-02-06: Enhanced calendar UX: auto-close on date selection, mobile-optimized compact layout (2rem cells), improved weekday label alignment.
 - 2026-02-06: Split date picker into separate check-in and check-out fields; improved calendar weekday alignment using flex-1 layout.
+- 2026-02-06: Added 'Okay' confirmation button to check-in and check-out calendar popovers for better UX.

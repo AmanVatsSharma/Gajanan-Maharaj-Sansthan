@@ -296,19 +296,29 @@ export function BookingWizard() {
                                 avoidCollisions
                                 collisionPadding={8}
                               >
-                                <Calendar
-                                  mode="single"
-                                  numberOfMonths={1}
-                                  selected={field.value}
-                                  onSelect={(date) => {
-                                    field.onChange(date);
-                                    setIsCheckInOpen(false);
-                                  }}
-                                  disabled={(date) =>
-                                    date < new Date() || date < new Date("1900-01-01")
-                                  }
-                                  initialFocus
-                                />
+                                <div className="flex flex-col">
+                                  <Calendar
+                                    mode="single"
+                                    numberOfMonths={1}
+                                    selected={field.value}
+                                    onSelect={field.onChange}
+                                    disabled={(date) =>
+                                      date < new Date() || date < new Date("1900-01-01")
+                                    }
+                                    initialFocus
+                                  />
+                                  <div className="p-3 pt-0 border-t">
+                                    <Button
+                                      type="button"
+                                      className="w-full"
+                                      size="sm"
+                                      onClick={() => setIsCheckInOpen(false)}
+                                      disabled={!field.value}
+                                    >
+                                      Okay
+                                    </Button>
+                                  </div>
+                                </div>
                               </PopoverContent>
                             </Popover>
                             <FormMessage />
@@ -351,20 +361,30 @@ export function BookingWizard() {
                                 avoidCollisions
                                 collisionPadding={8}
                               >
-                                <Calendar
-                                  mode="single"
-                                  numberOfMonths={1}
-                                  selected={field.value}
-                                  onSelect={(date) => {
-                                    field.onChange(date);
-                                    setIsCheckOutOpen(false);
-                                  }}
-                                  disabled={(date) => {
-                                    const checkInDate = form.getValues("checkIn");
-                                    return date < new Date() || (checkInDate && date <= checkInDate);
-                                  }}
-                                  initialFocus
-                                />
+                                <div className="flex flex-col">
+                                  <Calendar
+                                    mode="single"
+                                    numberOfMonths={1}
+                                    selected={field.value}
+                                    onSelect={field.onChange}
+                                    disabled={(date) => {
+                                      const checkInDate = form.getValues("checkIn");
+                                      return date < new Date() || (checkInDate && date <= checkInDate);
+                                    }}
+                                    initialFocus
+                                  />
+                                  <div className="p-3 pt-0 border-t">
+                                    <Button
+                                      type="button"
+                                      className="w-full"
+                                      size="sm"
+                                      onClick={() => setIsCheckOutOpen(false)}
+                                      disabled={!field.value}
+                                    >
+                                      Okay
+                                    </Button>
+                                  </div>
+                                </div>
                               </PopoverContent>
                             </Popover>
                             <FormMessage />
