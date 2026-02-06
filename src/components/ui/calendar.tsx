@@ -38,15 +38,15 @@ function Calendar({
         ),
         nav_button_previous: "absolute left-0",
         nav_button_next: "absolute right-0",
-        table: "w-full border-collapse space-y-0.5",
-        head_row: "flex justify-between w-full",
+        table: "w-full border-collapse",
+        head_row: "flex w-full",
         head_cell:
-          "text-muted-foreground rounded-md w-[2rem] h-[2rem] sm:w-9 sm:h-9 font-medium text-[0.65rem] sm:text-[0.8rem] flex items-center justify-center uppercase",
-        row: "flex justify-between w-full mt-0.5 sm:mt-1",
-        cell: "h-[2rem] w-[2rem] sm:h-9 sm:w-9 text-center text-[0.7rem] sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+          "text-muted-foreground rounded-md flex-1 w-0 h-8 sm:h-9 font-medium text-[0.65rem] sm:text-[0.8rem] flex items-center justify-center uppercase",
+        row: "flex w-full mt-1",
+        cell: "flex-1 w-0 h-8 sm:h-9 text-center text-[0.7rem] sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-[2rem] w-[2rem] sm:h-9 sm:w-9 p-0 text-[0.7rem] sm:text-sm font-normal aria-selected:opacity-100 touch-manipulation min-w-0"
+          "h-8 w-full sm:h-9 p-0 text-[0.7rem] sm:text-sm font-normal aria-selected:opacity-100 touch-manipulation"
         ),
         day_range_end: "day-range-end",
         day_selected:

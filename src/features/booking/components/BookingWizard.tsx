@@ -37,7 +37,8 @@ export function BookingWizard() {
   const [step, setStep] = useState(1);
   const [isPreparing, setIsPreparing] = useState(false);
   const [requestUrl, setRequestUrl] = useState<string | null>(null);
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [isCheckInOpen, setIsCheckInOpen] = useState(false);
+  const [isCheckOutOpen, setIsCheckOutOpen] = useState(false);
 
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 
@@ -69,7 +70,7 @@ export function BookingWizard() {
   const nextStep = async () => {
     let fieldsToValidate: (keyof BookingFormValues)[] = [];
     if (step === 1) {
-      fieldsToValidate = ["locationId", "dateRange", "guests"];
+      fieldsToValidate = ["locationId", "checkIn", "checkOut", "guests"];
     } else if (step === 2) {
       fieldsToValidate = ["roomType"];
     }
@@ -90,8 +91,8 @@ export function BookingWizard() {
     const locationLabel = selectedLocation
       ? `${selectedLocation.name}${selectedLocation.city ? `, ${selectedLocation.city}` : ""}`
       : values.locationId;
-    const from = format(values.dateRange.from, "dd MMM yyyy");
-    const to = format(values.dateRange.to, "dd MMM yyyy");
+    const from = format(values.checkIn, "dd MMM yyyy");
+    const to = format(values.checkOut, "dd MMM yyyy");
 
     const message = [
       "🙏 Gan Gan Ganaat Bote 🙏",
@@ -261,11 +262,11 @@ export function BookingWizard() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
-                        name="dateRange"
+                        name="checkIn"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel>Check-in & Check-out</FormLabel>
-                            <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                            <FormLabel>Check-in Date</FormLabel>
+                            <Popover open={isCheckInOpen} onOpenChange={setIsCheckInOpen}>
                               <PopoverTrigger asChild>
                                 <FormControl>
                                   <Button
@@ -276,16 +277,10 @@ export function BookingWizard() {
                                     )}
                                   >
                                     <span className="truncate block text-left">
-                                      {field.value?.from ? (
-                                        field.value.to ? (
-                                          <>
-                                            {format(field.value.from, "dd MMM")} – {format(field.value.to, "dd MMM y")}
-                                          </>
-                                        ) : (
-                                          format(field.value.from, "dd MMM y")
-                                        )
+                                      {field.value ? (
+                                        format(field.value, "dd MMM yyyy")
                                       ) : (
-                                        "Pick dates"
+                                        "Pick check-in"
                                       )}
                                     </span>
                                     <CalendarIcon className="ml-auto h-4 w-4 opacity-50 shrink-0" />
@@ -294,26 +289,79 @@ export function BookingWizard() {
                               </PopoverTrigger>
                               <PopoverContent
                                 className="w-[min(100vw-1rem,300px)] sm:w-auto p-0"
-                                align="center"
+                                align="start"
                                 side="bottom"
                                 sideOffset={8}
                                 avoidCollisions
                                 collisionPadding={8}
                               >
                                 <Calendar
-                                  mode="range"
+                                  mode="single"
                                   numberOfMonths={1}
                                   selected={field.value}
-                                  onSelect={(range) => {
-                                    field.onChange(range);
-                                    // Auto-close when both dates are selected
-                                    if (range?.from && range?.to) {
-                                      setIsCalendarOpen(false);
-                                    }
+                                  onSelect={(date) => {
+                                    field.onChange(date);
+                                    setIsCheckInOpen(false);
                                   }}
                                   disabled={(date) =>
                                     date < new Date() || date < new Date("1900-01-01")
                                   }
+                                  initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="checkOut"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-col">
+                            <FormLabel>Check-out Date</FormLabel>
+                            <Popover open={isCheckOutOpen} onOpenChange={setIsCheckOutOpen}>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full pl-3 pr-3 text-left font-normal min-h-10 sm:min-h-9",
+                                      !field.value && "text-muted-foreground"
+                                    )}
+                                  >
+                                    <span className="truncate block text-left">
+                                      {field.value ? (
+                                        format(field.value, "dd MMM yyyy")
+                                      ) : (
+                                        "Pick check-out"
+                                      )}
+                                    </span>
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50 shrink-0" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-[min(100vw-1rem,300px)] sm:w-auto p-0"
+                                align="start"
+                                side="bottom"
+                                sideOffset={8}
+                                avoidCollisions
+                                collisionPadding={8}
+                              >
+                                <Calendar
+                                  mode="single"
+                                  numberOfMonths={1}
+                                  selected={field.value}
+                                  onSelect={(date) => {
+                                    field.onChange(date);
+                                    setIsCheckOutOpen(false);
+                                  }}
+                                  disabled={(date) => {
+                                    const checkInDate = form.getValues("checkIn");
+                                    return date < new Date() || (checkInDate && date <= checkInDate);
+                                  }}
                                   initialFocus
                                 />
                               </PopoverContent>
