@@ -7,7 +7,7 @@
  * Notes:
  * - This does not confirm a booking. It prepares a request for WhatsApp/call.
  * - Keep this flow mobile-first: one clear action per step.
- * - Separate check-in and check-out date pickers with auto-close on selection.
+ * - Uses vertical date picker instead of calendar grid for better mobile UX.
  */
 "use client";
 
@@ -20,7 +20,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Calendar } from "@/components/ui/calendar";
+import { VerticalDatePicker } from "./VerticalDatePicker";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { sansthanLocations, bookingRules } from "@/data/sansthan-data";
@@ -289,7 +289,7 @@ export function BookingWizard() {
                                 </FormControl>
                               </PopoverTrigger>
                               <PopoverContent
-                                className="w-[min(100vw-1rem,300px)] sm:w-auto p-0"
+                                className="w-[min(100vw-1rem,320px)] sm:w-[340px] p-0"
                                 align="start"
                                 side="bottom"
                                 sideOffset={8}
@@ -297,23 +297,22 @@ export function BookingWizard() {
                                 collisionPadding={8}
                               >
                                 <div className="flex flex-col">
-                                  <Calendar
-                                    mode="single"
-                                    numberOfMonths={1}
+                                  <div className="p-3 pb-2 border-b bg-muted/30">
+                                    <p className="text-sm font-medium">Select Check-in Date</p>
+                                  </div>
+                                  <VerticalDatePicker
                                     selected={field.value}
                                     onSelect={field.onChange}
                                     disabled={(date) =>
                                       date < new Date() || date < new Date("1900-01-01")
                                     }
-                                    initialFocus
                                   />
-                                  <div className="p-3 pt-0 border-t">
+                                  <div className="p-3 pt-2 border-t sticky bottom-0 bg-background">
                                     <Button
                                       type="button"
                                       className="w-full"
                                       size="sm"
                                       onClick={() => setIsCheckInOpen(false)}
-                                      disabled={!field.value}
                                     >
                                       Okay
                                     </Button>
@@ -354,7 +353,7 @@ export function BookingWizard() {
                                 </FormControl>
                               </PopoverTrigger>
                               <PopoverContent
-                                className="w-[min(100vw-1rem,300px)] sm:w-auto p-0"
+                                className="w-[min(100vw-1rem,320px)] sm:w-[340px] p-0"
                                 align="start"
                                 side="bottom"
                                 sideOffset={8}
@@ -362,24 +361,23 @@ export function BookingWizard() {
                                 collisionPadding={8}
                               >
                                 <div className="flex flex-col">
-                                  <Calendar
-                                    mode="single"
-                                    numberOfMonths={1}
+                                  <div className="p-3 pb-2 border-b bg-muted/30">
+                                    <p className="text-sm font-medium">Select Check-out Date</p>
+                                  </div>
+                                  <VerticalDatePicker
                                     selected={field.value}
                                     onSelect={field.onChange}
                                     disabled={(date) => {
                                       const checkInDate = form.getValues("checkIn");
                                       return date < new Date() || (checkInDate && date <= checkInDate);
                                     }}
-                                    initialFocus
                                   />
-                                  <div className="p-3 pt-0 border-t">
+                                  <div className="p-3 pt-2 border-t sticky bottom-0 bg-background">
                                     <Button
                                       type="button"
                                       className="w-full"
                                       size="sm"
                                       onClick={() => setIsCheckOutOpen(false)}
-                                      disabled={!field.value}
                                     >
                                       Okay
                                     </Button>

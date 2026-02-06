@@ -12,6 +12,7 @@
 **Files:**
 - `components/BookingWizard.tsx` — 3-step wizard UI, validations, WhatsApp/call CTAs
 - `components/BookingCheckoutWidget.tsx` — homepage inline “Check Out” widget (location → WhatsApp/Call)
+- `components/VerticalDatePicker.tsx` — vertical scrollable date selector (mobile-friendly)
 - `schema.ts` — Zod validation schema for booking request fields
 - `MODULE_DOC.md` — this document
 
@@ -63,3 +64,4 @@ flowchart TD
 - 2026-02-06: Enhanced calendar UX: auto-close on date selection, mobile-optimized compact layout (2rem cells), improved weekday label alignment.
 - 2026-02-06: Split date picker into separate check-in and check-out fields; improved calendar weekday alignment using flex-1 layout.
 - 2026-02-06: Added 'Okay' confirmation button to check-in and check-out calendar popovers for better UX.
+- 2026-02-06: Replaced calendar grid with vertical date picker for better mobile UX; Okay button always enabled.
