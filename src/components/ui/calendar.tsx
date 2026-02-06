@@ -3,9 +3,10 @@
  * Module: ui
  * Purpose: Calendar primitive (react-day-picker) with Tailwind styling.
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-06
  * Notes:
  * - Keep this component stateless; style via `classNames` mapping.
+ * - Mobile-optimized: compact 2rem cells, proper weekday label alignment.
  */
 import * as React from "react"
 import { DayPicker } from "react-day-picker"
@@ -26,26 +27,26 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-2 sm:p-3", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4",
-        month: "space-y-3 sm:space-y-4",
-        caption: "flex justify-center pt-1 relative items-center",
+        months: "flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4",
+        month: "space-y-2 sm:space-y-4",
+        caption: "flex justify-center pt-1 pb-1 relative items-center",
         caption_label: "text-xs sm:text-sm font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-8 w-8 sm:h-7 sm:w-7 bg-transparent p-0 opacity-50 hover:opacity-100 touch-manipulation"
+          "h-7 w-7 sm:h-7 sm:w-7 bg-transparent p-0 opacity-50 hover:opacity-100 touch-manipulation"
         ),
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
+        nav_button_previous: "absolute left-0",
+        nav_button_next: "absolute right-0",
+        table: "w-full border-collapse space-y-0.5",
+        head_row: "flex justify-between w-full",
         head_cell:
-          "text-muted-foreground rounded-md w-8 h-8 sm:w-9 sm:h-9 font-normal text-[0.7rem] sm:text-[0.8rem] flex items-center justify-center",
-        row: "flex w-full mt-1.5 sm:mt-2",
-        cell: "h-8 w-8 sm:h-9 sm:w-9 text-center text-xs sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+          "text-muted-foreground rounded-md w-[2rem] h-[2rem] sm:w-9 sm:h-9 font-medium text-[0.65rem] sm:text-[0.8rem] flex items-center justify-center uppercase",
+        row: "flex justify-between w-full mt-0.5 sm:mt-1",
+        cell: "h-[2rem] w-[2rem] sm:h-9 sm:w-9 text-center text-[0.7rem] sm:text-sm p-0 relative flex items-center justify-center [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-8 w-8 sm:h-9 sm:w-9 p-0 font-normal aria-selected:opacity-100 touch-manipulation min-w-0"
+          "h-[2rem] w-[2rem] sm:h-9 sm:w-9 p-0 text-[0.7rem] sm:text-sm font-normal aria-selected:opacity-100 touch-manipulation min-w-0"
         ),
         day_range_end: "day-range-end",
         day_selected:

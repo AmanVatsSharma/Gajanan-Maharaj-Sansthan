@@ -37,6 +37,7 @@ export function BookingWizard() {
   const [step, setStep] = useState(1);
   const [isPreparing, setIsPreparing] = useState(false);
   const [requestUrl, setRequestUrl] = useState<string | null>(null);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 
@@ -264,7 +265,7 @@ export function BookingWizard() {
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
                             <FormLabel>Check-in & Check-out</FormLabel>
-                            <Popover>
+                            <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                               <PopoverTrigger asChild>
                                 <FormControl>
                                   <Button
@@ -292,18 +293,24 @@ export function BookingWizard() {
                                 </FormControl>
                               </PopoverTrigger>
                               <PopoverContent
-                                className="w-[min(100vw-1.5rem,380px)] p-0 sm:w-auto"
+                                className="w-[min(100vw-1rem,300px)] sm:w-auto p-0"
                                 align="center"
                                 side="bottom"
                                 sideOffset={8}
                                 avoidCollisions
-                                collisionPadding={12}
+                                collisionPadding={8}
                               >
                                 <Calendar
                                   mode="range"
                                   numberOfMonths={1}
                                   selected={field.value}
-                                  onSelect={field.onChange}
+                                  onSelect={(range) => {
+                                    field.onChange(range);
+                                    // Auto-close when both dates are selected
+                                    if (range?.from && range?.to) {
+                                      setIsCalendarOpen(false);
+                                    }
+                                  }}
                                   disabled={(date) =>
                                     date < new Date() || date < new Date("1900-01-01")
                                   }
