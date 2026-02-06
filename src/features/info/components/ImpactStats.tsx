@@ -130,7 +130,7 @@ export function ImpactStats() {
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -142,32 +142,32 @@ export function ImpactStats() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="relative h-full bg-card rounded-2xl p-6 md:p-8 border border-border/50 hover:border-brand-saffron/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+                <div className="relative h-full bg-card rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 lg:p-8 border border-border/50 hover:border-brand-saffron/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 bg-linear-to-br from-brand-saffron/0 via-brand-gold/0 to-brand-maroon/0 group-hover:from-brand-saffron/5 group-hover:via-brand-gold/5 group-hover:to-brand-maroon/5 transition-all duration-500" />
                   
                   {/* Content */}
                   <div className="relative z-10">
                     {/* Icon */}
-                    <div className="mb-5 md:mb-6 inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-brand-saffron/10 group-hover:bg-brand-saffron/20 transition-colors duration-300">
-                      <Icon className="h-7 w-7 md:h-8 md:w-8 text-brand-saffron" />
+                    <div className="mb-3 sm:mb-4 md:mb-6 inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-brand-saffron/10 group-hover:bg-brand-saffron/20 transition-colors duration-300">
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-brand-saffron" />
                     </div>
 
                     {/* Number */}
-                    <div className="mb-2">
-                      <span className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-brand-maroon">
+                    <div className="mb-1 sm:mb-2">
+                      <span className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold font-heading text-brand-maroon leading-tight">
                         <Counter end={stat.value} />
                         {stat.suffix}
                       </span>
                     </div>
 
                     {/* Label */}
-                    <h3 className="text-base md:text-lg font-semibold text-foreground mb-1">
+                    <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-foreground mb-0.5 sm:mb-1 leading-tight">
                       {stat.label}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed">
                       {stat.description}
                     </p>
                   </div>
