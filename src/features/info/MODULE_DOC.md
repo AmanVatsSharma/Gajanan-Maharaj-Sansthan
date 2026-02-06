@@ -71,3 +71,4 @@ flowchart TD
 **Change-log:**
 - 2026-02-05: Complete premium redesign with 7 new sections, parallax hero, animated stats, testimonials, visit planning info, and enhanced features grid.
 - 2026-02-06: Added hero WhatsApp/Call CTAs, homepage quick checkout widget, and “Room Types” cards section (no pricing).
+- 2026-02-06: Updated hero section background image to 'WhatsApp Image 2026-02-05 at 14.16.35.jpeg'.
