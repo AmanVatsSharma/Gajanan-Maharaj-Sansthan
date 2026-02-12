@@ -13,7 +13,7 @@ import { BookingCheckoutWidget } from "@/features/booking/components/BookingChec
 import { ImpactStats } from "@/features/info/components/ImpactStats";
 import { Features } from "@/features/info/components/Features";
 import { FeaturedLocations } from "@/features/info/components/FeaturedLocations";
-import { RoomTypesSection } from "@/features/info/components/RoomTypesSection";
+import EnhancedRoomsSection from "@/features/info/components/EnhancedRoomsSection";
 import { Testimonials } from "@/features/info/components/Testimonials";
 import { PlanYourVisit } from "@/features/info/components/PlanYourVisit";
 import { CTABanner } from "@/features/info/components/CTABanner";
@@ -44,7 +44,7 @@ export default function Home() {
         <SectionDivider variant="default" />
         <FeaturedLocations />
         <SectionDivider variant="default" />
-        <RoomTypesSection />
+        <EnhancedRoomsSection />
         <SectionDivider variant="ornate" />
         <Testimonials />
         <SectionDivider variant="minimal" />

@@ -114,7 +114,7 @@ export function Testimonials() {
               <div className="w-6 md:w-8 h-px bg-linear-to-l from-transparent to-brand-gold/50" />
             </div>
             <p className="text-brand-maroon/80 font-serif italic text-base md:text-lg">
-              &quot;Gan Gan Ganaat Bote&quot;
+              &quot;Jai Gajanan Maharaj&quot;
             </p>
           </div>
         </motion.div>

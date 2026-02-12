@@ -29,7 +29,7 @@ export function Hero() {
 
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
   const heroWhatsAppMessage = [
-    "🙏 Gan Gan Ganaat Bote 🙏",
+    "🙏 Jai Gajanan Maharaj 🙏",
     "",
     "Accommodation booking enquiry",
     "Kindly guide me for availability and booking process.",
@@ -124,7 +124,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-4 md:mb-6 text-xl md:text-3xl lg:text-4xl font-medium tracking-wide md:tracking-wider text-brand-gold font-serif italic"
         >
-          <span className="inline-block">|| Gan Gan Ganaat Bote ||</span>
+          <span className="inline-block">|| Jai Gajanan Maharaj ||</span>
         </motion.h2>
         
         {/* Main heading with enhanced gradient */}

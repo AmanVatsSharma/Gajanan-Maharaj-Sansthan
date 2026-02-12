@@ -96,7 +96,7 @@ export function BookingWizard() {
     const to = format(values.checkOut, "dd MMM yyyy");
 
     const message = [
-      "🙏 Gan Gan Ganaat Bote 🙏",
+      "🙏 Jai Gajanan Maharaj 🙏",
       "",
       "Accommodation Booking Request",
       `Name: ${values.primaryGuestName}`,

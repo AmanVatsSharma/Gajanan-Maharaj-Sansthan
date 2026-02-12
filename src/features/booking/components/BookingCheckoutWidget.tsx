@@ -59,7 +59,7 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
       : "a Sansthan location";
 
     const message = [
-      "🙏 Gan Gan Ganaat Bote 🙏",
+      "🙏 Jai Gajanan Maharaj 🙏",
       "",
       "Accommodation booking enquiry",
       `Preferred location: ${locationLabel}`,

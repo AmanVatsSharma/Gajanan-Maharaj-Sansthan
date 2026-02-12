@@ -12,7 +12,7 @@ export function Footer() {
           <div className="space-y-3 md:space-y-4">
             <h3 className="text-base md:text-lg font-bold font-heading">Shri Gajanan Maharaj Sansthan</h3>
             <p className="text-sm text-gray-200 italic">
-              &quot;Gan Gan Ganaat Bote&quot;
+              &quot;Jai Gajanan Maharaj&quot;
             </p>
             <p className="text-sm text-gray-200 leading-relaxed">
               Official website for devotee services and accommodation booking.

@@ -38,7 +38,7 @@ function getFacilitySummary(facility: Facility): string {
 function buildFacilityWhatsAppHref(locationLabel: string, facility: Facility): string {
   const acLabel = facility.ac ? "AC" : "Non-AC";
   const message = [
-    "🙏 Gan Gan Ganaat Bote 🙏",
+    "🙏 Jai Gajanan Maharaj 🙏",
     "",
     "Accommodation enquiry (room details)",
     `Location: ${locationLabel}`,

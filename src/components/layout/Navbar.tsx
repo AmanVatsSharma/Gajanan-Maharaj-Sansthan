@@ -129,7 +129,7 @@ export function Navbar() {
                   </DialogTitle>
                 </div>
                 <p className="text-sm text-muted-foreground italic">
-                  &quot;Gan Gan Ganaat Bote&quot;
+                  &quot;Jai Gajanan Maharaj&quot;
                 </p>
               </DialogHeader>
 

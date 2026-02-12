@@ -10,6 +10,7 @@
 **Files:**
 - `components/Hero.tsx` — premium hero with parallax, enhanced animations, decorative elements
 - `components/RoomTypesSection.tsx` — “rooms” style section (no pricing) with location filter + WhatsApp/Call CTAs
+- `components/EnhancedRoomsSection.tsx` — interactive room booking section with modal details, pricing, and direct booking CTAs
 - `components/ImpactStats.tsx` — animated statistics showcasing Sansthan's service impact
 - `components/Features.tsx` — enhanced services grid with hover effects and gradient overlays
 - `components/FeaturedLocations.tsx` — showcase of main pilgrimage destinations
@@ -23,6 +24,7 @@
 - `src/data/testimonials.ts` — devotee testimonials
 - `src/data/visit-info.ts` — darshan timings, transport, visit tips
 - `src/data/sansthan-data.ts` — locations data
+- `src/data/rooms.ts` — room types with pricing and features
 
 **Flow diagram:**
 
@@ -34,7 +36,7 @@ flowchart TD
   hero --> stats[ImpactStats_AnimatedCounters]
   stats --> features[Features_EnhancedCards]
   features --> locations[FeaturedLocations_3Cards]
-  locations --> rooms[RoomTypesSection]
+  locations --> rooms[EnhancedRoomsSection_WithModal]
   locations --> testimonials[Testimonials_DevoteeQuotes]
   testimonials --> visit[PlanYourVisit_PracticalInfo]
   visit --> cta[CTABanner_FinalConversion]
@@ -46,9 +48,10 @@ flowchart TD
 **Behaviors:**
 - **Premium visuals**: Parallax effects, gradient overlays, animated counters, staggered reveals
 - **Storytelling flow**: Impact → Services → Locations → Testimonials → Planning → Action
+- **Interactive modals**: Room details displayed in overlay with escape key and backdrop click support
 - **Performance**: Next `Image` optimization, lazy animations (viewport-once), efficient motion
 - **Mobile-first**: All sections fully responsive with proper spacing and touch targets
-- **Accessibility**: Proper heading hierarchy, ARIA labels, keyboard navigation
+- **Accessibility**: Proper heading hierarchy, ARIA labels, keyboard navigation, modal focus management
 
 **Visual elements:**
 - Decorative section dividers with 3 variants (default, ornate, minimal)
@@ -72,3 +75,4 @@ flowchart TD
 - 2026-02-05: Complete premium redesign with 7 new sections, parallax hero, animated stats, testimonials, visit planning info, and enhanced features grid.
 - 2026-02-06: Added hero WhatsApp/Call CTAs, homepage quick checkout widget, and “Room Types” cards section (no pricing).
 - 2026-02-06: Updated hero section background image to 'WhatsApp Image 2026-02-05 at 14.16.35.jpeg'.
+- 2026-02-12: Integrated EnhancedRoomsSection with modal functionality, pricing display, and direct booking CTAs. Added room images and pricing data from reference dharmashala site. Replaced RoomTypesSection with EnhancedRoomsSection on home page. Added modal overlay styles to globals.css for interactive room details. Analytics tracking for WhatsApp/Call clicks from room modals.

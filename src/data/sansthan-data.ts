@@ -143,5 +143,5 @@ export const bookingRules: SansthanRule[] = [
 export const sansthanHistory = {
   title: 'Shri Gajanan Maharaj Sansthan',
   description: 'Shri Gajanan Maharaj Sansthan, Shegaon is a trust formed in 1908 by the devotees of Shri Gajanan Maharaj to serve humanity and propagate his teachings. The Sansthan is known for its disciplined management, cleanliness, and various social welfare activities including medical camps, education, and free food distribution (Mahaprasad).',
-  motto: 'Gan Gan Ganaat Bote',
+  motto: 'Jai Gajanan Maharaj',
 };

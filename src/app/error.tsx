@@ -58,7 +58,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
           </p>
         ) : null}
 
-        <p className="pt-2 text-sm text-muted-foreground italic">&quot;Gan Gan Ganaat Bote&quot;</p>
+        <p className="pt-2 text-sm text-muted-foreground italic">&quot;Jai Gajanan Maharaj&quot;</p>
       </div>
     </div>
   );
