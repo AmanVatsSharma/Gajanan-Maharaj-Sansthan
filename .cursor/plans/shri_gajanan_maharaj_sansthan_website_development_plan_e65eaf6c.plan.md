@@ -1,6 +1,6 @@
 ---
 name: Shri Gajanan Maharaj Sansthan Website Development Plan
-overview: Develop a premium, spiritual, and official-looking website for Shri Gajanan Maharaj Sansthan using Next.js. The site will feature a directory of Dharmashalas (Shegaon, Pandharpur, etc.), a room booking system with Sansthan-specific rules (e.g., families only), and a rich UI reflecting the spiritual ethos ("Gan Gan Ganaat Bote").
+overview: Develop a premium, spiritual, and official-looking website for Shri Gajanan Maharaj Sansthan using Next.js. The site will feature a directory of Dharmashalas (Shegaon, Pandharpur, etc.), a room booking system with Sansthan-specific rules (e.g., families only), and a rich UI reflecting the spiritual ethos ("Jai Gajanan Maharaj").
 todos:
   - id: setup-design
     content: Setup Design System (Tailwind theme, Fonts, Colors) and Folder Structure
@@ -65,7 +65,7 @@ isProject: false
 ### C. Information & Content (`src/features/info`)
 
 - **Home Page**:
-  - Hero Section: "Gan Gan Ganaat Bote" chant animation, high-quality temple image.
+  - Hero Section: "Jai Gajanan Maharaj" chant animation, high-quality temple image.
   - "Darshan" timings and Live Darshan link (placeholder).
   - Latest News/Utsav updates.
 - **About Us**: History of the Sansthan and Shri Gajanan Maharaj.

@@ -396,4 +396,4 @@ Refer to:
 
 **May Shri Gajanan Maharaj bless your website with top rankings! 🙏**
 
-*Gan Gan Ganaat Bote*
+*Jai Gajanan Maharaj*

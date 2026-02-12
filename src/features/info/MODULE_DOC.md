@@ -76,3 +76,4 @@ flowchart TD
 - 2026-02-06: Added hero WhatsApp/Call CTAs, homepage quick checkout widget, and “Room Types” cards section (no pricing).
 - 2026-02-06: Updated hero section background image to 'WhatsApp Image 2026-02-05 at 14.16.35.jpeg'.
 - 2026-02-12: Integrated EnhancedRoomsSection with modal functionality, pricing display, and direct booking CTAs. Added room images and pricing data from reference dharmashala site. Replaced RoomTypesSection with EnhancedRoomsSection on home page. Added modal overlay styles to globals.css for interactive room details. Analytics tracking for WhatsApp/Call clicks from room modals.
+- 2026-02-12: Replaced site-wide motto "Gan Gan Ganaat Bote" with "Jai Gajanan Maharaj" in Hero, Footer, Navbar, Testimonials, RoomTypesSection, EnhancedRoomsSection, error/not-found pages, and WhatsApp message templates.

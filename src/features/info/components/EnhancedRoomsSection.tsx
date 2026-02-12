@@ -51,7 +51,7 @@ function RoomModal({ isOpen, onClose, room }: RoomModalProps) {
 
   if (!isOpen || !room) return null;
 
-  const whatsappMessage = `🙏 Gan Gan Ganaat Bote 🙏\n\nHello Shri Gajanan Maharaj Sansthan, I would like to book ${room.title} for ${room.currency}${room.price} per night`;
+  const whatsappMessage = `🙏 Jai Gajanan Maharaj 🙏\n\nHello Shri Gajanan Maharaj Sansthan, I would like to book ${room.title} for ${room.currency}${room.price} per night`;
   const bookingWhatsAppHref = `${WHATSAPP_LINK}?text=${encodeURIComponent(whatsappMessage)}`;
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 

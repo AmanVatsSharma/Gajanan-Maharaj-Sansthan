@@ -65,3 +65,4 @@ flowchart TD
 - 2026-02-06: Split date picker into separate check-in and check-out fields; improved calendar weekday alignment using flex-1 layout.
 - 2026-02-06: Added 'Okay' confirmation button to check-in and check-out calendar popovers for better UX.
 - 2026-02-06: Replaced calendar grid with vertical date picker for better mobile UX; Okay button always enabled.
+- 2026-02-12: Replaced "Gan Gan Ganaat Bote" with "Jai Gajanan Maharaj" in BookingWizard and BookingCheckoutWidget WhatsApp message templates.
