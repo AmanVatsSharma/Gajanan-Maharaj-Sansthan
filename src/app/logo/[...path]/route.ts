@@ -9,6 +9,7 @@
  * - Replace these placeholders by adding real files under `public/logo/`.
  */
 
+import React from "react";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -27,33 +28,36 @@ export async function GET(
   const { path } = await context.params;
   const label = safeLabel(path.join("/"));
 
-  const res = new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          background:
-            "linear-gradient(135deg, rgba(88, 20, 20, 1) 0%, rgba(201, 138, 44, 1) 100%)",
-          color: "#ffffff",
-          textAlign: "center",
-          borderRadius: 64,
-        }}
-      >
-        <div style={{ fontSize: 96, fontWeight: 900, letterSpacing: -4 }}>
-          SG
-        </div>
-        <div style={{ fontSize: 22, marginTop: 10, opacity: 0.9 }}>
-          {label || "logo"}
-        </div>
-      </div>
+  const element = React.createElement(
+    "div",
+    {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background:
+          "linear-gradient(135deg, rgba(88, 20, 20, 1) 0%, rgba(201, 138, 44, 1) 100%)",
+        color: "#ffffff",
+        textAlign: "center",
+        borderRadius: 64,
+      },
+    },
+    React.createElement(
+      "div",
+      { style: { fontSize: 96, fontWeight: 900, letterSpacing: -4 } },
+      "SG"
     ),
-    size
+    React.createElement(
+      "div",
+      { style: { fontSize: 22, marginTop: 10, opacity: 0.9 } },
+      label || "logo"
+    )
   );
+
+  const res = new ImageResponse(element, size);
 
   res.headers.set("Cache-Control", "public, max-age=31536000, immutable");
   return res;

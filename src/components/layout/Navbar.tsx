@@ -26,6 +26,7 @@ const NAV_ITEMS = [
   { href: "/booking", label: "Booking" },
   { href: "/locations", label: "Locations" },
   { href: "/about", label: "About Sansthan" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

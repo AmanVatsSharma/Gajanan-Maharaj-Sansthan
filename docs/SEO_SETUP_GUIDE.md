@@ -78,6 +78,14 @@ Once verified:
    ```
 2. Rebuild and deploy the website
 
+### Step 3A: Set Canonical Site URL (Recommended)
+
+Add your production domain to `.env` so canonicals, sitemap, robots, and structured data always use the correct host:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+```
+
 ### Step 4: Configure Events
 
 The following events are already tracked:
