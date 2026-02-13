@@ -51,8 +51,6 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
 
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 
-  const detailedBookingHref = locationId ? `/booking?location=${encodeURIComponent(locationId)}` : "/booking";
-
   const whatsappHref = useMemo(() => {
     const locationLabel = selectedLocation
       ? `${selectedLocation.name}${selectedLocation.city ? `, ${selectedLocation.city}` : ""}`
@@ -100,21 +98,11 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
       <div className="container">
         <Card className="mx-auto max-w-5xl border-brand-saffron/20 shadow-2xl bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
           <CardHeader className="pb-4">
-            <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-              <div>
-                <CardTitle className="text-2xl md:text-3xl text-brand-maroon">Check Out</CardTitle>
-                <CardDescription className="text-sm md:text-base">
-                  Select your location, then book via WhatsApp or call our helpline.
-                </CardDescription>
-              </div>
-
-              <Link
-                href={detailedBookingHref}
-                className="inline-flex items-center gap-2 text-sm font-medium text-brand-maroon hover:text-brand-saffron transition-colors underline underline-offset-4"
-              >
-                Fill detailed booking request
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <div>
+              <CardTitle className="text-2xl md:text-3xl text-brand-maroon">Check Out</CardTitle>
+              <CardDescription className="text-sm md:text-base">
+                Select your location, then book via WhatsApp or call our helpline.
+              </CardDescription>
             </div>
           </CardHeader>
 
@@ -230,17 +218,12 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
               Final confirmation is provided by the Sansthan office based on availability and rules.
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-              <Button asChild variant="outline" className="h-10 rounded-full border-brand-maroon/20">
-                <Link href={detailedBookingHref}>Detailed Request</Link>
-              </Button>
-              <Button asChild variant="ghost" className="h-10 rounded-full">
-                <Link href="/locations">
-                  View Locations
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+            <Button asChild variant="ghost" className="h-10 rounded-full">
+              <Link href="/locations">
+                View Locations
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </CardFooter>
         </Card>
       </div>

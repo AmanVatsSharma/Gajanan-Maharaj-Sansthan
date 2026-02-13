@@ -96,16 +96,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Button
-            asChild
-            className={cn(
-              "hidden md:inline-flex bg-brand-saffron hover:bg-brand-saffron/90 text-white transition-all duration-300",
-              isScrolled ? "h-9 px-4 text-sm" : "h-10 px-6"
-            )}
-          >
-            <Link href="/booking">Booking Request</Link>
-          </Button>
-
           <Dialog open={isMobileOpen} onOpenChange={setIsMobileOpen}>
             <DialogTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
