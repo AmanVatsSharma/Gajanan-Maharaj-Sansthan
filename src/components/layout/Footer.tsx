@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="relative bg-brand-maroon text-white">
       {/* Decorative Border */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gold via-brand-saffron to-brand-gold opacity-80" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to-r from-brand-gold via-brand-saffron to-brand-gold opacity-80" />
       
       <div className="container py-10 md:py-12 lg:py-16 pt-12 md:pt-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
