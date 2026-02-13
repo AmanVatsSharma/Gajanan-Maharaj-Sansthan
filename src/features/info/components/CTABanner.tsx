@@ -13,7 +13,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sparkles, MapPin } from "lucide-react";
+import { Sparkles, MapPin, MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK } from "@/data/contact";
+import { trackWhatsAppClick } from "@/lib/analytics/events";
 
 export function CTABanner() {
   return (
@@ -111,11 +113,17 @@ export function CTABanner() {
             <Button
               asChild
               size="lg"
-              className="min-w-[200px] sm:min-w-[240px] h-14 md:h-16 text-base md:text-lg rounded-full bg-white text-brand-maroon hover:bg-white/90 shadow-2xl hover:scale-105 transition-all duration-300"
+              className="min-w-[200px] sm:min-w-[240px] h-14 md:h-16 text-base md:text-lg rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white shadow-2xl hover:scale-105 transition-all duration-300"
             >
-              <Link href="/booking">
-                Book Accommodation
-              </Link>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick("cta_banner")}
+              >
+                <MessageCircle className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                Book on WhatsApp
+              </a>
             </Button>
             <Button
               asChild

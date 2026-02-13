@@ -15,7 +15,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK } from "@/data/contact";
+import { trackWhatsAppClick } from "@/lib/analytics/events";
 
 interface Location {
   id: string;
@@ -148,11 +150,17 @@ export function FeaturedLocations() {
                     </Button>
                     <Button
                       asChild
-                      className="flex-1 rounded-full bg-brand-saffron hover:bg-brand-saffron/90 text-white shadow-md hover:shadow-lg h-10 md:h-11 text-xs md:text-sm"
+                      className="flex-1 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white shadow-md hover:shadow-lg h-10 md:h-11 text-xs md:text-sm"
                     >
-                      <Link href={`/booking?location=${location.id}`}>
+                      <a
+                        href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`🙏 Jai Gajanan Maharaj 🙏\n\nAccommodation booking enquiry\nLocation: ${location.name}, ${location.city}\n\nKindly share availability and booking process.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackWhatsAppClick(`featured_locations:${location.id}`)}
+                      >
+                        <MessageCircle className="mr-1.5 md:mr-2 h-3.5 w-3.5 md:h-4 md:w-4" />
                         Book Now
-                      </Link>
+                      </a>
                     </Button>
                   </div>
                 </div>
