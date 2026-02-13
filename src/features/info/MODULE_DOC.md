@@ -35,20 +35,21 @@ flowchart TD
   home --> quickCheckout[QuickCheckoutWidget]
   hero --> stats[ImpactStats_AnimatedCounters]
   stats --> features[Features_EnhancedCards]
-  features --> locations[FeaturedLocations_3Cards]
-  locations --> rooms[EnhancedRoomsSection_WithModal]
+  features --> rooms[EnhancedRoomsSection_WithModal]
+  rooms --> locations[FeaturedLocations_3Cards]
   locations --> testimonials[Testimonials_DevoteeQuotes]
   testimonials --> visit[PlanYourVisit_PracticalInfo]
   visit --> cta[CTABanner_FinalConversion]
-  hero --> booking[BookingRequest]
-  quickCheckout --> contact[WhatsAppOrCall]
+  hero --> contact[WhatsAppOrCall_DirectBooking]
+  quickCheckout --> contact
   locations --> locationDetail[LocationDetailPage]
 ```
 
 **Behaviors:**
 - **Premium visuals**: Parallax effects, gradient overlays, animated counters, staggered reveals
-- **Storytelling flow**: Impact → Services → Locations → Testimonials → Planning → Action
+- **Storytelling flow**: Impact → Services → Rooms → Locations → Testimonials → Planning → Action
 - **Interactive modals**: Room details displayed in overlay with escape key and backdrop click support
+- **Direct booking focus**: Hero section emphasizes WhatsApp and phone CTAs only, no secondary navigation
 - **Performance**: Next `Image` optimization, lazy animations (viewport-once), efficient motion
 - **Mobile-first**: All sections fully responsive with proper spacing and touch targets
 - **Accessibility**: Proper heading hierarchy, ARIA labels, keyboard navigation, modal focus management
@@ -77,3 +78,4 @@ flowchart TD
 - 2026-02-06: Updated hero section background image to 'WhatsApp Image 2026-02-05 at 14.16.35.jpeg'.
 - 2026-02-12: Integrated EnhancedRoomsSection with modal functionality, pricing display, and direct booking CTAs. Added room images and pricing data from reference dharmashala site. Replaced RoomTypesSection with EnhancedRoomsSection on home page. Added modal overlay styles to globals.css for interactive room details. Analytics tracking for WhatsApp/Call clicks from room modals.
 - 2026-02-12: Replaced site-wide motto "Gan Gan Ganaat Bote" with "Jai Gajanan Maharaj" in Hero, Footer, Navbar, Testimonials, RoomTypesSection, EnhancedRoomsSection, error/not-found pages, and WhatsApp message templates.
+- 2026-02-12: Reordered home page sections to show rooms before locations for better conversion flow. Simplified hero section by removing secondary navigation links ("Check availability", "Fill detailed booking request", "Explore locations"), keeping only direct WhatsApp and phone booking CTAs for cleaner UX and stronger conversion focus.

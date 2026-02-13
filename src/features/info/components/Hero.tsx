@@ -188,35 +188,6 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        {/* Secondary navigation to detailed flow / sections */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.15 }}
-          className="mt-6 md:mt-7 flex flex-col sm:flex-row items-center justify-center gap-2.5 md:gap-4 text-xs md:text-sm text-gray-200/80"
-        >
-          <a
-            href="#quick-checkout"
-            className="underline underline-offset-4 hover:text-white transition-colors"
-          >
-            Check availability below
-          </a>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <Link
-            href="/booking"
-            className="underline underline-offset-4 hover:text-white transition-colors"
-          >
-            Fill detailed booking request
-          </Link>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <Link
-            href="/locations"
-            className="underline underline-offset-4 hover:text-white transition-colors"
-          >
-            Explore locations
-          </Link>
-        </motion.div>
-
         {/* Trust indicator */}
         <motion.p
           initial={{ opacity: 0 }}

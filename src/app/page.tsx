@@ -42,9 +42,9 @@ export default function Home() {
         <SectionDivider variant="ornate" />
         <Features />
         <SectionDivider variant="default" />
-        <FeaturedLocations />
-        <SectionDivider variant="default" />
         <EnhancedRoomsSection />
+        <SectionDivider variant="default" />
+        <FeaturedLocations />
         <SectionDivider variant="ornate" />
         <Testimonials />
         <SectionDivider variant="minimal" />
