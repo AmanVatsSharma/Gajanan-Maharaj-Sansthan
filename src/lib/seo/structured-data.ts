@@ -314,3 +314,58 @@ export function getEventSchema(
     isAccessibleForFree: true,
   };
 }
+
+/**
+ * Interface for blog post data
+ */
+export interface BlogPost {
+  title: string;
+  date: string;
+  slug: string;
+  description?: string;
+  author?: string;
+  image?: string;
+}
+
+/**
+ * Article/BlogPosting schema for blog posts
+ */
+export function getArticleSchema(post: BlogPost) {
+  const baseUrl = getSiteUrl();
+  const imageUrl = post.image 
+    ? (post.image.startsWith("http") ? post.image : `${baseUrl}${post.image}`)
+    : `${baseUrl}${ORGANIZATION_INFO.logo}`;
+  
+  // Use slug as is if it looks like a path, or append to /blog/
+  const postUrl = post.slug.startsWith('/') 
+    ? `${baseUrl}${post.slug}`
+    : `${baseUrl}/blog/${post.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${postUrl}#article`,
+    headline: post.title,
+    description: post.description,
+    image: [imageUrl],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": post.author ? "Person" : "Organization",
+      name: post.author || ORGANIZATION_INFO.legalName,
+      url: post.author ? undefined : baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: ORGANIZATION_INFO.legalName,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}${ORGANIZATION_INFO.logo}`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+}
