@@ -1,3 +1,11 @@
+/**
+ * @file Footer.tsx
+ * @module components/layout
+ * @description Footer component with quick links, locations, and contact info.
+ * @author BharatERP
+ * @created 2026-02-13
+ */
+
 import Link from "next/link"
 import { CONTACT_DETAILS } from "@/data/contact"
 
@@ -28,6 +36,10 @@ export function Footer() {
               <li><Link href="/about" className="hover:text-brand-gold transition-colors">History</Link></li>
               <li><Link href="/blog" className="hover:text-brand-gold transition-colors">Blog</Link></li>
               <li><Link href="/contact" className="hover:text-brand-gold transition-colors">Contact</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-brand-gold transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms-conditions" className="hover:text-brand-gold transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/refund-policy" className="hover:text-brand-gold transition-colors">Refund Policy</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-brand-gold transition-colors">Disclaimer</Link></li>
             </ul>
           </div>
 
