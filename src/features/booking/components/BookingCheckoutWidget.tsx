@@ -1,7 +1,7 @@
 /**
  * File: src/features/booking/components/BookingCheckoutWidget.tsx
  * Module: booking
- * Purpose: Home page inline checkout widget (location → WhatsApp/Call).
+ * Purpose: Home page inline checkout widget (location → Call).
  * Author: Aman Sharma / Novologic/ Cursor AI
  * Last-updated: 2026-02-06
  * Notes:
@@ -12,15 +12,15 @@
 
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
-import { ArrowRight, MapPin, MessageCircle, PhoneCall } from "lucide-react";
+import { ArrowRight, MapPin, PhoneCall } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CONTACT_DETAILS, WHATSAPP_LINK } from "@/data/contact";
+import { CONTACT_DETAILS } from "@/data/contact";
 import { sansthanLocations } from "@/data/sansthan-data";
-import { trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics/events";
+import { trackPhoneClick } from "@/lib/analytics/events";
 import { cn } from "@/lib/utils";
 
 export interface BookingCheckoutWidgetProps {
@@ -33,8 +33,8 @@ export interface BookingCheckoutWidgetProps {
  *
  * A lightweight, homepage-friendly flow:
  * - pick location
- * - click “Check Out”
- * - then contact via WhatsApp/Call (pre-filled with selected location)
+ * - click “Check Availability”
+ * - then call the helpline to check availability
  *
  * This keeps the action extremely simple (like the reference site),
  * while still offering the detailed wizard at `/booking`.
@@ -51,28 +51,10 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
 
   const bookingCallHref = `tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`;
 
-  const whatsappHref = useMemo(() => {
-    const locationLabel = selectedLocation
-      ? `${selectedLocation.name}${selectedLocation.city ? `, ${selectedLocation.city}` : ""}`
-      : "a Sansthan location";
-
-    const message = [
-      "🙏 Jai Gajanan Maharaj 🙏",
-      "",
-      "Accommodation booking enquiry",
-      `Preferred location: ${locationLabel}`,
-      "",
-      "Kindly share availability and booking process.",
-    ].join("\n");
-
-    const separator = WHATSAPP_LINK.includes("?") ? "&" : "?";
-    return `${WHATSAPP_LINK}${separator}text=${encodeURIComponent(message)}`;
-  }, [selectedLocation]);
-
   const handleLocationChange = (value: string) => {
     setLocationId(value);
     setValidationError(null);
-    // Keep the “Check Out” step explicit to match the desired flow.
+    // Keep the “Check Availability” step explicit to match the desired flow.
     setHasCheckedOut(false);
   };
 
@@ -91,7 +73,7 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
   return (
     <section
       id="quick-checkout"
-      aria-label="Quick checkout for booking"
+      aria-label="Check availability for booking"
       className={cn("relative -mt-14 md:-mt-20 lg:-mt-24 pb-10 md:pb-14", className)}
       data-testid={dataTestId}
     >
@@ -99,9 +81,9 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
         <Card className="mx-auto max-w-5xl border-brand-saffron/20 shadow-2xl bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
           <CardHeader className="pb-4">
             <div>
-              <CardTitle className="text-2xl md:text-3xl text-brand-maroon">Check Out</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl text-brand-maroon">Check Availability</CardTitle>
               <CardDescription className="text-sm md:text-base">
-                Select your location, then book via WhatsApp or call our helpline.
+                Select your location, then call our helpline to check availability.
               </CardDescription>
             </div>
           </CardHeader>
@@ -150,7 +132,7 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
                 className="h-12 rounded-full px-8 w-full md:w-auto"
                 onClick={handleCheckout}
               >
-                Check Out
+                Check Availability
               </Button>
             </div>
 
@@ -174,27 +156,11 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
             ) : null}
 
             {hasCheckedOut ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 pt-1">
+              <div className="pt-1">
                 <Button
                   asChild
-                  className="h-12 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white shadow-md hover:shadow-lg transition-all"
-                >
-                  <a
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Book on WhatsApp"
-                    onClick={() => trackWhatsAppClick(`quick_checkout:${locationId || "unknown"}`)}
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    WhatsApp to Book
-                  </a>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-12 rounded-full border-brand-maroon/20"
+                  variant="premium"
+                  className="h-12 rounded-full w-full sm:w-auto"
                 >
                   <a
                     href={bookingCallHref}
@@ -208,7 +174,7 @@ export function BookingCheckoutWidget({ className, "data-testid": dataTestId }: 
               </div>
             ) : (
               <div className="rounded-2xl border border-dashed bg-muted/20 p-4 text-sm text-muted-foreground">
-                Click <span className="font-medium text-brand-maroon">Check Out</span> to reveal WhatsApp and Call options.
+                Click <span className="font-medium text-brand-maroon">Check Availability</span> to reveal the Call option.
               </div>
             )}
           </CardContent>
