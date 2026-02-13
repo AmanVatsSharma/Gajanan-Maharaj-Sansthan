@@ -32,7 +32,7 @@ export default function TermsConditionsPage() {
 
       <h2>2. Use of Services</h2>
       <p>
-        Our website provides information about the Sansthan, its activities, events, and services such as accommodation booking and donations. You agree to use the website only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the website.
+        Our website provides information about the Sansthan, its activities, events, and services such as accommodation booking and donations. You agree to use the website only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else&apos;s use and enjoyment of the website.
       </p>
 
       <h2>3. Donations and Bookings</h2>

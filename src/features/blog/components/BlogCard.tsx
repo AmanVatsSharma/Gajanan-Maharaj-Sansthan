@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import { format } from "date-fns";
-import { Clock, Calendar, Tag } from "lucide-react";
+import { Clock, Calendar } from "lucide-react";
 import { BlogPost } from "@/lib/blog";
 import {
   Card,

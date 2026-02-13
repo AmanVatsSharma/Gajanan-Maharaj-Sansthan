@@ -36,7 +36,7 @@ export default function RefundPolicyPage() {
       </p>
       <ul>
         <li><strong>Cancellation Request:</strong> To cancel a booking, please contact us via email or phone at least 24 hours before the scheduled check-in time.</li>
-        <li><strong>Refund Eligibility:</strong> Refunds will be processed for eligible cancellations according to the Sansthan's prevailing rules. Typically, a cancellation fee may apply.</li>
+        <li><strong>Refund Eligibility:</strong> Refunds will be processed for eligible cancellations according to the Sansthan&apos;s prevailing rules. Typically, a cancellation fee may apply.</li>
         <li><strong>Processing Time:</strong> Approved refunds will be processed within 7-10 working days to the original payment method.</li>
         <li><strong>No-Show:</strong> Failure to check-in on the scheduled date without prior cancellation may result in forfeiture of the booking amount.</li>
       </ul>
