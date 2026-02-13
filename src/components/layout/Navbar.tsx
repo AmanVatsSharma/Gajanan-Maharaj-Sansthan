@@ -23,6 +23,7 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
+  { href: "/booking", label: "Booking" },
   { href: "/locations", label: "Locations" },
   { href: "/about", label: "About Sansthan" },
   { href: "/contact", label: "Contact" },
