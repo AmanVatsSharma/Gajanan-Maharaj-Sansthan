@@ -8,6 +8,8 @@
  * - Uses `Button asChild` for Links to avoid nested interactive elements.
  * - Uses Next `Image` for optimized rendering and better CLS.
  */
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
