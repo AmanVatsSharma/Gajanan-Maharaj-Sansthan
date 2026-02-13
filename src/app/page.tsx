@@ -20,7 +20,7 @@ import { CTABanner } from "@/features/info/components/CTABanner";
 import { SectionDivider } from "@/features/info/components/SectionDivider";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { PRIMARY_KEYWORDS, SECONDARY_KEYWORDS } from "@/lib/seo/constants";
-import { getOrganizationSchema } from "@/lib/seo/structured-data";
+import { getOrganizationSchema, getWebSiteSchema } from "@/lib/seo/structured-data";
 import { StructuredData } from "@/components/seo/StructuredData";
 
 export const metadata = generatePageMetadata({
@@ -32,9 +32,10 @@ export const metadata = generatePageMetadata({
 
 export default function Home() {
   const organizationSchema = getOrganizationSchema();
+  const webSiteSchema = getWebSiteSchema();
   return (
     <>
-      <StructuredData data={organizationSchema} />
+      <StructuredData data={[organizationSchema, webSiteSchema]} />
       <div className="flex flex-col">
         <Hero />
         <BookingCheckoutWidget />
