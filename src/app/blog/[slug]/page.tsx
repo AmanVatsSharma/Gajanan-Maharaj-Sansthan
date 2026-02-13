@@ -1,0 +1,123 @@
+/**
+ * @file page.tsx
+ * @module app/blog/[slug]
+ * @description Single blog post page
+ * @author Aman Sharma / Novologic / Cursor AI
+ * @created 2026-02-13
+ */
+
+import { notFound } from "next/navigation";
+import { format } from "date-fns";
+import { Calendar, Clock, User } from "lucide-react";
+import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { BlogContent } from "@/features/blog/components/BlogContent";
+import { generatePageMetadata } from "@/lib/seo/metadata";
+import { getArticleSchema } from "@/lib/seo/structured-data";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { Badge } from "@/components/ui/badge";
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return generatePageMetadata({
+    title: post.title,
+    description: post.description,
+    keywords: post.keywords || post.tags,
+    image: post.image,
+    path: `/blog/${post.slug}`,
+    type: "article",
+  });
+}
+
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const schema = getArticleSchema({
+    title: post.title,
+    date: post.date,
+    slug: post.slug,
+    description: post.description,
+    author: post.author,
+    image: post.image,
+  });
+
+  return (
+    <main className="container py-12">
+      <StructuredData data={schema} />
+      
+      <div className="max-w-4xl mx-auto space-y-8">
+        <Breadcrumbs 
+          items={[
+            { name: "Blog", url: "/blog" },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ]} 
+        />
+        
+        <header className="space-y-6">
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl font-bold font-heading leading-tight">
+              {post.title}
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1">
+                <Calendar className="h-4 w-4" />
+                <time dateTime={post.date}>
+                  {format(new Date(post.date), "MMMM d, yyyy")}
+                </time>
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock className="h-4 w-4" />
+                <span>{post.readingTime}</span>
+              </div>
+              {post.author && (
+                <div className="flex items-center gap-1">
+                  <User className="h-4 w-4" />
+                  <span>{post.author}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <Badge key={tag} variant="secondary">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <div className="border-t my-8" />
+
+        <article>
+          <BlogContent content={post.content} />
+        </article>
+      </div>
+    </main>
+  );
+}
