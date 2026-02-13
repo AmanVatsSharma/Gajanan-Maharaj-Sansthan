@@ -11,7 +11,7 @@
 
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MapPin, MessageCircle, PhoneCall } from "lucide-react";
 
@@ -37,18 +37,16 @@ function formatDateLabel(value: string): string {
 export function BookingLandingForm() {
   const searchParams = useSearchParams();
 
-  const [locationId, setLocationId] = useState<string>("");
+  const [locationId, setLocationId] = useState<string>(() => {
+    const preselected = searchParams.get("location");
+    if (!preselected) return "";
+    const exists = sansthanLocations.some((loc) => loc.id === preselected);
+    return exists ? preselected : "";
+  });
   const [checkIn, setCheckIn] = useState<string>("");
   const [checkOut, setCheckOut] = useState<string>("");
   const [guests, setGuests] = useState<number>(3);
   const [phone, setPhone] = useState<string>("");
-
-  useEffect(() => {
-    const preselected = searchParams.get("location");
-    if (!preselected) return;
-    const exists = sansthanLocations.some((loc) => loc.id === preselected);
-    if (exists) setLocationId(preselected);
-  }, [searchParams]);
 
   const selectedLocation = useMemo(() => {
     return sansthanLocations.find((loc) => loc.id === locationId) ?? null;

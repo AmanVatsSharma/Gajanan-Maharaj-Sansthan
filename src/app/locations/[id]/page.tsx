@@ -12,9 +12,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { sansthanLocations } from "@/data/sansthan-data";
 import { AmenityList } from "@/features/locations/components/AmenityList";
+import { LocationBookingCtas } from "@/features/locations/components/LocationBookingCtas";
 import { MapPin, Phone, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { generateLocationMetadata } from "@/lib/seo/metadata";
@@ -172,37 +172,12 @@ export default async function LocationDetailPage({ params }: PageProps) {
             <CardHeader>
               <CardTitle>Book Accommodation</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <Button
-                asChild
-                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white h-12 text-base"
-              >
-                <a
-                  href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`🙏 Jai Gajanan Maharaj 🙏\n\nAccommodation booking enquiry\nLocation: ${location.name}, ${location.city}\n\nKindly share availability and booking process.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackWhatsAppClick(`location_page:${location.id}`)}
-                >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Book on WhatsApp
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full h-12 text-base border-brand-maroon/20"
-              >
-                <a
-                  href={`tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`}
-                  onClick={() => trackPhoneClick(CONTACT_DETAILS.booking.mobile, `location_page:${location.id}`)}
-                >
-                  <PhoneCall className="mr-2 h-5 w-5" />
-                  Call to Book
-                </a>
-              </Button>
-              <div className="text-xs text-muted-foreground text-center">
-                * Booking subject to availability and Sansthan rules.
-              </div>
+            <CardContent>
+              <LocationBookingCtas
+                locationId={location.id}
+                locationName={location.name}
+                locationCity={location.city}
+              />
             </CardContent>
           </Card>
 
