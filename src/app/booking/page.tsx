@@ -9,6 +9,7 @@
  * - Includes FAQ schema (rich results) and breadcrumb schema for better SERP visibility.
  */
 
+import { Suspense } from "react";
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -71,7 +72,15 @@ export default function BookingPage() {
         </header>
 
         <section id="booking-form" aria-label="Booking request form">
-          <BookingLandingForm />
+          <Suspense
+            fallback={
+              <div className="rounded-2xl border bg-background p-6 text-sm text-muted-foreground">
+                Loading booking form…
+              </div>
+            }
+          >
+            <BookingLandingForm />
+          </Suspense>
         </section>
 
         <section className="rounded-2xl border bg-muted/20 p-6 sm:p-8">

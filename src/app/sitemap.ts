@@ -13,11 +13,13 @@
 import type { MetadataRoute } from "next";
 
 import { sansthanLocations } from "@/data/sansthan-data";
+import { getBlogPosts } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/seo/site-url";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
   const now = new Date();
+  const blogPosts = await getBlogPosts();
 
   // Static routes with optimized priorities
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -40,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9, // High priority for locations listing
     },
     {
+      url: `${siteUrl}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${siteUrl}/about`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -59,10 +67,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.8, // Higher priority for individual location pages
-    // Note: Next.js sitemap doesn't support image extensions directly
-    // Image sitemaps are better handled via structured data on the page
   }));
 
-  return [...staticRoutes, ...locationRoutes];
+  // Dynamic blog routes
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...locationRoutes, ...blogRoutes];
 }
 
