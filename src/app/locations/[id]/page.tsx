@@ -33,6 +33,17 @@ interface PageProps {
 }
 
 /**
+ * Pre-render all known location pages for crawlability/performance.
+ */
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return sansthanLocations.map((location) => ({
+    id: location.id,
+  }));
+}
+
+/**
  * Generate dynamic metadata for each location
  */
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
