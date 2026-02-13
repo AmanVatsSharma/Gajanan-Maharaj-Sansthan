@@ -16,26 +16,29 @@ import {
   ORGANIZATION_INFO,
   SOCIAL_PROFILES,
 } from "./constants";
+import { getSiteUrl } from "./site-url";
 
 /**
  * Main Organization schema for the Sansthan
  */
 export function getOrganizationSchema() {
+  const baseUrl = getSiteUrl();
+
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${SITE_CONFIG.url}#organization`,
+    "@id": `${baseUrl}#organization`,
     name: ORGANIZATION_INFO.legalName,
     alternateName: ORGANIZATION_INFO.alternateName,
-    url: SITE_CONFIG.url,
+    url: baseUrl,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_CONFIG.url}${ORGANIZATION_INFO.logo}`,
+      url: `${baseUrl}${ORGANIZATION_INFO.logo}`,
       width: 512,
       height: 512,
     },
     description: SITE_CONFIG.description,
-    foundingDate: ORGANIZATION_INFO.address,
+    foundingDate: `${SITE_CONFIG.foundingYear}-01-01`,
     address: {
       "@type": "PostalAddress",
       streetAddress: ORGANIZATION_INFO.address.streetAddress,
@@ -57,10 +60,30 @@ export function getOrganizationSchema() {
 }
 
 /**
+ * WebSite schema for improved entity understanding
+ */
+export function getWebSiteSchema() {
+  const baseUrl = getSiteUrl();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${baseUrl}#website`,
+    url: baseUrl,
+    name: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    inLanguage: SITE_CONFIG.locale,
+    publisher: {
+      "@id": `${baseUrl}#organization`,
+    },
+  };
+}
+
+/**
  * Place of Worship schema for temple locations
  */
 export function getPlaceOfWorshipSchema(location: Location) {
-  const baseUrl = SITE_CONFIG.url;
+  const baseUrl = getSiteUrl();
   
   return {
     "@context": "https://schema.org",
@@ -87,7 +110,7 @@ export function getPlaceOfWorshipSchema(location: Location) {
  * Local Business schema for each location
  */
 export function getLocalBusinessSchema(location: Location) {
-  const baseUrl = SITE_CONFIG.url;
+  const baseUrl = getSiteUrl();
   
   return {
     "@context": "https://schema.org",
@@ -132,7 +155,7 @@ export function getLocalBusinessSchema(location: Location) {
  * Lodging Business schema for accommodation-focused SEO
  */
 export function getLodgingBusinessSchema(location: Location) {
-  const baseUrl = SITE_CONFIG.url;
+  const baseUrl = getSiteUrl();
   
   // Calculate total capacity
   const totalCapacity = location.facilities.reduce(
@@ -175,6 +198,8 @@ export function getLodgingBusinessSchema(location: Location) {
  * Breadcrumb schema for navigation
  */
 export function getBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  const baseUrl = getSiteUrl();
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -182,7 +207,7 @@ export function getBreadcrumbSchema(items: Array<{ name: string; url: string }>)
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${SITE_CONFIG.url}${item.url}`,
+      item: `${baseUrl}${item.url}`,
     })),
   };
 }
@@ -265,6 +290,8 @@ export function getEventSchema(
   locationName: string,
   locationAddress: string
 ) {
+  const baseUrl = getSiteUrl();
+
   return {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -282,7 +309,7 @@ export function getEventSchema(
     organizer: {
       "@type": "Organization",
       name: ORGANIZATION_INFO.legalName,
-      url: SITE_CONFIG.url,
+      url: baseUrl,
     },
     isAccessibleForFree: true,
   };

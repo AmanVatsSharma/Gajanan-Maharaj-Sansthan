@@ -14,6 +14,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { getSiteUrlAsUrl } from "@/lib/seo/site-url";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,15 +26,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const metadataBase = (() => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return new URL(process.env.NEXT_PUBLIC_SITE_URL);
-  }
-  if (process.env.VERCEL_URL) {
-    return new URL(`https://${process.env.VERCEL_URL}`);
-  }
-  return new URL("http://localhost:3000");
-})();
+const metadataBase = getSiteUrlAsUrl();
 
 const siteTitle = "Shri Gajanan Maharaj Sansthan";
 const siteDescription =
