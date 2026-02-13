@@ -15,8 +15,8 @@ export const CONTACT_DETAILS = {
   },
   booking: {
     // Primary booking/WhatsApp number — single source for site-wide call/wa.me links
-    mobile: "+918679304702",
-    whatsapp: "+918679304702",
+    mobile: "+919217691636",
+    whatsapp: "+919217691636",
     helpline: "07265-252018",
   },
   social: {
