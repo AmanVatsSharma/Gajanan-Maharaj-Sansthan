@@ -30,7 +30,7 @@ import { CONTACT_DETAILS } from "@/data/contact";
 export const sansthanLocations: Location[] = [
   {
     id: 'shegaon-bhakt-niwas',
-    name: 'Bhakt Niwas Complex (1-6)',
+    name: 'Shri Gajanan Maharaj Sansthan Shegaon Bhakt Niwas',
     city: 'Shegaon',
     address: 'Near Shri Gajanan Maharaj Temple, Shegaon, Dist. Buldhana',
     description: 'The main accommodation complex for devotees visiting the holy samadhi. Includes multiple buildings with various room types.',
@@ -45,7 +45,7 @@ export const sansthanLocations: Location[] = [
   },
   {
     id: 'shegaon-anand-vihar',
-    name: 'Anand Vihar',
+    name: 'Shri Gajanan Maharaj Sansthan Shegaon Anand Vihar',
     city: 'Shegaon',
     address: 'Near Anand Sagar, Shegaon',
     description: 'A premium accommodation complex located near the Anand Sagar spiritual park.',
@@ -59,7 +59,7 @@ export const sansthanLocations: Location[] = [
   },
   {
     id: 'shegaon-visawa',
-    name: 'Visawa',
+    name: 'Shri Gajanan Maharaj Sansthan Shegaon Visawa',
     city: 'Shegaon',
     address: 'Near Railway Station / Anand Sagar Road, Shegaon',
     description: 'Conveniently located accommodation for travelers arriving by train.',
@@ -72,7 +72,7 @@ export const sansthanLocations: Location[] = [
   },
   {
     id: 'pandharpur-math',
-    name: 'Shri Gajanan Maharaj Math',
+    name: 'Shri Gajanan Maharaj Sansthan Pandharpur',
     city: 'Pandharpur',
     address: 'Near Sant Kaikadi Maharaj Math, Pandharpur',
     description: 'A large complex serving pilgrims visiting Lord Vitthal.',
@@ -86,7 +86,7 @@ export const sansthanLocations: Location[] = [
   },
   {
     id: 'trimbakeshwar',
-    name: 'Shri Gajanan Maharaj Sansthan Branch',
+    name: 'Shri Gajanan Maharaj Sansthan Trimbakeshwar',
     city: 'Trimbakeshwar',
     address: 'Trimbakeshwar, Dist. Nashik',
     description: 'Accommodation for devotees visiting the Trimbakeshwar Jyotirlinga.',
@@ -99,7 +99,7 @@ export const sansthanLocations: Location[] = [
   },
   {
     id: 'omkareshwar',
-    name: 'Shri Gajanan Maharaj Bhakta Niwas',
+    name: 'Shri Gajanan Maharaj Sansthan Omkareshwar',
     city: 'Omkareshwar',
     address: 'Omkareshwar, Madhya Pradesh',
     description: 'Serving pilgrims visiting Omkareshwar Jyotirlinga.',

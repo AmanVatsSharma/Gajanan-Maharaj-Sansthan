@@ -16,7 +16,7 @@ import { LOCATION_KEYWORDS } from "@/lib/seo/constants";
 
 export const metadata = generatePageMetadata({
   title: "All Locations | Temple Accommodation Across India",
-  description: "Explore Shri Gajanan Maharaj Sansthan accommodation locations across Maharashtra and Madhya Pradesh. Find temple stays in Shegaon, Pandharpur, Trimbakeshwar, and Omkareshwar with modern facilities.",
+  description: "Explore Shri Gajanan Maharaj Sansthan accommodation locations across Maharashtra and Madhya Pradesh. Find temple stays at Shri Gajanan Maharaj Sansthan Shegaon, Shri Gajanan Maharaj Sansthan Pandharpur, Shri Gajanan Maharaj Sansthan Trimbakeshwar, and Shri Gajanan Maharaj Sansthan Omkareshwar with modern facilities.",
   keywords: [
     ...Object.values(LOCATION_KEYWORDS).flat(),
     "temple locations",

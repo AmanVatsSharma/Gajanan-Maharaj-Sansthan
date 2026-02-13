@@ -88,7 +88,7 @@ export default function BookingPage() {
             How booking works
           </h2>
           <ol className="list-decimal pl-5 space-y-2 text-muted-foreground">
-            <li>Select your preferred location (Shegaon, Pandharpur, Trimbakeshwar, Omkareshwar).</li>
+            <li>Select your preferred location (Shri Gajanan Maharaj Sansthan Shegaon, Shri Gajanan Maharaj Sansthan Pandharpur, Shri Gajanan Maharaj Sansthan Trimbakeshwar, Shri Gajanan Maharaj Sansthan Omkareshwar).</li>
             <li>Share your dates and guest count.</li>
             <li>Send the request via WhatsApp or call. The office confirms based on availability.</li>
           </ol>

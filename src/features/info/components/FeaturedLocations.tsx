@@ -31,7 +31,7 @@ interface Location {
 const featuredLocations: Location[] = [
   {
     id: "shegaon-bhakt-niwas",
-    name: "Shegaon Bhakt Niwas",
+    name: "Shri Gajanan Maharaj Sansthan Shegaon",
     city: "Shegaon, Maharashtra",
     description: "The main pilgrimage center housing the holy Samadhi of Shri Gajanan Maharaj. Experience divine peace and spiritual serenity.",
     image: "/images/shegaon-temple.jpg",
@@ -39,7 +39,7 @@ const featuredLocations: Location[] = [
   },
   {
     id: "pandharpur-math",
-    name: "Pandharpur Math",
+    name: "Shri Gajanan Maharaj Sansthan Pandharpur",
     city: "Pandharpur, Maharashtra",
     description: "A sacred complex near the holy city of Pandharpur, offering devotees a peaceful stay during their pilgrimage to Lord Vitthal.",
     image: "/images/pandharpur.jpg",
@@ -47,7 +47,7 @@ const featuredLocations: Location[] = [
   },
   {
     id: "shegaon-anand-vihar",
-    name: "Anand Sagar",
+    name: "Shri Gajanan Maharaj Sansthan Shegaon Anand Vihar",
     city: "Shegaon, Maharashtra",
     description: "A beautiful spiritual and recreational park with meditation centers, gardens, and serene water features for peaceful contemplation.",
     image: "/images/anand-sagar.jpg",

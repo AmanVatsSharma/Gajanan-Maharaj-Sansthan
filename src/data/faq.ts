@@ -78,7 +78,7 @@ export const bookingFAQs: FAQItem[] = [
     id: "multiple-locations",
     question: "Can I book accommodation at multiple locations?",
     answer:
-      "Yes, Shri Gajanan Maharaj Sansthan manages accommodation at multiple holy places including Shegaon, Pandharpur, Trimbakeshwar, and Omkareshwar. You can book at any location based on your pilgrimage plans, subject to availability.",
+      "Yes, Shri Gajanan Maharaj Sansthan manages accommodation at multiple holy places including Shri Gajanan Maharaj Sansthan Shegaon, Shri Gajanan Maharaj Sansthan Pandharpur, Shri Gajanan Maharaj Sansthan Trimbakeshwar, and Shri Gajanan Maharaj Sansthan Omkareshwar. You can book at any location based on your pilgrimage plans, subject to availability.",
     category: "booking",
   },
   {
