@@ -66,7 +66,6 @@ export function RoomTypesSection() {
     : "Selected location";
 
   const locationDetailsHref = selectedLocation ? `/locations/${selectedLocation.id}` : "/locations";
-  const detailedBookingHref = selectedLocation ? `/booking?location=${encodeURIComponent(selectedLocation.id)}` : "/booking";
 
   if (!defaultLocationId) {
     return null;
@@ -129,21 +128,16 @@ export function RoomTypesSection() {
                   </SelectContent>
                 </Select>
                 <p className="text-xs text-muted-foreground">
-                  For amenities and rules, see location details or use the detailed request form.
+                  For amenities and rules, see location details.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full md:w-auto">
-                <Button asChild variant="outline" className="h-11 rounded-full border-brand-maroon/20">
-                  <Link href={locationDetailsHref}>
-                    Location details
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="premium" className="h-11 rounded-full">
-                  <Link href={detailedBookingHref}>Detailed request</Link>
-                </Button>
-              </div>
+              <Button asChild variant="outline" className="h-11 rounded-full border-brand-maroon/20 w-full md:w-auto">
+                <Link href={locationDetailsHref}>
+                  Location details
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </motion.div>

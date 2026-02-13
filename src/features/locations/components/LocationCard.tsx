@@ -13,7 +13,9 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Location } from "@/data/sansthan-data";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK } from "@/data/contact";
+import { trackWhatsAppClick } from "@/lib/analytics/events";
 
 interface LocationCardProps {
   location: Location;
@@ -65,11 +67,17 @@ export function LocationCard({ location }: LocationCardProps) {
         </Button>
         <Button
           asChild
-          className="flex-1 bg-brand-saffron hover:bg-brand-saffron/90 text-white shadow-sm hover:shadow-md transition-all"
+          className="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white shadow-sm hover:shadow-md transition-all"
         >
-          <Link href={`/booking?location=${location.id}`}>
-            Book Now <ArrowRight className="ml-1 h-3 w-3" />
-          </Link>
+          <a
+            href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`🙏 Jai Gajanan Maharaj 🙏\n\nAccommodation booking enquiry\nLocation: ${location.name}, ${location.city}\n\nKindly share availability and booking process.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick(`location_card:${location.id}`)}
+          >
+            <MessageCircle className="mr-1 h-3 w-3" />
+            Book Now
+          </a>
         </Button>
       </CardFooter>
     </Card>
