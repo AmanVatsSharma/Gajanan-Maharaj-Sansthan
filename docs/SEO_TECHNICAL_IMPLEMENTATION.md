@@ -13,6 +13,13 @@ src/
 │   ├── page.tsx                      # Homepage with Organization schema
 │   ├── sitemap.ts                    # Enhanced sitemap with priorities
 │   ├── robots.ts                     # Robots.txt with crawling rules
+│   ├── icon.tsx                      # Generated app icon (PNG)
+│   ├── apple-icon.tsx                # Generated Apple touch icon (PNG)
+│   ├── opengraph-image.tsx           # Generated Open Graph image (PNG)
+│   ├── twitter-image.tsx             # Generated Twitter card image (PNG)
+│   ├── images/[...path]/route.ts     # Placeholder images for /images/*
+│   ├── rooms/[...path]/route.ts      # Placeholder images for /rooms/*
+│   ├── logo/[...path]/route.ts       # Placeholder logos for /logo/*
 │   ├── locations/
 │   │   ├── page.tsx                  # Locations listing with metadata
 │   │   └── [id]/page.tsx             # Dynamic location pages with schemas
@@ -33,6 +40,7 @@ src/
 │   │   └── events.ts                 # Event tracking helpers
 │   └── seo/
 │       ├── constants.ts              # SEO constants and keywords
+│       ├── site-url.ts               # Canonical base URL resolver
 │       ├── metadata.ts               # Metadata generation helpers
 │       ├── structured-data.ts        # Schema.org generators
 │       └── geo-data.ts               # Location coordinates
@@ -55,6 +63,7 @@ src/
 
 **Schemas Implemented**:
 - ✅ `Organization` - Main organization details
+- ✅ `WebSite` - Website entity for better SERP understanding
 - ✅ `LocalBusiness` - For each location
 - ✅ `PlaceOfWorship` - Hindu temple designation
 - ✅ `LodgingBusiness` - Accommodation details
@@ -118,7 +127,7 @@ return <StructuredData data={schema} />;
 **Features**:
 - Allow all user agents
 - Specific rules for Googlebot-Image
-- Disallow internal routes (`/api/`, `/_next/`, `/admin/`)
+- Disallow internal routes (`/api/`, `/admin/`)
 - Host directive for canonical domain
 - Sitemap reference
 
