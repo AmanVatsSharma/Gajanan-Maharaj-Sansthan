@@ -159,14 +159,35 @@ export default async function LocationDetailPage({ params }: PageProps) {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Booking Information</CardTitle>
+              <CardTitle>Book Accommodation</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               <Button
                 asChild
-                className="w-full bg-brand-saffron hover:bg-brand-saffron/90 text-white h-12 text-lg"
+                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white h-12 text-base"
               >
-                <Link href={`/booking?location=${location.id}`}>Book Accommodation</Link>
+                <a
+                  href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`🙏 Jai Gajanan Maharaj 🙏\n\nAccommodation booking enquiry\nLocation: ${location.name}, ${location.city}\n\nKindly share availability and booking process.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick(`location_page:${location.id}`)}
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Book on WhatsApp
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full h-12 text-base border-brand-maroon/20"
+              >
+                <a
+                  href={`tel:${CONTACT_DETAILS.booking.mobile.replace(/[^0-9+]/g, "")}`}
+                  onClick={() => trackPhoneClick(CONTACT_DETAILS.booking.mobile, `location_page:${location.id}`)}
+                >
+                  <PhoneCall className="mr-2 h-5 w-5" />
+                  Call to Book
+                </a>
               </Button>
               <div className="text-xs text-muted-foreground text-center">
                 * Booking subject to availability and Sansthan rules.

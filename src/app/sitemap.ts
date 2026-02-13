@@ -35,12 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${siteUrl}/booking`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9, // High priority for booking (main conversion page)
-    },
-    {
       url: `${siteUrl}/locations`,
       lastModified: now,
       changeFrequency: "weekly",
