@@ -11,11 +11,12 @@
  */
 
 import { CONTACT_DETAILS } from "@/data/contact";
+import { getSiteUrl } from "./site-url";
 
 export const SITE_CONFIG = {
   name: "Shri Gajanan Maharaj Sansthan",
   shortName: "SGMS",
-  url: "https://www.shrigajananmaharajsanstan.com",
+  url: getSiteUrl(),
   description: "Official website of Shri Gajanan Maharaj Sansthan, Shegaon. Book temple accommodation, plan your visit to multiple locations across Maharashtra and Madhya Pradesh.",
   foundingYear: "1908",
   locale: "en_IN",

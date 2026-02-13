@@ -11,6 +11,7 @@
 
 import type { Metadata } from "next";
 import { SITE_CONFIG, OG_IMAGE_DIMENSIONS } from "./constants";
+import { getSiteUrl } from "./site-url";
 
 interface PageMetadataProps {
   title: string;
@@ -34,8 +35,13 @@ export function generatePageMetadata({
   noIndex = false,
   type = "website",
 }: PageMetadataProps): Metadata {
-  const fullUrl = `${SITE_CONFIG.url}${path}`;
-  const fullTitle = `${title} | ${SITE_CONFIG.name}`;
+  const siteUrl = getSiteUrl();
+  const fullUrl = `${siteUrl}${path}`;
+  const siteNameLower = SITE_CONFIG.name.toLowerCase();
+  const titleLower = title.toLowerCase();
+  const fullTitle = titleLower.includes(siteNameLower)
+    ? title
+    : `${title} | ${SITE_CONFIG.name}`;
 
   const metadata: Metadata = {
     title,
