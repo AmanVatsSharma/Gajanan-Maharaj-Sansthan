@@ -9,7 +9,7 @@
  * - NAP (Name, Address, Phone) consistency maintained
  */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, MapPin, Clock, Smartphone } from "lucide-react";
+import { MapPin, Clock, Smartphone } from "lucide-react";
 import { CONTACT_DETAILS } from "@/data/contact";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 
@@ -52,18 +52,13 @@ export default function ContactPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-brand-saffron" />
-                Phone Numbers
+                <Smartphone className="h-5 w-5 text-brand-saffron" />
+                Contact
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-muted-foreground">
-              <p>Mandir Office: {CONTACT_DETAILS.locations.shegaon.mandir}</p>
-              <p>Bhakta Niwas: {CONTACT_DETAILS.locations.shegaon.bhaktaNiwas}</p>
-              <p>Anand Vihar: {CONTACT_DETAILS.locations.shegaon.anandVihar}</p>
-              <div className="flex items-center gap-2 mt-2 pt-2 border-t">
-                 <Smartphone className="h-4 w-4" />
-                 <span className="font-medium text-brand-maroon">Booking Mobile: {CONTACT_DETAILS.booking.mobile}</span>
-              </div>
+              <p className="font-medium text-brand-maroon">{CONTACT_DETAILS.booking.mobile}</p>
+              <p className="text-sm">For booking and general inquiries (WhatsApp / Call)</p>
             </CardContent>
           </Card>
 

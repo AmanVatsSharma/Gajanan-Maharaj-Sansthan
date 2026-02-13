@@ -46,5 +46,6 @@ flowchart TD
 
 **Change-log:**
 - 2026-02-05: Upgraded location images to Next `Image`, improved mobile table rendering, and aligned CTAs with booking request flow.
+- 2026-02-13: All location contacts now use single number 9217691636 (via `src/data/contact.ts`).
 - 2026-02-13: Pre-rendered all location detail pages (`generateStaticParams` + `dynamicParams=false`) and aligned booking guidance with the lightweight `/booking` landing page.
 

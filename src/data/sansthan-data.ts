@@ -40,7 +40,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Deluxe Room', type: 'Room', ac: true, capacity: 3 },
     ],
     amenities: ['Hot Water (Morning)', 'Mahaprasad Canteen', 'Free Bus Service', 'Parking'],
-    contact: [CONTACT_DETAILS.locations.shegaon.bhaktaNiwas, CONTACT_DETAILS.locations.shegaon.mandir],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/shegaon-temple.jpg'],
   },
   {
@@ -54,7 +54,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Suite', type: 'Room', ac: true, capacity: 4 },
     ],
     amenities: ['AC', 'Garden', 'Canteen', 'Parking'],
-    contact: [CONTACT_DETAILS.locations.shegaon.anandVihar],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/anand-sagar.jpg'],
   },
   {
@@ -67,7 +67,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Standard Room', type: 'Room', ac: false, capacity: 3 },
     ],
     amenities: ['Parking', 'Canteen'],
-    contact: [CONTACT_DETAILS.locations.shegaon.visawa],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/shegaon-temple.jpg'],
   },
   {
@@ -81,7 +81,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Hall', type: 'Hall', ac: false, capacity: 20 },
     ],
     amenities: ['Bhojan Kaksha', 'Hot Water'],
-    contact: [],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/pandharpur.jpg'],
   },
   {
@@ -94,7 +94,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Room', type: 'Room', ac: false, capacity: 3 },
     ],
     amenities: [],
-    contact: [],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/trimbakeshwar.jpg'],
   },
   {
@@ -107,7 +107,7 @@ export const sansthanLocations: Location[] = [
       { name: 'Room', type: 'Room', ac: false, capacity: 3 },
     ],
     amenities: [],
-    contact: [],
+    contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/omkareshwar.jpg'],
   },
 ];

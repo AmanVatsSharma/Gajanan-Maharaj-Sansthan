@@ -47,4 +47,5 @@ flowchart TD
 **Change-log:**
 - 2026-02-13: Added lightweight `/booking` landing page and `BookingLandingForm` (WhatsApp/call based).
 - 2026-02-13: Updated booking mobile/WhatsApp number to 9217691636 in `src/data/contact.ts` (single source of truth).
+- 2026-02-13: Removed all other phone numbers; site now uses only 9217691636 for contact (single number everywhere).
 

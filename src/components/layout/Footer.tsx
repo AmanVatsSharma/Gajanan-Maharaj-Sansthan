@@ -64,10 +64,7 @@ export function Footer() {
               ))}
             </div>
             <p className="text-sm text-gray-200">
-              Phone: {CONTACT_DETAILS.headOffice.phone}
-            </p>
-            <p className="text-sm text-gray-200">
-              Mobile: {CONTACT_DETAILS.booking.mobile}
+              Contact: {CONTACT_DETAILS.booking.mobile}
             </p>
           </div>
         </div>
