@@ -323,6 +323,9 @@ npm run verify:canonical
 
 # Verify sitemap coverage against posts/tags/categories
 npm run verify:sitemap
+
+# Verify taxonomy pages are prerendered for all tags/categories/pages
+npm run verify:taxonomy
 ```
 
 `verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.

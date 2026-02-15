@@ -13,8 +13,9 @@
     "verify:canonical": "node scripts/verify-canonical-consistency.mjs",
     "verify:seo-build": "node scripts/verify-seo-build.mjs",
     "verify:sitemap": "node scripts/verify-sitemap-coverage.mjs",
-    "seo:check": "npm run lint && npm run build && npm run verify:canonical && npm run verify:sitemap && npm run verify:seo-build && npm run validate:blog",
-    "seo:check:strict": "npm run lint && npm run build && npm run verify:canonical && npm run verify:sitemap && npm run verify:seo-build && npm run validate:blog:strict"
+    "verify:taxonomy": "node scripts/verify-taxonomy-prerender.mjs",
+    "seo:check": "npm run lint && npm run build && npm run verify:canonical && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:seo-build && npm run validate:blog",
+    "seo:check:strict": "npm run lint && npm run build && npm run verify:canonical && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:seo-build && npm run validate:blog:strict"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

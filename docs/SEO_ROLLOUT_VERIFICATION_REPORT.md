@@ -19,6 +19,7 @@ npm run validate:blog
 npm run lint
 npm run build
 npm run verify:canonical
+npm run verify:taxonomy
 npm run verify:sitemap
 npm run verify:seo-build
 ```
