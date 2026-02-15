@@ -10,6 +10,7 @@
 - Canonical redirect hardening: **implemented**
 - Blog quality validator: **implemented**
 - Module docs and flowcharts: **updated**
+- CI SEO quality gate workflow: **implemented**
 
 ## Validation Commands Run
 
@@ -71,3 +72,4 @@ npm run verify:seo-build
 
 - Ranking improvements require time and off-page signals (reviews, backlinks, authority).  
 - This rollout maximizes on-site SEO readiness and content coverage for high-intent query families.
+- Ongoing regressions are guarded by GitHub Actions workflow: `.github/workflows/seo-quality-gate.yml`.

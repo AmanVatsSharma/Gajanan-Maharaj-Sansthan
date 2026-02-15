@@ -39,6 +39,7 @@ flowchart TD
 - Build-level SEO smoke checks are available via `npm run verify:seo-build` (checks canonical/meta/schema presence on key prerendered routes).
 - Canonical consistency checks are available via `npm run verify:canonical` (ensures canonical host/presence across SEO pages).
 - Sitemap integrity checks are available via `npm run verify:sitemap` (checks URL count + blog/taxonomy/pagination coverage).
+- CI gate: `.github/workflows/seo-quality-gate.yml` runs `npm run seo:check:strict` on PRs/pushes.
 
 ## Changelog
 

@@ -327,6 +327,8 @@ npm run verify:sitemap
 
 `verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.
 
+For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo:check:strict` on pushes and pull requests.
+
 ### Validation rules enforced
 
 - unique and valid kebab-case slugs
