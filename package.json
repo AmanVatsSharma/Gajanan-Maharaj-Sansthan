@@ -9,7 +9,8 @@
     "lint": "eslint",
     "validate:blog": "node scripts/validate-blog-content.mjs",
     "generate:blogs": "node scripts/generate-seo-blog-cluster.mjs",
-    "verify:seo-build": "node scripts/verify-seo-build.mjs"
+    "verify:seo-build": "node scripts/verify-seo-build.mjs",
+    "seo:check": "npm run lint && npm run build && npm run verify:seo-build && npm run validate:blog"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

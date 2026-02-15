@@ -491,6 +491,7 @@ Copy this checklist and track your progress:
 - Review and update SEO strategy quarterly
 - Stay updated with Google algorithm changes
 - For rollout evidence and technical validation output, see `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
+- Use `docs/SEO_WEEKLY_TRACKER_TEMPLATE.md` for weekly KPI tracking
 
 ---
 
