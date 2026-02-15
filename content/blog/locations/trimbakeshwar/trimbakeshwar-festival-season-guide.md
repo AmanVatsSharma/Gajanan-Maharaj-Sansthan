@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "trimbakeshwar"
 relatedSlugs:
+  - "trimbakeshwar-morning-darshan-planning"
+  - "trimbakeshwar-budget-pilgrimage-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Trimbakeshwar Festival Season Guide
 
@@ -54,9 +55,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Trimbakeshw
 
 ## Related guides for deeper planning
 
+- [Trimbakeshwar Morning Darshan Planning](/blog/trimbakeshwar-morning-darshan-planning)
+- [Trimbakeshwar Budget Pilgrimage Guide](/blog/trimbakeshwar-budget-pilgrimage-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Trimbakeshwar devotees
 

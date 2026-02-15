@@ -28,9 +28,10 @@ locationIds:
   - "shegaon-anand-vihar"
   - "shegaon-visawa"
 relatedSlugs:
+  - "shegaon-family-accommodation-checklist"
+  - "shegaon-route-and-transport-options"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Shegaon Best Time to Visit
 
@@ -56,9 +57,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Shegaon”,
 
 ## Related guides for deeper planning
 
+- [Shegaon Family Accommodation Checklist](/blog/shegaon-family-accommodation-checklist)
+- [Shegaon Route And Transport Options](/blog/shegaon-route-and-transport-options)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Shegaon devotees
 

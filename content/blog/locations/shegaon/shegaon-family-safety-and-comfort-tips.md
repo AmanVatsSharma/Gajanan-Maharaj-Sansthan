@@ -28,9 +28,10 @@ locationIds:
   - "shegaon-anand-vihar"
   - "shegaon-visawa"
 relatedSlugs:
+  - "shegaon-budget-pilgrimage-guide"
+  - "shegaon-prayer-and-darshan-etiquette"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Shegaon Family Safety and Comfort Tips
 
@@ -56,9 +57,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Shegaon”,
 
 ## Related guides for deeper planning
 
+- [Shegaon Budget Pilgrimage Guide](/blog/shegaon-budget-pilgrimage-guide)
+- [Shegaon Prayer And Darshan Etiquette](/blog/shegaon-prayer-and-darshan-etiquette)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Shegaon devotees
 

@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "pandharpur-math"
 relatedSlugs:
+  - "pandharpur-weekend-planning-guide"
+  - "pandharpur-best-time-to-visit"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Pandharpur Family Accommodation Checklist
 
@@ -54,9 +55,10 @@ When devotees search for terms like â€œShri Gajanan Maharaj Sansthan Pandharpurâ
 
 ## Related guides for deeper planning
 
+- [Pandharpur Weekend Planning Guide](/blog/pandharpur-weekend-planning-guide)
+- [Pandharpur Best Time To Visit](/blog/pandharpur-best-time-to-visit)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Pandharpur devotees
 

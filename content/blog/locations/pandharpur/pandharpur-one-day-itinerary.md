@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "pandharpur-math"
 relatedSlugs:
+  - "pandharpur-route-and-transport-options"
+  - "pandharpur-two-day-itinerary"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Pandharpur One Day Itinerary
 
@@ -54,9 +55,10 @@ When devotees search for terms like â€œShri Gajanan Maharaj Sansthan Pandharpurâ
 
 ## Related guides for deeper planning
 
+- [Pandharpur Route And Transport Options](/blog/pandharpur-route-and-transport-options)
+- [Pandharpur Two Day Itinerary](/blog/pandharpur-two-day-itinerary)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Pandharpur devotees
 

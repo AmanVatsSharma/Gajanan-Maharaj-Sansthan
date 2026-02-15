@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "omkareshwar"
 relatedSlugs:
+  - "omkareshwar-family-safety-and-comfort-tips"
+  - "omkareshwar-packing-checklist"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Omkareshwar Prayer and Darshan Etiquette
 
@@ -54,9 +55,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Omkareshwar
 
 ## Related guides for deeper planning
 
+- [Omkareshwar Family Safety And Comfort Tips](/blog/omkareshwar-family-safety-and-comfort-tips)
+- [Omkareshwar Packing Checklist](/blog/omkareshwar-packing-checklist)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Omkareshwar devotees
 

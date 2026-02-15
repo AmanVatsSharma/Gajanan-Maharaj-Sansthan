@@ -20,9 +20,10 @@ category: "spiritual"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
+  - "importance-of-seva-in-sansthan-tradition"
+  - "spiritual-benefits-of-disciplined-yatra-planning"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # How Devotees Can Prepare Mindfully For Darshan | Spiritual Guidance
 
@@ -45,10 +46,10 @@ Shri Gajanan Maharaj spiritual planning is frequently searched by devotees who w
 
 ## Continue reading
 
-- [Welcome to Sansthan](/blog/welcome-to-sansthan)
-- [Shegaon Travel Guide](/blog/shegaon-travel-guide)
+- [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings](/blog/omkareshwar-darshan-timings)
+- [Importance Of Seva In Sansthan Tradition](/blog/importance-of-seva-in-sansthan-tradition)
+- [Spiritual Benefits Of Disciplined Yatra Planning](/blog/spiritual-benefits-of-disciplined-yatra-planning)
 
 ## Devotee takeaway
 

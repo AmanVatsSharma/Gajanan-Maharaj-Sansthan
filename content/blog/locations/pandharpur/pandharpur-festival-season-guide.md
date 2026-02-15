@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "pandharpur-math"
 relatedSlugs:
+  - "pandharpur-morning-darshan-planning"
+  - "pandharpur-budget-pilgrimage-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Pandharpur Festival Season Guide
 
@@ -54,9 +55,10 @@ When devotees search for terms like â€œShri Gajanan Maharaj Sansthan Pandharpurâ
 
 ## Related guides for deeper planning
 
+- [Pandharpur Morning Darshan Planning](/blog/pandharpur-morning-darshan-planning)
+- [Pandharpur Budget Pilgrimage Guide](/blog/pandharpur-budget-pilgrimage-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Pandharpur devotees
 

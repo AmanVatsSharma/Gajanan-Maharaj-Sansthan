@@ -62,3 +62,4 @@ flowchart TD
 - All scripts emit structured console diagnostics for easier CI debugging.
 - `seo:check:strict` is the canonical quality gate command used by CI workflow.
 - If cluster sizing changes, update `seo-cluster-config.mjs` first, then regenerate content.
+- Validator includes inbound blog-link graph checks to prevent orphaned generated posts.

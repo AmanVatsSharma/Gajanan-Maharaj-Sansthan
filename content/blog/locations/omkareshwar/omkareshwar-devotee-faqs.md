@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "omkareshwar"
 relatedSlugs:
+  - "omkareshwar-two-day-itinerary"
+  - "omkareshwar-first-time-visitor-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Omkareshwar Devotee FAQs
 
@@ -54,9 +55,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Omkareshwar
 
 ## Related guides for deeper planning
 
+- [Omkareshwar Two Day Itinerary](/blog/omkareshwar-two-day-itinerary)
+- [Omkareshwar First Time Visitor Guide](/blog/omkareshwar-first-time-visitor-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Omkareshwar devotees
 

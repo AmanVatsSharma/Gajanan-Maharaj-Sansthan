@@ -42,6 +42,7 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
   - Tracks generated files in `content/blog/_ops/generated-seo-cluster-manifest.json`
   - Removes stale generated files on subsequent runs to keep cluster output deterministic when counts change
   - Uses shared targets from `scripts/seo-cluster-config.mjs` to keep generator and validator sizing in sync
+  - Adds deterministic sibling cross-links within generated clusters to improve internal crawl graph continuity
 
 ## Blog Rendering Flow
 

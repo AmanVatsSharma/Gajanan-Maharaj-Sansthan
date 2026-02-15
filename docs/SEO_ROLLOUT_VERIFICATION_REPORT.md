@@ -51,6 +51,8 @@ npm run verify:seo-build
     - `sri gajanan`: 106
     - `sansthan`: 288
     - `sanstan`: 105
+  - link graph health:
+    - orphanPostCount: 0 (with explicit exemption: `welcome-to-sansthan`)
 - `npm run lint` → pass
 - `npm run build` → pass
   - blog dynamic paths include 100+ additional slugs
@@ -81,6 +83,7 @@ npm run verify:seo-build
    - Deterministic generator supports repeatable large-scale cluster publishing.
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
+  - Link-graph checks enforce inbound internal linking coverage so generated clusters are crawl-connected.
   - Docs-sync verifier guards inventory/command drift in operational SEO documentation.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).

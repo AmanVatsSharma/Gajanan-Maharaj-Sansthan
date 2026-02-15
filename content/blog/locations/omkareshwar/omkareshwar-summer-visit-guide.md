@@ -26,9 +26,10 @@ category: "locations"
 locationIds:
   - "omkareshwar"
 relatedSlugs:
+  - "omkareshwar-rainy-season-visit-guide"
+  - "omkareshwar-darshan-timing-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Omkareshwar Summer Visit Guide
 
@@ -54,9 +55,10 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan Omkareshwar
 
 ## Related guides for deeper planning
 
+- [Omkareshwar Rainy Season Visit Guide](/blog/omkareshwar-rainy-season-visit-guide)
+- [Omkareshwar Darshan Timing Guide](/blog/omkareshwar-darshan-timing-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 
 ## Practical conclusion for Omkareshwar devotees
 

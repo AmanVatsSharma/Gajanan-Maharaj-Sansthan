@@ -20,9 +20,10 @@ category: "events"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
+  - "community-seva-event-participation-guide"
+  - "rishi-panchami-visit-preparation-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Ram Navami Devotee Planning Guide | Devotee Event Guide
 
@@ -45,10 +46,10 @@ Sansthan festival darshan planning is frequently searched by devotees who want b
 
 ## Continue reading
 
-- [Welcome to Sansthan](/blog/welcome-to-sansthan)
-- [Shegaon Travel Guide](/blog/shegaon-travel-guide)
+- [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings](/blog/omkareshwar-darshan-timings)
+- [Community Seva Event Participation Guide](/blog/community-seva-event-participation-guide)
+- [Rishi Panchami Visit Preparation Guide](/blog/rishi-panchami-visit-preparation-guide)
 
 ## Devotee takeaway
 

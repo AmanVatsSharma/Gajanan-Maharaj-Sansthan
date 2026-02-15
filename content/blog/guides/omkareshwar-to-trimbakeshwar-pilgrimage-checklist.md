@@ -23,9 +23,10 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
+  - "shegaon-to-trimbakeshwar-route-guide"
+  - "pandharpur-and-shegaon-family-yatra-plan"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
-  - "nearby-places-from-shegaon"
 ---
 # Omkareshwar To Trimbakeshwar Pilgrimage Checklist | Shri Gajanan Maharaj Sansthan
 
@@ -50,10 +51,10 @@ This guide helps devotees compare multiple locations connected to Shri Gajanan M
 
 ## Related reading
 
-- [Shegaon Travel Guide](/blog/shegaon-travel-guide)
+- [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
-- [Nearby Places from Shegaon](/blog/nearby-places-from-shegaon)
+- [Shegaon To Trimbakeshwar Route Guide](/blog/shegaon-to-trimbakeshwar-route-guide)
+- [Pandharpur And Shegaon Family Yatra Plan](/blog/pandharpur-and-shegaon-family-yatra-plan)
 
 ## Final note
 

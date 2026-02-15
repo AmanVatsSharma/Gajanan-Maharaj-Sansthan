@@ -40,6 +40,8 @@ const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
   "sansthan",
   "sanstan",
 ];
+const MAX_ALLOWED_ORPHAN_POSTS = 0;
+const EXEMPT_ORPHAN_SLUGS = new Set(["welcome-to-sansthan"]);
 
 /**
  * Crawl markdown files recursively.
@@ -454,6 +456,9 @@ function runCrossPostChecks(results, failures, warnings) {
   const knownLocationPaths = new Set(
     [...KNOWN_LOCATION_IDS].map((locationId) => `/locations/${locationId}`)
   );
+  const inboundBlogLinkCount = new Map(
+    [...knownSlugs].map((slug) => [slug, 0])
+  );
 
   for (const result of results) {
     for (const relatedSlug of result.relatedSlugs || []) {
@@ -485,6 +490,18 @@ function runCrossPostChecks(results, failures, warnings) {
             check: "blog-link-target-exists",
             reason: `Internal blog link "${internalLink}" points to unknown slug "${blogSlug}"`,
           });
+        }
+
+        if (
+          !isNamespaceLink &&
+          knownSlugs.has(blogSlug) &&
+          result.slug &&
+          blogSlug !== result.slug
+        ) {
+          inboundBlogLinkCount.set(
+            blogSlug,
+            (inboundBlogLinkCount.get(blogSlug) || 0) + 1
+          );
         }
       }
 
@@ -557,6 +574,31 @@ function runCrossPostChecks(results, failures, warnings) {
         reason: `No keyword metadata includes required fragment "${fragment}"`,
       });
     }
+  }
+
+  const orphanPostSlugs = results
+    .filter((result) => result.slug)
+    .filter((result) => !EXEMPT_ORPHAN_SLUGS.has(result.slug))
+    .filter((result) => (inboundBlogLinkCount.get(result.slug) || 0) === 0)
+    .map((result) => result.slug);
+
+  console.info("blog-validation-link-graph", {
+    timestamp: Date.now(),
+    totalPosts: knownSlugs.size,
+    orphanPostCount: orphanPostSlugs.length,
+    exemptOrphanSlugs: [...EXEMPT_ORPHAN_SLUGS],
+    maxAllowedOrphanPosts: MAX_ALLOWED_ORPHAN_POSTS,
+  });
+
+  if (orphanPostSlugs.length > MAX_ALLOWED_ORPHAN_POSTS) {
+    failures.push({
+      routeId: "blog-link-graph",
+      filePath: "content/blog",
+      check: "orphan-post-links",
+      reason: `Detected ${orphanPostSlugs.length} orphan blog posts without inbound /blog links. Sample: ${orphanPostSlugs
+        .slice(0, 5)
+        .join(", ")}`,
+    });
   }
 
   const primaryKeywordMap = new Map();

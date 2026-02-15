@@ -35,6 +35,14 @@ const CORE_RELATED_SLUGS = [
   "welcome-to-sansthan",
 ];
 
+const CORE_RELATED_LINK_LABELS = {
+  "shegaon-travel-guide": "Complete Travel Guide to Shegaon",
+  "shegaon-accommodation-guide": "Shegaon Accommodation Guide",
+  "nearby-places-from-shegaon": "Nearby Places from Shegaon",
+  "omkareshwar-darshan-timings": "Omkareshwar Darshan Timings Guide",
+  "welcome-to-sansthan": "Welcome to Sansthan",
+};
+
 const LOCATION_CONFIGS = [
   {
     key: "shegaon",
@@ -316,6 +324,27 @@ function toSentenceKeyword(value) {
     .trim();
 }
 
+function dedupeSlugs(slugs) {
+  return [...new Set(slugs.filter(Boolean))];
+}
+
+/**
+ * Create deterministic previous/next links for internal-link graph continuity.
+ */
+function getCircularNeighborSlugs(slugs, index) {
+  if (slugs.length <= 1) {
+    return [];
+  }
+
+  const previousSlug = slugs[(index - 1 + slugs.length) % slugs.length];
+  const nextSlug = slugs[(index + 1) % slugs.length];
+  return dedupeSlugs([previousSlug, nextSlug]);
+}
+
+function getBlogLinkLabel(slug) {
+  return CORE_RELATED_LINK_LABELS[slug] || toTitleCase(slug);
+}
+
 function buildFrontmatter({
   title,
   description,
@@ -392,7 +421,7 @@ This ${city} planning resource is built to make your pilgrimage smoother, more s
 `;
 }
 
-function buildCrossLocationGuideContent({ title }) {
+function buildCrossLocationGuideContent({ title, relatedBlogLinks }) {
   return `# ${title}
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
@@ -416,10 +445,9 @@ This guide helps devotees compare multiple locations connected to Shri Gajanan M
 
 ## Related reading
 
-- [Shegaon Travel Guide](/blog/shegaon-travel-guide)
-- [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
-- [Nearby Places from Shegaon](/blog/nearby-places-from-shegaon)
+${relatedBlogLinks
+  .map((entry) => `- [${entry.label}](/blog/${entry.slug})`)
+  .join("\n")}
 
 ## Final note
 
@@ -427,7 +455,7 @@ For the best pilgrimage experience, keep your plan devotional but practical: foc
 `;
 }
 
-function buildSpiritualOrEventContent({ title, focusKeyword, category }) {
+function buildSpiritualOrEventContent({ title, focusKeyword, category, relatedBlogLinks }) {
   const headingLabel =
     category === "events" ? "Festival and event planning insights" : "Spiritual preparation insights";
 
@@ -452,10 +480,9 @@ ${focusKeyword} is frequently searched by devotees who want both spiritual clari
 
 ## Continue reading
 
-- [Welcome to Sansthan](/blog/welcome-to-sansthan)
-- [Shegaon Travel Guide](/blog/shegaon-travel-guide)
-- [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Omkareshwar Darshan Timings](/blog/omkareshwar-darshan-timings)
+${relatedBlogLinks
+  .map((entry) => `- [${entry.label}](/blog/${entry.slug})`)
+  .join("\n")}
 
 ## Devotee takeaway
 
@@ -474,9 +501,14 @@ function generateLocationClusterPosts() {
   let globalOffset = 0;
 
   for (const config of LOCATION_CONFIGS) {
-    for (let index = 0; index < config.count; index += 1) {
-      const topic = LOCATION_TOPIC_VARIANTS[index];
-      const slug = `${config.key}-${topic.suffix}`;
+    const topicEntries = LOCATION_TOPIC_VARIANTS.slice(0, config.count).map((topic) => ({
+      topic,
+      slug: `${config.key}-${topic.suffix}`,
+    }));
+    const locationClusterSlugs = topicEntries.map((entry) => entry.slug);
+
+    for (const [index, entry] of topicEntries.entries()) {
+      const { topic, slug } = entry;
       const title = `${toTitleCase(config.key)} ${topic.title} | Shri Gajanan Maharaj Sansthan`;
       const description = `Detailed ${config.city.toLowerCase()} ${topic.title.toLowerCase()} for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan ${config.city}. Includes booking links, travel tips, and internal route guidance.`;
       const date = formatDateByOffset(globalOffset);
@@ -497,12 +529,12 @@ function generateLocationClusterPosts() {
         "pilgrimage-guide",
       ];
 
-      const relatedSlugs = CORE_RELATED_SLUGS.slice(0, 3);
-      const relatedBlogLinks = [
-        { slug: "shegaon-travel-guide", label: "Complete Travel Guide to Shegaon" },
-        { slug: "shegaon-accommodation-guide", label: "Shegaon Accommodation Guide" },
-        { slug: "omkareshwar-darshan-timings", label: "Omkareshwar Darshan Timings Guide" },
-      ];
+      const neighborSlugs = getCircularNeighborSlugs(locationClusterSlugs, index);
+      const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+      const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      }));
 
       const frontmatter = buildFrontmatter({
         title,
@@ -535,6 +567,7 @@ function generateLocationClusterPosts() {
 
 function generateCrossLocationGuides() {
   const generated = [];
+  const guideSlugs = [...CROSS_LOCATION_GUIDE_VARIANTS];
 
   for (const [index, variant] of CROSS_LOCATION_GUIDE_VARIANTS.entries()) {
     const slug = variant;
@@ -542,6 +575,15 @@ function generateCrossLocationGuides() {
     const description =
       "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support.";
     const date = formatDateByOffset(120 + index);
+    const neighborSlugs = getCircularNeighborSlugs(guideSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
     const frontmatter = buildFrontmatter({
       title,
       description,
@@ -558,10 +600,10 @@ function generateCrossLocationGuides() {
       tags: ["guides", "multi-location", "travel-planning", "sansthan-seo"],
       category: "guides",
       locationIds: ["shegaon-bhakt-niwas", "omkareshwar", "pandharpur-math", "trimbakeshwar"],
-      relatedSlugs: CORE_RELATED_SLUGS.slice(0, 3),
+      relatedSlugs,
     });
 
-    const content = buildCrossLocationGuideContent({ title });
+    const content = buildCrossLocationGuideContent({ title, relatedBlogLinks });
     const relativePath = `guides/${slug}.md`;
     writePostFile(relativePath, `${frontmatter}${content}`);
     generated.push(relativePath);
@@ -572,6 +614,7 @@ function generateCrossLocationGuides() {
 
 function generateSpiritualPosts() {
   const generated = [];
+  const spiritualSlugs = [...SPIRITUAL_POST_VARIANTS];
 
   for (const [index, variant] of SPIRITUAL_POST_VARIANTS.entries()) {
     const slug = variant;
@@ -579,6 +622,15 @@ function generateSpiritualPosts() {
     const description =
       "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline.";
     const date = formatDateByOffset(160 + index);
+    const neighborSlugs = getCircularNeighborSlugs(spiritualSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
     const frontmatter = buildFrontmatter({
       title,
       description,
@@ -595,13 +647,14 @@ function generateSpiritualPosts() {
       tags: ["spiritual", "teachings", "devotion", "sansthan-seo"],
       category: "spiritual",
       locationIds: ["shegaon-bhakt-niwas"],
-      relatedSlugs: CORE_RELATED_SLUGS.slice(0, 3),
+      relatedSlugs,
     });
 
     const content = buildSpiritualOrEventContent({
       title,
       focusKeyword: "Shri Gajanan Maharaj spiritual planning",
       category: "spiritual",
+      relatedBlogLinks,
     });
 
     const relativePath = `spiritual/${slug}.md`;
@@ -614,6 +667,7 @@ function generateSpiritualPosts() {
 
 function generateEventPosts() {
   const generated = [];
+  const eventSlugs = [...EVENT_POST_VARIANTS];
 
   for (const [index, variant] of EVENT_POST_VARIANTS.entries()) {
     const slug = variant;
@@ -621,6 +675,15 @@ function generateEventPosts() {
     const description =
       "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods.";
     const date = formatDateByOffset(180 + index);
+    const neighborSlugs = getCircularNeighborSlugs(eventSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
     const frontmatter = buildFrontmatter({
       title,
       description,
@@ -637,13 +700,14 @@ function generateEventPosts() {
       tags: ["events", "festival", "darshan", "sansthan-seo"],
       category: "events",
       locationIds: ["shegaon-bhakt-niwas"],
-      relatedSlugs: CORE_RELATED_SLUGS.slice(0, 3),
+      relatedSlugs,
     });
 
     const content = buildSpiritualOrEventContent({
       title,
       focusKeyword: "Sansthan festival darshan planning",
       category: "events",
+      relatedBlogLinks,
     });
 
     const relativePath = `events/${slug}.md`;
