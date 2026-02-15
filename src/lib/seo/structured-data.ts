@@ -325,6 +325,10 @@ export interface BlogPost {
   description?: string;
   author?: string;
   image?: string;
+  dateModified?: string;
+  keywords?: string[];
+  tags?: string[];
+  category?: string;
 }
 
 export interface CollectionPageItem {
@@ -333,6 +337,8 @@ export interface CollectionPageItem {
   description?: string;
   date?: string;
   image?: string;
+  keywords?: string[];
+  category?: string;
 }
 
 interface CollectionPageSchemaOptions {
@@ -364,15 +370,24 @@ export function getArticleSchema(post: BlogPost) {
     ? `${baseUrl}${post.slug}`
     : `${baseUrl}/blog/${post.slug}`;
 
+  const articleKeywords = post.keywords ?? post.tags ?? [];
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "@id": `${postUrl}#article`,
     headline: post.title,
     description: post.description,
+    keywords: articleKeywords.length > 0 ? articleKeywords : undefined,
+    articleSection: post.category,
+    about: post.tags?.map((tag) => ({
+      "@type": "DefinedTerm",
+      name: tag,
+    })),
     image: [imageUrl],
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.dateModified || post.date,
+    inLanguage: "en-IN",
     author: {
       "@type": post.author ? "Person" : "Organization",
       name: post.author || ORGANIZATION_INFO.legalName,
@@ -389,6 +404,12 @@ export function getArticleSchema(post: BlogPost) {
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": postUrl,
+    },
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${baseUrl}/blog#blog`,
+      name: `${ORGANIZATION_INFO.legalName} Blog`,
+      url: `${baseUrl}/blog`,
     },
   };
 }
@@ -419,13 +440,16 @@ export function getCollectionPageSchema({
         position: index + 1,
         name: item.title,
         item: {
-          "@type": "Article",
+          "@type": "BlogPosting",
           "@id": `${toAbsoluteUrl(baseUrl, item.urlPath)}#article`,
           url: toAbsoluteUrl(baseUrl, item.urlPath),
           headline: item.title,
           description: item.description,
           datePublished: item.date,
           image: item.image ? [toAbsoluteUrl(baseUrl, item.image)] : undefined,
+          keywords: item.keywords,
+          articleSection: item.category,
+          inLanguage: "en-IN",
         },
       })),
     },

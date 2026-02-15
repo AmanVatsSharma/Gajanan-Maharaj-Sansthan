@@ -72,6 +72,8 @@ export default async function BlogCategoryPage({ params }: PageProps) {
       date: post.date,
       image: post.image,
       urlPath: `/blog/${post.slug}`,
+      keywords: post.keywords,
+      category: post.category,
     })),
   });
 

@@ -61,6 +61,8 @@ export default async function BlogPage() {
       date: post.date,
       image: post.image,
       urlPath: `/blog/${post.slug}`,
+      keywords: post.keywords,
+      category: post.category,
     })),
   });
 

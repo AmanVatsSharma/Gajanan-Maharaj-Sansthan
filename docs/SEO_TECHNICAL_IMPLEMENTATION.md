@@ -75,6 +75,10 @@ src/
 - ✅ `Review` - For testimonials (ready to use)
 - ✅ `Event` - For future events (optional)
 
+**Blog schema enrichment (latest)**:
+- `BlogPosting` now includes `keywords`, `articleSection`, `about` terms, and `dateModified` from content file mtime.
+- Listing pages emit `CollectionPage -> ItemList -> BlogPosting` items for stronger archive understanding.
+
 **Usage**:
 ```typescript
 import { getOrganizationSchema } from '@/lib/seo/structured-data';
