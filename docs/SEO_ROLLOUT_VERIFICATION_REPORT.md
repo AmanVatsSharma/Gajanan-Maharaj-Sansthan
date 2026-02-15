@@ -54,6 +54,12 @@ npm run verify:seo-build
    - Blog, SEO, locations, and booking module docs synchronized.
    - Flowcharts added/updated for ingestion and SEO rendering paths.
 
+- `verify:seo-build` now validates required JSON-LD `@type` coverage on critical routes:
+  - Home: Organization + WebSite
+  - Booking: FAQPage + BreadcrumbList
+  - Location detail: PlaceOfWorship + LocalBusiness + LodgingBusiness
+  - Blog routes: CollectionPage / BlogPosting + BreadcrumbList
+
 ## Notes
 
 - Ranking improvements require time and off-page signals (reviews, backlinks, authority).  

@@ -17,11 +17,13 @@ const REQUIRED_ROUTES = [
     id: "home",
     filePath: "index.html",
     checks: ["canonical", "keywords", "ogTitle", "jsonLd"],
+    requiredSchemaTypes: ["Organization", "WebSite"],
   },
   {
     id: "booking",
     filePath: "booking.html",
     checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["FAQPage", "BreadcrumbList"],
   },
   {
     id: "locations-index",
@@ -32,26 +34,31 @@ const REQUIRED_ROUTES = [
     id: "location-shegaon-bhakt-niwas",
     filePath: "locations/shegaon-bhakt-niwas.html",
     checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["PlaceOfWorship", "LocalBusiness", "LodgingBusiness"],
   },
   {
     id: "blog-index",
     filePath: "blog.html",
     checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["CollectionPage"],
   },
   {
     id: "blog-post-shegaon-travel-guide",
     filePath: "blog/shegaon-travel-guide.html",
     checks: ["canonical", "keywords", "ogTitle", "jsonLd"],
+    requiredSchemaTypes: ["BlogPosting", "BreadcrumbList"],
   },
   {
     id: "blog-category-locations",
     filePath: "blog/category/locations.html",
     checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["CollectionPage", "BreadcrumbList"],
   },
   {
     id: "blog-tag-shegaon",
     filePath: "blog/tag/shegaon.html",
     checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["CollectionPage", "BreadcrumbList"],
   },
   {
     id: "contact",
@@ -86,6 +93,54 @@ function hasOgTitle(html) {
 
 function hasJsonLd(html) {
   return /<script[^>]+type="application\/ld\+json"/.test(html);
+}
+
+/**
+ * Extract all schema @type values from inline JSON-LD scripts.
+ * Supports objects, arrays, and nested graph structures.
+ */
+function extractSchemaTypes(html) {
+  const schemaTypes = new Set();
+  const jsonLdRegex =
+    /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+  let match;
+
+  function collectTypes(value) {
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        collectTypes(item);
+      }
+      return;
+    }
+
+    if (!value || typeof value !== "object") {
+      return;
+    }
+
+    const typedValue = value;
+    if (typeof typedValue["@type"] === "string") {
+      schemaTypes.add(typedValue["@type"]);
+    }
+
+    for (const child of Object.values(typedValue)) {
+      collectTypes(child);
+    }
+  }
+
+  while ((match = jsonLdRegex.exec(html)) !== null) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      collectTypes(parsed);
+    } catch (error) {
+      console.warn("seo-build-verify-warning", {
+        timestamp: Date.now(),
+        message: "Failed to parse JSON-LD block while extracting schema types.",
+        error: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
+  return schemaTypes;
 }
 
 function runCheck(html, checkName) {
@@ -142,6 +197,20 @@ function main() {
           check,
           reason: `Missing required SEO signal: ${check}`,
         });
+      }
+    }
+
+    if (route.requiredSchemaTypes && route.requiredSchemaTypes.length > 0) {
+      const availableSchemaTypes = extractSchemaTypes(html);
+      for (const requiredSchemaType of route.requiredSchemaTypes) {
+        if (!availableSchemaTypes.has(requiredSchemaType)) {
+          failures.push({
+            routeId: route.id,
+            filePath: route.filePath,
+            check: "schema-type",
+            reason: `Missing required schema @type: ${requiredSchemaType}`,
+          });
+        }
       }
     }
   }

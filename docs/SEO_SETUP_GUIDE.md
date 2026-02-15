@@ -316,6 +316,8 @@ npm run validate:blog
 npm run verify:seo-build
 ```
 
+`verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types on critical pages.
+
 ### Validation rules enforced
 
 - unique and valid kebab-case slugs
