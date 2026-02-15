@@ -28,6 +28,7 @@ npm run verify:sitemap
 npm run verify:pagination
 npm run verify:rss
 npm run verify:seo-build
+npm run seo:check:strict
 ```
 
 ## Latest Validation Results

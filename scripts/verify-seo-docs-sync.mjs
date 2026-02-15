@@ -23,6 +23,7 @@ const DOC_PATHS = {
   libBlogModuleDoc: path.join(process.cwd(), "src/lib/blog/MODULE_DOC.md"),
   scriptsModuleDoc: path.join(process.cwd(), "scripts/MODULE_DOC.md"),
   seoLibModuleDoc: path.join(process.cwd(), "src/lib/seo/MODULE_DOC.md"),
+  ciWorkflow: path.join(process.cwd(), ".github/workflows/seo-quality-gate.yml"),
 };
 
 function getMarkdownFiles(directoryPath) {
@@ -100,6 +101,7 @@ function main() {
   const libBlogModuleDoc = fs.readFileSync(DOC_PATHS.libBlogModuleDoc, "utf-8");
   const scriptsModuleDoc = fs.readFileSync(DOC_PATHS.scriptsModuleDoc, "utf-8");
   const seoLibModuleDoc = fs.readFileSync(DOC_PATHS.seoLibModuleDoc, "utf-8");
+  const ciWorkflow = fs.readFileSync(DOC_PATHS.ciWorkflow, "utf-8");
 
   assertIncludes(
     blogReadme,
@@ -132,6 +134,12 @@ function main() {
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-docs-sync-command"
   );
+  assertIncludes(
+    setupGuide,
+    "npm run seo:check:strict",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:strict-gate-command"
+  );
 
   assertIncludes(
     rolloutReport,
@@ -157,6 +165,12 @@ function main() {
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-docs-sync-command"
   );
+  assertIncludes(
+    rolloutReport,
+    "npm run seo:check:strict",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:strict-gate-command"
+  );
 
   assertIncludes(
     technicalSummary,
@@ -178,6 +192,12 @@ function main() {
     "SEO_IMPLEMENTATION_COMPLETE.md:verify-generator-command"
   );
   assertIncludes(
+    featureBlogModuleDoc,
+    `${publishablePostCount} posts (${generatedPostCount} generated + existing)`,
+    failures,
+    "src/features/blog/MODULE_DOC.md:inventory-counts"
+  );
+  assertIncludes(
     scriptsModuleDoc,
     "verify:generator",
     failures,
@@ -188,6 +208,18 @@ function main() {
     "verify:docs-sync",
     failures,
     "scripts/MODULE_DOC.md:verify-docs-sync-reference"
+  );
+  assertIncludes(
+    scriptsModuleDoc,
+    "seo:check:strict",
+    failures,
+    "scripts/MODULE_DOC.md:strict-gate-reference"
+  );
+  assertIncludes(
+    ciWorkflow,
+    "npm run seo:check:strict",
+    failures,
+    ".github/workflows/seo-quality-gate.yml:strict-gate-run-command"
   );
 
   for (const [docKey, content] of [
