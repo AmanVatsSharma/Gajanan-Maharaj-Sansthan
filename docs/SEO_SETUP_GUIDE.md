@@ -318,6 +318,9 @@ npm run validate:blog:strict
 # Verify canonical/meta/schema in prerendered HTML (run after build)
 npm run verify:seo-build
 
+# Verify canonical host consistency across all SEO pages
+npm run verify:canonical
+
 # Verify sitemap coverage against posts/tags/categories
 npm run verify:sitemap
 ```
