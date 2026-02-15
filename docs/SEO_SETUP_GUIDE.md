@@ -318,6 +318,9 @@ npm run validate:blog:strict
 # Verify generated-cluster manifest distribution and integrity
 npm run verify:generator
 
+# Verify SEO inventory claims stay synced across docs
+npm run verify:docs-sync
+
 # Verify canonical/meta/schema in prerendered HTML (run after build)
 npm run verify:seo-build
 
@@ -357,6 +360,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - known location ID references
 - generated cluster manifest consistency for deterministic markdown generation
 - generated cluster distribution consistency (`verify:generator`) for location/non-location target counts
+- SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)
 - brand-variant keyword coverage across blog metadata (Shri/Shree/Sri + Sansthan/Sanstan)
 

@@ -85,6 +85,9 @@ npm run validate:blog:strict
 
 # Verify generated cluster manifest distribution and integrity
 npm run verify:generator
+
+# Verify SEO docs stay synced with inventory claims
+npm run verify:docs-sync
 ```
 
 Validation now includes cross-post integrity checks for:

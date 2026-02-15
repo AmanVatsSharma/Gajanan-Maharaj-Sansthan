@@ -22,6 +22,7 @@ npm run verify:canonical
 npm run verify:robots
 npm run verify:locations
 npm run verify:generator
+npm run verify:docs-sync
 npm run verify:taxonomy
 npm run verify:sitemap
 npm run verify:pagination
@@ -61,6 +62,8 @@ npm run verify:seo-build
     - guides: 15
     - spiritual: 5
     - events: 5
+- `npm run verify:docs-sync` → pass
+  - validated inventory/count claims and command references across primary SEO docs
 
 ## SEO Architecture Changes Verified
 
@@ -78,6 +81,7 @@ npm run verify:seo-build
    - Deterministic generator supports repeatable large-scale cluster publishing.
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
+  - Docs-sync verifier guards inventory/command drift in operational SEO documentation.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).
   - Brand-variant keyword coverage checks enforce Shri/Shree/Sri + Sansthan/Sanstan surface area.

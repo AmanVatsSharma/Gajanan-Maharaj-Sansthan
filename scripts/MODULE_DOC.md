@@ -11,6 +11,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `generate-seo-blog-cluster.mjs` — deterministic markdown cluster generator.
 - `validate-blog-content.mjs` — strict markdown/frontmatter/link/coverage validator.
 - `verify-generated-cluster-manifest.mjs` — generator-manifest distribution/integrity verifier.
+- `verify-seo-docs-sync.mjs` — validates SEO inventory claims/command references across docs.
 - `verify-canonical-consistency.mjs` — canonical host/uniqueness verifier on prerendered SEO pages.
 - `verify-robots-policy.mjs` — robots directives/host/sitemap policy verifier.
 - `verify-location-seo-surfaces.mjs` — geo/meta/schema checks for location pages.
@@ -33,9 +34,11 @@ flowchart TD
   cfg[seo-cluster-config.mjs] --> gen[generate:blogs]
   gen --> manifest[_ops/generated-seo-cluster-manifest.json]
   manifest --> verifyGen[verify:generator]
+  manifest --> verifyDocs[verify:docs-sync]
   manifest --> validate[validate:blog:strict]
   validate --> seoCheck[seo:check:strict]
   verifyGen --> seoCheck
+  verifyDocs --> seoCheck
   build[next build] --> verifyCanon[verify:canonical]
   build --> verifyRobots[verify:robots]
   build --> verifyLocations[verify:locations]

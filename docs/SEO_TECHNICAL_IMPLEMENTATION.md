@@ -253,6 +253,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 npm run generate:blogs
 npm run validate:blog
 npm run verify:generator
+npm run verify:docs-sync
 ```
 
 ---
