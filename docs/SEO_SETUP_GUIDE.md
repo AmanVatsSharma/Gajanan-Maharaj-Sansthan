@@ -382,6 +382,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated manifest file-path policy + sorted-inventory checks
 - managed namespace ownership checks (generator-owned files vs explicit manual seed anchors)
 - SEO gate command ordering/composition consistency (`verify:seo-chain`)
+- SEO chain hygiene checks (no duplicates, `npm run` step format, check/strict parity)
 - CI workflow strict-gate invariant checks (`verify:ci-gate`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters

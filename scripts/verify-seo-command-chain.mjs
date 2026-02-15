@@ -81,6 +81,17 @@ function extractNpmRunScriptName(step) {
   return match?.[1] || "";
 }
 
+function getDuplicateSteps(steps) {
+  const stepCounts = new Map();
+  for (const step of steps) {
+    stepCounts.set(step, (stepCounts.get(step) || 0) + 1);
+  }
+
+  return [...stepCounts.entries()]
+    .filter(([, count]) => count > 1)
+    .map(([step, count]) => ({ step, count }));
+}
+
 function main() {
   console.info("seo-command-chain-verify-start", {
     timestamp: Date.now(),
@@ -165,6 +176,60 @@ function main() {
       check: "seo-check-strict-chain-order",
       reason: "seo:check:strict command chain does not match expected order.",
       differences: seoStrictDiffs,
+    });
+  }
+
+  const invalidFormattedSteps = [...seoCheckChain, ...seoCheckStrictChain].filter(
+    (step) => !step.startsWith("npm run ")
+  );
+  if (invalidFormattedSteps.length > 0) {
+    failures.push({
+      check: "command-step-format",
+      reason: `All SEO chain steps must start with "npm run". Invalid steps: ${[
+        ...new Set(invalidFormattedSteps),
+      ]
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+
+  const duplicateSeoCheckSteps = getDuplicateSteps(seoCheckChain);
+  if (duplicateSeoCheckSteps.length > 0) {
+    failures.push({
+      check: "seo-check-duplicate-steps",
+      reason: `seo:check contains duplicate steps: ${duplicateSeoCheckSteps
+        .map((entry) => `${entry.step} (x${entry.count})`)
+        .join(", ")}`,
+    });
+  }
+
+  const duplicateSeoCheckStrictSteps = getDuplicateSteps(seoCheckStrictChain);
+  if (duplicateSeoCheckStrictSteps.length > 0) {
+    failures.push({
+      check: "seo-check-strict-duplicate-steps",
+      reason: `seo:check:strict contains duplicate steps: ${duplicateSeoCheckStrictSteps
+        .map((entry) => `${entry.step} (x${entry.count})`)
+        .join(", ")}`,
+    });
+  }
+
+  const nonTerminalDiffs = seoCheckChain
+    .slice(0, -1)
+    .map((step, index) => ({
+      index,
+      step,
+      strictStep: seoCheckStrictChain[index],
+    }))
+    .filter((entry) => entry.step !== entry.strictStep);
+  if (nonTerminalDiffs.length > 0) {
+    failures.push({
+      check: "seo-check-strict-parity",
+      reason: "seo:check and seo:check:strict should differ only in final validation step.",
+      differences: nonTerminalDiffs.slice(0, 5).map((entry) => ({
+        position: entry.index + 1,
+        seoCheck: entry.step,
+        seoCheckStrict: entry.strictStep,
+      })),
     });
   }
 

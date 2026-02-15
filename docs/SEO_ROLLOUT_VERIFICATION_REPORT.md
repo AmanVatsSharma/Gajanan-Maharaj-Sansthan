@@ -84,6 +84,7 @@ npm run seo:check:strict
 - `npm run verify:seo-chain` → pass
   - `seo:check` and `seo:check:strict` command chains match expected guarded order
   - all referenced npm scripts in both chains exist
+  - duplicate-step, step-format, and check/strict parity assertions passed
 - `npm run verify:ci-gate` → pass
   - workflow invariants present and strict gate run command exists exactly once
 - `npm run verify:docs-sync` → pass

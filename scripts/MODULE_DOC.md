@@ -86,6 +86,7 @@ flowchart TD
 - Manual seed verifier enforces seed-post quality and ensures seeds remain excluded from generated manifest ownership.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
+- Command-chain verifier also enforces no duplicate steps, `npm run` step formatting, and parity between check/strict chains (except final validation step).
 - CI-gate verifier fails fast when workflow no longer runs strict gate or required workflow invariants drift.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.
