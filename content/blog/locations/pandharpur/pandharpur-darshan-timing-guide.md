@@ -1,7 +1,7 @@
 ---
 title: "Pandharpur Darshan Timing Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur darshan timing guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-01"
+date: "2025-12-27"
 slug: "pandharpur-darshan-timing-guide"
 image: "/images/pandharpur.jpg"
 keywords:

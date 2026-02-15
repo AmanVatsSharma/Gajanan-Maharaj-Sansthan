@@ -54,5 +54,5 @@ flowchart TD
 ## Changelog
 - **2026-02-13**: Initial module creation with BlogCard and BlogContent components.
 - **2026-02-15**: Added recursive markdown loading, taxonomy helpers (tags/categories), related-post engine, tag/category SEO routes, blog listing JSON-LD schema, and seeded location-intent content cluster posts for Shegaon and Omkareshwar.
-- **2026-02-15**: Expanded SEO content space to 105 posts (100 generated + existing), added deterministic cluster generator script, and introduced strict markdown validation checks for frontmatter/internal-link quality.
+- **2026-02-15**: Expanded SEO content space to 110 posts (105 generated + existing), added deterministic cluster generator script, and introduced strict markdown validation checks for frontmatter/internal-link quality.
 - **2026-02-15**: Added static blog pagination route (`/blog/page/[page]`) and sitemap coverage for paginated archives to improve UX at 100+ post scale.

@@ -30,7 +30,7 @@ const LOCATION_CONFIGS = [
   {
     key: "shegaon",
     city: "Shegaon",
-    count: 25,
+    count: 30,
     directory: "locations/shegaon",
     image: "/images/shegaon-temple.jpg",
     locationPage: "/locations/shegaon-bhakt-niwas",

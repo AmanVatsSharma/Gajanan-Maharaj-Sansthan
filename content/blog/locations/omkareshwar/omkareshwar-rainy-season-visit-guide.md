@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Rainy Season Visit Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar rainy season visit guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-03"
+date: "2025-12-29"
 slug: "omkareshwar-rainy-season-visit-guide"
 image: "/images/omkareshwar.jpg"
 keywords:

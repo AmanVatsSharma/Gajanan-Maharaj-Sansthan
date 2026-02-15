@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Devotee FAQs | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar devotee faqs for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-14"
+date: "2026-01-09"
 slug: "omkareshwar-devotee-faqs"
 image: "/images/omkareshwar.jpg"
 keywords:

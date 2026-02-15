@@ -1,7 +1,7 @@
 ---
 title: "Trimbakeshwar Family Accommodation Checklist | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar family accommodation checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-15"
+date: "2025-12-10"
 slug: "trimbakeshwar-family-accommodation-checklist"
 image: "/images/trimbakeshwar.jpg"
 keywords:

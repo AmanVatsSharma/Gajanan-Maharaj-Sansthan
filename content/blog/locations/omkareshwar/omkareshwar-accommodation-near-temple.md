@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Accommodation Near Temple | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar accommodation near temple for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-10"
+date: "2026-01-05"
 slug: "omkareshwar-accommodation-near-temple"
 image: "/images/omkareshwar.jpg"
 keywords:

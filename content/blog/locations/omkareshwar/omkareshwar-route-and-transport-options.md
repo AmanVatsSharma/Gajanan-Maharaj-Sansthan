@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Route and Transport Options | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar route and transport options for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-17"
+date: "2026-01-12"
 slug: "omkareshwar-route-and-transport-options"
 image: "/images/omkareshwar.jpg"
 keywords:

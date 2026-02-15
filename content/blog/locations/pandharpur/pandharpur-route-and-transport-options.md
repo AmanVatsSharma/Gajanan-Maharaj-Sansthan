@@ -1,7 +1,7 @@
 ---
 title: "Pandharpur Route and Transport Options | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur route and transport options for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-28"
+date: "2025-12-23"
 slug: "pandharpur-route-and-transport-options"
 image: "/images/pandharpur.jpg"
 keywords:

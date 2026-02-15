@@ -1,7 +1,7 @@
 ---
 title: "Pandharpur One Day Itinerary | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur one day itinerary for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-27"
+date: "2025-12-22"
 slug: "pandharpur-one-day-itinerary"
 image: "/images/pandharpur.jpg"
 keywords:

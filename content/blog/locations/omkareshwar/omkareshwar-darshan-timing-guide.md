@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Darshan Timing Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar darshan timing guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-21"
+date: "2026-01-16"
 slug: "omkareshwar-darshan-timing-guide"
 image: "/images/omkareshwar.jpg"
 keywords:

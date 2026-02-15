@@ -5,8 +5,8 @@
 
 ## Outcome Snapshot
 
-- Publishable markdown blogs: **105**
-- Generated new blog posts: **100**
+- Publishable markdown blogs: **110**
+- Generated new blog posts: **105**
 - Canonical redirect hardening: **implemented**
 - Blog quality validator: **implemented**
 - Module docs and flowcharts: **updated**
@@ -31,12 +31,12 @@ npm run verify:seo-build
 ## Latest Validation Results
 
 - `npm run validate:blog`
-  - markdownFileCount: 105
+  - markdownFileCount: 110
   - totalErrors: 0
   - categoryCounts:
     - events: 5
     - guides: 17
-    - locations: 78
+    - locations: 83
     - spiritual: 5
 - `npm run lint` → pass
 - `npm run build` → pass

@@ -4,7 +4,7 @@ This directory contains markdown content used to generate `/blog` pages and SEO 
 
 ## Current cluster status
 
-- Total publishable posts: **105**
+- Total publishable posts: **110**
 - Cluster categories:
   - `locations` (Shegaon / Omkareshwar / Pandharpur / Trimbakeshwar intent pages)
   - `guides` (cross-location planning pages)

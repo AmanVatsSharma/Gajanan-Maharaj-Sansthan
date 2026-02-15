@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Best Time to Visit | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar best time to visit for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-18"
+date: "2026-01-13"
 slug: "omkareshwar-best-time-to-visit"
 image: "/images/omkareshwar.jpg"
 keywords:

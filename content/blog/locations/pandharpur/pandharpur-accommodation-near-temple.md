@@ -1,7 +1,7 @@
 ---
 title: "Pandharpur Accommodation Near Temple | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur accommodation near temple for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-21"
+date: "2025-12-16"
 slug: "pandharpur-accommodation-near-temple"
 image: "/images/pandharpur.jpg"
 keywords:

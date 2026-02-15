@@ -1,7 +1,7 @@
 ---
 title: "Trimbakeshwar Route and Transport Options | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar route and transport options for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-13"
+date: "2025-12-08"
 slug: "trimbakeshwar-route-and-transport-options"
 image: "/images/trimbakeshwar.jpg"
 keywords:

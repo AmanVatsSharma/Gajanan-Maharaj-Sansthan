@@ -1,7 +1,7 @@
 ---
 title: "Trimbakeshwar Group Yatra Planning | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar group yatra planning for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2025-12-07"
+date: "2025-12-02"
 slug: "trimbakeshwar-group-yatra-planning"
 image: "/images/trimbakeshwar.jpg"
 keywords:

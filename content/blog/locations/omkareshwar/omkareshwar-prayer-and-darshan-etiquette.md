@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Prayer and Darshan Etiquette | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar prayer and darshan etiquette for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-05"
+date: "2025-12-31"
 slug: "omkareshwar-prayer-and-darshan-etiquette"
 image: "/images/omkareshwar.jpg"
 keywords:

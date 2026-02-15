@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Family Safety and Comfort Tips | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar family safety and comfort tips for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-06"
+date: "2026-01-01"
 slug: "omkareshwar-family-safety-and-comfort-tips"
 image: "/images/omkareshwar.jpg"
 keywords:

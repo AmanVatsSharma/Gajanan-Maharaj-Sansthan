@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Packing Checklist | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar packing checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-04"
+date: "2025-12-30"
 slug: "omkareshwar-packing-checklist"
 image: "/images/omkareshwar.jpg"
 keywords:

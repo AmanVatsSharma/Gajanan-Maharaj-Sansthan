@@ -1,7 +1,7 @@
 ---
 title: "Omkareshwar Two Day Itinerary | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar two day itinerary for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
-date: "2026-01-15"
+date: "2026-01-10"
 slug: "omkareshwar-two-day-itinerary"
 image: "/images/omkareshwar.jpg"
 keywords:
