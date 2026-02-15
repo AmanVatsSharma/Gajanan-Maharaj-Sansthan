@@ -362,6 +362,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated cluster distribution consistency (`verify:generator`) for location/non-location target counts
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters
+- generated-post outbound `/blog/*` link minimum enforcement for crawl continuity
 - location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)
 - brand-variant keyword coverage across blog metadata (Shri/Shree/Sri + Sansthan/Sanstan)
 

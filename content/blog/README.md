@@ -96,6 +96,7 @@ Validation now includes cross-post integrity checks for:
 - internal `/blog/<slug>` and `/locations/<id>` link-target existence
 - generated cluster manifest integrity (`_ops/generated-seo-cluster-manifest.json`)
 - inbound blog-link graph health (orphan-post prevention with controlled exemptions)
+- generated-post outbound blog-link minimum enforcement (`>=3` links per generated post)
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
 - location cluster minimum ownership thresholds (`shegaon>=30`, `omkareshwar>=20`, `pandharpur>=15`, `trimbakeshwar>=15`)
 - keyword-fragment brand coverage for Shri/Shree/Sri + Sansthan/Sanstan variants

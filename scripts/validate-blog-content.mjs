@@ -42,6 +42,7 @@ const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
 ];
 const MAX_ALLOWED_ORPHAN_POSTS = 0;
 const EXEMPT_ORPHAN_SLUGS = new Set(["welcome-to-sansthan"]);
+const MIN_GENERATED_OUTBOUND_BLOG_LINKS = 3;
 
 /**
  * Crawl markdown files recursively.
@@ -113,6 +114,11 @@ function normalizeManifestEntry(entry) {
  * This ensures generator-managed posts stay deterministic and traceable.
  */
 function validateGeneratedManifest(failures) {
+  const manifestState = {
+    isAvailable: false,
+    generatedRelativePaths: new Set(),
+  };
+
   if (!fs.existsSync(GENERATED_MANIFEST_PATH)) {
     console.warn("blog-validation-warning", {
       timestamp: Date.now(),
@@ -122,7 +128,7 @@ function validateGeneratedManifest(failures) {
         "Generated cluster manifest not found. Run npm run generate:blogs to re-create deterministic manifest.",
       ],
     });
-    return;
+    return manifestState;
   }
 
   let parsedManifest;
@@ -137,7 +143,7 @@ function validateGeneratedManifest(failures) {
         error instanceof Error ? error.message : String(error)
       }`,
     });
-    return;
+    return manifestState;
   }
 
   const manifestFilePath = path.relative(BLOG_ROOT, GENERATED_MANIFEST_PATH);
@@ -152,7 +158,7 @@ function validateGeneratedManifest(failures) {
       check: "manifest-generated-files-array",
       reason: "Manifest is missing generatedFiles[] array.",
     });
-    return;
+    return manifestState;
   }
 
   const normalizedEntries = generatedFilesRaw.map((entry) => normalizeManifestEntry(entry));
@@ -171,6 +177,8 @@ function validateGeneratedManifest(failures) {
   }
 
   const uniqueEntries = [...new Set(normalizedEntries)];
+  manifestState.isAvailable = true;
+  manifestState.generatedRelativePaths = new Set(uniqueEntries);
   if (uniqueEntries.length !== normalizedEntries.length) {
     failures.push({
       routeId: "generated-manifest",
@@ -241,6 +249,8 @@ function validateGeneratedManifest(failures) {
     generatedFileCount: uniqueEntries.length,
     missingFileCount: missingFiles.length,
   });
+
+  return manifestState;
 }
 
 /**
@@ -451,7 +461,7 @@ function detectBrandVariantCoverage(results) {
   return coverage;
 }
 
-function runCrossPostChecks(results, failures, warnings) {
+function runCrossPostChecks(results, failures, warnings, manifestState) {
   const knownSlugs = new Set(results.map((result) => result.slug).filter(Boolean));
   const knownLocationPaths = new Set(
     [...KNOWN_LOCATION_IDS].map((locationId) => `/locations/${locationId}`)
@@ -461,6 +471,8 @@ function runCrossPostChecks(results, failures, warnings) {
   );
 
   for (const result of results) {
+    const outboundBlogTargets = new Set();
+
     for (const relatedSlug of result.relatedSlugs || []) {
       if (!knownSlugs.has(relatedSlug)) {
         failures.push({
@@ -498,6 +510,7 @@ function runCrossPostChecks(results, failures, warnings) {
           result.slug &&
           blogSlug !== result.slug
         ) {
+          outboundBlogTargets.add(blogSlug);
           inboundBlogLinkCount.set(
             blogSlug,
             (inboundBlogLinkCount.get(blogSlug) || 0) + 1
@@ -515,6 +528,19 @@ function runCrossPostChecks(results, failures, warnings) {
             reason: `Internal location link "${internalLink}" points to unknown location path`,
           });
         }
+      }
+    }
+
+    if (manifestState?.isAvailable) {
+      const normalizedFilePath = result.relativeFilePath.replace(/\\/g, "/");
+      const isGeneratedPost = manifestState.generatedRelativePaths.has(normalizedFilePath);
+      if (isGeneratedPost && outboundBlogTargets.size < MIN_GENERATED_OUTBOUND_BLOG_LINKS) {
+        failures.push({
+          routeId: result.slug || result.relativeFilePath,
+          filePath: result.relativeFilePath,
+          check: "generated-outbound-blog-links",
+          reason: `Generated post has only ${outboundBlogTargets.size} outbound blog links; minimum required is ${MIN_GENERATED_OUTBOUND_BLOG_LINKS}.`,
+        });
       }
     }
   }
@@ -588,6 +614,7 @@ function runCrossPostChecks(results, failures, warnings) {
     orphanPostCount: orphanPostSlugs.length,
     exemptOrphanSlugs: [...EXEMPT_ORPHAN_SLUGS],
     maxAllowedOrphanPosts: MAX_ALLOWED_ORPHAN_POSTS,
+    minGeneratedOutboundBlogLinks: MIN_GENERATED_OUTBOUND_BLOG_LINKS,
   });
 
   if (orphanPostSlugs.length > MAX_ALLOWED_ORPHAN_POSTS) {
@@ -659,11 +686,12 @@ function main() {
   const results = markdownFiles.map((filePath) => validatePost(filePath, slugRegistry));
   const crossPostFailures = [];
   const crossPostWarningsPayload = [];
-  validateGeneratedManifest(crossPostFailures);
+  const manifestState = validateGeneratedManifest(crossPostFailures);
   const crossPostWarnings = runCrossPostChecks(
     results,
     crossPostFailures,
-    crossPostWarningsPayload
+    crossPostWarningsPayload,
+    manifestState
   );
 
   for (const result of results) {

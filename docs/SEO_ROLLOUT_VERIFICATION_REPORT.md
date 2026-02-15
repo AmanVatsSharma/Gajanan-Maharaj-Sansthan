@@ -53,6 +53,7 @@ npm run verify:seo-build
     - `sanstan`: 105
   - link graph health:
     - orphanPostCount: 0 (with explicit exemption: `welcome-to-sansthan`)
+    - generated outbound blog-link minimum: 3 (enforced)
 - `npm run lint` → pass
 - `npm run build` → pass
   - blog dynamic paths include 100+ additional slugs
@@ -84,6 +85,7 @@ npm run verify:seo-build
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Link-graph checks enforce inbound internal linking coverage so generated clusters are crawl-connected.
+  - Generated-post outbound link minimum checks enforce at least three `/blog/*` links per generated post.
   - Docs-sync verifier guards inventory/command drift in operational SEO documentation.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).
