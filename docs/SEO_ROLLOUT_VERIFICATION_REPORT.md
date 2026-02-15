@@ -52,6 +52,7 @@ npm run verify:seo-build
    - Deterministic generator supports repeatable large-scale cluster publishing.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Topic-specific primary keyword generation reduces cannibalization warnings in validator output.
+  - Internal markdown links now validate `/blog/<slug>` and `/locations/<id>` target existence.
 
 4. **Documentation consistency**
    - Blog, SEO, locations, and booking module docs synchronized.

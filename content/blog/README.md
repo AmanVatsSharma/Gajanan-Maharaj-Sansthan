@@ -87,6 +87,7 @@ npm run validate:blog:strict
 Validation now includes cross-post integrity checks for:
 - minimum publishable post count (`>= 100`)
 - `relatedSlugs` existence
+- internal `/blog/<slug>` and `/locations/<id>` link-target existence
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
 - duplicate primary keyword cannibalization warnings
 

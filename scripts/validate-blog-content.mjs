@@ -195,6 +195,7 @@ function validatePost(filePath, slugRegistry) {
     keywords,
     locationIds,
     relatedSlugs,
+    internalLinks,
     errors,
     warnings,
   };
@@ -242,6 +243,9 @@ function detectLocationClusterCoverage(results) {
 
 function runCrossPostChecks(results, failures, warnings) {
   const knownSlugs = new Set(results.map((result) => result.slug).filter(Boolean));
+  const knownLocationPaths = new Set(
+    [...KNOWN_LOCATION_IDS].map((locationId) => `/locations/${locationId}`)
+  );
 
   for (const result of results) {
     for (const relatedSlug of result.relatedSlugs || []) {
@@ -252,6 +256,40 @@ function runCrossPostChecks(results, failures, warnings) {
           check: "related-slug-exists",
           reason: `relatedSlug "${relatedSlug}" does not exist in content/blog`,
         });
+      }
+    }
+
+    for (const internalLink of result.internalLinks || []) {
+      if (internalLink.startsWith("/blog/")) {
+        const blogSlug = internalLink.replace(/^\/blog\//, "").split("/")[0];
+        if (!blogSlug) {
+          continue;
+        }
+
+        // Ignore non-post blog route namespaces.
+        const isNamespaceLink = ["tag", "category", "page"].some(
+          (namespace) => blogSlug === namespace
+        );
+        if (!isNamespaceLink && !knownSlugs.has(blogSlug)) {
+          failures.push({
+            routeId: result.slug || result.relativeFilePath,
+            filePath: result.relativeFilePath,
+            check: "blog-link-target-exists",
+            reason: `Internal blog link "${internalLink}" points to unknown slug "${blogSlug}"`,
+          });
+        }
+      }
+
+      if (internalLink.startsWith("/locations/")) {
+        const locationPath = internalLink.split(/[?#]/)[0];
+        if (!knownLocationPaths.has(locationPath)) {
+          failures.push({
+            routeId: result.slug || result.relativeFilePath,
+            filePath: result.relativeFilePath,
+            check: "location-link-target-exists",
+            reason: `Internal location link "${internalLink}" points to unknown location path`,
+          });
+        }
       }
     }
   }
