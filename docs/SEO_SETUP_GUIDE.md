@@ -311,6 +311,9 @@ npm run generate:blogs
 
 # Validate slug/frontmatter/internal-link quality
 npm run validate:blog
+
+# Verify canonical/meta/schema in prerendered HTML (run after build)
+npm run verify:seo-build
 ```
 
 ### Validation rules enforced

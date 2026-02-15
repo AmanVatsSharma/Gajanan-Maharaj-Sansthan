@@ -36,6 +36,7 @@ flowchart TD
 
 - Blog ingestion warns on metadata quality issues through `blog-seo-warning` logs.
 - Invalid canonical URL environment values emit `seo-config-warning` at config load time.
+- Build-level SEO smoke checks are available via `npm run verify:seo-build` (checks canonical/meta/schema presence on key prerendered routes).
 
 ## Changelog
 
