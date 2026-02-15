@@ -18,7 +18,7 @@ This directory contains markdown content used to generate `/blog` pages and SEO 
 - `content/blog/spiritual/` - teachings, devotion, and spiritual context
 - `content/blog/events/` - festival and event updates
 - `content/blog/_templates/` - authoring templates (ignored by the blog loader)
-- `content/blog/_ops/` - SEO operating docs like keyword ownership maps (ignored by the blog loader)
+- `content/blog/_ops/` - SEO operating docs + generator manifest (ignored by the blog loader)
 
 ## Required frontmatter
 
@@ -94,6 +94,7 @@ Validation now includes cross-post integrity checks for:
 - duplicate primary keyword cannibalization warnings
 
 Generator note: `npm run generate:blogs` now assigns topic-specific primary keywords per post so cross-post cannibalization warnings remain near zero.
+Generator determinism note: generation now tracks managed files in `content/blog/_ops/generated-seo-cluster-manifest.json` and cleans stale generated files on the next run before recreating the cluster.
 
 ## Content pipeline flowchart
 

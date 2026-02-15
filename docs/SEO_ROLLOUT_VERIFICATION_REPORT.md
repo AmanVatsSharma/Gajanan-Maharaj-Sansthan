@@ -85,6 +85,7 @@ npm run verify:seo-build
   - Blog routes: CollectionPage / BlogPosting + BreadcrumbList
   - Paginated archive route: `/blog/page/2` canonical/meta/schema validation
 - `verify:seo-build` also validates required keyword fragments in metadata for critical pages (brand variants + location-intent tokens).
+- Home-route fragment assertions include both `sansthan` and `sanstan` spellings to protect brand-variant recall.
 
 ## Notes
 

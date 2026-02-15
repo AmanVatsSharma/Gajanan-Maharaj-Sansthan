@@ -15,6 +15,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
+const GENERATOR_MANIFEST_PATH = path.join(
+  BLOG_ROOT,
+  "_ops/generated-seo-cluster-manifest.json"
+);
 const AUTHOR_NAME = "Sansthan";
 const BASE_DATE = new Date("2026-02-15T00:00:00Z");
 
@@ -172,6 +176,98 @@ function formatDateByOffset(offset) {
 
 function ensureDirectory(directoryPath) {
   fs.mkdirSync(directoryPath, { recursive: true });
+}
+
+function isSafeBlogChildPath(candidatePath) {
+  const resolvedRoot = path.resolve(BLOG_ROOT);
+  const resolvedPath = path.resolve(candidatePath);
+  return resolvedPath === resolvedRoot || resolvedPath.startsWith(`${resolvedRoot}${path.sep}`);
+}
+
+/**
+ * Read the previous generated-file manifest.
+ * Keeps generator deterministic across count changes by cleaning stale files before writing.
+ */
+function readPreviousManifest() {
+  if (!fs.existsSync(GENERATOR_MANIFEST_PATH)) {
+    return [];
+  }
+
+  try {
+    const raw = fs.readFileSync(GENERATOR_MANIFEST_PATH, "utf-8");
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed?.generatedFiles)) {
+      return [];
+    }
+
+    return parsed.generatedFiles.filter((entry) => typeof entry === "string");
+  } catch (error) {
+    console.warn("seo-blog-generator-warning", {
+      timestamp: Date.now(),
+      message: "Unable to parse previous generator manifest. Continuing with empty cleanup set.",
+      manifestPath: GENERATOR_MANIFEST_PATH,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return [];
+  }
+}
+
+function cleanupPreviouslyGeneratedFiles(previousGeneratedFiles) {
+  if (previousGeneratedFiles.length === 0) {
+    console.info("seo-blog-generator-cleanup", {
+      timestamp: Date.now(),
+      removedFileCount: 0,
+      message: "No prior generated files to clean.",
+    });
+    return;
+  }
+
+  let removedFileCount = 0;
+  for (const relativePath of previousGeneratedFiles) {
+    const absolutePath = path.join(BLOG_ROOT, relativePath);
+    if (!isSafeBlogChildPath(absolutePath)) {
+      console.warn("seo-blog-generator-warning", {
+        timestamp: Date.now(),
+        message: "Skipped cleanup for unsafe path from manifest.",
+        relativePath,
+      });
+      continue;
+    }
+
+    if (fs.existsSync(absolutePath)) {
+      fs.rmSync(absolutePath);
+      removedFileCount += 1;
+    }
+  }
+
+  console.info("seo-blog-generator-cleanup", {
+    timestamp: Date.now(),
+    removedFileCount,
+    previousManifestCount: previousGeneratedFiles.length,
+  });
+}
+
+function writeGenerationManifest(generatedFiles) {
+  ensureDirectory(path.dirname(GENERATOR_MANIFEST_PATH));
+  const payload = {
+    timestamp: Date.now(),
+    generatedFileCount: generatedFiles.length,
+    generatedFiles: generatedFiles.sort(),
+  };
+  fs.writeFileSync(GENERATOR_MANIFEST_PATH, `${JSON.stringify(payload, null, 2)}\n`, "utf-8");
+}
+
+/**
+ * Fail fast if generator config drifts from available topic variants.
+ */
+function assertGeneratorConfiguration() {
+  for (const locationConfig of LOCATION_CONFIGS) {
+    if (locationConfig.count > LOCATION_TOPIC_VARIANTS.length) {
+      throw new Error(
+        `Location "${locationConfig.key}" count (${locationConfig.count}) exceeds topic variants (${LOCATION_TOPIC_VARIANTS.length}).`
+      );
+    }
+  }
 }
 
 function toTitleCase(value) {
@@ -530,10 +626,14 @@ function generateEventPosts() {
 
 function main() {
   ensureDirectory(BLOG_ROOT);
+  assertGeneratorConfiguration();
   console.info("seo-blog-generator-start", {
     timestamp: Date.now(),
     blogRoot: BLOG_ROOT,
   });
+
+  const previousGeneratedFiles = readPreviousManifest();
+  cleanupPreviouslyGeneratedFiles(previousGeneratedFiles);
 
   const generatedLocationPosts = generateLocationClusterPosts();
   const generatedGuidePosts = generateCrossLocationGuides();
@@ -545,6 +645,13 @@ function main() {
     generatedGuidePosts.length +
     generatedSpiritualPosts.length +
     generatedEventPosts.length;
+  const generatedFiles = [
+    ...generatedLocationPosts,
+    ...generatedGuidePosts,
+    ...generatedSpiritualPosts,
+    ...generatedEventPosts,
+  ];
+  writeGenerationManifest(generatedFiles);
 
   console.info("seo-blog-generator-complete", {
     timestamp: Date.now(),

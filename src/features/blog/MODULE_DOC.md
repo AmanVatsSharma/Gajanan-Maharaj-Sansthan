@@ -37,6 +37,9 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
   - Required metadata fields
   - Required internal linking structure
   - Known location ID references
+- Generator cleanup safety:
+  - Tracks generated files in `content/blog/_ops/generated-seo-cluster-manifest.json`
+  - Removes stale generated files on subsequent runs to keep cluster output deterministic when counts change
 
 ## Blog Rendering Flow
 

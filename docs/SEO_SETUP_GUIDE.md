@@ -340,6 +340,8 @@ npm run verify:pagination
 npm run verify:rss
 ```
 
+`generate:blogs` now uses a managed-file manifest at `content/blog/_ops/generated-seo-cluster-manifest.json` to remove stale generated markdown files before recreating the current cluster set.
+
 `verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.
 
 For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo:check:strict` on pushes and pull requests.

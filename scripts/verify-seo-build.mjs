@@ -22,6 +22,7 @@ const REQUIRED_ROUTES = [
       "shri gajanan maharaj sansthan",
       "shree gajanan maharaj sansthan",
       "sri gajanan maharaj sansthan",
+      "shri gajanan maharaj sanstan",
     ],
   },
   {
