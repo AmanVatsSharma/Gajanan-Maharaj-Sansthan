@@ -1,0 +1,796 @@
+/**
+ * File: scripts/generate-seo-blog-cluster.mjs
+ * Module: scripts
+ * Purpose: Generate large-scale SEO markdown cluster content for Sansthan locations.
+ * Notes:
+ * - Creates 100 deterministic markdown blog posts with rich frontmatter.
+ * - Every generated post includes required internal links:
+ *   - /locations/*
+ *   - /booking or /contact
+ *   - /blog/*
+ * - Designed for repeatable runs without duplicate slugs.
+ */
+
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
+import {
+  CLUSTER_CONFIG_FINGERPRINT,
+  EXPECTED_GENERATED_TOTAL,
+  LOCATION_CLUSTER_TARGETS,
+  NON_LOCATION_CLUSTER_TARGETS,
+} from "./seo-cluster-config.mjs";
+
+const BLOG_ROOT = path.resolve(
+  process.env.SEO_BLOG_GENERATOR_ROOT || path.join(process.cwd(), "content/blog")
+);
+const GENERATOR_MANIFEST_PATH = path.join(
+  BLOG_ROOT,
+  "_ops/generated-seo-cluster-manifest.json"
+);
+const AUTHOR_NAME = "Sansthan";
+const BASE_DATE = new Date("2026-02-15T00:00:00Z");
+
+const CORE_RELATED_SLUGS = [
+  "shegaon-travel-guide",
+  "shegaon-accommodation-guide",
+  "nearby-places-from-shegaon",
+  "omkareshwar-darshan-timings",
+  "welcome-to-sansthan",
+];
+
+const CORE_RELATED_LINK_LABELS = {
+  "shegaon-travel-guide": "Complete Travel Guide to Shegaon",
+  "shegaon-accommodation-guide": "Shegaon Accommodation Guide",
+  "nearby-places-from-shegaon": "Nearby Places from Shegaon",
+  "omkareshwar-darshan-timings": "Omkareshwar Darshan Timings Guide",
+  "welcome-to-sansthan": "Welcome to Sansthan",
+};
+
+const LOCATION_CONFIGS = [
+  {
+    key: "shegaon",
+    city: "Shegaon",
+    count: LOCATION_CLUSTER_TARGETS.shegaon,
+    directory: "locations/shegaon",
+    image: "/images/shegaon-temple.jpg",
+    locationPage: "/locations/shegaon-bhakt-niwas",
+    locationIds: ["shegaon-bhakt-niwas", "shegaon-anand-vihar", "shegaon-visawa"],
+    keywordSeed: [
+      "shri gajanan maharaj sansthan shegaon",
+      "shri gajanan maharaj sanstan shegaon",
+      "shree gajanan maharaj sansthan shegaon",
+      "sri gajanan maharaj sansthan shegaon",
+      "shegaon temple accommodation",
+      "shegaon darshan planning",
+    ],
+  },
+  {
+    key: "omkareshwar",
+    city: "Omkareshwar",
+    count: LOCATION_CLUSTER_TARGETS.omkareshwar,
+    directory: "locations/omkareshwar",
+    image: "/images/omkareshwar.jpg",
+    locationPage: "/locations/omkareshwar",
+    locationIds: ["omkareshwar"],
+    keywordSeed: [
+      "shri gajanan maharaj sansthan omkareshwar",
+      "shri gajanan maharaj sanstan omkareshwar",
+      "shree gajanan maharaj sansthan omkareshwar",
+      "sri gajanan maharaj sansthan omkareshwar",
+      "omkareshwar temple accommodation",
+      "omkareshwar darshan timings",
+    ],
+  },
+  {
+    key: "pandharpur",
+    city: "Pandharpur",
+    count: LOCATION_CLUSTER_TARGETS.pandharpur,
+    directory: "locations/pandharpur",
+    image: "/images/pandharpur.jpg",
+    locationPage: "/locations/pandharpur-math",
+    locationIds: ["pandharpur-math"],
+    keywordSeed: [
+      "shri gajanan maharaj sansthan pandharpur",
+      "shri gajanan maharaj sanstan pandharpur",
+      "shree gajanan maharaj sansthan pandharpur",
+      "sri gajanan maharaj sansthan pandharpur",
+      "pandharpur temple stay",
+      "pandharpur accommodation guide",
+    ],
+  },
+  {
+    key: "trimbakeshwar",
+    city: "Trimbakeshwar",
+    count: LOCATION_CLUSTER_TARGETS.trimbakeshwar,
+    directory: "locations/trimbakeshwar",
+    image: "/images/trimbakeshwar.jpg",
+    locationPage: "/locations/trimbakeshwar",
+    locationIds: ["trimbakeshwar"],
+    keywordSeed: [
+      "shri gajanan maharaj sansthan trimbakeshwar",
+      "shri gajanan maharaj sanstan trimbakeshwar",
+      "shree gajanan maharaj sansthan trimbakeshwar",
+      "sri gajanan maharaj sansthan trimbakeshwar",
+      "trimbakeshwar accommodation",
+      "trimbakeshwar darshan planning",
+    ],
+  },
+];
+
+const LOCATION_TOPIC_VARIANTS = [
+  { suffix: "darshan-timing-guide", title: "Darshan Timing Guide", intent: "darshan" },
+  { suffix: "weekend-planning-guide", title: "Weekend Planning Guide", intent: "travel-guide" },
+  { suffix: "family-accommodation-checklist", title: "Family Accommodation Checklist", intent: "accommodation" },
+  { suffix: "best-time-to-visit", title: "Best Time to Visit", intent: "seasonal-guide" },
+  { suffix: "route-and-transport-options", title: "Route and Transport Options", intent: "transport" },
+  { suffix: "one-day-itinerary", title: "One Day Itinerary", intent: "itinerary" },
+  { suffix: "two-day-itinerary", title: "Two Day Itinerary", intent: "itinerary" },
+  { suffix: "devotee-faqs", title: "Devotee FAQs", intent: "faq" },
+  { suffix: "first-time-visitor-guide", title: "First Time Visitor Guide", intent: "beginner-guide" },
+  { suffix: "senior-citizen-travel-tips", title: "Senior Citizen Travel Tips", intent: "family-travel" },
+  { suffix: "group-yatra-planning", title: "Group Yatra Planning", intent: "group-travel" },
+  { suffix: "accommodation-near-temple", title: "Accommodation Near Temple", intent: "accommodation" },
+  { suffix: "morning-darshan-planning", title: "Morning Darshan Planning", intent: "darshan" },
+  { suffix: "festival-season-guide", title: "Festival Season Guide", intent: "festival-planning" },
+  { suffix: "budget-pilgrimage-guide", title: "Budget Pilgrimage Guide", intent: "budget-guide" },
+  { suffix: "family-safety-and-comfort-tips", title: "Family Safety and Comfort Tips", intent: "family-travel" },
+  { suffix: "prayer-and-darshan-etiquette", title: "Prayer and Darshan Etiquette", intent: "devotional" },
+  { suffix: "packing-checklist", title: "Packing Checklist", intent: "travel-tips" },
+  { suffix: "rainy-season-visit-guide", title: "Rainy Season Visit Guide", intent: "seasonal-guide" },
+  { suffix: "summer-visit-guide", title: "Summer Visit Guide", intent: "seasonal-guide" },
+  { suffix: "winter-visit-guide", title: "Winter Visit Guide", intent: "seasonal-guide" },
+  { suffix: "temple-area-food-and-facilities", title: "Temple Area Food and Facilities", intent: "facilities" },
+  { suffix: "local-travel-checklist", title: "Local Travel Checklist", intent: "travel-tips" },
+  { suffix: "darshan-queue-time-optimization", title: "Darshan Queue Time Optimization", intent: "darshan" },
+  { suffix: "photo-and-memory-planning", title: "Photo and Memory Planning", intent: "family-travel" },
+  { suffix: "festival-crowd-management-guide", title: "Festival Crowd Management Guide", intent: "festival-planning" },
+  { suffix: "evening-darshan-planning", title: "Evening Darshan Planning", intent: "darshan" },
+  { suffix: "temple-circuit-extension-guide", title: "Temple Circuit Extension Guide", intent: "pilgrimage-circuit" },
+  { suffix: "kids-friendly-yatra-guide", title: "Kids Friendly Yatra Guide", intent: "family-travel" },
+  { suffix: "contact-and-support-guide", title: "Contact and Support Guide", intent: "contact" },
+];
+
+const CROSS_LOCATION_GUIDE_VARIANTS = [
+  "multi-location-pilgrimage-planning-guide",
+  "shegaon-to-omkareshwar-route-guide",
+  "shegaon-to-pandharpur-route-guide",
+  "shegaon-to-trimbakeshwar-route-guide",
+  "omkareshwar-to-trimbakeshwar-pilgrimage-checklist",
+  "pandharpur-and-shegaon-family-yatra-plan",
+  "jyotirlinga-and-sansthan-combined-itinerary",
+  "temple-accommodation-comparison-guide",
+  "week-long-devotional-circuit-planner",
+  "pilgrimage-budget-planning-for-families",
+  "festival-season-multi-city-travel-guide",
+  "devotee-document-checklist-for-all-locations",
+  "phone-and-whatsapp-booking-best-practices",
+  "sansthan-location-selection-guide",
+  "month-wise-pilgrimage-planning-calendar",
+];
+
+const SPIRITUAL_POST_VARIANTS = [
+  "teachings-of-shri-gajanan-maharaj-for-modern-families",
+  "daily-devotional-routine-for-pilgrimage-travelers",
+  "importance-of-seva-in-sansthan-tradition",
+  "how-devotees-can-prepare-mindfully-for-darshan",
+  "spiritual-benefits-of-disciplined-yatra-planning",
+];
+
+const EVENT_POST_VARIANTS = [
+  "ram-navami-devotee-planning-guide",
+  "rishi-panchami-visit-preparation-guide",
+  "major-utsav-crowd-planning-checklist",
+  "festival-darshan-timing-awareness-guide",
+  "community-seva-event-participation-guide",
+];
+
+function formatDateByOffset(offset) {
+  const value = new Date(BASE_DATE);
+  value.setDate(value.getDate() - offset);
+  return value.toISOString().slice(0, 10);
+}
+
+function ensureDirectory(directoryPath) {
+  fs.mkdirSync(directoryPath, { recursive: true });
+}
+
+function isSafeBlogChildPath(candidatePath) {
+  const resolvedRoot = path.resolve(BLOG_ROOT);
+  const resolvedPath = path.resolve(candidatePath);
+  return resolvedPath === resolvedRoot || resolvedPath.startsWith(`${resolvedRoot}${path.sep}`);
+}
+
+/**
+ * Read the previous generated-file manifest.
+ * Keeps generator deterministic across count changes by cleaning stale files before writing.
+ */
+function readPreviousManifest() {
+  if (!fs.existsSync(GENERATOR_MANIFEST_PATH)) {
+    return [];
+  }
+
+  try {
+    const raw = fs.readFileSync(GENERATOR_MANIFEST_PATH, "utf-8");
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed?.generatedFiles)) {
+      return [];
+    }
+
+    return parsed.generatedFiles.filter((entry) => typeof entry === "string");
+  } catch (error) {
+    console.warn("seo-blog-generator-warning", {
+      timestamp: Date.now(),
+      message: "Unable to parse previous generator manifest. Continuing with empty cleanup set.",
+      manifestPath: GENERATOR_MANIFEST_PATH,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return [];
+  }
+}
+
+function cleanupPreviouslyGeneratedFiles(previousGeneratedFiles) {
+  if (previousGeneratedFiles.length === 0) {
+    console.info("seo-blog-generator-cleanup", {
+      timestamp: Date.now(),
+      removedFileCount: 0,
+      message: "No prior generated files to clean.",
+    });
+    return;
+  }
+
+  let removedFileCount = 0;
+  for (const relativePath of previousGeneratedFiles) {
+    const absolutePath = path.join(BLOG_ROOT, relativePath);
+    if (!isSafeBlogChildPath(absolutePath)) {
+      console.warn("seo-blog-generator-warning", {
+        timestamp: Date.now(),
+        message: "Skipped cleanup for unsafe path from manifest.",
+        relativePath,
+      });
+      continue;
+    }
+
+    if (fs.existsSync(absolutePath)) {
+      fs.rmSync(absolutePath);
+      removedFileCount += 1;
+    }
+  }
+
+  console.info("seo-blog-generator-cleanup", {
+    timestamp: Date.now(),
+    removedFileCount,
+    previousManifestCount: previousGeneratedFiles.length,
+  });
+}
+
+function writeGenerationManifest(generatedFiles) {
+  ensureDirectory(path.dirname(GENERATOR_MANIFEST_PATH));
+  const normalizedGeneratedFiles = generatedFiles
+    .map((entry) => entry.replace(/\\/g, "/"))
+    .sort();
+  const generatedFileChecksums = Object.fromEntries(
+    normalizedGeneratedFiles.map((relativePath) => {
+      const absolutePath = path.join(BLOG_ROOT, relativePath);
+      const fileContent = fs.readFileSync(absolutePath, "utf-8");
+      const checksum = crypto.createHash("sha256").update(fileContent).digest("hex");
+      return [relativePath, checksum];
+    })
+  );
+
+  const payload = {
+    manifestVersion: 2,
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
+    generatedFileCount: normalizedGeneratedFiles.length,
+    generatedFiles: normalizedGeneratedFiles,
+    generatedFileChecksums,
+  };
+  fs.writeFileSync(GENERATOR_MANIFEST_PATH, `${JSON.stringify(payload, null, 2)}\n`, "utf-8");
+}
+
+/**
+ * Fail fast if generator config drifts from available topic variants.
+ */
+function assertGeneratorConfiguration() {
+  for (const locationConfig of LOCATION_CONFIGS) {
+    if (locationConfig.count > LOCATION_TOPIC_VARIANTS.length) {
+      throw new Error(
+        `Location "${locationConfig.key}" count (${locationConfig.count}) exceeds topic variants (${LOCATION_TOPIC_VARIANTS.length}).`
+      );
+    }
+
+    const expectedClusterCount = LOCATION_CLUSTER_TARGETS[locationConfig.key];
+    if (locationConfig.count !== expectedClusterCount) {
+      throw new Error(
+        `Location "${locationConfig.key}" count (${locationConfig.count}) does not match shared cluster target (${expectedClusterCount}).`
+      );
+    }
+  }
+
+  if (CROSS_LOCATION_GUIDE_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.guides) {
+    throw new Error(
+      `Guide cluster size mismatch. Found ${CROSS_LOCATION_GUIDE_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.guides}.`
+    );
+  }
+
+  if (SPIRITUAL_POST_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.spiritual) {
+    throw new Error(
+      `Spiritual cluster size mismatch. Found ${SPIRITUAL_POST_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.spiritual}.`
+    );
+  }
+
+  if (EVENT_POST_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.events) {
+    throw new Error(
+      `Event cluster size mismatch. Found ${EVENT_POST_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.events}.`
+    );
+  }
+}
+
+function toTitleCase(value) {
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => `${part[0]?.toUpperCase() || ""}${part.slice(1)}`)
+    .join(" ");
+}
+
+function toSentenceKeyword(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function dedupeSlugs(slugs) {
+  return [...new Set(slugs.filter(Boolean))];
+}
+
+/**
+ * Create deterministic previous/next links for internal-link graph continuity.
+ */
+function getCircularNeighborSlugs(slugs, index) {
+  if (slugs.length <= 1) {
+    return [];
+  }
+
+  const previousSlug = slugs[(index - 1 + slugs.length) % slugs.length];
+  const nextSlug = slugs[(index + 1) % slugs.length];
+  return dedupeSlugs([previousSlug, nextSlug]);
+}
+
+function getBlogLinkLabel(slug) {
+  return CORE_RELATED_LINK_LABELS[slug] || toTitleCase(slug);
+}
+
+function buildFrontmatter({
+  title,
+  description,
+  date,
+  slug,
+  image,
+  keywords,
+  tags,
+  category,
+  locationIds,
+  relatedSlugs,
+}) {
+  const lines = [
+    "---",
+    `title: "${title}"`,
+    `description: "${description}"`,
+    `date: "${date}"`,
+    `slug: "${slug}"`,
+    `image: "${image}"`,
+    "keywords:",
+    ...keywords.map((keyword) => `  - "${keyword}"`),
+    `author: "${AUTHOR_NAME}"`,
+    "tags:",
+    ...tags.map((tag) => `  - "${tag}"`),
+    `category: "${category}"`,
+    "locationIds:",
+    ...locationIds.map((locationId) => `  - "${locationId}"`),
+    "relatedSlugs:",
+    ...relatedSlugs.map((relatedSlug) => `  - "${relatedSlug}"`),
+    "---",
+    "",
+  ];
+
+  return lines.join("\n");
+}
+
+function buildLocationPostContent({
+  city,
+  locationPage,
+  topicTitle,
+  relatedBlogLinks,
+}) {
+  return `# ${city} ${topicTitle}
+
+${city} remains one of the most searched pilgrimage destinations by devotees looking for trusted temple guidance, darshan clarity, and Sansthan accommodation support. This guide on **${city} ${topicTitle.toLowerCase()}** is written for families who want a practical and peaceful yatra experience.
+
+## Why this ${city} guide matters for devotees
+
+When devotees search for terms like “Shri Gajanan Maharaj Sansthan ${city}”, “Shree Gajanan Maharaj Sansthan ${city}”, or “${city} temple accommodation”, they usually need clear, reliable, and actionable guidance. This article consolidates travel intent, accommodation intent, and darshan intent in one place.
+
+## Accommodation and booking support
+
+- Explore official location details: [${city} Sansthan Accommodation](${locationPage})
+- Start your request flow: [Accommodation Booking Request](/booking)
+- Need direct office help? [Contact Sansthan Team](/contact)
+
+## Darshan and visit planning checklist
+
+1. Keep a flexible darshan window to handle day-wise crowd variation.
+2. Carry valid ID documents for all family members.
+3. Keep one active phone number for booking follow-up.
+4. Plan local movement in advance for senior citizens and children.
+5. Use official Sansthan communication channels for confirmations.
+
+## Related guides for deeper planning
+
+${relatedBlogLinks
+  .map((entry) => `- [${entry.label}](/blog/${entry.slug})`)
+  .join("\n")}
+
+## Practical conclusion for ${city} devotees
+
+This ${city} planning resource is built to make your pilgrimage smoother, more spiritual, and better organized. For best outcomes, complete your route planning early, confirm accommodation through official support, and keep your itinerary realistic for all age groups.
+`;
+}
+
+function buildCrossLocationGuideContent({ title, relatedBlogLinks }) {
+  return `# ${title}
+
+This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
+
+## Core planning actions
+
+1. Decide the primary darshan priority for your family.
+2. Assign travel days with enough rest intervals.
+3. Keep accommodation communication centralized.
+4. Prepare emergency contacts and health essentials.
+
+## Official pages to use during planning
+
+- [All Sansthan Locations](/locations)
+- [Shegaon Bhakt Niwas](/locations/shegaon-bhakt-niwas)
+- [Omkareshwar Accommodation](/locations/omkareshwar)
+- [Pandharpur Sansthan Location](/locations/pandharpur-math)
+- [Trimbakeshwar Sansthan Location](/locations/trimbakeshwar)
+- [Booking Request Page](/booking)
+- [Contact Sansthan Support](/contact)
+
+## Related reading
+
+${relatedBlogLinks
+  .map((entry) => `- [${entry.label}](/blog/${entry.slug})`)
+  .join("\n")}
+
+## Final note
+
+For the best pilgrimage experience, keep your plan devotional but practical: focus on darshan flow, family comfort, and official communication clarity at every stage.
+`;
+}
+
+function buildSpiritualOrEventContent({ title, focusKeyword, category, relatedBlogLinks }) {
+  const headingLabel =
+    category === "events" ? "Festival and event planning insights" : "Spiritual preparation insights";
+
+  return `# ${title}
+
+${focusKeyword} is frequently searched by devotees who want both spiritual clarity and practical planning support. This article provides structured guidance aligned with Sansthan discipline and family-friendly travel needs.
+
+## ${headingLabel}
+
+- Keep darshan planning realistic and time-buffered.
+- Align travel expectations with senior citizens and children.
+- Confirm accommodation and communication channels in advance.
+- Focus on seva, discipline, and mindful conduct throughout the journey.
+
+## Helpful official links
+
+- [Sansthan Locations](/locations)
+- [Shegaon Bhakt Niwas Location](/locations/shegaon-bhakt-niwas)
+- [Omkareshwar Sansthan Location](/locations/omkareshwar)
+- [Accommodation Booking Request](/booking)
+- [Contact Sansthan Office](/contact)
+
+## Continue reading
+
+${relatedBlogLinks
+  .map((entry) => `- [${entry.label}](/blog/${entry.slug})`)
+  .join("\n")}
+
+## Devotee takeaway
+
+Use this guidance as a planning companion, and rely on official channels for final operational details, availability, and schedule-sensitive updates.
+`;
+}
+
+function writePostFile(relativePath, content) {
+  const absolutePath = path.join(BLOG_ROOT, relativePath);
+  ensureDirectory(path.dirname(absolutePath));
+  fs.writeFileSync(absolutePath, content, "utf-8");
+}
+
+function generateLocationClusterPosts() {
+  const generated = [];
+  let globalOffset = 0;
+
+  for (const config of LOCATION_CONFIGS) {
+    const topicEntries = LOCATION_TOPIC_VARIANTS.slice(0, config.count).map((topic) => ({
+      topic,
+      slug: `${config.key}-${topic.suffix}`,
+    }));
+    const locationClusterSlugs = topicEntries.map((entry) => entry.slug);
+
+    for (const [index, entry] of topicEntries.entries()) {
+      const { topic, slug } = entry;
+      const title = `${toTitleCase(config.key)} ${topic.title} | Shri Gajanan Maharaj Sansthan`;
+      const description = `Detailed ${config.city.toLowerCase()} ${topic.title.toLowerCase()} for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan ${config.city}. Includes booking links, travel tips, and internal route guidance.`;
+      const date = formatDateByOffset(globalOffset);
+      globalOffset += 1;
+
+      const keywords = [
+        `${config.city.toLowerCase()} ${toSentenceKeyword(topic.title)} guide`,
+        `${config.city.toLowerCase()} ${topic.intent.replace(/-/g, " ")} planning`,
+        ...config.keywordSeed,
+        `${config.city.toLowerCase()} ${toSentenceKeyword(topic.title)}`,
+        `${config.city.toLowerCase()} pilgrimage planning`,
+        `${config.city.toLowerCase()} accommodation booking`,
+      ];
+      const tags = [
+        config.key,
+        topic.intent,
+        "sansthan-seo",
+        "pilgrimage-guide",
+      ];
+
+      const neighborSlugs = getCircularNeighborSlugs(locationClusterSlugs, index);
+      const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+      const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      }));
+
+      const frontmatter = buildFrontmatter({
+        title,
+        description,
+        date,
+        slug,
+        image: config.image,
+        keywords,
+        tags,
+        category: "locations",
+        locationIds: config.locationIds,
+        relatedSlugs,
+      });
+
+      const content = buildLocationPostContent({
+        city: config.city,
+        locationPage: config.locationPage,
+        topicTitle: topic.title,
+        relatedBlogLinks,
+      });
+
+      const relativePath = `${config.directory}/${slug}.md`;
+      writePostFile(relativePath, `${frontmatter}${content}`);
+      generated.push(relativePath);
+    }
+  }
+
+  return generated;
+}
+
+function generateCrossLocationGuides() {
+  const generated = [];
+  const guideSlugs = [...CROSS_LOCATION_GUIDE_VARIANTS];
+
+  for (const [index, variant] of CROSS_LOCATION_GUIDE_VARIANTS.entries()) {
+    const slug = variant;
+    const title = `${toTitleCase(variant)} | Shri Gajanan Maharaj Sansthan`;
+    const description =
+      "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support.";
+    const date = formatDateByOffset(120 + index);
+    const neighborSlugs = getCircularNeighborSlugs(guideSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
+    const frontmatter = buildFrontmatter({
+      title,
+      description,
+      date,
+      slug,
+      image: "/images/shegaon-temple.jpg",
+      keywords: [
+        `${toSentenceKeyword(variant).replace(/-/g, " ")} pilgrimage guide`,
+        "shree gajanan maharaj sansthan pilgrimage",
+        "shri gajanan maharaj sanstan pilgrimage",
+        "sri gajanan maharaj sansthan route planning",
+        "multi location temple accommodation guide",
+      ],
+      tags: ["guides", "multi-location", "travel-planning", "sansthan-seo"],
+      category: "guides",
+      locationIds: ["shegaon-bhakt-niwas", "omkareshwar", "pandharpur-math", "trimbakeshwar"],
+      relatedSlugs,
+    });
+
+    const content = buildCrossLocationGuideContent({ title, relatedBlogLinks });
+    const relativePath = `guides/${slug}.md`;
+    writePostFile(relativePath, `${frontmatter}${content}`);
+    generated.push(relativePath);
+  }
+
+  return generated;
+}
+
+function generateSpiritualPosts() {
+  const generated = [];
+  const spiritualSlugs = [...SPIRITUAL_POST_VARIANTS];
+
+  for (const [index, variant] of SPIRITUAL_POST_VARIANTS.entries()) {
+    const slug = variant;
+    const title = `${toTitleCase(variant)} | Spiritual Guidance`;
+    const description =
+      "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline.";
+    const date = formatDateByOffset(160 + index);
+    const neighborSlugs = getCircularNeighborSlugs(spiritualSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
+    const frontmatter = buildFrontmatter({
+      title,
+      description,
+      date,
+      slug,
+      image: "/images/shegaon-temple.jpg",
+      keywords: [
+        `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
+        "shree gajanan maharaj spiritual guidance",
+        "shri gajanan maharaj sanstan spiritual guidance",
+        "sri gajanan maharaj devotee planning",
+        "sansthan devotional discipline",
+      ],
+      tags: ["spiritual", "teachings", "devotion", "sansthan-seo"],
+      category: "spiritual",
+      locationIds: ["shegaon-bhakt-niwas"],
+      relatedSlugs,
+    });
+
+    const content = buildSpiritualOrEventContent({
+      title,
+      focusKeyword: "Shri Gajanan Maharaj spiritual planning",
+      category: "spiritual",
+      relatedBlogLinks,
+    });
+
+    const relativePath = `spiritual/${slug}.md`;
+    writePostFile(relativePath, `${frontmatter}${content}`);
+    generated.push(relativePath);
+  }
+
+  return generated;
+}
+
+function generateEventPosts() {
+  const generated = [];
+  const eventSlugs = [...EVENT_POST_VARIANTS];
+
+  for (const [index, variant] of EVENT_POST_VARIANTS.entries()) {
+    const slug = variant;
+    const title = `${toTitleCase(variant)} | Devotee Event Guide`;
+    const description =
+      "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods.";
+    const date = formatDateByOffset(180 + index);
+    const neighborSlugs = getCircularNeighborSlugs(eventSlugs, index);
+    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
+      (relatedSlug) => ({
+        slug: relatedSlug,
+        label: getBlogLinkLabel(relatedSlug),
+      })
+    );
+
+    const frontmatter = buildFrontmatter({
+      title,
+      description,
+      date,
+      slug,
+      image: "/images/shegaon-temple.jpg",
+      keywords: [
+        `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
+        "shree gajanan maharaj sansthan event planning",
+        "shri gajanan maharaj sanstan event planning",
+        "sri gajanan maharaj darshan festival season",
+        "festival accommodation planning shegaon",
+      ],
+      tags: ["events", "festival", "darshan", "sansthan-seo"],
+      category: "events",
+      locationIds: ["shegaon-bhakt-niwas"],
+      relatedSlugs,
+    });
+
+    const content = buildSpiritualOrEventContent({
+      title,
+      focusKeyword: "Sansthan festival darshan planning",
+      category: "events",
+      relatedBlogLinks,
+    });
+
+    const relativePath = `events/${slug}.md`;
+    writePostFile(relativePath, `${frontmatter}${content}`);
+    generated.push(relativePath);
+  }
+
+  return generated;
+}
+
+function main() {
+  ensureDirectory(BLOG_ROOT);
+  assertGeneratorConfiguration();
+  console.info("seo-blog-generator-start", {
+    timestamp: Date.now(),
+    blogRoot: BLOG_ROOT,
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
+  });
+
+  const previousGeneratedFiles = readPreviousManifest();
+  cleanupPreviouslyGeneratedFiles(previousGeneratedFiles);
+
+  const generatedLocationPosts = generateLocationClusterPosts();
+  const generatedGuidePosts = generateCrossLocationGuides();
+  const generatedSpiritualPosts = generateSpiritualPosts();
+  const generatedEventPosts = generateEventPosts();
+
+  const generatedTotal =
+    generatedLocationPosts.length +
+    generatedGuidePosts.length +
+    generatedSpiritualPosts.length +
+    generatedEventPosts.length;
+  const generatedFiles = [
+    ...generatedLocationPosts,
+    ...generatedGuidePosts,
+    ...generatedSpiritualPosts,
+    ...generatedEventPosts,
+  ];
+
+  if (generatedTotal !== EXPECTED_GENERATED_TOTAL) {
+    throw new Error(
+      `Generated post total mismatch. Found ${generatedTotal}, expected ${EXPECTED_GENERATED_TOTAL}.`
+    );
+  }
+
+  writeGenerationManifest(generatedFiles);
+
+  console.info("seo-blog-generator-complete", {
+    timestamp: Date.now(),
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
+    generatedTotal,
+    locationPosts: generatedLocationPosts.length,
+    guidePosts: generatedGuidePosts.length,
+    spiritualPosts: generatedSpiritualPosts.length,
+    eventPosts: generatedEventPosts.length,
+  });
+}
+
+try {
+  main();
+} catch (error) {
+  console.error("seo-blog-generator-error", {
+    timestamp: Date.now(),
+    message: "Failed to generate deterministic SEO blog cluster.",
+    error: error instanceof Error ? error.message : String(error),
+  });
+  process.exit(1);
+}

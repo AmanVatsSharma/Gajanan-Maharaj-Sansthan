@@ -19,14 +19,23 @@ import { PlanYourVisit } from "@/features/info/components/PlanYourVisit";
 import { CTABanner } from "@/features/info/components/CTABanner";
 import { SectionDivider } from "@/features/info/components/SectionDivider";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { PRIMARY_KEYWORDS, SECONDARY_KEYWORDS } from "@/lib/seo/constants";
+import {
+  BRAND_VARIANTS,
+  PRIMARY_KEYWORDS,
+  SECONDARY_KEYWORDS,
+  getUniqueKeywords,
+} from "@/lib/seo/constants";
 import { getOrganizationSchema, getWebSiteSchema } from "@/lib/seo/structured-data";
 import { StructuredData } from "@/components/seo/StructuredData";
 
 export const metadata = generatePageMetadata({
   title: "Shri Gajanan Maharaj Sansthan | Temple Accommodation & Booking",
   description: "Official website of Shri Gajanan Maharaj Sansthan, Shegaon. Book temple accommodation at multiple locations across Maharashtra and Madhya Pradesh. Experience spiritual peace with modern facilities.",
-  keywords: [...PRIMARY_KEYWORDS, ...SECONDARY_KEYWORDS],
+  keywords: getUniqueKeywords([
+    ...BRAND_VARIANTS,
+    ...PRIMARY_KEYWORDS,
+    ...SECONDARY_KEYWORDS,
+  ]),
   path: "/",
 });
 

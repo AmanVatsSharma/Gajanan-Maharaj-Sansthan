@@ -17,20 +17,26 @@ import { FAQ } from "@/components/seo/FAQ";
 import { Button } from "@/components/ui/button";
 import { bookingFAQs } from "@/data/faq";
 import { BookingLandingForm } from "@/features/booking/components/BookingLandingForm";
-import { LONGTAIL_KEYWORDS, PRIMARY_KEYWORDS } from "@/lib/seo/constants";
+import {
+  BRAND_VARIANTS,
+  LONGTAIL_KEYWORDS,
+  PRIMARY_KEYWORDS,
+  getUniqueKeywords,
+} from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Accommodation Booking Request",
   description:
     "Send an accommodation booking request to Shri Gajanan Maharaj Sansthan, Shegaon. Select your location, dates, and guest count, then book via WhatsApp or call the booking helpline.",
-  keywords: [
+  keywords: getUniqueKeywords([
+    ...BRAND_VARIANTS,
     ...PRIMARY_KEYWORDS,
     ...LONGTAIL_KEYWORDS,
     "bhakt niwas booking",
     "shegaon accommodation booking",
     "gajanan maharaj booking helpline",
-  ],
+  ]),
   path: "/booking",
 });
 

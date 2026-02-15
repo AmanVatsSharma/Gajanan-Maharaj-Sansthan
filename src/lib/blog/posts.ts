@@ -64,6 +64,50 @@ export interface TaxonomySummary {
 }
 
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
+export const BLOG_POSTS_PER_PAGE = 24;
+const BLOG_DEBUG_ENABLED =
+  process.env.NEXT_PUBLIC_DEBUG_SEO === "true" || process.env.NODE_ENV !== "production";
+const emittedWarningKeys = new Set<string>();
+let blogPostsCache:
+  | {
+      contentSignature: string;
+      posts: BlogPost[];
+    }
+  | null = null;
+let blogPostsInFlight: Promise<BlogPost[]> | null = null;
+
+/**
+ * Lightweight debug logger for blog ingestion and SEO content checks.
+ * Enabled in development by default and can be forced with NEXT_PUBLIC_DEBUG_SEO=true.
+ */
+function blogDebugLog(message: string, data?: Record<string, unknown>): void {
+  if (!BLOG_DEBUG_ENABLED) {
+    return;
+  }
+
+  console.info("blog-seo-debug", {
+    timestamp: Date.now(),
+    message,
+    ...(data ? { data } : {}),
+  });
+}
+
+/**
+ * Emit warn-level logs for malformed content without failing hard immediately.
+ */
+function blogWarnLog(message: string, data?: Record<string, unknown>): void {
+  const warningKey = `${message}:${JSON.stringify(data ?? {})}`;
+  if (emittedWarningKeys.has(warningKey)) {
+    return;
+  }
+
+  emittedWarningKeys.add(warningKey);
+  console.warn("blog-seo-warning", {
+    timestamp: Date.now(),
+    message,
+    ...(data ? { data } : {}),
+  });
+}
 
 export function toTaxonomySlug(value: string): string {
   return value
@@ -125,6 +169,7 @@ function toDateString(value: unknown, fallback: string): string {
 
 function getMarkdownFilePaths(directoryPath: string): string[] {
   if (!fs.existsSync(directoryPath)) {
+    blogWarnLog("Blog content directory missing", { directoryPath });
     return [];
   }
 
@@ -152,6 +197,10 @@ function getMarkdownFilePaths(directoryPath: string): string[] {
     }
   }
 
+  blogDebugLog("Discovered markdown files", {
+    directoryPath,
+    fileCount: filePaths.length,
+  });
   return filePaths;
 }
 
@@ -178,6 +227,51 @@ function sortPostsByDate(posts: BlogPost[]): BlogPost[] {
   return [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+}
+
+/**
+ * Build a content signature from file paths and mtime values.
+ * Used to avoid reparsing markdown on every request/build call when unchanged.
+ */
+function getContentSignature(filePaths: string[]): string {
+  return filePaths
+    .map((filePath) => {
+      const stats = fs.statSync(filePath);
+      return `${filePath}:${stats.mtimeMs}`;
+    })
+    .join("|");
+}
+
+function validatePostForSEO(post: BlogPost, filePath: string): void {
+  const warnings: string[] = [];
+
+  if (!post.title.trim()) {
+    warnings.push("Missing title; fallback title was used.");
+  }
+
+  if (!post.description.trim()) {
+    warnings.push("Missing description; fallback description was used.");
+  }
+
+  if (!post.keywords || post.keywords.length === 0) {
+    warnings.push("Missing keywords array; consider adding SEO keyword variants.");
+  }
+
+  if (!post.tags || post.tags.length === 0) {
+    warnings.push("Missing tags array; taxonomy SEO pages may be weaker.");
+  }
+
+  if (!post.category) {
+    warnings.push("Missing category; category archive coverage will be lower.");
+  }
+
+  if (warnings.length > 0) {
+    blogWarnLog("Blog post metadata quality warnings", {
+      slug: post.slug,
+      filePath,
+      warnings,
+    });
+  }
 }
 
 function buildTagSummaries(posts: BlogPost[]): TaxonomySummary[] {
@@ -261,51 +355,107 @@ function getRelatedPostScore(basePost: BlogPost, candidatePost: BlogPost): numbe
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
   const filePaths = getMarkdownFilePaths(CONTENT_DIR);
+  const contentSignature = getContentSignature(filePaths);
+
+  if (blogPostsCache?.contentSignature === contentSignature) {
+    blogDebugLog("Serving blog posts from cache", {
+      fileCount: filePaths.length,
+      parsedCount: blogPostsCache.posts.length,
+    });
+    return [...blogPostsCache.posts];
+  }
+
+  if (blogPostsInFlight) {
+    blogDebugLog("Awaiting in-flight blog post parse", {
+      fileCount: filePaths.length,
+    });
+    return blogPostsInFlight;
+  }
+
+  blogDebugLog("Starting blog post parsing", {
+    fileCount: filePaths.length,
+    cacheHit: false,
+  });
+
+  blogPostsInFlight = (async () => {
   const posts: BlogPost[] = [];
   const seenSlugs = new Set<string>();
 
-  for (const filePath of filePaths) {
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
-    const frontmatter = data as BlogFrontmatter;
-    const fileStats = fs.statSync(filePath);
-    const lastModified = fileStats.mtime.toISOString();
+    for (const filePath of filePaths) {
+      try {
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+        const { data, content } = matter(fileContent);
+        const frontmatter = data as BlogFrontmatter;
+        const fileStats = fs.statSync(filePath);
+        const lastModified = fileStats.mtime.toISOString();
 
-    const slug = toStringValue(frontmatter.slug) || getFallbackSlug(filePath);
-    if (seenSlugs.has(slug)) {
-      throw new Error(
-        `Duplicate blog slug "${slug}" detected. Please keep slugs unique in content/blog.`
-      );
+        const slug = toStringValue(frontmatter.slug) || getFallbackSlug(filePath);
+        if (seenSlugs.has(slug)) {
+          blogWarnLog("Duplicate blog slug detected", {
+            slug,
+            filePath,
+          });
+          throw new Error(
+            `Duplicate blog slug "${slug}" detected. Please keep slugs unique in content/blog.`
+          );
+        }
+
+        seenSlugs.add(slug);
+        const htmlContent = await parseMarkdown(content);
+        const readTime = readingTime(content).text;
+        const title = toStringValue(frontmatter.title) || getFallbackTitle(slug);
+        const description =
+          toStringValue(frontmatter.description) || getFallbackDescription(content);
+        const date = toDateString(frontmatter.date, lastModified);
+
+        const post: BlogPost = {
+          slug,
+          title,
+          description,
+          date,
+          image: toStringValue(frontmatter.image),
+          keywords: toStringArray(frontmatter.keywords),
+          author: toStringValue(frontmatter.author),
+          tags: toStringArray(frontmatter.tags),
+          category: toStringValue(frontmatter.category),
+          locationIds: toStringArray(frontmatter.locationIds),
+          relatedSlugs: toStringArray(frontmatter.relatedSlugs),
+          content: htmlContent,
+          readingTime: readTime,
+          rawContent: content,
+          lastModified,
+        };
+
+        validatePostForSEO(post, filePath);
+        posts.push(post);
+      } catch (error) {
+        console.error("blog-seo-error", {
+          timestamp: Date.now(),
+          filePath,
+          message: "Failed to parse blog markdown file",
+          error: error instanceof Error ? error.message : String(error),
+        });
+        throw error;
+      }
     }
 
-    seenSlugs.add(slug);
-    const htmlContent = await parseMarkdown(content);
-    const readTime = readingTime(content).text;
-    const title = toStringValue(frontmatter.title) || getFallbackTitle(slug);
-    const description =
-      toStringValue(frontmatter.description) || getFallbackDescription(content);
-    const date = toDateString(frontmatter.date, lastModified);
-
-    posts.push({
-      slug,
-      title,
-      description,
-      date,
-      image: toStringValue(frontmatter.image),
-      keywords: toStringArray(frontmatter.keywords),
-      author: toStringValue(frontmatter.author),
-      tags: toStringArray(frontmatter.tags),
-      category: toStringValue(frontmatter.category),
-      locationIds: toStringArray(frontmatter.locationIds),
-      relatedSlugs: toStringArray(frontmatter.relatedSlugs),
-      content: htmlContent,
-      readingTime: readTime,
-      rawContent: content,
-      lastModified,
+    const sortedPosts = sortPostsByDate(posts);
+    blogPostsCache = {
+      contentSignature,
+      posts: sortedPosts,
+    };
+    blogDebugLog("Completed blog post parsing", {
+      parsedCount: sortedPosts.length,
+      cacheStored: true,
     });
-  }
+    return [...sortedPosts];
+  })();
 
-  return sortPostsByDate(posts);
+  try {
+    return await blogPostsInFlight;
+  } finally {
+    blogPostsInFlight = null;
+  }
 }
 
 /**

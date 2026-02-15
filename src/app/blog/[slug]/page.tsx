@@ -70,10 +70,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   const schema = getArticleSchema({
     title: post.title,
     date: post.date,
+    dateModified: post.lastModified,
     slug: post.slug,
     description: post.description,
     author: post.author,
     image: post.image,
+    keywords: post.keywords,
+    tags: post.tags,
+    category: post.category,
   });
 
   return (

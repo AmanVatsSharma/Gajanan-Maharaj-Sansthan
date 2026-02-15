@@ -47,10 +47,10 @@ export function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Locations</h4>
             <ul className="space-y-2 text-sm text-gray-200">
               <li>Shri Gajanan Maharaj Sansthan Shegaon</li>
+              <li>Shri Gajanan Maharaj Sansthan Shegaon Anand Vihar</li>
               <li>Shri Gajanan Maharaj Sansthan Pandharpur</li>
               <li>Shri Gajanan Maharaj Sansthan Trimbakeshwar</li>
               <li>Shri Gajanan Maharaj Sansthan Omkareshwar</li>
-              <li>Shri Gajanan Maharaj Sansthan Alandi</li>
             </ul>
           </div>
 

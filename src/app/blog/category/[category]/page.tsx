@@ -18,6 +18,7 @@ import {
   getAllCategories,
   getPostsByCategory,
 } from "@/lib/blog";
+import { BRAND_VARIANTS, getUniqueKeywords } from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { getCollectionPageSchema } from "@/lib/seo/structured-data";
 
@@ -42,11 +43,12 @@ export async function generateMetadata({ params }: PageProps) {
     description: `Browse ${categoryLabel.toLowerCase()} guides and updates from Shri Gajanan Maharaj Sansthan.`,
     path: `/blog/category/${category}`,
     noIndex: posts.length === 0,
-    keywords: [
+    keywords: getUniqueKeywords([
+      ...BRAND_VARIANTS,
       `gajanan maharaj ${categoryLabel.toLowerCase()}`,
       `${categoryLabel.toLowerCase()} travel guide`,
       "sansthan category pages",
-    ],
+    ]),
   });
 }
 
@@ -70,6 +72,8 @@ export default async function BlogCategoryPage({ params }: PageProps) {
       date: post.date,
       image: post.image,
       urlPath: `/blog/${post.slug}`,
+      keywords: post.keywords,
+      category: post.category,
     })),
   });
 

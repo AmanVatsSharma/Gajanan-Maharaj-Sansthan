@@ -12,7 +12,13 @@
  */
 import type { NextConfig } from "next";
 
-function getCanonicalHost(): string | null {
+interface CanonicalHostConfig {
+  canonicalOrigin: string;
+  canonicalHost: string;
+  redirectFromHost: string | null;
+}
+
+function getCanonicalHostConfig(): CanonicalHostConfig | null {
   const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
   if (!rawUrl) {
     return null;
@@ -20,13 +26,35 @@ function getCanonicalHost(): string | null {
 
   try {
     const parsedUrl = new URL(rawUrl);
-    return parsedUrl.host.replace(/^www\./, "");
+    const canonicalHost = parsedUrl.host;
+    const isLocalHost =
+      canonicalHost.includes("localhost") || canonicalHost.startsWith("127.0.0.1");
+
+    if (isLocalHost) {
+      return null;
+    }
+
+    const redirectFromHost = canonicalHost.startsWith("www.")
+      ? canonicalHost.replace(/^www\./, "")
+      : `www.${canonicalHost}`;
+
+    return {
+      canonicalOrigin: `${parsedUrl.protocol}//${canonicalHost}`,
+      canonicalHost,
+      redirectFromHost:
+        redirectFromHost === canonicalHost ? null : redirectFromHost,
+    };
   } catch {
+    console.warn("seo-config-warning", {
+      timestamp: Date.now(),
+      message: "Invalid NEXT_PUBLIC_SITE_URL. Canonical redirect not configured.",
+      value: rawUrl,
+    });
     return null;
   }
 }
 
-const canonicalHost = getCanonicalHost();
+const canonicalHostConfig = getCanonicalHostConfig();
 
 const nextConfig: NextConfig = {
   // Enable image optimization
@@ -86,11 +114,11 @@ const nextConfig: NextConfig = {
       },
     ];
 
-    if (canonicalHost) {
+    if (canonicalHostConfig?.redirectFromHost) {
       redirects.push({
         source: "/:path*",
-        has: [{ type: "host", value: `www.${canonicalHost}` }],
-        destination: `https://${canonicalHost}/:path*`,
+        has: [{ type: "host", value: canonicalHostConfig.redirectFromHost }],
+        destination: `${canonicalHostConfig.canonicalOrigin}/:path*`,
         permanent: true,
       });
     }

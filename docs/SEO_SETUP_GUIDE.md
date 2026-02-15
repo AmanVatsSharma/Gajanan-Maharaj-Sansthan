@@ -13,6 +13,7 @@ Complete guide for setting up and monitoring SEO for Shri Gajanan Maharaj Sansth
 5. [Performance Monitoring](#performance-monitoring)
 6. [Local SEO Setup](#local-seo-setup)
 7. [Ongoing Optimization](#ongoing-optimization)
+8. [Blog SEO Content Operations](#blog-seo-content-operations)
 
 ---
 
@@ -300,6 +301,101 @@ Ask devotees to leave reviews on:
 
 ---
 
+## 📝 Blog SEO Content Operations
+
+The site now includes a large markdown SEO content cluster. Use these commands before deployment:
+
+```bash
+# Regenerate deterministic blog clusters
+npm run generate:blogs
+
+# Validate slug/frontmatter/internal-link quality
+npm run validate:blog
+
+# Strict mode: fail if warnings exist
+npm run validate:blog:strict
+
+# Verify generated-cluster manifest distribution and integrity
+npm run verify:generator
+
+# Verify manual seed post boundaries and quality
+npm run verify:manual-seeds
+
+# Verify generator determinism by temp regeneration comparison
+npm run verify:generator:determinism
+
+# Verify SEO gate command composition and ordering
+npm run verify:seo-chain
+
+# Verify CI workflow still enforces strict SEO gate
+npm run verify:ci-gate
+
+# Verify SEO inventory claims stay synced across docs
+npm run verify:docs-sync
+
+# Verify canonical/meta/schema in prerendered HTML (run after build)
+npm run verify:seo-build
+
+# Verify canonical host consistency across all SEO pages
+npm run verify:canonical
+
+# Verify robots.txt policy directives and canonical host/sitemap lines
+npm run verify:robots
+
+# Verify all location detail pages contain geo/meta/schema SEO signals
+npm run verify:locations
+
+# Verify sitemap coverage against posts/tags/categories
+npm run verify:sitemap
+
+# Verify taxonomy pages are prerendered for all tags/categories/pages
+npm run verify:taxonomy
+
+# Verify pagination navigation links across /blog/page/* archives
+npm run verify:pagination
+
+# Verify RSS feed output coverage and item count
+npm run verify:rss
+
+# Verify every blog post prerendered page has canonical/meta/schema signals
+npm run verify:blog-surfaces
+```
+
+`generate:blogs` now uses a managed-file manifest at `content/blog/_ops/generated-seo-cluster-manifest.json` to remove stale generated markdown files before recreating the current cluster set.
+
+`verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.
+
+For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo:check:strict` on pushes and pull requests.
+
+### Validation rules enforced
+
+- unique and valid kebab-case slugs
+- required frontmatter quality checks
+- required internal links to location + booking/contact + related blog pages
+- known location ID references
+- generated cluster manifest consistency for deterministic markdown generation
+- generated cluster distribution consistency (`verify:generator`) for location/non-location target counts
+- generated cluster config fingerprint alignment between manifest and shared config
+- generated-file frontmatter consistency checks in `verify:generator` (slug/category/related/location rules)
+- generated-manifest version/checksum consistency checks for deterministic-file drift detection
+- generated checksum keyset alignment checks (no missing/extra checksum entries)
+- generated manifest volatility checks (no timestamp-only drift fields)
+- manual seed post ownership/quality checks (seed posts excluded from generated manifest)
+- generator determinism checks via isolated temp regeneration comparison
+- generated manifest file-path policy + sorted-inventory checks
+- managed namespace ownership checks (generator-owned files vs explicit manual seed anchors)
+- SEO gate command ordering/composition consistency (`verify:seo-chain`)
+- SEO chain hygiene checks (no duplicates, `npm run` step format, check/strict parity)
+- CI workflow strict-gate invariant checks (`verify:ci-gate`)
+- SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
+- all blog post prerender SEO-surface checks for canonical/meta/schema (`verify:blog-surfaces`)
+- internal blog-link graph health checks to avoid orphaned posts in large clusters
+- generated-post outbound `/blog/*` link minimum enforcement for crawl continuity
+- location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)
+- brand-variant keyword coverage across blog metadata (Shri/Shree/Sri + Sansthan/Sanstan)
+
+---
+
 ## 📊 Key Metrics to Track
 
 ### Search Console Metrics
@@ -465,6 +561,8 @@ Copy this checklist and track your progress:
 - Track metrics in a spreadsheet
 - Review and update SEO strategy quarterly
 - Stay updated with Google algorithm changes
+- For rollout evidence and technical validation output, see `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
+- Use `docs/SEO_WEEKLY_TRACKER_TEMPLATE.md` for weekly KPI tracking
 
 ---
 
