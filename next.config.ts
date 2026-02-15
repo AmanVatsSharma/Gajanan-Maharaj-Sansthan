@@ -63,9 +63,7 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
 
   async redirects() {
-    const redirects: NonNullable<NextConfig["redirects"]> extends () => Promise<infer R>
-      ? R
-      : never = [
+    const redirects = [
       {
         source: "/home",
         destination: "/",
