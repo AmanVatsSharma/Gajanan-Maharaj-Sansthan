@@ -69,6 +69,7 @@ flowchart TD
 - Generator/validator/verifier use manifest config fingerprint checks to fail fast on stale generated content.
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
+- Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).

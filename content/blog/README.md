@@ -111,6 +111,7 @@ Cluster sizing source of truth: `scripts/seo-cluster-config.mjs` controls expect
 Manifest drift guard: validator/verifier checks enforce `configFingerprint` alignment between manifest and shared cluster config.
 Generator verifier guard: `verify:generator` now asserts generated-file frontmatter integrity (slug/category/relatedSlugs/location namespace rules).
 Manifest integrity guard: generated manifest includes `manifestVersion` and per-file SHA-256 checksums to detect manual drift in managed posts.
+Manifest determinism guard: volatile manifest timestamps are disallowed so repeated generation does not create timestamp-only drift.
 Internal-linking note: generated clusters now add deterministic sibling links (previous/next within each cluster) to improve crawl continuity and reduce orphaned pages.
 
 ## Content pipeline flowchart

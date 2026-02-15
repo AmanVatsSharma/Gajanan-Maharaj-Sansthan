@@ -105,6 +105,12 @@ function main() {
       reason: `Manifest version "${manifestVersion ?? "missing"}" does not match expected "2". Run npm run generate:blogs.`,
     });
   }
+  if (Object.prototype.hasOwnProperty.call(parsed, "timestamp")) {
+    failures.push({
+      check: "manifest-volatile-timestamp",
+      reason: 'Manifest should not contain volatile "timestamp". Regenerate with deterministic manifest format.',
+    });
+  }
   if (manifestFingerprint !== CLUSTER_CONFIG_FINGERPRINT) {
     failures.push({
       check: "manifest-config-fingerprint",

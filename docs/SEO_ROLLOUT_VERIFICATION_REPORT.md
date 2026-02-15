@@ -65,6 +65,7 @@ npm run seo:check:strict
   - config fingerprint aligned with shared cluster config
   - manifest version/checksum validation passed (`manifestVersion: 2`, `checksumValidatedCount: 105`)
   - checksum keyset alignment passed (no missing/extra checksum entries)
+  - manifest volatility check passed (no timestamp-only drift field)
   - generated frontmatter checks passed for 105 managed posts
   - observed distribution:
     - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15
@@ -94,6 +95,7 @@ npm run seo:check:strict
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Manifest fingerprint checks fail fast when config changes are not regenerated.
   - Manifest version + checksum checks fail fast when managed generated files drift.
+  - Manifest volatility checks prevent timestamp-only generator drift.
   - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Generator verifier checks generated-file frontmatter invariants (slug/category/related/location namespace).

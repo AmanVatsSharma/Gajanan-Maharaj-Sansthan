@@ -277,7 +277,6 @@ function writeGenerationManifest(generatedFiles) {
   );
 
   const payload = {
-    timestamp: Date.now(),
     manifestVersion: 2,
     configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedFileCount: normalizedGeneratedFiles.length,

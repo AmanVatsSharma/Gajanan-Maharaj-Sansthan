@@ -159,6 +159,10 @@ function validateGeneratedManifest(failures) {
   const generatedFilesRaw = Array.isArray(parsedManifest?.generatedFiles)
     ? parsedManifest.generatedFiles
     : null;
+  const hasVolatileTimestamp = Object.prototype.hasOwnProperty.call(
+    parsedManifest,
+    "timestamp"
+  );
   const manifestVersion =
     typeof parsedManifest?.manifestVersion === "number"
       ? parsedManifest.manifestVersion
@@ -208,6 +212,14 @@ function validateGeneratedManifest(failures) {
       filePath: manifestFilePath,
       check: "manifest-checksum-map",
       reason: "Manifest is missing generatedFileChecksums map. Run npm run generate:blogs.",
+    });
+  }
+  if (hasVolatileTimestamp) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-volatile-timestamp",
+      reason: 'Manifest should not contain volatile "timestamp". Run npm run generate:blogs to re-create deterministic manifest.',
     });
   }
 
