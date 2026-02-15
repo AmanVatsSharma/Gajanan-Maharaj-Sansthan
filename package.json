@@ -19,13 +19,14 @@
     "verify:generator": "node scripts/verify-generated-cluster-manifest.mjs",
     "verify:locations": "node scripts/verify-location-seo-surfaces.mjs",
     "verify:pagination": "node scripts/verify-blog-pagination-links.mjs",
+    "verify:blog-surfaces": "node scripts/verify-blog-post-seo-surfaces.mjs",
     "verify:robots": "node scripts/verify-robots-policy.mjs",
     "verify:rss": "node scripts/verify-rss-feed.mjs",
     "verify:seo-build": "node scripts/verify-seo-build.mjs",
     "verify:sitemap": "node scripts/verify-sitemap-coverage.mjs",
     "verify:taxonomy": "node scripts/verify-taxonomy-prerender.mjs",
-    "seo:check": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:manual-seeds && npm run verify:generator:determinism && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog",
-    "seo:check:strict": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:manual-seeds && npm run verify:generator:determinism && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog:strict"
+    "seo:check": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:manual-seeds && npm run verify:generator:determinism && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:blog-surfaces && npm run verify:seo-build && npm run validate:blog",
+    "seo:check:strict": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:manual-seeds && npm run verify:generator:determinism && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:blog-surfaces && npm run verify:seo-build && npm run validate:blog:strict"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

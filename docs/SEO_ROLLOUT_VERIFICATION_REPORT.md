@@ -31,6 +31,7 @@ npm run verify:taxonomy
 npm run verify:sitemap
 npm run verify:pagination
 npm run verify:rss
+npm run verify:blog-surfaces
 npm run verify:seo-build
 npm run seo:check:strict
 ```
@@ -89,6 +90,8 @@ npm run seo:check:strict
   - workflow invariants present and strict gate run command exists exactly once
 - `npm run verify:docs-sync` → pass
   - validated inventory/count claims and command references across primary SEO docs
+- `npm run verify:blog-surfaces` → pass
+  - validated canonical/meta/schema surfaces for all 110 markdown blog post routes
 
 ## SEO Architecture Changes Verified
 
@@ -123,6 +126,7 @@ npm run seo:check:strict
   - Brand-variant keyword coverage checks enforce Shri/Shree/Sri + Sansthan/Sanstan surface area.
   - Topic-specific primary keyword generation reduces cannibalization warnings in validator output.
   - Internal markdown links now validate `/blog/<slug>` and `/locations/<id>` target existence.
+  - Blog post surface verifier validates canonical/meta/schema integrity for every prerendered blog slug page.
 
 4. **Documentation consistency**
    - Blog, SEO, locations, and booking module docs synchronized.

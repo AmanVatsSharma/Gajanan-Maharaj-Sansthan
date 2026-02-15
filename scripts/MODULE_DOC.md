@@ -23,6 +23,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `verify-sitemap-coverage.mjs` — sitemap inventory and expected URL presence checks.
 - `verify-blog-pagination-links.mjs` — archive prev/next navigation integrity checks.
 - `verify-rss-feed.mjs` — RSS route/output/item-count coverage checks.
+- `verify-blog-post-seo-surfaces.mjs` — all blog post prerender canonical/meta/schema checks.
 - `verify-seo-build.mjs` — critical route canonical/meta/schema/keyword fragment checks.
 
 ## Shared configuration
@@ -58,6 +59,7 @@ flowchart TD
   build --> verifySitemap[verify:sitemap]
   build --> verifyPagination[verify:pagination]
   build --> verifyRss[verify:rss]
+  build --> verifyBlogSurfaces[verify:blog-surfaces]
   build --> verifySeoBuild[verify:seo-build]
   verifyCanon --> seoCheck
   verifyRobots --> seoCheck
@@ -66,6 +68,7 @@ flowchart TD
   verifySitemap --> seoCheck
   verifyPagination --> seoCheck
   verifyRss --> seoCheck
+  verifyBlogSurfaces --> seoCheck
   verifySeoBuild --> seoCheck
 ```
 
@@ -84,6 +87,7 @@ flowchart TD
 - Manifest generatedFiles path-policy and lexicographic-order checks enforce deterministic file inventory formatting.
 - Managed namespace ownership checks ensure generated folders contain only manifest-owned files + explicit manual seed anchors.
 - Manual seed verifier enforces seed-post quality and ensures seeds remain excluded from generated manifest ownership.
+- Blog post surface verifier enforces per-post prerender canonical/meta/schema guarantees for all markdown slugs.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - Command-chain verifier also enforces no duplicate steps, `npm run` step formatting, and parity between check/strict chains (except final validation step).

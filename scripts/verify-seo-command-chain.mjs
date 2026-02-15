@@ -28,6 +28,7 @@ const EXPECTED_SEO_CHECK_CHAIN = [
   "npm run verify:sitemap",
   "npm run verify:pagination",
   "npm run verify:rss",
+  "npm run verify:blog-surfaces",
   "npm run verify:seo-build",
   "npm run validate:blog",
 ];
@@ -48,6 +49,7 @@ const EXPECTED_SEO_STRICT_CHAIN = [
   "npm run verify:sitemap",
   "npm run verify:pagination",
   "npm run verify:rss",
+  "npm run verify:blog-surfaces",
   "npm run verify:seo-build",
   "npm run validate:blog:strict",
 ];

@@ -141,6 +141,12 @@ function main() {
   );
   assertIncludes(
     blogReadme,
+    "npm run verify:blog-surfaces",
+    failures,
+    "content/blog/README.md:verify-blog-surfaces-command"
+  );
+  assertIncludes(
+    blogReadme,
     "npm run verify:docs-sync",
     failures,
     "content/blog/README.md:verify-docs-sync-command"
@@ -187,6 +193,12 @@ function main() {
     "npm run verify:ci-gate",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-ci-gate-command"
+  );
+  assertIncludes(
+    setupGuide,
+    "npm run verify:blog-surfaces",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:verify-blog-surfaces-command"
   );
   assertIncludes(
     setupGuide,
@@ -248,6 +260,12 @@ function main() {
     "npm run verify:ci-gate",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-ci-gate-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "npm run verify:blog-surfaces",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-blog-surfaces-command"
   );
   assertIncludes(
     rolloutReport,
@@ -328,6 +346,12 @@ function main() {
     "verify:ci-gate",
     failures,
     "scripts/MODULE_DOC.md:verify-ci-gate-reference"
+  );
+  assertIncludes(
+    scriptsModuleDoc,
+    "verify:blog-surfaces",
+    failures,
+    "scripts/MODULE_DOC.md:verify-blog-surfaces-reference"
   );
   assertIncludes(
     scriptsModuleDoc,

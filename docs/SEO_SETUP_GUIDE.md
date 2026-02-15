@@ -356,6 +356,9 @@ npm run verify:pagination
 
 # Verify RSS feed output coverage and item count
 npm run verify:rss
+
+# Verify every blog post prerendered page has canonical/meta/schema signals
+npm run verify:blog-surfaces
 ```
 
 `generate:blogs` now uses a managed-file manifest at `content/blog/_ops/generated-seo-cluster-manifest.json` to remove stale generated markdown files before recreating the current cluster set.
@@ -385,6 +388,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - SEO chain hygiene checks (no duplicates, `npm run` step format, check/strict parity)
 - CI workflow strict-gate invariant checks (`verify:ci-gate`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
+- all blog post prerender SEO-surface checks for canonical/meta/schema (`verify:blog-surfaces`)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters
 - generated-post outbound `/blog/*` link minimum enforcement for crawl continuity
 - location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)

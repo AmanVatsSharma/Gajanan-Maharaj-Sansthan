@@ -100,6 +100,9 @@ npm run verify:ci-gate
 
 # Verify SEO docs stay synced with inventory claims
 npm run verify:docs-sync
+
+# Verify every blog post page in build has canonical/meta/schema signals
+npm run verify:blog-surfaces
 ```
 
 Validation now includes cross-post integrity checks for:

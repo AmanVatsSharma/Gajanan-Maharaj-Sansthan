@@ -38,6 +38,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
   - location-cluster minimum thresholds (`30/20/15/15` baseline),
   - Shri/Shree/Sri + Sansthan/Sanstan keyword-fragment coverage.
 - Prerender integrity checker available via `npm run verify:taxonomy` to ensure all tag/category/paginated archive pages are generated.
+- Blog post SEO-surface verifier available via `npm run verify:blog-surfaces` to validate canonical/meta/schema signals on every post route.
 
 ## Blog data processing flow
 
