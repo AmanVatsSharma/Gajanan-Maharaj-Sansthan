@@ -63,7 +63,12 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
 
   async redirects() {
-    const redirects = [
+    const redirects: Array<{
+      source: string;
+      destination: string;
+      permanent: boolean;
+      has?: Array<{ type: "host"; value: string }>;
+    }> = [
       {
         source: "/home",
         destination: "/",
