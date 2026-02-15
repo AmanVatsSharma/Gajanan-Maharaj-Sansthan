@@ -3,7 +3,7 @@
  * Module: lib/seo
  * Purpose: JSON-LD structured data generators for rich snippets in Google
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-15
  * Notes:
  * - Generates Organization, LocalBusiness, PlaceOfWorship, LodgingBusiness schemas
  * - Helps Google understand and display rich results in SERP
@@ -327,6 +327,29 @@ export interface BlogPost {
   image?: string;
 }
 
+export interface CollectionPageItem {
+  title: string;
+  urlPath: string;
+  description?: string;
+  date?: string;
+  image?: string;
+}
+
+interface CollectionPageSchemaOptions {
+  path: string;
+  title: string;
+  description: string;
+  items: CollectionPageItem[];
+}
+
+function toAbsoluteUrl(baseUrl: string, urlPath: string): string {
+  if (urlPath.startsWith("http://") || urlPath.startsWith("https://")) {
+    return urlPath;
+  }
+
+  return `${baseUrl}${urlPath.startsWith("/") ? urlPath : `/${urlPath}`}`;
+}
+
 /**
  * Article/BlogPosting schema for blog posts
  */
@@ -366,6 +389,45 @@ export function getArticleSchema(post: BlogPost) {
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": postUrl,
+    },
+  };
+}
+
+/**
+ * CollectionPage + ItemList schema for blog and taxonomy listings.
+ */
+export function getCollectionPageSchema({
+  path,
+  title,
+  description,
+  items,
+}: CollectionPageSchemaOptions) {
+  const baseUrl = getSiteUrl();
+  const pageUrl = toAbsoluteUrl(baseUrl, path);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${pageUrl}#collection`,
+    name: title,
+    description,
+    url: pageUrl,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.title,
+        item: {
+          "@type": "Article",
+          "@id": `${toAbsoluteUrl(baseUrl, item.urlPath)}#article`,
+          url: toAbsoluteUrl(baseUrl, item.urlPath),
+          headline: item.title,
+          description: item.description,
+          datePublished: item.date,
+          image: item.image ? [toAbsoluteUrl(baseUrl, item.image)] : undefined,
+        },
+      })),
     },
   };
 }

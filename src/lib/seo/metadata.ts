@@ -3,7 +3,7 @@
  * Module: lib/seo
  * Purpose: Helper functions for generating page-specific metadata
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-15
  * Notes:
  * - Provides consistent metadata generation across pages
  * - Includes Open Graph and Twitter Card support
@@ -21,6 +21,13 @@ interface PageMetadataProps {
   path?: string;
   noIndex?: boolean;
   type?: "website" | "article";
+  other?: Record<string, string | number | Array<string | number>>;
+}
+
+interface LocationCoordinates {
+  latitude: number;
+  longitude: number;
+  regionCode?: string;
 }
 
 /**
@@ -34,6 +41,7 @@ export function generatePageMetadata({
   path = "",
   noIndex = false,
   type = "website",
+  other,
 }: PageMetadataProps): Metadata {
   const siteUrl = getSiteUrl();
   const fullUrl = `${siteUrl}${path}`;
@@ -47,6 +55,7 @@ export function generatePageMetadata({
     title,
     description,
     keywords,
+    other,
     alternates: {
       canonical: fullUrl,
     },
@@ -94,10 +103,19 @@ export function generateLocationMetadata(
   locationDescription: string,
   locationImage: string,
   locationId: string,
-  keywords: string[] = []
+  keywords: string[] = [],
+  coordinates?: LocationCoordinates
 ): Metadata {
   const title = `${locationName} - ${locationCity} Temple Accommodation`;
   const description = `Book accommodation at ${locationName}, ${locationCity}. ${locationDescription} Check facilities, amenities, and make booking requests.`;
+  const geoMetaTags = coordinates
+    ? getGeoMetaTags(
+        coordinates.latitude,
+        coordinates.longitude,
+        `${locationName}, ${locationCity}`,
+        coordinates.regionCode
+      )
+    : undefined;
 
   return generatePageMetadata({
     title,
@@ -112,16 +130,23 @@ export function generateLocationMetadata(
     ],
     image: locationImage,
     path: `/locations/${locationId}`,
+    other: geoMetaTags,
   });
 }
 
 /**
  * Add geo meta tags for location pages
  */
-export function getGeoMetaTags(latitude: number, longitude: number) {
+export function getGeoMetaTags(
+  latitude: number,
+  longitude: number,
+  placeName: string,
+  regionCode = "IN-MH"
+) {
   return {
     "geo.position": `${latitude};${longitude}`,
-    "geo.placename": SITE_CONFIG.name,
-    "geo.region": "IN-MH",
+    "geo.placename": placeName,
+    "geo.region": regionCode,
+    ICBM: `${latitude}, ${longitude}`,
   };
 }

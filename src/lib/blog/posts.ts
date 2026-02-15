@@ -1,16 +1,33 @@
 /**
  * File: src/lib/blog/posts.ts
  * Module: lib/blog
- * Purpose: Blog post retrieval and management
- * Author: Aman Sharma / Novologic / Cursor AI
- * Created: 2026-02-13
+ * Purpose: Blog post loading, taxonomy helpers, and related-content selection.
+ * Author: Aman Sharma / Novologic/ Cursor AI
+ * Last-updated: 2026-02-15
+ * Notes:
+ * - Recursively loads markdown files from content/blog (excluding underscore-prefixed files/folders).
+ * - Normalizes tags/categories for SEO routes while preserving display labels.
  */
 
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { parseMarkdown } from './parse';
-import readingTime from 'reading-time';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import readingTime from "reading-time";
+import { parseMarkdown } from "./parse";
+
+interface BlogFrontmatter {
+  title?: unknown;
+  description?: unknown;
+  date?: unknown;
+  slug?: unknown;
+  image?: unknown;
+  keywords?: unknown;
+  author?: unknown;
+  tags?: unknown;
+  category?: unknown;
+  locationIds?: unknown;
+  relatedSlugs?: unknown;
+}
 
 export interface BlogPost {
   slug: string;
@@ -21,9 +38,13 @@ export interface BlogPost {
   keywords?: string[];
   author?: string;
   tags?: string[];
-  content: string; // HTML content
+  category?: string;
+  locationIds?: string[];
+  relatedSlugs?: string[];
+  content: string;
   readingTime: string;
-  rawContent?: string; // Markdown content (optional if needed)
+  rawContent?: string;
+  lastModified: string;
 }
 
 export interface BlogPostMetadata {
@@ -33,47 +54,258 @@ export interface BlogPostMetadata {
   date: string;
   image?: string;
   tags?: string[];
+  category?: string;
 }
 
-const CONTENT_DIR = path.join(process.cwd(), 'content/blog');
+export interface TaxonomySummary {
+  slug: string;
+  label: string;
+  count: number;
+}
+
+const CONTENT_DIR = path.join(process.cwd(), "content/blog");
+
+export function toTaxonomySlug(value: string): string {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+export function formatTaxonomyLabel(value: string): string {
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part[0]?.toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function toStringValue(value: unknown): string | undefined {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const trimmedValue = value.trim();
+  return trimmedValue.length > 0 ? trimmedValue : undefined;
+}
+
+function toStringArray(value: unknown): string[] | undefined {
+  if (Array.isArray(value)) {
+    const items = value
+      .map((item) => (typeof item === "string" ? item.trim() : ""))
+      .filter(Boolean);
+    return items.length > 0 ? items : undefined;
+  }
+
+  if (typeof value === "string") {
+    const normalized = value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+    return normalized.length > 0 ? normalized : undefined;
+  }
+
+  return undefined;
+}
+
+function toDateString(value: unknown, fallback: string): string {
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+
+  if (typeof value === "string" && !Number.isNaN(Date.parse(value))) {
+    return new Date(value).toISOString();
+  }
+
+  return fallback;
+}
+
+function getMarkdownFilePaths(directoryPath: string): string[] {
+  if (!fs.existsSync(directoryPath)) {
+    return [];
+  }
+
+  const filePaths: string[] = [];
+  const entries = fs.readdirSync(directoryPath, { withFileTypes: true });
+
+  for (const entry of entries) {
+    if (entry.name.startsWith("_")) {
+      continue;
+    }
+
+    const normalizedName = entry.name.toLowerCase();
+    if (normalizedName === "readme.md") {
+      continue;
+    }
+
+    const fullPath = path.join(directoryPath, entry.name);
+    if (entry.isDirectory()) {
+      filePaths.push(...getMarkdownFilePaths(fullPath));
+      continue;
+    }
+
+    if (entry.isFile() && normalizedName.endsWith(".md")) {
+      filePaths.push(fullPath);
+    }
+  }
+
+  return filePaths;
+}
+
+function getFallbackSlug(filePath: string): string {
+  const relativePath = path.relative(CONTENT_DIR, filePath);
+  const noExtension = relativePath.replace(/\.md$/, "");
+  const normalizedPath = noExtension.replace(/[\\/]/g, "-");
+  return toTaxonomySlug(normalizedPath);
+}
+
+function getFallbackTitle(slug: string): string {
+  return formatTaxonomyLabel(slug);
+}
+
+function getFallbackDescription(rawContent: string): string {
+  const normalized = rawContent
+    .replace(/[#>*_`~\-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return normalized.slice(0, 160);
+}
+
+function sortPostsByDate(posts: BlogPost[]): BlogPost[] {
+  return [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+function buildTagSummaries(posts: BlogPost[]): TaxonomySummary[] {
+  const summaryMap = new Map<string, TaxonomySummary>();
+
+  for (const post of posts) {
+    for (const tag of post.tags ?? []) {
+      const slug = toTaxonomySlug(tag);
+      const existing = summaryMap.get(slug);
+      if (existing) {
+        summaryMap.set(slug, { ...existing, count: existing.count + 1 });
+        continue;
+      }
+
+      summaryMap.set(slug, {
+        slug,
+        label: formatTaxonomyLabel(slug),
+        count: 1,
+      });
+    }
+  }
+
+  return [...summaryMap.values()].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+function buildCategorySummaries(posts: BlogPost[]): TaxonomySummary[] {
+  const summaryMap = new Map<string, TaxonomySummary>();
+
+  for (const post of posts) {
+    if (!post.category) {
+      continue;
+    }
+
+    const slug = toTaxonomySlug(post.category);
+    const existing = summaryMap.get(slug);
+    if (existing) {
+      summaryMap.set(slug, { ...existing, count: existing.count + 1 });
+      continue;
+    }
+
+    summaryMap.set(slug, {
+      slug,
+      label: formatTaxonomyLabel(slug),
+      count: 1,
+    });
+  }
+
+  return [...summaryMap.values()].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+function getOverlapCount(base: string[] | undefined, candidate: string[] | undefined): number {
+  if (!base || !candidate || base.length === 0 || candidate.length === 0) {
+    return 0;
+  }
+
+  const baseSet = new Set(base.map((item) => item.toLowerCase()));
+  return candidate.reduce(
+    (count, item) => (baseSet.has(item.toLowerCase()) ? count + 1 : count),
+    0
+  );
+}
+
+function getRelatedPostScore(basePost: BlogPost, candidatePost: BlogPost): number {
+  const sharedTagScore = getOverlapCount(basePost.tags, candidatePost.tags) * 3;
+  const sharedLocationScore = getOverlapCount(
+    basePost.locationIds,
+    candidatePost.locationIds
+  ) * 2;
+  const sameCategoryScore =
+    basePost.category &&
+    candidatePost.category &&
+    toTaxonomySlug(basePost.category) === toTaxonomySlug(candidatePost.category)
+      ? 4
+      : 0;
+
+  return sharedTagScore + sharedLocationScore + sameCategoryScore;
+}
 
 /**
  * Get all blog posts sorted by date (newest first)
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  if (!fs.existsSync(CONTENT_DIR)) {
-    return [];
-  }
-
-  const files = fs.readdirSync(CONTENT_DIR);
+  const filePaths = getMarkdownFilePaths(CONTENT_DIR);
   const posts: BlogPost[] = [];
+  const seenSlugs = new Set<string>();
 
-  for (const file of files) {
-    if (!file.endsWith('.md')) continue;
-
-    const filePath = path.join(CONTENT_DIR, file);
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
+  for (const filePath of filePaths) {
+    const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
-    const slug = data.slug || file.replace(/\.md$/, '');
+    const frontmatter = data as BlogFrontmatter;
+    const fileStats = fs.statSync(filePath);
+    const lastModified = fileStats.mtime.toISOString();
+
+    const slug = toStringValue(frontmatter.slug) || getFallbackSlug(filePath);
+    if (seenSlugs.has(slug)) {
+      throw new Error(
+        `Duplicate blog slug "${slug}" detected. Please keep slugs unique in content/blog.`
+      );
+    }
+
+    seenSlugs.add(slug);
     const htmlContent = await parseMarkdown(content);
     const readTime = readingTime(content).text;
+    const title = toStringValue(frontmatter.title) || getFallbackTitle(slug);
+    const description =
+      toStringValue(frontmatter.description) || getFallbackDescription(content);
+    const date = toDateString(frontmatter.date, lastModified);
 
     posts.push({
       slug,
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      image: data.image,
-      keywords: data.keywords,
-      author: data.author,
-      tags: data.tags,
+      title,
+      description,
+      date,
+      image: toStringValue(frontmatter.image),
+      keywords: toStringArray(frontmatter.keywords),
+      author: toStringValue(frontmatter.author),
+      tags: toStringArray(frontmatter.tags),
+      category: toStringValue(frontmatter.category),
+      locationIds: toStringArray(frontmatter.locationIds),
+      relatedSlugs: toStringArray(frontmatter.relatedSlugs),
       content: htmlContent,
       readingTime: readTime,
       rawContent: content,
+      lastModified,
     });
   }
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return sortPostsByDate(posts);
 }
 
 /**
@@ -81,6 +313,97 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
  */
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const posts = await getBlogPosts();
-  const post = posts.find((p) => p.slug === slug);
+  const post = posts.find((item) => item.slug === slug);
   return post || null;
+}
+
+/**
+ * Get all normalized tags for static route generation.
+ */
+export async function getAllTags(): Promise<string[]> {
+  const summaries = await getTagSummaries();
+  return summaries.map((summary) => summary.slug);
+}
+
+/**
+ * Get all normalized categories for static route generation.
+ */
+export async function getAllCategories(): Promise<string[]> {
+  const summaries = await getCategorySummaries();
+  return summaries.map((summary) => summary.slug);
+}
+
+/**
+ * Get posts that belong to a specific tag.
+ */
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+  const normalizedTag = toTaxonomySlug(tag);
+  const posts = await getBlogPosts();
+
+  return posts.filter((post) =>
+    (post.tags ?? []).some((postTag) => toTaxonomySlug(postTag) === normalizedTag)
+  );
+}
+
+/**
+ * Get posts that belong to a specific category.
+ */
+export async function getPostsByCategory(category: string): Promise<BlogPost[]> {
+  const normalizedCategory = toTaxonomySlug(category);
+  const posts = await getBlogPosts();
+
+  return posts.filter((post) =>
+    post.category ? toTaxonomySlug(post.category) === normalizedCategory : false
+  );
+}
+
+/**
+ * Get summarized tag data for listing/filter UI.
+ */
+export async function getTagSummaries(): Promise<TaxonomySummary[]> {
+  const posts = await getBlogPosts();
+  return buildTagSummaries(posts);
+}
+
+/**
+ * Get summarized category data for listing/filter UI.
+ */
+export async function getCategorySummaries(): Promise<TaxonomySummary[]> {
+  const posts = await getBlogPosts();
+  return buildCategorySummaries(posts);
+}
+
+/**
+ * Get related posts prioritizing explicit links, then topical similarity.
+ */
+export async function getRelatedPosts(
+  post: BlogPost,
+  limit = 3
+): Promise<BlogPost[]> {
+  const allPosts = await getBlogPosts();
+  const candidatePosts = allPosts.filter((item) => item.slug !== post.slug);
+
+  const explicitSlugOrder = post.relatedSlugs ?? [];
+  const explicitPosts = explicitSlugOrder
+    .map((slug) => candidatePosts.find((item) => item.slug === slug))
+    .filter((item): item is BlogPost => Boolean(item));
+
+  const scoredPosts = candidatePosts
+    .filter((candidate) => !explicitSlugOrder.includes(candidate.slug))
+    .map((candidate) => ({
+      candidate,
+      score: getRelatedPostScore(post, candidate),
+    }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return new Date(b.candidate.date).getTime() - new Date(a.candidate.date).getTime();
+    })
+    .map((entry) => entry.candidate);
+
+  const merged = [...explicitPosts, ...scoredPosts];
+  return merged.slice(0, limit);
 }
