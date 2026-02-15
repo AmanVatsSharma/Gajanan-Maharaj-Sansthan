@@ -22,6 +22,7 @@ npm run verify:canonical
 npm run verify:robots
 npm run verify:locations
 npm run verify:generator
+npm run verify:seo-chain
 npm run verify:docs-sync
 npm run verify:taxonomy
 npm run verify:sitemap
@@ -69,6 +70,8 @@ npm run seo:check:strict
     - guides: 15
     - spiritual: 5
     - events: 5
+- `npm run verify:seo-chain` → pass
+  - `seo:check` and `seo:check:strict` command chains match expected guarded order
 - `npm run verify:docs-sync` → pass
   - validated inventory/count claims and command references across primary SEO docs
 
@@ -89,6 +92,7 @@ npm run seo:check:strict
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Manifest fingerprint checks fail fast when config changes are not regenerated.
   - Manifest version + checksum checks fail fast when managed generated files drift.
+  - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Generator verifier checks generated-file frontmatter invariants (slug/category/related/location namespace).
   - Link-graph checks enforce inbound internal linking coverage so generated clusters are crawl-connected.

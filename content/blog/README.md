@@ -86,6 +86,9 @@ npm run validate:blog:strict
 # Verify generated cluster manifest distribution and integrity
 npm run verify:generator
 
+# Verify SEO gate command-chain ordering
+npm run verify:seo-chain
+
 # Verify SEO docs stay synced with inventory claims
 npm run verify:docs-sync
 ```

@@ -11,6 +11,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `generate-seo-blog-cluster.mjs` — deterministic markdown cluster generator.
 - `validate-blog-content.mjs` — strict markdown/frontmatter/link/coverage validator.
 - `verify-generated-cluster-manifest.mjs` — generator-manifest distribution/integrity verifier.
+- `verify-seo-command-chain.mjs` — enforces `seo:check` / `seo:check:strict` step order invariants.
 - `verify-seo-docs-sync.mjs` — validates SEO inventory claims/command references across docs.
 - `verify-canonical-consistency.mjs` — canonical host/uniqueness verifier on prerendered SEO pages.
 - `verify-robots-policy.mjs` — robots directives/host/sitemap policy verifier.
@@ -34,9 +35,11 @@ flowchart TD
   cfg[seo-cluster-config.mjs] --> gen[generate:blogs]
   gen --> manifest[_ops/generated-seo-cluster-manifest.json]
   manifest --> verifyGen[verify:generator]
+  cfg --> verifyChain[verify:seo-chain]
   manifest --> verifyDocs[verify:docs-sync]
   manifest --> validate[validate:blog:strict]
   validate --> seoCheck[seo:check:strict]
+  verifyChain --> seoCheck
   verifyGen --> seoCheck
   verifyDocs --> seoCheck
   build[next build] --> verifyCanon[verify:canonical]
@@ -65,6 +68,7 @@ flowchart TD
 - If cluster sizing changes, update `seo-cluster-config.mjs` first, then regenerate content.
 - Generator/validator/verifier use manifest config fingerprint checks to fail fast on stale generated content.
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
+- Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.
 - Validator also enforces minimum outbound blog links on generated posts for better crawl continuity.
