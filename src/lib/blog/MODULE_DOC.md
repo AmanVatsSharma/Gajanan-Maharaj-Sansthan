@@ -22,6 +22,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
 - Throws hard error on duplicate slugs.
 - Emits debug and warning logs for parsing and metadata quality checks.
 - Catches per-file parser errors and emits structured diagnostics before failing.
+- Validator strict mode available via `npm run validate:blog:strict` to fail on warnings during stricter release checks.
 
 ## Blog data processing flow
 

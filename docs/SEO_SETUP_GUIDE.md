@@ -312,6 +312,9 @@ npm run generate:blogs
 # Validate slug/frontmatter/internal-link quality
 npm run validate:blog
 
+# Strict mode: fail if warnings exist
+npm run validate:blog:strict
+
 # Verify canonical/meta/schema in prerendered HTML (run after build)
 npm run verify:seo-build
 

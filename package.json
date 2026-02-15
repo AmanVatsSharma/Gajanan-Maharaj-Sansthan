@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "validate:blog": "node scripts/validate-blog-content.mjs",
+    "validate:blog:strict": "node scripts/validate-blog-content.mjs --strict-warnings",
     "generate:blogs": "node scripts/generate-seo-blog-cluster.mjs",
     "verify:seo-build": "node scripts/verify-seo-build.mjs",
     "verify:sitemap": "node scripts/verify-sitemap-coverage.mjs",

@@ -13,6 +13,9 @@ import matter from "gray-matter";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const MIN_REQUIRED_POSTS = 100;
+const STRICT_WARNINGS_MODE =
+  process.env.BLOG_VALIDATE_STRICT_WARNINGS === "true" ||
+  process.argv.includes("--strict-warnings");
 const KNOWN_LOCATION_IDS = new Set([
   "shegaon-bhakt-niwas",
   "shegaon-anand-vihar",
@@ -237,7 +240,7 @@ function detectLocationClusterCoverage(results) {
   return coverage;
 }
 
-function runCrossPostChecks(results, failures) {
+function runCrossPostChecks(results, failures, warnings) {
   const knownSlugs = new Set(results.map((result) => result.slug).filter(Boolean));
 
   for (const result of results) {
@@ -297,14 +300,16 @@ function runCrossPostChecks(results, failures) {
   for (const [keyword, files] of duplicateKeywordMap.entries()) {
     const uniqueFiles = [...new Set(files)];
     const sampleFiles = uniqueFiles.slice(0, 5);
-    console.warn("blog-validation-warning", {
+    const warningPayload = {
       timestamp: Date.now(),
       keyword,
       duplicatePostCount: uniqueFiles.length,
       sampleFiles,
       message:
         "Primary keyword is reused across multiple posts. Review cannibalization risk.",
-    });
+    };
+    warnings.push(warningPayload);
+    console.warn("blog-validation-warning", warningPayload);
   }
 
   return duplicateKeywordMap.size;
@@ -329,7 +334,12 @@ function main() {
   const slugRegistry = new Map();
   const results = markdownFiles.map((filePath) => validatePost(filePath, slugRegistry));
   const crossPostFailures = [];
-  const crossPostWarnings = runCrossPostChecks(results, crossPostFailures);
+  const crossPostWarningsPayload = [];
+  const crossPostWarnings = runCrossPostChecks(
+    results,
+    crossPostFailures,
+    crossPostWarningsPayload
+  );
 
   for (const result of results) {
     if (result.warnings.length > 0) {
@@ -373,13 +383,26 @@ function main() {
 
   const totalErrors =
     results.reduce((sum, item) => sum + item.errors.length, 0) + crossPostFailures.length;
+  const totalWarnings =
+    results.reduce((sum, item) => sum + item.warnings.length, 0) + crossPostWarnings;
   if (totalErrors > 0) {
+    process.exit(1);
+  }
+
+  if (STRICT_WARNINGS_MODE && totalWarnings > 0) {
+    console.error("blog-validation-error", {
+      timestamp: Date.now(),
+      message:
+        "Strict warning mode enabled and warnings were detected. Resolve warnings or disable strict mode.",
+      totalWarnings,
+    });
     process.exit(1);
   }
 
   console.info("blog-validation-success", {
     timestamp: Date.now(),
     message: "All blog posts passed critical SEO/content validation checks.",
+    strictWarningsMode: STRICT_WARNINGS_MODE,
   });
 }
 

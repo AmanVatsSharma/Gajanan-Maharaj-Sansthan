@@ -79,6 +79,9 @@ npm run generate:blogs
 
 # Validate all markdown SEO requirements
 npm run validate:blog
+
+# Fail the run on any warning (strict mode)
+npm run validate:blog:strict
 ```
 
 Validation now includes cross-post integrity checks for:
