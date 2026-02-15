@@ -11,18 +11,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Clock, Smartphone } from "lucide-react";
 import { CONTACT_DETAILS } from "@/data/contact";
+import { BRAND_VARIANTS, getUniqueKeywords } from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Contact Us | Shri Gajanan Maharaj Sansthan",
   description: "Get in touch with Shri Gajanan Maharaj Sansthan. Find phone numbers, address, and office hours for booking inquiries and general information. Located in Shegaon, Maharashtra.",
-  keywords: [
+  keywords: getUniqueKeywords([
+    ...BRAND_VARIANTS,
     "gajanan maharaj contact",
     "shegaon temple phone number",
     "bhakt niwas booking contact",
     "sansthan address",
     "temple office hours",
-  ],
+  ]),
   path: "/contact",
 });
 

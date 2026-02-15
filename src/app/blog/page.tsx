@@ -16,6 +16,11 @@ import {
   getCategorySummaries,
   getTagSummaries,
 } from "@/lib/blog";
+import {
+  BRAND_VARIANTS,
+  LOCATION_INTENT_KEYWORDS,
+  getUniqueKeywords,
+} from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { getCollectionPageSchema } from "@/lib/seo/structured-data";
 import { StructuredData } from "@/components/seo/StructuredData";
@@ -27,6 +32,15 @@ const blogPageDescription =
 export const metadata = generatePageMetadata({
   title: "Blog",
   description: blogPageDescription,
+  keywords: getUniqueKeywords([
+    ...BRAND_VARIANTS,
+    ...Object.values(LOCATION_INTENT_KEYWORDS).flat(),
+    "shri gajanan maharaj sansthan blog",
+    "shegaon pilgrimage guide",
+    "omkareshwar pilgrimage guide",
+    "pandharpur yatra guide",
+    "trimbakeshwar darshan guide",
+  ]),
   path: "/blog",
 });
 

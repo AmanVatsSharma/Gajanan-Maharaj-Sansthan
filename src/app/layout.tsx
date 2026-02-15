@@ -14,6 +14,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { BRAND_VARIANTS, getUniqueKeywords } from "@/lib/seo/constants";
 import { getSiteUrlAsUrl } from "@/lib/seo/site-url";
 
 const inter = Inter({
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: siteTitle,
-  keywords: [
+  keywords: getUniqueKeywords([
+    ...BRAND_VARIANTS,
     "Shri Gajanan Maharaj",
     "Shegaon",
     "Sansthan",
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     "Darshan",
     "Maharashtra",
     "Pilgrimage",
-  ],
+  ]),
   openGraph: {
     title: siteTitle,
     description: siteDescription,
