@@ -22,6 +22,7 @@ npm run verify:canonical
 npm run verify:robots
 npm run verify:locations
 npm run verify:generator
+npm run verify:generator:determinism
 npm run verify:seo-chain
 npm run verify:ci-gate
 npm run verify:docs-sync
@@ -73,6 +74,8 @@ npm run seo:check:strict
     - guides: 15
     - spiritual: 5
     - events: 5
+- `npm run verify:generator:determinism` → pass
+  - temp regeneration output matches live generated manifest checksums/inventory
 - `npm run verify:seo-chain` → pass
   - `seo:check` and `seo:check:strict` command chains match expected guarded order
   - all referenced npm scripts in both chains exist
@@ -99,6 +102,7 @@ npm run seo:check:strict
   - Manifest fingerprint checks fail fast when config changes are not regenerated.
   - Manifest version + checksum checks fail fast when managed generated files drift.
   - Manifest volatility checks prevent timestamp-only generator drift.
+  - Determinism verifier ensures fresh temp regeneration exactly matches live manifest state.
   - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
   - CI-gate verifier protects workflow-level strict-gate execution invariants.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.

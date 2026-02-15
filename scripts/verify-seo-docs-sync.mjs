@@ -117,6 +117,12 @@ function main() {
   );
   assertIncludes(
     blogReadme,
+    "npm run verify:generator:determinism",
+    failures,
+    "content/blog/README.md:verify-generator-determinism-command"
+  );
+  assertIncludes(
+    blogReadme,
     "npm run verify:seo-chain",
     failures,
     "content/blog/README.md:verify-seo-chain-command"
@@ -145,6 +151,12 @@ function main() {
     "npm run verify:generator",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-generator-command"
+  );
+  assertIncludes(
+    setupGuide,
+    "npm run verify:generator:determinism",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:verify-generator-determinism-command"
   );
   assertIncludes(
     setupGuide,
@@ -188,6 +200,12 @@ function main() {
     "npm run verify:generator",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-generator-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "npm run verify:generator:determinism",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-generator-determinism-command"
   );
   assertIncludes(
     rolloutReport,
@@ -250,6 +268,12 @@ function main() {
     "verify:generator",
     failures,
     "scripts/MODULE_DOC.md:verify-generator-reference"
+  );
+  assertIncludes(
+    scriptsModuleDoc,
+    "verify:generator:determinism",
+    failures,
+    "scripts/MODULE_DOC.md:verify-generator-determinism-reference"
   );
   assertIncludes(
     scriptsModuleDoc,

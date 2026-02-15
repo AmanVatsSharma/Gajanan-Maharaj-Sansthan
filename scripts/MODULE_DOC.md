@@ -11,6 +11,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `generate-seo-blog-cluster.mjs` — deterministic markdown cluster generator.
 - `validate-blog-content.mjs` — strict markdown/frontmatter/link/coverage validator.
 - `verify-generated-cluster-manifest.mjs` — generator-manifest distribution/integrity verifier.
+- `verify-generated-content-determinism.mjs` — regenerates in temp root and compares manifest/checksum determinism.
 - `verify-seo-command-chain.mjs` — enforces `seo:check` / `seo:check:strict` step order invariants.
 - `verify-ci-seo-gate.mjs` — validates GitHub Actions SEO-gate workflow invariants.
 - `verify-seo-docs-sync.mjs` — validates SEO inventory claims/command references across docs.
@@ -36,6 +37,7 @@ flowchart TD
   cfg[seo-cluster-config.mjs] --> gen[generate:blogs]
   gen --> manifest[_ops/generated-seo-cluster-manifest.json]
   manifest --> verifyGen[verify:generator]
+  cfg --> verifyDeterminism[verify:generator:determinism]
   cfg --> verifyChain[verify:seo-chain]
   ci[seo-quality-gate.yml] --> verifyCI[verify:ci-gate]
   manifest --> verifyDocs[verify:docs-sync]
@@ -44,6 +46,7 @@ flowchart TD
   verifyChain --> seoCheck
   verifyCI --> seoCheck
   verifyGen --> seoCheck
+  verifyDeterminism --> seoCheck
   verifyDocs --> seoCheck
   build[next build] --> verifyCanon[verify:canonical]
   build --> verifyRobots[verify:robots]
@@ -73,6 +76,7 @@ flowchart TD
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
+- Determinism verifier runs generator in isolated temp root and compares resulting checksums to live manifest.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - CI-gate verifier fails fast when workflow no longer runs strict gate or required workflow invariants drift.

@@ -86,6 +86,9 @@ npm run validate:blog:strict
 # Verify generated cluster manifest distribution and integrity
 npm run verify:generator
 
+# Verify generator determinism against temp regeneration
+npm run verify:generator:determinism
+
 # Verify SEO gate command-chain ordering
 npm run verify:seo-chain
 

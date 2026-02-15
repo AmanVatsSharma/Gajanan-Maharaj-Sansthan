@@ -21,7 +21,9 @@ import {
   NON_LOCATION_CLUSTER_TARGETS,
 } from "./seo-cluster-config.mjs";
 
-const BLOG_ROOT = path.join(process.cwd(), "content/blog");
+const BLOG_ROOT = path.resolve(
+  process.env.SEO_BLOG_GENERATOR_ROOT || path.join(process.cwd(), "content/blog")
+);
 const GENERATOR_MANIFEST_PATH = path.join(
   BLOG_ROOT,
   "_ops/generated-seo-cluster-manifest.json"
