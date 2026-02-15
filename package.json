@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate:blog": "node scripts/validate-blog-content.mjs"
+    "validate:blog": "node scripts/validate-blog-content.mjs",
+    "generate:blogs": "node scripts/generate-seo-blog-cluster.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
