@@ -59,6 +59,7 @@ npm run verify:seo-build
   - Booking: FAQPage + BreadcrumbList
   - Location detail: PlaceOfWorship + LocalBusiness + LodgingBusiness
   - Blog routes: CollectionPage / BlogPosting + BreadcrumbList
+  - Paginated archive route: `/blog/page/2` canonical/meta/schema validation
 
 ## Notes
 

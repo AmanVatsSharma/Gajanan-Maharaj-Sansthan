@@ -245,6 +245,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - Deterministic cluster generation for high-intent location/content variants
 - Validation script for slug uniqueness, frontmatter quality, and internal linking rules
 - Blog inventory expanded to 105 posts (100 generated cluster posts + existing seed posts)
+- Paginated archive support at `/blog/page/[page]` with sitemap inclusion for deeper crawl coverage
 
 **Commands**:
 ```bash

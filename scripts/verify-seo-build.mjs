@@ -43,6 +43,12 @@ const REQUIRED_ROUTES = [
     requiredSchemaTypes: ["CollectionPage"],
   },
   {
+    id: "blog-page-2",
+    filePath: "blog/page/2.html",
+    checks: ["canonical", "keywords", "jsonLd"],
+    requiredSchemaTypes: ["CollectionPage"],
+  },
+  {
     id: "blog-post-shegaon-travel-guide",
     filePath: "blog/shegaon-travel-guide.html",
     checks: ["canonical", "keywords", "ogTitle", "jsonLd"],

@@ -12,6 +12,7 @@ import type { MetadataRoute } from "next";
 
 import { sansthanLocations } from "@/data/sansthan-data";
 import {
+  BLOG_POSTS_PER_PAGE,
   getAllCategories,
   getAllTags,
   getBlogPosts,
@@ -41,6 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllCategories(),
   ]);
   const latestBlogDate = getLatestBlogDate(blogPosts) ?? now;
+  const totalBlogPages = Math.max(1, Math.ceil(blogPosts.length / BLOG_POSTS_PER_PAGE));
 
   // Static routes with optimized priorities
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -123,6 +125,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }));
 
+  const blogPaginationRoutes: MetadataRoute.Sitemap = Array.from(
+    { length: totalBlogPages },
+    (_, index) => index + 1
+  )
+    .filter((page) => page > 1)
+    .map((page) => ({
+      url: `${siteUrl}/blog/page/${page}`,
+      lastModified: latestBlogDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }));
+
   const tagRoutes: MetadataRoute.Sitemap = tags.map((tag) => {
     const tagPosts = blogPosts.filter((post) =>
       (post.tags ?? []).some((postTag) => toTaxonomySlug(postTag) === tag)
@@ -149,6 +163,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [...staticRoutes, ...locationRoutes, ...blogRoutes, ...tagRoutes, ...categoryRoutes];
+  return [
+    ...staticRoutes,
+    ...locationRoutes,
+    ...blogRoutes,
+    ...blogPaginationRoutes,
+    ...tagRoutes,
+    ...categoryRoutes,
+  ];
 }
 

@@ -64,6 +64,7 @@ export interface TaxonomySummary {
 }
 
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
+export const BLOG_POSTS_PER_PAGE = 24;
 const BLOG_DEBUG_ENABLED =
   process.env.NEXT_PUBLIC_DEBUG_SEO === "true" || process.env.NODE_ENV !== "production";
 const emittedWarningKeys = new Set<string>();
