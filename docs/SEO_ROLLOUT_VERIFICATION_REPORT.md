@@ -21,6 +21,7 @@ npm run build
 npm run verify:canonical
 npm run verify:taxonomy
 npm run verify:sitemap
+npm run verify:pagination
 npm run verify:seo-build
 ```
 

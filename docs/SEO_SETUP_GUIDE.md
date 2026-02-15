@@ -326,6 +326,9 @@ npm run verify:sitemap
 
 # Verify taxonomy pages are prerendered for all tags/categories/pages
 npm run verify:taxonomy
+
+# Verify pagination navigation links across /blog/page/* archives
+npm run verify:pagination
 ```
 
 `verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.
