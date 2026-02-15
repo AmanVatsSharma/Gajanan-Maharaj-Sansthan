@@ -731,4 +731,13 @@ function main() {
   });
 }
 
-main();
+try {
+  main();
+} catch (error) {
+  console.error("blog-validation-error", {
+    timestamp: Date.now(),
+    message: "Unhandled validator failure while processing markdown content.",
+    error: error instanceof Error ? error.message : String(error),
+  });
+  process.exit(1);
+}

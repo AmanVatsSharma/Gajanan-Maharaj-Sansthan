@@ -60,6 +60,7 @@ flowchart TD
 ## Operational notes
 
 - All scripts emit structured console diagnostics for easier CI debugging.
+- Scripts include top-level error guards (try/catch) and fail with structured error payloads for CI readability.
 - `seo:check:strict` is the canonical quality gate command used by CI workflow.
 - If cluster sizing changes, update `seo-cluster-config.mjs` first, then regenerate content.
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.

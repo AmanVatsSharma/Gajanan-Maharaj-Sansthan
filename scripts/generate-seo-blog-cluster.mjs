@@ -764,4 +764,13 @@ function main() {
   });
 }
 
-main();
+try {
+  main();
+} catch (error) {
+  console.error("seo-blog-generator-error", {
+    timestamp: Date.now(),
+    message: "Failed to generate deterministic SEO blog cluster.",
+    error: error instanceof Error ? error.message : String(error),
+  });
+  process.exit(1);
+}
