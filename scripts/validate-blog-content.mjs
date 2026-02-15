@@ -9,6 +9,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import matter from "gray-matter";
 import {
   CLUSTER_CONFIG_FINGERPRINT,
@@ -111,6 +112,10 @@ function normalizeManifestEntry(entry) {
   }
 
   return entry.trim().replace(/\\/g, "/");
+}
+
+function getChecksum(content) {
+  return crypto.createHash("sha256").update(content).digest("hex");
 }
 
 /**
@@ -289,6 +294,7 @@ function validateGeneratedManifest(failures) {
   }
 
   const missingFiles = [];
+  let checksumValidatedCount = 0;
   for (const relativeEntry of uniqueEntries) {
     const absolutePath = path.join(BLOG_ROOT, relativeEntry);
     if (!isSafeBlogChildPath(absolutePath)) {
@@ -313,6 +319,42 @@ function validateGeneratedManifest(failures) {
 
     if (!fs.existsSync(absolutePath)) {
       missingFiles.push(relativeEntry);
+      continue;
+    }
+
+    if (generatedFileChecksums) {
+      const expectedChecksum =
+        typeof generatedFileChecksums[relativeEntry] === "string"
+          ? generatedFileChecksums[relativeEntry]
+          : null;
+
+      if (!expectedChecksum) {
+        failures.push({
+          routeId: "generated-manifest",
+          filePath: manifestFilePath,
+          check: "manifest-checksum-missing-entry",
+          reason: `generatedFileChecksums is missing checksum for generated file: ${relativeEntry}`,
+        });
+      } else if (!/^[a-f0-9]{64}$/i.test(expectedChecksum)) {
+        failures.push({
+          routeId: "generated-manifest",
+          filePath: manifestFilePath,
+          check: "manifest-checksum-format",
+          reason: `generatedFileChecksums entry for ${relativeEntry} is not a valid SHA-256 digest.`,
+        });
+      } else {
+        const currentChecksum = getChecksum(fs.readFileSync(absolutePath, "utf-8"));
+        if (expectedChecksum !== currentChecksum) {
+          failures.push({
+            routeId: "generated-manifest",
+            filePath: manifestFilePath,
+            check: "manifest-checksum-mismatch",
+            reason: `generatedFileChecksums mismatch for ${relativeEntry}. Run npm run generate:blogs to realign deterministic content.`,
+          });
+        } else {
+          checksumValidatedCount += 1;
+        }
+      }
     }
   }
 
@@ -335,6 +377,7 @@ function validateGeneratedManifest(failures) {
     expectedConfigFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedFileCount: uniqueEntries.length,
     checksumCount: generatedFileChecksums ? Object.keys(generatedFileChecksums).length : 0,
+    checksumValidatedCount,
     missingFileCount: missingFiles.length,
   });
 

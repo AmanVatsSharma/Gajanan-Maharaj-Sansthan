@@ -70,6 +70,11 @@ function diffChains(actual, expected) {
   return issues;
 }
 
+function extractNpmRunScriptName(step) {
+  const match = step.match(/^npm run ([a-z0-9:-]+)$/i);
+  return match?.[1] || "";
+}
+
 function main() {
   console.info("seo-command-chain-verify-start", {
     timestamp: Date.now(),
@@ -134,6 +139,12 @@ function main() {
 
   const seoCheckDiffs = diffChains(seoCheckChain, EXPECTED_SEO_CHECK_CHAIN);
   const seoStrictDiffs = diffChains(seoCheckStrictChain, EXPECTED_SEO_STRICT_CHAIN);
+  const referencedScriptNames = new Set(
+    [...seoCheckChain, ...seoCheckStrictChain]
+      .map((step) => extractNpmRunScriptName(step))
+      .filter(Boolean)
+      .filter((name) => !["seo:check", "seo:check:strict"].includes(name))
+  );
 
   if (seoCheckDiffs.length > 0) {
     failures.push({
@@ -149,6 +160,15 @@ function main() {
       reason: "seo:check:strict command chain does not match expected order.",
       differences: seoStrictDiffs,
     });
+  }
+
+  for (const scriptName of referencedScriptNames) {
+    if (typeof scripts[scriptName] !== "string") {
+      failures.push({
+        check: "referenced-script-exists",
+        reason: `Command chain references missing npm script "${scriptName}".`,
+      });
+    }
   }
 
   if (failures.length > 0) {
@@ -172,6 +192,7 @@ function main() {
     status: "passed",
     seoCheckStepCount: seoCheckChain.length,
     seoCheckStrictStepCount: seoCheckStrictChain.length,
+    referencedScriptCount: referencedScriptNames.size,
   });
 }
 

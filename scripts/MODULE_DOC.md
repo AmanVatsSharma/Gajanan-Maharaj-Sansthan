@@ -70,6 +70,7 @@ flowchart TD
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
+- Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.
 - Validator also enforces minimum outbound blog links on generated posts for better crawl continuity.

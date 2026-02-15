@@ -73,6 +73,7 @@ npm run seo:check:strict
     - events: 5
 - `npm run verify:seo-chain` → pass
   - `seo:check` and `seo:check:strict` command chains match expected guarded order
+  - all referenced npm scripts in both chains exist
 - `npm run verify:docs-sync` → pass
   - validated inventory/count claims and command references across primary SEO docs
 
