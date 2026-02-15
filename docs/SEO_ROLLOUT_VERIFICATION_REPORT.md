@@ -17,6 +17,7 @@
 npm run validate:blog
 npm run lint
 npm run build
+npm run verify:sitemap
 npm run verify:seo-build
 ```
 
