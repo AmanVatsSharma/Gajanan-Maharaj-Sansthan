@@ -19,6 +19,10 @@ const DOC_PATHS = {
   rolloutReport: path.join(process.cwd(), "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md"),
   technicalSummary: path.join(process.cwd(), "docs/SEO_TECHNICAL_IMPLEMENTATION.md"),
   completionSummary: path.join(process.cwd(), "SEO_IMPLEMENTATION_COMPLETE.md"),
+  featureBlogModuleDoc: path.join(process.cwd(), "src/features/blog/MODULE_DOC.md"),
+  libBlogModuleDoc: path.join(process.cwd(), "src/lib/blog/MODULE_DOC.md"),
+  scriptsModuleDoc: path.join(process.cwd(), "scripts/MODULE_DOC.md"),
+  seoLibModuleDoc: path.join(process.cwd(), "src/lib/seo/MODULE_DOC.md"),
 };
 
 function getMarkdownFiles(directoryPath) {
@@ -92,6 +96,10 @@ function main() {
   const rolloutReport = fs.readFileSync(DOC_PATHS.rolloutReport, "utf-8");
   const technicalSummary = fs.readFileSync(DOC_PATHS.technicalSummary, "utf-8");
   const completionSummary = fs.readFileSync(DOC_PATHS.completionSummary, "utf-8");
+  const featureBlogModuleDoc = fs.readFileSync(DOC_PATHS.featureBlogModuleDoc, "utf-8");
+  const libBlogModuleDoc = fs.readFileSync(DOC_PATHS.libBlogModuleDoc, "utf-8");
+  const scriptsModuleDoc = fs.readFileSync(DOC_PATHS.scriptsModuleDoc, "utf-8");
+  const seoLibModuleDoc = fs.readFileSync(DOC_PATHS.seoLibModuleDoc, "utf-8");
 
   assertIncludes(
     blogReadme,
@@ -105,12 +113,24 @@ function main() {
     failures,
     "content/blog/README.md:verify-generator-command"
   );
+  assertIncludes(
+    blogReadme,
+    "npm run verify:docs-sync",
+    failures,
+    "content/blog/README.md:verify-docs-sync-command"
+  );
 
   assertIncludes(
     setupGuide,
     "npm run verify:generator",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-generator-command"
+  );
+  assertIncludes(
+    setupGuide,
+    "npm run verify:docs-sync",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:verify-docs-sync-command"
   );
 
   assertIncludes(
@@ -130,6 +150,12 @@ function main() {
     "npm run verify:generator",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-generator-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "npm run verify:docs-sync",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-docs-sync-command"
   );
 
   assertIncludes(
@@ -151,6 +177,27 @@ function main() {
     failures,
     "SEO_IMPLEMENTATION_COMPLETE.md:verify-generator-command"
   );
+  assertIncludes(
+    scriptsModuleDoc,
+    "verify:generator",
+    failures,
+    "scripts/MODULE_DOC.md:verify-generator-reference"
+  );
+  assertIncludes(
+    scriptsModuleDoc,
+    "verify:docs-sync",
+    failures,
+    "scripts/MODULE_DOC.md:verify-docs-sync-reference"
+  );
+
+  for (const [docKey, content] of [
+    ["src/features/blog/MODULE_DOC.md", featureBlogModuleDoc],
+    ["src/lib/blog/MODULE_DOC.md", libBlogModuleDoc],
+    ["scripts/MODULE_DOC.md", scriptsModuleDoc],
+    ["src/lib/seo/MODULE_DOC.md", seoLibModuleDoc],
+  ]) {
+    assertIncludes(content, "```mermaid", failures, `${docKey}:mermaid-flowchart`);
+  }
 
   if (failures.length > 0) {
     for (const failure of failures) {
