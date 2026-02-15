@@ -321,6 +321,9 @@ npm run verify:seo-build
 # Verify canonical host consistency across all SEO pages
 npm run verify:canonical
 
+# Verify robots.txt policy directives and canonical host/sitemap lines
+npm run verify:robots
+
 # Verify all location detail pages contain geo/meta/schema SEO signals
 npm run verify:locations
 

@@ -38,6 +38,7 @@ flowchart TD
 - Invalid canonical URL environment values emit `seo-config-warning` at config load time.
 - Build-level SEO smoke checks are available via `npm run verify:seo-build` (checks canonical/meta/schema presence on key prerendered routes).
 - Canonical consistency checks are available via `npm run verify:canonical` (ensures canonical host/presence across SEO pages).
+- Robots policy checks are available via `npm run verify:robots` (ensures required directives, host, and sitemap lines).
 - Sitemap integrity checks are available via `npm run verify:sitemap` (checks URL count + blog/taxonomy/pagination coverage).
 - CI gate: `.github/workflows/seo-quality-gate.yml` runs `npm run seo:check:strict` on PRs/pushes.
 
