@@ -9,6 +9,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 import {
   CLUSTER_CONFIG_FINGERPRINT,
   EXPECTED_GENERATED_TOTAL,
@@ -22,6 +23,31 @@ const MANIFEST_PATH = path.join(BLOG_ROOT, "_ops/generated-seo-cluster-manifest.
 
 function normalizeManifestEntry(entry) {
   return typeof entry === "string" ? entry.trim().replace(/\\/g, "/") : "";
+}
+
+function toStringArray(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map((entry) => (typeof entry === "string" ? entry.trim() : ""))
+      .filter(Boolean);
+  }
+
+  if (typeof value === "string") {
+    return value
+      .split(",")
+      .map((entry) => entry.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
+function getExpectedCategory(entry) {
+  if (entry.startsWith("locations/")) return "locations";
+  if (entry.startsWith("guides/")) return "guides";
+  if (entry.startsWith("spiritual/")) return "spiritual";
+  if (entry.startsWith("events/")) return "events";
+  return "";
 }
 
 function main() {
@@ -89,6 +115,7 @@ function main() {
     spiritual: 0,
     events: 0,
   };
+  let frontmatterCheckCount = 0;
 
   for (const entry of entries) {
     const absolutePath = path.join(BLOG_ROOT, entry);
@@ -99,6 +126,66 @@ function main() {
       });
       continue;
     }
+
+    const expectedCategory = getExpectedCategory(entry);
+    const expectedSlug = path.basename(entry, ".md");
+    const fileContent = fs.readFileSync(absolutePath, "utf-8");
+    const { data } = matter(fileContent);
+    const slug = typeof data.slug === "string" ? data.slug.trim() : "";
+    const category = typeof data.category === "string" ? data.category.trim() : "";
+    const relatedSlugs = toStringArray(data.relatedSlugs);
+    const locationIds = toStringArray(data.locationIds);
+    const keywords = toStringArray(data.keywords).map((keyword) => keyword.toLowerCase());
+    const hasSansthanFragment = keywords.some(
+      (keyword) => keyword.includes("sansthan") || keyword.includes("sanstan")
+    );
+
+    if (!slug || slug !== expectedSlug) {
+      failures.push({
+        check: "generated-frontmatter-slug",
+        reason: `Generated entry ${entry} has slug "${slug}" but expected "${expectedSlug}".`,
+      });
+    }
+
+    if (!category || category !== expectedCategory) {
+      failures.push({
+        check: "generated-frontmatter-category",
+        reason: `Generated entry ${entry} has category "${category}" but expected "${expectedCategory}".`,
+      });
+    }
+
+    if (relatedSlugs.length < 3) {
+      failures.push({
+        check: "generated-related-slugs-minimum",
+        reason: `Generated entry ${entry} has only ${relatedSlugs.length} relatedSlugs; minimum expected is 3.`,
+      });
+    }
+
+    if (!hasSansthanFragment) {
+      failures.push({
+        check: "generated-keyword-brand-fragment",
+        reason: `Generated entry ${entry} is missing sansthan/sanstan keyword fragments.`,
+      });
+    }
+
+    if (expectedCategory === "locations") {
+      const locationKey = entry.split("/")[1];
+      if (slug && !slug.startsWith(`${locationKey}-`)) {
+        failures.push({
+          check: "generated-location-slug-prefix",
+          reason: `Location entry ${entry} slug "${slug}" does not start with "${locationKey}-".`,
+        });
+      }
+
+      if (locationIds.length === 0) {
+        failures.push({
+          check: "generated-location-ids",
+          reason: `Location entry ${entry} is missing locationIds.`,
+        });
+      }
+    }
+
+    frontmatterCheckCount += 1;
 
     if (entry.startsWith("locations/")) {
       for (const key of LOCATION_CLUSTER_KEYS) {
@@ -168,6 +255,7 @@ function main() {
     status: "passed",
     expectedTotal: EXPECTED_GENERATED_TOTAL,
     configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
+    frontmatterCheckCount,
     observedDistribution: distribution,
   });
 }

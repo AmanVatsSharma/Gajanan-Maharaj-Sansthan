@@ -61,6 +61,7 @@ npm run verify:seo-build
 - `npm run verify:generator` → pass
   - expected generated total: 105
   - config fingerprint aligned with shared cluster config
+  - generated frontmatter checks passed for 105 managed posts
   - observed distribution:
     - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15
     - guides: 15
@@ -86,6 +87,7 @@ npm run verify:seo-build
   - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Manifest fingerprint checks fail fast when config changes are not regenerated.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
+  - Generator verifier checks generated-file frontmatter invariants (slug/category/related/location namespace).
   - Link-graph checks enforce inbound internal linking coverage so generated clusters are crawl-connected.
   - Generated-post outbound link minimum checks enforce at least three `/blog/*` links per generated post.
   - Docs-sync verifier guards inventory/command drift in operational SEO documentation.
