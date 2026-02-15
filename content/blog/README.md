@@ -81,6 +81,12 @@ npm run generate:blogs
 npm run validate:blog
 ```
 
+Validation now includes cross-post integrity checks for:
+- minimum publishable post count (`>= 100`)
+- `relatedSlugs` existence
+- location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
+- duplicate primary keyword cannibalization warnings
+
 ## Content pipeline flowchart
 
 ```mermaid

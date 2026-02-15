@@ -12,6 +12,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
+const MIN_REQUIRED_POSTS = 100;
 const KNOWN_LOCATION_IDS = new Set([
   "shegaon-bhakt-niwas",
   "shegaon-anand-vihar",
@@ -22,6 +23,7 @@ const KNOWN_LOCATION_IDS = new Set([
 ]);
 const VALID_CATEGORIES = new Set(["locations", "guides", "spiritual", "events"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const REQUIRED_LOCATION_COVERAGE = ["shegaon", "omkareshwar", "pandharpur", "trimbakeshwar"];
 
 /**
  * Crawl markdown files recursively.
@@ -187,6 +189,9 @@ function validatePost(filePath, slugRegistry) {
     relativeFilePath,
     slug,
     category,
+    keywords,
+    locationIds,
+    relatedSlugs,
     errors,
     warnings,
   };
@@ -212,6 +217,99 @@ function printResultSummary(results) {
   });
 }
 
+function detectLocationClusterCoverage(results) {
+  const coverage = {
+    shegaon: 0,
+    omkareshwar: 0,
+    pandharpur: 0,
+    trimbakeshwar: 0,
+  };
+
+  for (const result of results) {
+    for (const locationId of result.locationIds || []) {
+      if (locationId.includes("shegaon")) coverage.shegaon += 1;
+      if (locationId.includes("omkareshwar")) coverage.omkareshwar += 1;
+      if (locationId.includes("pandharpur")) coverage.pandharpur += 1;
+      if (locationId.includes("trimbakeshwar")) coverage.trimbakeshwar += 1;
+    }
+  }
+
+  return coverage;
+}
+
+function runCrossPostChecks(results, failures) {
+  const knownSlugs = new Set(results.map((result) => result.slug).filter(Boolean));
+
+  for (const result of results) {
+    for (const relatedSlug of result.relatedSlugs || []) {
+      if (!knownSlugs.has(relatedSlug)) {
+        failures.push({
+          routeId: result.slug || result.relativeFilePath,
+          filePath: result.relativeFilePath,
+          check: "related-slug-exists",
+          reason: `relatedSlug "${relatedSlug}" does not exist in content/blog`,
+        });
+      }
+    }
+  }
+
+  if (results.length < MIN_REQUIRED_POSTS) {
+    failures.push({
+      routeId: "blog-inventory",
+      filePath: "content/blog",
+      check: "minimum-post-count",
+      reason: `Publishable markdown post count (${results.length}) is below minimum required (${MIN_REQUIRED_POSTS})`,
+    });
+  }
+
+  const locationCoverage = detectLocationClusterCoverage(results);
+  for (const locationKey of REQUIRED_LOCATION_COVERAGE) {
+    if (locationCoverage[locationKey] === 0) {
+      failures.push({
+        routeId: `location-coverage-${locationKey}`,
+        filePath: "content/blog/locations",
+        check: "location-cluster-coverage",
+        reason: `No location-intent posts detected for ${locationKey}`,
+      });
+    }
+  }
+
+  const primaryKeywordMap = new Map();
+  const duplicateKeywordMap = new Map();
+  for (const result of results) {
+    const primaryKeyword = result.keywords?.[0];
+    if (!primaryKeyword) {
+      continue;
+    }
+
+    const normalizedKeyword = primaryKeyword.toLowerCase().trim();
+    const existing = primaryKeywordMap.get(normalizedKeyword);
+    if (existing) {
+      const existingList = duplicateKeywordMap.get(normalizedKeyword) || [existing];
+      existingList.push(result.relativeFilePath);
+      duplicateKeywordMap.set(normalizedKeyword, existingList);
+      continue;
+    }
+
+    primaryKeywordMap.set(normalizedKeyword, result.relativeFilePath);
+  }
+
+  for (const [keyword, files] of duplicateKeywordMap.entries()) {
+    const uniqueFiles = [...new Set(files)];
+    const sampleFiles = uniqueFiles.slice(0, 5);
+    console.warn("blog-validation-warning", {
+      timestamp: Date.now(),
+      keyword,
+      duplicatePostCount: uniqueFiles.length,
+      sampleFiles,
+      message:
+        "Primary keyword is reused across multiple posts. Review cannibalization risk.",
+    });
+  }
+
+  return duplicateKeywordMap.size;
+}
+
 function main() {
   const markdownFiles = getMarkdownFiles(BLOG_ROOT);
   console.info("blog-validation-start", {
@@ -230,6 +328,8 @@ function main() {
 
   const slugRegistry = new Map();
   const results = markdownFiles.map((filePath) => validatePost(filePath, slugRegistry));
+  const crossPostFailures = [];
+  const crossPostWarnings = runCrossPostChecks(results, crossPostFailures);
 
   for (const result of results) {
     if (result.warnings.length > 0) {
@@ -251,9 +351,28 @@ function main() {
     }
   }
 
-  printResultSummary(results);
+  printResultSummary(
+    results.map((item) => ({
+      ...item,
+      warnings: item.warnings,
+    }))
+  );
+  console.info("blog-validation-warning-summary", {
+    timestamp: Date.now(),
+    crossPostWarningCount: crossPostWarnings,
+  });
 
-  const totalErrors = results.reduce((sum, item) => sum + item.errors.length, 0);
+  for (const failure of crossPostFailures) {
+    console.error("blog-validation-error", {
+      timestamp: Date.now(),
+      file: failure.filePath,
+      slug: failure.routeId,
+      errors: [failure.reason],
+    });
+  }
+
+  const totalErrors =
+    results.reduce((sum, item) => sum + item.errors.length, 0) + crossPostFailures.length;
   if (totalErrors > 0) {
     process.exit(1);
   }

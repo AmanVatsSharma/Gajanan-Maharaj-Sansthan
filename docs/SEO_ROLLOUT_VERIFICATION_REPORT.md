@@ -49,6 +49,7 @@ npm run verify:seo-build
 3. **Content quality controls**
    - Frontmatter + link integrity validator blocks malformed SEO posts.
    - Deterministic generator supports repeatable large-scale cluster publishing.
+  - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
 
 4. **Documentation consistency**
    - Blog, SEO, locations, and booking module docs synchronized.
