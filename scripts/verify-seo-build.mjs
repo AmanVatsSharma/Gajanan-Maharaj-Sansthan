@@ -18,29 +18,38 @@ const REQUIRED_ROUTES = [
     filePath: "index.html",
     checks: ["canonical", "keywords", "ogTitle", "jsonLd"],
     requiredSchemaTypes: ["Organization", "WebSite"],
+    requiredKeywordFragments: [
+      "shri gajanan maharaj sansthan",
+      "shree gajanan maharaj sansthan",
+      "sri gajanan maharaj sansthan",
+    ],
   },
   {
     id: "booking",
     filePath: "booking.html",
     checks: ["canonical", "keywords", "jsonLd"],
     requiredSchemaTypes: ["FAQPage", "BreadcrumbList"],
+    requiredKeywordFragments: ["shegaon accommodation booking", "gajanan maharaj booking helpline"],
   },
   {
     id: "locations-index",
     filePath: "locations.html",
     checks: ["canonical", "keywords"],
+    requiredKeywordFragments: ["shegaon", "omkareshwar", "pandharpur", "trimbakeshwar"],
   },
   {
     id: "location-shegaon-bhakt-niwas",
     filePath: "locations/shegaon-bhakt-niwas.html",
     checks: ["canonical", "keywords", "jsonLd"],
     requiredSchemaTypes: ["PlaceOfWorship", "LocalBusiness", "LodgingBusiness"],
+    requiredKeywordFragments: ["shegaon", "bhakt niwas", "dharamshala booking"],
   },
   {
     id: "blog-index",
     filePath: "blog.html",
     checks: ["canonical", "keywords", "jsonLd"],
     requiredSchemaTypes: ["CollectionPage"],
+    requiredKeywordFragments: ["shegaon pilgrimage guide", "omkareshwar pilgrimage guide"],
   },
   {
     id: "blog-page-2",
@@ -53,6 +62,7 @@ const REQUIRED_ROUTES = [
     filePath: "blog/shegaon-travel-guide.html",
     checks: ["canonical", "keywords", "ogTitle", "jsonLd"],
     requiredSchemaTypes: ["BlogPosting", "BreadcrumbList"],
+    requiredKeywordFragments: ["shegaon travel guide", "gajanan maharaj sansthan shegaon"],
   },
   {
     id: "blog-category-locations",
@@ -99,6 +109,11 @@ function hasOgTitle(html) {
 
 function hasJsonLd(html) {
   return /<script[^>]+type="application\/ld\+json"/.test(html);
+}
+
+function extractKeywordsMetaContent(html) {
+  const match = html.match(/<meta[^>]+name="keywords"[^>]+content="([^"]*)"/);
+  return match?.[1]?.toLowerCase() || "";
 }
 
 /**
@@ -215,6 +230,20 @@ function main() {
             filePath: route.filePath,
             check: "schema-type",
             reason: `Missing required schema @type: ${requiredSchemaType}`,
+          });
+        }
+      }
+    }
+
+    if (route.requiredKeywordFragments && route.requiredKeywordFragments.length > 0) {
+      const keywordMeta = extractKeywordsMetaContent(html);
+      for (const keywordFragment of route.requiredKeywordFragments) {
+        if (!keywordMeta.includes(keywordFragment.toLowerCase())) {
+          failures.push({
+            routeId: route.id,
+            filePath: route.filePath,
+            check: "keyword-fragment",
+            reason: `Missing required keyword fragment in meta keywords: "${keywordFragment}"`,
           });
         }
       }

@@ -322,7 +322,7 @@ npm run verify:seo-build
 npm run verify:sitemap
 ```
 
-`verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types on critical pages.
+`verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.
 
 ### Validation rules enforced
 

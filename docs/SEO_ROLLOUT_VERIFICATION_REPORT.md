@@ -64,6 +64,7 @@ npm run verify:seo-build
   - Location detail: PlaceOfWorship + LocalBusiness + LodgingBusiness
   - Blog routes: CollectionPage / BlogPosting + BreadcrumbList
   - Paginated archive route: `/blog/page/2` canonical/meta/schema validation
+- `verify:seo-build` also validates required keyword fragments in metadata for critical pages (brand variants + location-intent tokens).
 
 ## Notes
 
