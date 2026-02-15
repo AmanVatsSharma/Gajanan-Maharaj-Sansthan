@@ -5,7 +5,7 @@ date: "2025-10-11"
 slug: "temple-accommodation-comparison-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "temple accommodation comparison guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

@@ -5,6 +5,8 @@ date: "2025-12-06"
 slug: "trimbakeshwar-accommodation-near-temple"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar accommodation near temple guide"
+  - "trimbakeshwar accommodation planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

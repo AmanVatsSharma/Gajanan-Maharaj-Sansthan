@@ -5,6 +5,8 @@ date: "2025-12-22"
 slug: "pandharpur-group-yatra-planning"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur group yatra planning guide"
+  - "pandharpur group travel planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

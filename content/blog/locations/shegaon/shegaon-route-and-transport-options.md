@@ -5,6 +5,8 @@ date: "2026-02-11"
 slug: "shegaon-route-and-transport-options"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon route and transport options guide"
+  - "shegaon transport planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

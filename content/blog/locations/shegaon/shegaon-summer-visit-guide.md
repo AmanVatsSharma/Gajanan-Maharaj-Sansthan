@@ -5,6 +5,8 @@ date: "2026-01-27"
 slug: "shegaon-summer-visit-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon summer visit guide guide"
+  - "shegaon seasonal guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

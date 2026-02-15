@@ -5,6 +5,8 @@ date: "2025-12-15"
 slug: "trimbakeshwar-family-accommodation-checklist"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar family accommodation checklist guide"
+  - "trimbakeshwar accommodation planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

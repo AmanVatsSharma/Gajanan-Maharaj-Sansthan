@@ -5,6 +5,8 @@ date: "2025-12-16"
 slug: "trimbakeshwar-weekend-planning-guide"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar weekend planning guide guide"
+  - "trimbakeshwar travel guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

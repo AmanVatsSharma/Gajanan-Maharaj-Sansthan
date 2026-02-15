@@ -5,6 +5,8 @@ date: "2025-12-24"
 slug: "pandharpur-first-time-visitor-guide"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur first time visitor guide guide"
+  - "pandharpur beginner guide planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

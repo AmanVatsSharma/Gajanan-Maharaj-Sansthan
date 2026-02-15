@@ -5,7 +5,7 @@ date: "2025-10-14"
 slug: "omkareshwar-to-trimbakeshwar-pilgrimage-checklist"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "omkareshwar to trimbakeshwar pilgrimage checklist pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

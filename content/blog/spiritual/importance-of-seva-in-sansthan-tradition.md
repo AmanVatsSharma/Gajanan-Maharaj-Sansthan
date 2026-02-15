@@ -5,7 +5,7 @@ date: "2025-09-06"
 slug: "importance-of-seva-in-sansthan-tradition"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj teachings"
+  - "importance of seva in sansthan tradition"
   - "shree gajanan maharaj spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"

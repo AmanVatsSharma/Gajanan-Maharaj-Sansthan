@@ -5,6 +5,8 @@ date: "2026-01-20"
 slug: "omkareshwar-weekend-planning-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar weekend planning guide guide"
+  - "omkareshwar travel guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

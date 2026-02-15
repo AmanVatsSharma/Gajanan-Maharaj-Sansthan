@@ -5,6 +5,8 @@ date: "2026-02-04"
 slug: "shegaon-accommodation-near-temple"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon accommodation near temple guide"
+  - "shegaon accommodation planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

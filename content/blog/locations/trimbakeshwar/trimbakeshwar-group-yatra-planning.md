@@ -5,6 +5,8 @@ date: "2025-12-07"
 slug: "trimbakeshwar-group-yatra-planning"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar group yatra planning guide"
+  - "trimbakeshwar group travel planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

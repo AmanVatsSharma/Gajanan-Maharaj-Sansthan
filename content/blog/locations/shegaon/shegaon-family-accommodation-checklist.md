@@ -5,6 +5,8 @@ date: "2026-02-13"
 slug: "shegaon-family-accommodation-checklist"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon family accommodation checklist guide"
+  - "shegaon accommodation planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

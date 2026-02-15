@@ -5,7 +5,7 @@ date: "2025-08-17"
 slug: "major-utsav-crowd-planning-checklist"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan festival guide"
+  - "major utsav crowd planning checklist"
   - "shree gajanan maharaj sansthan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"

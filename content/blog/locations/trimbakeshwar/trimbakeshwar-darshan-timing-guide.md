@@ -5,6 +5,8 @@ date: "2025-12-17"
 slug: "trimbakeshwar-darshan-timing-guide"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar darshan timing guide guide"
+  - "trimbakeshwar darshan planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

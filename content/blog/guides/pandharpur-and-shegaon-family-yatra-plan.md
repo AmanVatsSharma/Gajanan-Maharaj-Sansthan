@@ -5,7 +5,7 @@ date: "2025-10-13"
 slug: "pandharpur-and-shegaon-family-yatra-plan"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "pandharpur and shegaon family yatra plan pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

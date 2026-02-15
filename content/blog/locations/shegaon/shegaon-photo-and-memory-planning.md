@@ -5,6 +5,8 @@ date: "2026-01-22"
 slug: "shegaon-photo-and-memory-planning"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon photo and memory planning guide"
+  - "shegaon family travel planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

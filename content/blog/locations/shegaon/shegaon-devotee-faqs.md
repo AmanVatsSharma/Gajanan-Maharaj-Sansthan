@@ -5,6 +5,8 @@ date: "2026-02-08"
 slug: "shegaon-devotee-faqs"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon devotee faqs guide"
+  - "shegaon faq planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

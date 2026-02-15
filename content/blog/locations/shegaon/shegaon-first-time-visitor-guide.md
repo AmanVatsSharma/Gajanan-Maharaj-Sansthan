@@ -5,6 +5,8 @@ date: "2026-02-07"
 slug: "shegaon-first-time-visitor-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon first time visitor guide guide"
+  - "shegaon beginner guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

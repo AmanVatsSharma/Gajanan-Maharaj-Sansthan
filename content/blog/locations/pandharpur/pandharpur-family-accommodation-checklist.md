@@ -5,6 +5,8 @@ date: "2025-12-30"
 slug: "pandharpur-family-accommodation-checklist"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur family accommodation checklist guide"
+  - "pandharpur accommodation planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

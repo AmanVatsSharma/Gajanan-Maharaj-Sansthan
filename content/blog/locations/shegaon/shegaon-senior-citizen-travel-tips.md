@@ -5,6 +5,8 @@ date: "2026-02-06"
 slug: "shegaon-senior-citizen-travel-tips"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon senior citizen travel tips guide"
+  - "shegaon family travel planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

@@ -5,6 +5,8 @@ date: "2025-12-27"
 slug: "pandharpur-one-day-itinerary"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur one day itinerary guide"
+  - "pandharpur itinerary planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

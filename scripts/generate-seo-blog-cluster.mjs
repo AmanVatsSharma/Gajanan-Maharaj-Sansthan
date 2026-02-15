@@ -178,6 +178,14 @@ function toTitleCase(value) {
     .join(" ");
 }
 
+function toSentenceKeyword(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildFrontmatter({
   title,
   description,
@@ -345,8 +353,10 @@ function generateLocationClusterPosts() {
       globalOffset += 1;
 
       const keywords = [
+        `${config.city.toLowerCase()} ${toSentenceKeyword(topic.title)} guide`,
+        `${config.city.toLowerCase()} ${topic.intent.replace(/-/g, " ")} planning`,
         ...config.keywordSeed,
-        `${config.city.toLowerCase()} ${topic.title.toLowerCase()}`,
+        `${config.city.toLowerCase()} ${toSentenceKeyword(topic.title)}`,
         `${config.city.toLowerCase()} pilgrimage planning`,
         `${config.city.toLowerCase()} accommodation booking`,
       ];
@@ -409,7 +419,7 @@ function generateCrossLocationGuides() {
       slug,
       image: "/images/shegaon-temple.jpg",
       keywords: [
-        "shri gajanan maharaj sansthan travel guide",
+        `${toSentenceKeyword(variant).replace(/-/g, " ")} pilgrimage guide`,
         "shree gajanan maharaj sansthan pilgrimage",
         "sri gajanan maharaj sansthan route planning",
         "multi location temple accommodation guide",
@@ -445,7 +455,7 @@ function generateSpiritualPosts() {
       slug,
       image: "/images/shegaon-temple.jpg",
       keywords: [
-        "shri gajanan maharaj teachings",
+        `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj spiritual guidance",
         "sri gajanan maharaj devotee planning",
         "sansthan devotional discipline",
@@ -486,7 +496,7 @@ function generateEventPosts() {
       slug,
       image: "/images/shegaon-temple.jpg",
       keywords: [
-        "shri gajanan maharaj sansthan festival guide",
+        `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj sansthan event planning",
         "sri gajanan maharaj darshan festival season",
         "festival accommodation planning shegaon",

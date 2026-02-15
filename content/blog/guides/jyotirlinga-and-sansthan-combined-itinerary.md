@@ -5,7 +5,7 @@ date: "2025-10-12"
 slug: "jyotirlinga-and-sansthan-combined-itinerary"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "jyotirlinga and sansthan combined itinerary pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

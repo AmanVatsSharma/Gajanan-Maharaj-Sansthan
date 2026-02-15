@@ -5,7 +5,7 @@ date: "2025-08-19"
 slug: "ram-navami-devotee-planning-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan festival guide"
+  - "ram navami devotee planning guide"
   - "shree gajanan maharaj sansthan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"

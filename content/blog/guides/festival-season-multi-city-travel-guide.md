@@ -5,7 +5,7 @@ date: "2025-10-08"
 slug: "festival-season-multi-city-travel-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "festival season multi city travel guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

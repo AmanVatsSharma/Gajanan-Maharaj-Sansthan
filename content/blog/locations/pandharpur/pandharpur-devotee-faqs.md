@@ -5,6 +5,8 @@ date: "2025-12-25"
 slug: "pandharpur-devotee-faqs"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur devotee faqs guide"
+  - "pandharpur faq planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

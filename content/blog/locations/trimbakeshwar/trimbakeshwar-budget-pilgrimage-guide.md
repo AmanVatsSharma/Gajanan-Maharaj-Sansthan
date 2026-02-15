@@ -5,6 +5,8 @@ date: "2025-12-03"
 slug: "trimbakeshwar-budget-pilgrimage-guide"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar budget pilgrimage guide guide"
+  - "trimbakeshwar budget guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

@@ -5,6 +5,8 @@ date: "2025-12-31"
 slug: "pandharpur-weekend-planning-guide"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur weekend planning guide guide"
+  - "pandharpur travel guide planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

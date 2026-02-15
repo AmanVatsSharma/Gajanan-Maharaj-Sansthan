@@ -5,6 +5,8 @@ date: "2026-01-01"
 slug: "pandharpur-darshan-timing-guide"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur darshan timing guide guide"
+  - "pandharpur darshan planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

@@ -5,6 +5,8 @@ date: "2026-01-23"
 slug: "shegaon-darshan-queue-time-optimization"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon darshan queue time optimization guide"
+  - "shegaon darshan planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

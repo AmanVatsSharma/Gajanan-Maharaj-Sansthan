@@ -5,6 +5,8 @@ date: "2025-12-28"
 slug: "pandharpur-route-and-transport-options"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur route and transport options guide"
+  - "pandharpur transport planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

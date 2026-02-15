@@ -5,6 +5,8 @@ date: "2026-01-14"
 slug: "omkareshwar-devotee-faqs"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar devotee faqs guide"
+  - "omkareshwar faq planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

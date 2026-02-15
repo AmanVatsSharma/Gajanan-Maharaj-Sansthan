@@ -5,6 +5,8 @@ date: "2026-01-13"
 slug: "omkareshwar-first-time-visitor-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar first time visitor guide guide"
+  - "omkareshwar beginner guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

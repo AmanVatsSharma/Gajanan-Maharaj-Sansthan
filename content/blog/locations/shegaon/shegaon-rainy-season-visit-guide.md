@@ -5,6 +5,8 @@ date: "2026-01-28"
 slug: "shegaon-rainy-season-visit-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon rainy season visit guide guide"
+  - "shegaon seasonal guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

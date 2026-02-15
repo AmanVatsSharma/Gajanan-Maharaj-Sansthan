@@ -5,6 +5,8 @@ date: "2025-12-12"
 slug: "trimbakeshwar-one-day-itinerary"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar one day itinerary guide"
+  - "trimbakeshwar itinerary planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

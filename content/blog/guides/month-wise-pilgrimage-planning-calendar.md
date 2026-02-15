@@ -5,7 +5,7 @@ date: "2025-10-04"
 slug: "month-wise-pilgrimage-planning-calendar"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "month wise pilgrimage planning calendar pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

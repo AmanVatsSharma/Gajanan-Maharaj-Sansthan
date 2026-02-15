@@ -87,6 +87,8 @@ Validation now includes cross-post integrity checks for:
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
 - duplicate primary keyword cannibalization warnings
 
+Generator note: `npm run generate:blogs` now assigns topic-specific primary keywords per post so cross-post cannibalization warnings remain near zero.
+
 ## Content pipeline flowchart
 
 ```mermaid

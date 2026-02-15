@@ -5,6 +5,8 @@ date: "2026-02-12"
 slug: "shegaon-best-time-to-visit"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon best time to visit guide"
+  - "shegaon seasonal guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

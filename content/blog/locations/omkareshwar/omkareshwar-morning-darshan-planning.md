@@ -5,6 +5,8 @@ date: "2026-01-09"
 slug: "omkareshwar-morning-darshan-planning"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar morning darshan planning guide"
+  - "omkareshwar darshan planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

@@ -5,6 +5,8 @@ date: "2026-02-03"
 slug: "shegaon-morning-darshan-planning"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon morning darshan planning guide"
+  - "shegaon darshan planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

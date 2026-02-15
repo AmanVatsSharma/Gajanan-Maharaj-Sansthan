@@ -5,6 +5,8 @@ date: "2026-01-12"
 slug: "omkareshwar-senior-citizen-travel-tips"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar senior citizen travel tips guide"
+  - "omkareshwar family travel planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

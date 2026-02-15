@@ -5,7 +5,7 @@ date: "2025-09-05"
 slug: "how-devotees-can-prepare-mindfully-for-darshan"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj teachings"
+  - "how devotees can prepare mindfully for darshan"
   - "shree gajanan maharaj spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"

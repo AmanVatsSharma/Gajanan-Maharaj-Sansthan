@@ -5,7 +5,7 @@ date: "2025-09-08"
 slug: "teachings-of-shri-gajanan-maharaj-for-modern-families"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj teachings"
+  - "teachings of shri gajanan maharaj for modern families"
   - "shree gajanan maharaj spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"

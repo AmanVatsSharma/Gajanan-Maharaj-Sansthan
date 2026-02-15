@@ -5,6 +5,8 @@ date: "2026-02-14"
 slug: "shegaon-weekend-planning-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon weekend planning guide guide"
+  - "shegaon travel guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

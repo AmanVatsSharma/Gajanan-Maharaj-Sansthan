@@ -5,6 +5,8 @@ date: "2026-01-07"
 slug: "omkareshwar-budget-pilgrimage-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar budget pilgrimage guide guide"
+  - "omkareshwar budget guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

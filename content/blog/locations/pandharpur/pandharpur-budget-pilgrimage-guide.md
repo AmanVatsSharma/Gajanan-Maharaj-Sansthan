@@ -5,6 +5,8 @@ date: "2025-12-18"
 slug: "pandharpur-budget-pilgrimage-guide"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur budget pilgrimage guide guide"
+  - "pandharpur budget guide planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

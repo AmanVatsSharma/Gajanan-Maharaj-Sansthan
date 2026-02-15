@@ -5,6 +5,8 @@ date: "2026-01-11"
 slug: "omkareshwar-group-yatra-planning"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar group yatra planning guide"
+  - "omkareshwar group travel planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

@@ -5,6 +5,8 @@ date: "2025-12-29"
 slug: "pandharpur-best-time-to-visit"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur best time to visit guide"
+  - "pandharpur seasonal guide planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

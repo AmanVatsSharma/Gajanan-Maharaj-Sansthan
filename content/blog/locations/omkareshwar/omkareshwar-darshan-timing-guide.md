@@ -5,6 +5,8 @@ date: "2026-01-21"
 slug: "omkareshwar-darshan-timing-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar darshan timing guide guide"
+  - "omkareshwar darshan planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

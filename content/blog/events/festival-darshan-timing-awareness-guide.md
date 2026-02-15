@@ -5,7 +5,7 @@ date: "2025-08-16"
 slug: "festival-darshan-timing-awareness-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan festival guide"
+  - "festival darshan timing awareness guide"
   - "shree gajanan maharaj sansthan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"

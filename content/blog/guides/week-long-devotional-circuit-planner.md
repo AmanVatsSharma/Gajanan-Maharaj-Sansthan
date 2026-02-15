@@ -5,7 +5,7 @@ date: "2025-10-10"
 slug: "week-long-devotional-circuit-planner"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "week long devotional circuit planner pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

@@ -5,6 +5,8 @@ date: "2025-12-21"
 slug: "pandharpur-accommodation-near-temple"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur accommodation near temple guide"
+  - "pandharpur accommodation planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

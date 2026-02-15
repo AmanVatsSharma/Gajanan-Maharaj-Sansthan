@@ -5,6 +5,8 @@ date: "2026-01-10"
 slug: "omkareshwar-accommodation-near-temple"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar accommodation near temple guide"
+  - "omkareshwar accommodation planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

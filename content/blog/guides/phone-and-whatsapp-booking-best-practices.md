@@ -5,7 +5,7 @@ date: "2025-10-06"
 slug: "phone-and-whatsapp-booking-best-practices"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "phone and whatsapp booking best practices pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

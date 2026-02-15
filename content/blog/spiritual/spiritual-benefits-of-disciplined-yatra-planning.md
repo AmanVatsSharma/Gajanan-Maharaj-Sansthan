@@ -5,7 +5,7 @@ date: "2025-09-04"
 slug: "spiritual-benefits-of-disciplined-yatra-planning"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj teachings"
+  - "spiritual benefits of disciplined yatra planning"
   - "shree gajanan maharaj spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"

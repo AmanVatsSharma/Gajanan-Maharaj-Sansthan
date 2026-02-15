@@ -5,6 +5,8 @@ date: "2026-02-02"
 slug: "shegaon-festival-season-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon festival season guide guide"
+  - "shegaon festival planning planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

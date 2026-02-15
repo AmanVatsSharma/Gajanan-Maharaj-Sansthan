@@ -5,6 +5,8 @@ date: "2026-01-19"
 slug: "omkareshwar-family-accommodation-checklist"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar family accommodation checklist guide"
+  - "omkareshwar accommodation planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

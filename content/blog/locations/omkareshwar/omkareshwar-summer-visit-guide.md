@@ -5,6 +5,8 @@ date: "2026-01-02"
 slug: "omkareshwar-summer-visit-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar summer visit guide guide"
+  - "omkareshwar seasonal guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

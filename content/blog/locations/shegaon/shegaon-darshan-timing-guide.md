@@ -5,6 +5,8 @@ date: "2026-02-15"
 slug: "shegaon-darshan-timing-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon darshan timing guide guide"
+  - "shegaon darshan planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

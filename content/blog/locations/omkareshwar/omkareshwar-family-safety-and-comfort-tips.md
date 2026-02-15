@@ -5,6 +5,8 @@ date: "2026-01-06"
 slug: "omkareshwar-family-safety-and-comfort-tips"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar family safety and comfort tips guide"
+  - "omkareshwar family travel planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

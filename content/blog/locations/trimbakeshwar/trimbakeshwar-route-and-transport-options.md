@@ -5,6 +5,8 @@ date: "2025-12-13"
 slug: "trimbakeshwar-route-and-transport-options"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar route and transport options guide"
+  - "trimbakeshwar transport planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

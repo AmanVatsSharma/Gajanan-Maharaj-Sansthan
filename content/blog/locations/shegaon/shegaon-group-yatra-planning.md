@@ -5,6 +5,8 @@ date: "2026-02-05"
 slug: "shegaon-group-yatra-planning"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon group yatra planning guide"
+  - "shegaon group travel planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

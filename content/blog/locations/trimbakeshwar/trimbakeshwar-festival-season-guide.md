@@ -5,6 +5,8 @@ date: "2025-12-04"
 slug: "trimbakeshwar-festival-season-guide"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar festival season guide guide"
+  - "trimbakeshwar festival planning planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

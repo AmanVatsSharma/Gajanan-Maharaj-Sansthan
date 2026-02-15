@@ -5,7 +5,7 @@ date: "2025-08-18"
 slug: "rishi-panchami-visit-preparation-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan festival guide"
+  - "rishi panchami visit preparation guide"
   - "shree gajanan maharaj sansthan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"

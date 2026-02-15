@@ -5,6 +5,8 @@ date: "2026-01-15"
 slug: "omkareshwar-two-day-itinerary"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar two day itinerary guide"
+  - "omkareshwar itinerary planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

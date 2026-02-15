@@ -5,7 +5,7 @@ date: "2025-10-09"
 slug: "pilgrimage-budget-planning-for-families"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "pilgrimage budget planning for families pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

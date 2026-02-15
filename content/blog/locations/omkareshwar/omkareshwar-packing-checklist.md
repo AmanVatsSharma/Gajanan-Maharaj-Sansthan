@@ -5,6 +5,8 @@ date: "2026-01-04"
 slug: "omkareshwar-packing-checklist"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar packing checklist guide"
+  - "omkareshwar travel tips planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

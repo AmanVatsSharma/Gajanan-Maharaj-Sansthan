@@ -5,6 +5,8 @@ date: "2026-01-31"
 slug: "shegaon-family-safety-and-comfort-tips"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon family safety and comfort tips guide"
+  - "shegaon family travel planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

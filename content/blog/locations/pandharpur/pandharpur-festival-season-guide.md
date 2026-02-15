@@ -5,6 +5,8 @@ date: "2025-12-19"
 slug: "pandharpur-festival-season-guide"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur festival season guide guide"
+  - "pandharpur festival planning planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

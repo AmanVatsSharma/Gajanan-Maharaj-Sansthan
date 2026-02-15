@@ -5,6 +5,8 @@ date: "2025-12-14"
 slug: "trimbakeshwar-best-time-to-visit"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar best time to visit guide"
+  - "trimbakeshwar seasonal guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

@@ -5,7 +5,7 @@ date: "2025-09-07"
 slug: "daily-devotional-routine-for-pilgrimage-travelers"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj teachings"
+  - "daily devotional routine for pilgrimage travelers"
   - "shree gajanan maharaj spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"

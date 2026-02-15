@@ -5,6 +5,8 @@ date: "2026-01-30"
 slug: "shegaon-prayer-and-darshan-etiquette"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon prayer and darshan etiquette guide"
+  - "shegaon devotional planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

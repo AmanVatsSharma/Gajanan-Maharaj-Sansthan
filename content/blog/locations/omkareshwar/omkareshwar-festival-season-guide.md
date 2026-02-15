@@ -5,6 +5,8 @@ date: "2026-01-08"
 slug: "omkareshwar-festival-season-guide"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar festival season guide guide"
+  - "omkareshwar festival planning planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

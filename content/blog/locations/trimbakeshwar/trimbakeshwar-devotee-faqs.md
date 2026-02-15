@@ -5,6 +5,8 @@ date: "2025-12-10"
 slug: "trimbakeshwar-devotee-faqs"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar devotee faqs guide"
+  - "trimbakeshwar faq planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

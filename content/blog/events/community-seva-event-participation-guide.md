@@ -5,7 +5,7 @@ date: "2025-08-15"
 slug: "community-seva-event-participation-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan festival guide"
+  - "community seva event participation guide"
   - "shree gajanan maharaj sansthan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"

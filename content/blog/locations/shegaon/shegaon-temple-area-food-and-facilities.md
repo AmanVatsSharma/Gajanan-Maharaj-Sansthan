@@ -5,6 +5,8 @@ date: "2026-01-25"
 slug: "shegaon-temple-area-food-and-facilities"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon temple area food and facilities guide"
+  - "shegaon facilities planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

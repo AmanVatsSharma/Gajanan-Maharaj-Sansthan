@@ -5,6 +5,8 @@ date: "2025-12-09"
 slug: "trimbakeshwar-first-time-visitor-guide"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar first time visitor guide guide"
+  - "trimbakeshwar beginner guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

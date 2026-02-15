@@ -5,6 +5,8 @@ date: "2025-12-08"
 slug: "trimbakeshwar-senior-citizen-travel-tips"
 image: "/images/trimbakeshwar.jpg"
 keywords:
+  - "trimbakeshwar senior citizen travel tips guide"
+  - "trimbakeshwar family travel planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"

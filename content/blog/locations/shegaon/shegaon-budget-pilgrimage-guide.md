@@ -5,6 +5,8 @@ date: "2026-02-01"
 slug: "shegaon-budget-pilgrimage-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon budget pilgrimage guide guide"
+  - "shegaon budget guide planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

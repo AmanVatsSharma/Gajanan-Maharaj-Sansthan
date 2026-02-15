@@ -5,7 +5,7 @@ date: "2025-10-17"
 slug: "shegaon-to-omkareshwar-route-guide"
 image: "/images/shegaon-temple.jpg"
 keywords:
-  - "shri gajanan maharaj sansthan travel guide"
+  - "shegaon to omkareshwar route guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"

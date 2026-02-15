@@ -5,6 +5,8 @@ date: "2026-01-18"
 slug: "omkareshwar-best-time-to-visit"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar best time to visit guide"
+  - "omkareshwar seasonal guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"

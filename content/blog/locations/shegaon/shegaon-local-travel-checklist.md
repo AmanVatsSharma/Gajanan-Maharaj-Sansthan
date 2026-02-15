@@ -5,6 +5,8 @@ date: "2026-01-24"
 slug: "shegaon-local-travel-checklist"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon local travel checklist guide"
+  - "shegaon travel tips planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

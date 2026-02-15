@@ -5,6 +5,8 @@ date: "2026-02-09"
 slug: "shegaon-two-day-itinerary"
 image: "/images/shegaon-temple.jpg"
 keywords:
+  - "shegaon two day itinerary guide"
+  - "shegaon itinerary planning"
   - "shri gajanan maharaj sansthan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"

@@ -5,6 +5,8 @@ date: "2025-12-23"
 slug: "pandharpur-senior-citizen-travel-tips"
 image: "/images/pandharpur.jpg"
 keywords:
+  - "pandharpur senior citizen travel tips guide"
+  - "pandharpur family travel planning"
   - "shri gajanan maharaj sansthan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"

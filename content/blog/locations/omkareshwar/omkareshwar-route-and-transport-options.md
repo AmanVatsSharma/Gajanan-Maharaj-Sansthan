@@ -5,6 +5,8 @@ date: "2026-01-17"
 slug: "omkareshwar-route-and-transport-options"
 image: "/images/omkareshwar.jpg"
 keywords:
+  - "omkareshwar route and transport options guide"
+  - "omkareshwar transport planning"
   - "shri gajanan maharaj sansthan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"
