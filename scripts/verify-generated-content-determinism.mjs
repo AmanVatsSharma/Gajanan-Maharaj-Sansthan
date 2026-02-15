@@ -22,6 +22,7 @@ const GENERATOR_SCRIPT_PATH = path.join(
   WORKSPACE_ROOT,
   "scripts/generate-seo-blog-cluster.mjs"
 );
+const GENERATOR_TIMEOUT_MS = 60000;
 
 function readManifest(manifestPath) {
   const parsed = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
@@ -40,6 +41,19 @@ function readManifest(manifestPath) {
     generatedFiles: generatedFiles.map((entry) => String(entry).replace(/\\/g, "/")).sort(),
     generatedFileChecksums: generatedFileChecksums,
   };
+}
+
+function formatOutputSnippet(value) {
+  if (!value) {
+    return "";
+  }
+
+  const normalized = String(value).trim();
+  if (normalized.length <= 2000) {
+    return normalized;
+  }
+
+  return `${normalized.slice(0, 2000)}...(truncated)`;
 }
 
 function getMapDiff(actualMap, expectedMap) {
@@ -83,16 +97,31 @@ function main() {
   const tempBlogRoot = path.join(tempRoot, "content/blog");
   const tempManifestPath = path.join(tempBlogRoot, "_ops/generated-seo-cluster-manifest.json");
   const failures = [];
+  let generatorOutput = "";
 
   try {
-    execFileSync("node", [GENERATOR_SCRIPT_PATH], {
-      cwd: WORKSPACE_ROOT,
-      env: {
-        ...process.env,
-        SEO_BLOG_GENERATOR_ROOT: tempBlogRoot,
-      },
-      stdio: "pipe",
-    });
+    try {
+      generatorOutput = execFileSync("node", [GENERATOR_SCRIPT_PATH], {
+        cwd: WORKSPACE_ROOT,
+        env: {
+          ...process.env,
+          SEO_BLOG_GENERATOR_ROOT: tempBlogRoot,
+        },
+        timeout: GENERATOR_TIMEOUT_MS,
+        stdio: "pipe",
+      }).toString();
+    } catch (error) {
+      const errorObject = error;
+      failures.push({
+        check: "temp-generator-execution",
+        reason: `Temporary generator execution failed: ${
+          errorObject instanceof Error ? errorObject.message : String(errorObject)
+        }`,
+        outputSnippet: formatOutputSnippet(
+          `${errorObject?.stdout?.toString?.() || ""}\n${errorObject?.stderr?.toString?.() || ""}`
+        ),
+      });
+    }
 
     if (!fs.existsSync(tempManifestPath)) {
       failures.push({
@@ -160,6 +189,16 @@ function main() {
             .join(", ")}`,
         });
       }
+
+      const tempGeneratedFilesOnDisk = tempManifest.generatedFiles.filter((entry) =>
+        fs.existsSync(path.join(tempBlogRoot, entry))
+      ).length;
+      if (tempGeneratedFilesOnDisk !== tempManifest.generatedFileCount) {
+        failures.push({
+          check: "temp-generated-files-on-disk",
+          reason: `Temporary generated files on disk (${tempGeneratedFilesOnDisk}) do not match temp manifest count (${tempManifest.generatedFileCount}).`,
+        });
+      }
     }
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
@@ -185,6 +224,7 @@ function main() {
     timestamp: Date.now(),
     status: "passed",
     comparedGeneratedFiles: liveManifest.generatedFiles.length,
+    generatorOutputSnippet: formatOutputSnippet(generatorOutput),
   });
 }
 

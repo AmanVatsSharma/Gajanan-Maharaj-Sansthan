@@ -77,6 +77,7 @@ flowchart TD
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
 - Determinism verifier runs generator in isolated temp root and compares resulting checksums to live manifest.
+- Determinism verifier captures generator stdout/stderr snippets and enforces temp-run timeout for actionable failure diagnostics.
 - Manifest generatedFiles path-policy and lexicographic-order checks enforce deterministic file inventory formatting.
 - Managed namespace ownership checks ensure generated folders contain only manifest-owned files + explicit manual seed anchors.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
