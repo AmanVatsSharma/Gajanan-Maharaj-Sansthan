@@ -332,6 +332,9 @@ npm run verify:taxonomy
 
 # Verify pagination navigation links across /blog/page/* archives
 npm run verify:pagination
+
+# Verify RSS feed output coverage and item count
+npm run verify:rss
 ```
 
 `verify:seo-build` checks canonical/keywords/OG/JSON-LD plus required schema types and keyword-fragment coverage on critical pages.

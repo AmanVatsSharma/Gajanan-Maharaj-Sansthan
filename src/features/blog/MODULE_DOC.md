@@ -31,6 +31,7 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
 - Content generation script: `npm run generate:blogs` (`scripts/generate-seo-blog-cluster.mjs`)
 - Validation script: `npm run validate:blog` (`scripts/validate-blog-content.mjs`)
 - Pagination navigation verifier: `npm run verify:pagination` (`scripts/verify-blog-pagination-links.mjs`)
+- RSS feed verifier: `npm run verify:rss` (`scripts/verify-rss-feed.mjs`)
 - Validation enforces:
   - Unique slug format
   - Required metadata fields

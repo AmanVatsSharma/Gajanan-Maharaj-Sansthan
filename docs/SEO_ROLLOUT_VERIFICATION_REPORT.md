@@ -23,6 +23,7 @@ npm run verify:locations
 npm run verify:taxonomy
 npm run verify:sitemap
 npm run verify:pagination
+npm run verify:rss
 npm run verify:seo-build
 ```
 
