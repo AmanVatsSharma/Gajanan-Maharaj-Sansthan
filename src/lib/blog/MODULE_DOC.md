@@ -1,0 +1,42 @@
+# Module: lib/blog
+
+**Short:** Markdown ingestion, parsing, taxonomy, and related-post intelligence for SEO blog routes.
+
+## Purpose
+
+Load markdown posts from `content/blog`, normalize frontmatter, parse markdown to HTML, and expose APIs used by blog pages, archives, sitemap generation, and RSS feed.
+
+## Public API
+
+- `getBlogPosts()` — returns all posts sorted by latest date.
+- `getBlogPost(slug)` — returns a single post.
+- `getAllTags()` / `getAllCategories()` — normalized taxonomy slugs for static paths.
+- `getPostsByTag(tag)` / `getPostsByCategory(category)` — archive filters.
+- `getTagSummaries()` / `getCategorySummaries()` — UI summaries.
+- `getRelatedPosts(post)` — explicit + score-based related content.
+- `toTaxonomySlug()` / `formatTaxonomyLabel()` — taxonomy normalization.
+
+## Internal safeguards
+
+- Recursively scans markdown folders and ignores `_` prefixed paths + README files.
+- Throws hard error on duplicate slugs.
+- Emits debug and warning logs for parsing and metadata quality checks.
+- Catches per-file parser errors and emits structured diagnostics before failing.
+
+## Blog data processing flow
+
+```mermaid
+flowchart TD
+  files[content/blog/**/*.md] --> matter[gray-matter frontmatter parse]
+  matter --> normalize[slug/date/tags/category normalization]
+  normalize --> markdown[parseMarkdown to HTML]
+  markdown --> postObj[BlogPost object]
+  postObj --> sorting[Date sort newest first]
+  sorting --> consumers[/blog pages + sitemap + feed]
+```
+
+## Changelog
+
+- **2026-02-13**: Initial parser + markdown conversion utilities added.
+- **2026-02-15**: Recursive content discovery, taxonomy helpers, and related-post scoring introduced.
+- **2026-02-15**: Added runtime debug/error logging and metadata-quality warning instrumentation for SEO-scale content operations.

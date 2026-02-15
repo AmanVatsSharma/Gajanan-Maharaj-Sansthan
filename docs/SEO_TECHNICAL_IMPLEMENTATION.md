@@ -48,6 +48,9 @@ src/
 │   ├── faq.ts                        # FAQ content
 │   ├── sansthan-data.ts              # Location data
 │   └── contact.ts                    # Contact information
+├── scripts/
+│   ├── generate-seo-blog-cluster.mjs # Deterministic 100-post SEO cluster generator
+│   └── validate-blog-content.mjs     # Frontmatter/link/taxonomy validator
 └── docs/
     ├── SEO_SETUP_GUIDE.md            # User guide for SEO setup
     └── SEO_TECHNICAL_IMPLEMENTATION.md  # This file
@@ -231,6 +234,19 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - Contextual internal links
 - Footer navigation
 - Location cross-linking
+
+### 11. Scalable SEO Content Pipeline
+
+**Features**:
+- Deterministic cluster generation for high-intent location/content variants
+- Validation script for slug uniqueness, frontmatter quality, and internal linking rules
+- Blog inventory expanded to 105 posts (100 generated cluster posts + existing seed posts)
+
+**Commands**:
+```bash
+npm run generate:blogs
+npm run validate:blog
+```
 
 ---
 
@@ -470,12 +486,13 @@ return <StructuredData data={schema} />;
 ## ✅ Completed Implementation Summary
 
 - **Structured Data**: 8 schema types implemented
-- **Page Metadata**: 6 pages optimized
+- **Page Metadata**: Core pages + blog archives optimized
 - **Analytics**: GA4 + 8 event types
 - **Performance**: Next.js Image + config optimization
 - **Local SEO**: 6 locations with coordinates
 - **Content**: 12-item FAQ with schema
-- **Technical**: Enhanced sitemap + robots.txt
+- **Technical**: Enhanced sitemap + robots.txt + canonical host hardening
+- **Blog SEO**: 105 markdown posts with validated internal linking and taxonomy coverage
 
 ---
 

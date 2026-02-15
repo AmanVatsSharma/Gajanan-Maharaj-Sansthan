@@ -51,4 +51,5 @@ flowchart TD
 - 2026-02-13: Standardized location names to "Shri Gajanan Maharaj Sansthan" + place (e.g., Shri Gajanan Maharaj Sansthan Shegaon, Shri Gajanan Maharaj Sansthan Pandharpur) across sansthan-data, FeaturedLocations, and Footer.
 - 2026-02-13: Pre-rendered all location detail pages (`generateStaticParams` + `dynamicParams=false`) and aligned booking guidance with the lightweight `/booking` landing page.
 - 2026-02-15: Added latitude/longitude metadata in `sansthan-data` and wired location geo meta tags through SEO metadata generation for stronger local search relevance.
+- 2026-02-15: Location SEO cluster publishing expanded to include Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar blog guides with mandatory internal links to location detail pages.
 

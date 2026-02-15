@@ -13,6 +13,7 @@ Complete guide for setting up and monitoring SEO for Shri Gajanan Maharaj Sansth
 5. [Performance Monitoring](#performance-monitoring)
 6. [Local SEO Setup](#local-seo-setup)
 7. [Ongoing Optimization](#ongoing-optimization)
+8. [Blog SEO Content Operations](#blog-seo-content-operations)
 
 ---
 
@@ -297,6 +298,27 @@ Ask devotees to leave reviews on:
 3. Keyword research update
 4. Content refresh (update old pages)
 5. Backlink analysis (use free tools like Ahrefs Backlink Checker)
+
+---
+
+## 📝 Blog SEO Content Operations
+
+The site now includes a large markdown SEO content cluster. Use these commands before deployment:
+
+```bash
+# Regenerate deterministic blog clusters
+npm run generate:blogs
+
+# Validate slug/frontmatter/internal-link quality
+npm run validate:blog
+```
+
+### Validation rules enforced
+
+- unique and valid kebab-case slugs
+- required frontmatter quality checks
+- required internal links to location + booking/contact + related blog pages
+- known location ID references
 
 ---
 

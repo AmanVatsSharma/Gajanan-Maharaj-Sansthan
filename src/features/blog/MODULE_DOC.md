@@ -25,6 +25,30 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
   - `/blog/tag/[tag]`: Tag archive pages generated from blog frontmatter tags.
   - `/blog/category/[category]`: Category archive pages generated from blog frontmatter category.
 
+## Quality & Validation Workflow
+
+- Content generation script: `npm run generate:blogs` (`scripts/generate-seo-blog-cluster.mjs`)
+- Validation script: `npm run validate:blog` (`scripts/validate-blog-content.mjs`)
+- Validation enforces:
+  - Unique slug format
+  - Required metadata fields
+  - Required internal linking structure
+  - Known location ID references
+
+## Blog Rendering Flow
+
+```mermaid
+flowchart TD
+  markdown[content/blog/*.md] --> parse[getBlogPosts]
+  parse --> archives[/blog/tag + /blog/category]
+  parse --> listing[/blog]
+  parse --> detail[/blog/[slug]]
+  detail --> related[getRelatedPosts]
+  listing --> card[BlogCard]
+  detail --> content[BlogContent]
+```
+
 ## Changelog
 - **2026-02-13**: Initial module creation with BlogCard and BlogContent components.
 - **2026-02-15**: Added recursive markdown loading, taxonomy helpers (tags/categories), related-post engine, tag/category SEO routes, blog listing JSON-LD schema, and seeded location-intent content cluster posts for Shegaon and Omkareshwar.
+- **2026-02-15**: Expanded SEO content space to 105 posts (100 generated + existing), added deterministic cluster generator script, and introduced strict markdown validation checks for frontmatter/internal-link quality.

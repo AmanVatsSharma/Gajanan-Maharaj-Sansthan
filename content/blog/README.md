@@ -1,10 +1,19 @@
 # Blog Content Guide
 
-This directory contains markdown content used to generate `/blog` pages.
+This directory contains markdown content used to generate `/blog` pages and SEO archive routes (`/blog/tag/*`, `/blog/category/*`).
+
+## Current cluster status
+
+- Total publishable posts: **105**
+- Cluster categories:
+  - `locations` (Shegaon / Omkareshwar / Pandharpur / Trimbakeshwar intent pages)
+  - `guides` (cross-location planning pages)
+  - `spiritual` (devotional planning context)
+  - `events` (festival and crowd-planning support)
 
 ## Directory structure
 
-- `content/blog/locations/` - city and place-focused SEO pages (`shegaon`, `omkareshwar`, etc.)
+- `content/blog/locations/` - city and place-focused SEO pages (`shegaon`, `omkareshwar`, `pandharpur`, `trimbakeshwar`)
 - `content/blog/guides/` - practical planning and booking guides
 - `content/blog/spiritual/` - teachings, devotion, and spiritual context
 - `content/blog/events/` - festival and event updates
@@ -44,13 +53,43 @@ relatedSlugs:
 
 Every post should include links to:
 
-1. At least one location page (`/locations/<id>`).
+1. At least one location detail page (`/locations/<id>`).
 2. Booking or contact intent pages (`/booking` or `/contact`).
-3. One pillar post and two related cluster posts.
+3. One pillar post and two related cluster posts (`/blog/<slug>`).
 
 ## Keyword placement checklist
 
 - Include primary keyword in title, description, first paragraph, and one heading.
-- Include location variants naturally (for example `Shegaon temple`, `Shegaon accommodation`).
-- Add FAQ-style sections for long-tail queries.
+- Include search variants naturally (Shri/Shree/Sri + Sansthan/Sanstan + location).
+- Add FAQ-style or checklist sections for long-tail queries.
 - Avoid keyword stuffing; keep content natural and devotional.
+
+## Editorial quality guardrails
+
+- Prefer practical, family-friendly pilgrimage guidance.
+- Keep timing-sensitive statements flexible (“may vary by day/festival”).
+- Use official-page internal links rather than external speculative sources.
+
+## Validation & generation commands
+
+```bash
+# Generate deterministic SEO post clusters
+npm run generate:blogs
+
+# Validate all markdown SEO requirements
+npm run validate:blog
+```
+
+## Content pipeline flowchart
+
+```mermaid
+flowchart TD
+  author[Content Author / Script] --> md[Markdown in content/blog]
+  md --> validator[npm run validate:blog]
+  validator -->|pass| parser[src/lib/blog/posts.ts]
+  parser --> taxonomy[Tag + Category archives]
+  parser --> blogPages[/blog and /blog/[slug]/]
+  taxonomy --> sitemap[src/app/sitemap.ts]
+  blogPages --> sitemap
+  sitemap --> google[Search Engine Discovery]
+```
