@@ -487,6 +487,7 @@ Copy this checklist and track your progress:
 - Track metrics in a spreadsheet
 - Review and update SEO strategy quarterly
 - Stay updated with Google algorithm changes
+- For rollout evidence and technical validation output, see `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
 
 ---
 

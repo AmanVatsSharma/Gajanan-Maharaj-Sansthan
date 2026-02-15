@@ -67,6 +67,13 @@ const CONTENT_DIR = path.join(process.cwd(), "content/blog");
 const BLOG_DEBUG_ENABLED =
   process.env.NEXT_PUBLIC_DEBUG_SEO === "true" || process.env.NODE_ENV !== "production";
 const emittedWarningKeys = new Set<string>();
+let blogPostsCache:
+  | {
+      contentSignature: string;
+      posts: BlogPost[];
+    }
+  | null = null;
+let blogPostsInFlight: Promise<BlogPost[]> | null = null;
 
 /**
  * Lightweight debug logger for blog ingestion and SEO content checks.
@@ -221,6 +228,19 @@ function sortPostsByDate(posts: BlogPost[]): BlogPost[] {
   );
 }
 
+/**
+ * Build a content signature from file paths and mtime values.
+ * Used to avoid reparsing markdown on every request/build call when unchanged.
+ */
+function getContentSignature(filePaths: string[]): string {
+  return filePaths
+    .map((filePath) => {
+      const stats = fs.statSync(filePath);
+      return `${filePath}:${stats.mtimeMs}`;
+    })
+    .join("|");
+}
+
 function validatePostForSEO(post: BlogPost, filePath: string): void {
   const warnings: string[] = [];
 
@@ -334,70 +354,107 @@ function getRelatedPostScore(basePost: BlogPost, candidatePost: BlogPost): numbe
  */
 export async function getBlogPosts(): Promise<BlogPost[]> {
   const filePaths = getMarkdownFilePaths(CONTENT_DIR);
-  blogDebugLog("Starting blog post parsing", { fileCount: filePaths.length });
+  const contentSignature = getContentSignature(filePaths);
+
+  if (blogPostsCache?.contentSignature === contentSignature) {
+    blogDebugLog("Serving blog posts from cache", {
+      fileCount: filePaths.length,
+      parsedCount: blogPostsCache.posts.length,
+    });
+    return [...blogPostsCache.posts];
+  }
+
+  if (blogPostsInFlight) {
+    blogDebugLog("Awaiting in-flight blog post parse", {
+      fileCount: filePaths.length,
+    });
+    return blogPostsInFlight;
+  }
+
+  blogDebugLog("Starting blog post parsing", {
+    fileCount: filePaths.length,
+    cacheHit: false,
+  });
+
+  blogPostsInFlight = (async () => {
   const posts: BlogPost[] = [];
   const seenSlugs = new Set<string>();
 
-  for (const filePath of filePaths) {
-    try {
-      const fileContent = fs.readFileSync(filePath, "utf-8");
-      const { data, content } = matter(fileContent);
-      const frontmatter = data as BlogFrontmatter;
-      const fileStats = fs.statSync(filePath);
-      const lastModified = fileStats.mtime.toISOString();
+    for (const filePath of filePaths) {
+      try {
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+        const { data, content } = matter(fileContent);
+        const frontmatter = data as BlogFrontmatter;
+        const fileStats = fs.statSync(filePath);
+        const lastModified = fileStats.mtime.toISOString();
 
-      const slug = toStringValue(frontmatter.slug) || getFallbackSlug(filePath);
-      if (seenSlugs.has(slug)) {
-        blogWarnLog("Duplicate blog slug detected", {
+        const slug = toStringValue(frontmatter.slug) || getFallbackSlug(filePath);
+        if (seenSlugs.has(slug)) {
+          blogWarnLog("Duplicate blog slug detected", {
+            slug,
+            filePath,
+          });
+          throw new Error(
+            `Duplicate blog slug "${slug}" detected. Please keep slugs unique in content/blog.`
+          );
+        }
+
+        seenSlugs.add(slug);
+        const htmlContent = await parseMarkdown(content);
+        const readTime = readingTime(content).text;
+        const title = toStringValue(frontmatter.title) || getFallbackTitle(slug);
+        const description =
+          toStringValue(frontmatter.description) || getFallbackDescription(content);
+        const date = toDateString(frontmatter.date, lastModified);
+
+        const post: BlogPost = {
           slug,
+          title,
+          description,
+          date,
+          image: toStringValue(frontmatter.image),
+          keywords: toStringArray(frontmatter.keywords),
+          author: toStringValue(frontmatter.author),
+          tags: toStringArray(frontmatter.tags),
+          category: toStringValue(frontmatter.category),
+          locationIds: toStringArray(frontmatter.locationIds),
+          relatedSlugs: toStringArray(frontmatter.relatedSlugs),
+          content: htmlContent,
+          readingTime: readTime,
+          rawContent: content,
+          lastModified,
+        };
+
+        validatePostForSEO(post, filePath);
+        posts.push(post);
+      } catch (error) {
+        console.error("blog-seo-error", {
+          timestamp: Date.now(),
           filePath,
+          message: "Failed to parse blog markdown file",
+          error: error instanceof Error ? error.message : String(error),
         });
-        throw new Error(
-          `Duplicate blog slug "${slug}" detected. Please keep slugs unique in content/blog.`
-        );
+        throw error;
       }
-
-      seenSlugs.add(slug);
-      const htmlContent = await parseMarkdown(content);
-      const readTime = readingTime(content).text;
-      const title = toStringValue(frontmatter.title) || getFallbackTitle(slug);
-      const description =
-        toStringValue(frontmatter.description) || getFallbackDescription(content);
-      const date = toDateString(frontmatter.date, lastModified);
-
-      const post: BlogPost = {
-        slug,
-        title,
-        description,
-        date,
-        image: toStringValue(frontmatter.image),
-        keywords: toStringArray(frontmatter.keywords),
-        author: toStringValue(frontmatter.author),
-        tags: toStringArray(frontmatter.tags),
-        category: toStringValue(frontmatter.category),
-        locationIds: toStringArray(frontmatter.locationIds),
-        relatedSlugs: toStringArray(frontmatter.relatedSlugs),
-        content: htmlContent,
-        readingTime: readTime,
-        rawContent: content,
-        lastModified,
-      };
-
-      validatePostForSEO(post, filePath);
-      posts.push(post);
-    } catch (error) {
-      console.error("blog-seo-error", {
-        timestamp: Date.now(),
-        filePath,
-        message: "Failed to parse blog markdown file",
-        error: error instanceof Error ? error.message : String(error),
-      });
-      throw error;
     }
-  }
 
-  blogDebugLog("Completed blog post parsing", { parsedCount: posts.length });
-  return sortPostsByDate(posts);
+    const sortedPosts = sortPostsByDate(posts);
+    blogPostsCache = {
+      contentSignature,
+      posts: sortedPosts,
+    };
+    blogDebugLog("Completed blog post parsing", {
+      parsedCount: sortedPosts.length,
+      cacheStored: true,
+    });
+    return [...sortedPosts];
+  })();
+
+  try {
+    return await blogPostsInFlight;
+  } finally {
+    blogPostsInFlight = null;
+  }
 }
 
 /**

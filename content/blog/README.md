@@ -18,6 +18,7 @@ This directory contains markdown content used to generate `/blog` pages and SEO 
 - `content/blog/spiritual/` - teachings, devotion, and spiritual context
 - `content/blog/events/` - festival and event updates
 - `content/blog/_templates/` - authoring templates (ignored by the blog loader)
+- `content/blog/_ops/` - SEO operating docs like keyword ownership maps (ignored by the blog loader)
 
 ## Required frontmatter
 
