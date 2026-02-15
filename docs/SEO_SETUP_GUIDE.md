@@ -366,6 +366,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated cluster config fingerprint alignment between manifest and shared config
 - generated-file frontmatter consistency checks in `verify:generator` (slug/category/related/location rules)
 - generated-manifest version/checksum consistency checks for deterministic-file drift detection
+- generated checksum keyset alignment checks (no missing/extra checksum entries)
 - SEO gate command ordering/composition consistency (`verify:seo-chain`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters

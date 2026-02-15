@@ -256,6 +256,37 @@ function validateGeneratedManifest(failures) {
       reason: `generatedFileChecksums count (${Object.keys(generatedFileChecksums).length}) does not match generated files count (${uniqueEntries.length}).`,
     });
   }
+  if (generatedFileChecksums) {
+    const checksumKeys = Object.keys(generatedFileChecksums)
+      .map((entry) => normalizeManifestEntry(entry))
+      .filter(Boolean);
+    const checksumKeySet = new Set(checksumKeys);
+    const uniqueEntrySet = new Set(uniqueEntries);
+
+    const missingChecksumEntries = uniqueEntries.filter((entry) => !checksumKeySet.has(entry));
+    if (missingChecksumEntries.length > 0) {
+      failures.push({
+        routeId: "generated-manifest",
+        filePath: manifestFilePath,
+        check: "manifest-checksum-missing-entries",
+        reason: `generatedFileChecksums is missing generated entries: ${missingChecksumEntries
+          .slice(0, 5)
+          .join(", ")}`,
+      });
+    }
+
+    const extraChecksumEntries = checksumKeys.filter((entry) => !uniqueEntrySet.has(entry));
+    if (extraChecksumEntries.length > 0) {
+      failures.push({
+        routeId: "generated-manifest",
+        filePath: manifestFilePath,
+        check: "manifest-checksum-extra-entries",
+        reason: `generatedFileChecksums contains unexpected entries: ${extraChecksumEntries
+          .slice(0, 5)
+          .join(", ")}`,
+      });
+    }
+  }
 
   const missingFiles = [];
   for (const relativeEntry of uniqueEntries) {

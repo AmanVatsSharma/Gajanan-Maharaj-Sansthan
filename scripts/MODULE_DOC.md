@@ -68,6 +68,7 @@ flowchart TD
 - If cluster sizing changes, update `seo-cluster-config.mjs` first, then regenerate content.
 - Generator/validator/verifier use manifest config fingerprint checks to fail fast on stale generated content.
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
+- Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.

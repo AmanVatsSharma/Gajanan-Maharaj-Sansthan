@@ -64,6 +64,7 @@ npm run seo:check:strict
   - expected generated total: 105
   - config fingerprint aligned with shared cluster config
   - manifest version/checksum validation passed (`manifestVersion: 2`, `checksumValidatedCount: 105`)
+  - checksum keyset alignment passed (no missing/extra checksum entries)
   - generated frontmatter checks passed for 105 managed posts
   - observed distribution:
     - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15

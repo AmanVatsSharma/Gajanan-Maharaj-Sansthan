@@ -117,6 +117,40 @@ function main() {
       reason: "Manifest is missing generatedFileChecksums map. Run npm run generate:blogs.",
     });
   }
+  if (manifestChecksums) {
+    const checksumKeys = Object.keys(manifestChecksums)
+      .map((entry) => normalizeManifestEntry(entry))
+      .filter(Boolean);
+    const checksumKeySet = new Set(checksumKeys);
+    const entrySet = new Set(entries);
+
+    if (checksumKeySet.size !== checksumKeys.length) {
+      failures.push({
+        check: "manifest-checksum-duplicate-keys",
+        reason: "Manifest checksum map contains duplicate/normalized-colliding keys.",
+      });
+    }
+
+    const missingChecksumEntries = entries.filter((entry) => !checksumKeySet.has(entry));
+    if (missingChecksumEntries.length > 0) {
+      failures.push({
+        check: "manifest-checksum-missing-entries",
+        reason: `Manifest checksum map is missing generated entries: ${missingChecksumEntries
+          .slice(0, 5)
+          .join(", ")}`,
+      });
+    }
+
+    const extraChecksumEntries = checksumKeys.filter((entry) => !entrySet.has(entry));
+    if (extraChecksumEntries.length > 0) {
+      failures.push({
+        check: "manifest-checksum-extra-entries",
+        reason: `Manifest checksum map has unexpected entries: ${extraChecksumEntries
+          .slice(0, 5)
+          .join(", ")}`,
+      });
+    }
+  }
 
   if (entries.length !== EXPECTED_GENERATED_TOTAL) {
     failures.push({
@@ -202,6 +236,11 @@ function main() {
       failures.push({
         check: "generated-file-checksum-missing",
         reason: `Manifest checksum is missing for generated entry: ${entry}`,
+      });
+    } else if (!/^[a-f0-9]{64}$/i.test(expectedChecksum)) {
+      failures.push({
+        check: "generated-file-checksum-format",
+        reason: `Manifest checksum for ${entry} is not a valid SHA-256 hex digest.`,
       });
     } else if (expectedChecksum !== currentChecksum) {
       failures.push({
