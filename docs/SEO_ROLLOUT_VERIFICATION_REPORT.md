@@ -22,6 +22,7 @@ npm run verify:canonical
 npm run verify:robots
 npm run verify:locations
 npm run verify:generator
+npm run verify:manual-seeds
 npm run verify:generator:determinism
 npm run verify:seo-chain
 npm run verify:ci-gate
@@ -76,6 +77,8 @@ npm run seo:check:strict
     - guides: 15
     - spiritual: 5
     - events: 5
+- `npm run verify:manual-seeds` → pass
+  - manual seed anchors validated for slug/frontmatter/links and manifest exclusion
 - `npm run verify:generator:determinism` → pass
   - temp regeneration output matches live generated manifest checksums/inventory
 - `npm run verify:seo-chain` → pass
@@ -106,6 +109,7 @@ npm run seo:check:strict
   - Manifest volatility checks prevent timestamp-only generator drift.
   - Determinism verifier ensures fresh temp regeneration exactly matches live manifest state.
   - Managed namespace ownership checks prevent untracked markdown drift in generator-governed folders.
+  - Manual-seed verifier enforces quality and ownership boundaries for non-generated anchor posts.
   - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
   - CI-gate verifier protects workflow-level strict-gate execution invariants.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.

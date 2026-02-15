@@ -12,6 +12,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `validate-blog-content.mjs` — strict markdown/frontmatter/link/coverage validator.
 - `verify-generated-cluster-manifest.mjs` — generator-manifest distribution/integrity verifier.
 - `verify-generated-content-determinism.mjs` — regenerates in temp root and compares manifest/checksum determinism.
+- `verify-manual-seed-posts.mjs` — validates manual seed anchors excluded from generated manifest ownership.
 - `verify-seo-command-chain.mjs` — enforces `seo:check` / `seo:check:strict` step order invariants.
 - `verify-ci-seo-gate.mjs` — validates GitHub Actions SEO-gate workflow invariants.
 - `verify-seo-docs-sync.mjs` — validates SEO inventory claims/command references across docs.
@@ -37,6 +38,7 @@ flowchart TD
   cfg[seo-cluster-config.mjs] --> gen[generate:blogs]
   gen --> manifest[_ops/generated-seo-cluster-manifest.json]
   manifest --> verifyGen[verify:generator]
+  seeds[MANUAL_SEED_POST_PATHS] --> verifySeeds[verify:manual-seeds]
   cfg --> verifyDeterminism[verify:generator:determinism]
   cfg --> verifyChain[verify:seo-chain]
   ci[seo-quality-gate.yml] --> verifyCI[verify:ci-gate]
@@ -46,6 +48,7 @@ flowchart TD
   verifyChain --> seoCheck
   verifyCI --> seoCheck
   verifyGen --> seoCheck
+  verifySeeds --> seoCheck
   verifyDeterminism --> seoCheck
   verifyDocs --> seoCheck
   build[next build] --> verifyCanon[verify:canonical]
@@ -80,6 +83,7 @@ flowchart TD
 - Determinism verifier captures generator stdout/stderr snippets and enforces temp-run timeout for actionable failure diagnostics.
 - Manifest generatedFiles path-policy and lexicographic-order checks enforce deterministic file inventory formatting.
 - Managed namespace ownership checks ensure generated folders contain only manifest-owned files + explicit manual seed anchors.
+- Manual seed verifier enforces seed-post quality and ensures seeds remain excluded from generated manifest ownership.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - CI-gate verifier fails fast when workflow no longer runs strict gate or required workflow invariants drift.

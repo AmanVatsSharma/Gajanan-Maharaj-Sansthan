@@ -24,6 +24,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
 - Catches per-file parser errors and emits structured diagnostics before failing.
 - Validator strict mode available via `npm run validate:blog:strict` to fail on warnings during stricter release checks.
 - Generator manifest distribution verifier available via `npm run verify:generator` to enforce deterministic cluster-size output.
+- Manual seed verifier available via `npm run verify:manual-seeds` to enforce anchor-post ownership boundaries and quality.
 - Validator cross-post checks enforce:
   - minimum post inventory (`>=100`),
   - `relatedSlugs` integrity,

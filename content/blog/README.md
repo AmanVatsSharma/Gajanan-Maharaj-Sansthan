@@ -86,6 +86,9 @@ npm run validate:blog:strict
 # Verify generated cluster manifest distribution and integrity
 npm run verify:generator
 
+# Verify manual seed post integrity and ownership boundaries
+npm run verify:manual-seeds
+
 # Verify generator determinism against temp regeneration
 npm run verify:generator:determinism
 

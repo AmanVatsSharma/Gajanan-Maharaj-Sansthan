@@ -318,6 +318,9 @@ npm run validate:blog:strict
 # Verify generated-cluster manifest distribution and integrity
 npm run verify:generator
 
+# Verify manual seed post boundaries and quality
+npm run verify:manual-seeds
+
 # Verify generator determinism by temp regeneration comparison
 npm run verify:generator:determinism
 
@@ -374,6 +377,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated-manifest version/checksum consistency checks for deterministic-file drift detection
 - generated checksum keyset alignment checks (no missing/extra checksum entries)
 - generated manifest volatility checks (no timestamp-only drift fields)
+- manual seed post ownership/quality checks (seed posts excluded from generated manifest)
 - generator determinism checks via isolated temp regeneration comparison
 - generated manifest file-path policy + sorted-inventory checks
 - managed namespace ownership checks (generator-owned files vs explicit manual seed anchors)
