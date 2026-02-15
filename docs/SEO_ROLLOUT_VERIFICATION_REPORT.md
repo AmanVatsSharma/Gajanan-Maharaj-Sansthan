@@ -68,6 +68,7 @@ npm run seo:check:strict
   - manifest version/checksum validation passed (`manifestVersion: 2`, `checksumValidatedCount: 105`)
   - checksum keyset alignment passed (no missing/extra checksum entries)
   - manifest volatility check passed (no timestamp-only drift field)
+  - generatedFiles path policy + lexicographic sorting checks passed
   - generated frontmatter checks passed for 105 managed posts
   - observed distribution:
     - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15

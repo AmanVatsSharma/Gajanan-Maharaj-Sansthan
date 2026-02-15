@@ -48,6 +48,7 @@ const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
 const MAX_ALLOWED_ORPHAN_POSTS = 0;
 const EXEMPT_ORPHAN_SLUGS = new Set(["welcome-to-sansthan"]);
 const MIN_GENERATED_OUTBOUND_BLOG_LINKS = 3;
+const GENERATED_SLUG_SEGMENT_PATTERN = "[a-z0-9]+(?:-[a-z0-9]+)*";
 
 /**
  * Crawl markdown files recursively.
@@ -112,6 +113,10 @@ function normalizeManifestEntry(entry) {
   }
 
   return entry.trim().replace(/\\/g, "/");
+}
+
+function escapeRegexToken(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function getChecksum(content) {
@@ -239,6 +244,32 @@ function validateGeneratedManifest(failures) {
   }
 
   const uniqueEntries = [...new Set(normalizedEntries)];
+  const sortedUniqueEntries = [...uniqueEntries].sort();
+  if (JSON.stringify(uniqueEntries) !== JSON.stringify(sortedUniqueEntries)) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-generated-files-sorted",
+      reason: "generatedFiles[] should be lexicographically sorted for deterministic diffs.",
+    });
+  }
+
+  const allowedGeneratedPathPattern = new RegExp(
+    `^(locations\\/(?:${LOCATION_CLUSTER_KEYS.map((key) => escapeRegexToken(key)).join("|")})\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|guides\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|spiritual\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|events\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md)$`
+  );
+  const invalidPathEntries = uniqueEntries.filter(
+    (entry) => !allowedGeneratedPathPattern.test(entry)
+  );
+  if (invalidPathEntries.length > 0) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-generated-path-policy",
+      reason: `generatedFiles[] contains invalid managed paths: ${invalidPathEntries
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
   manifestState.isAvailable = true;
   manifestState.generatedRelativePaths = new Set(uniqueEntries);
   if (uniqueEntries.length !== normalizedEntries.length) {

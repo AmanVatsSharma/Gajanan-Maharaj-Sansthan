@@ -77,6 +77,7 @@ flowchart TD
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
 - Determinism verifier runs generator in isolated temp root and compares resulting checksums to live manifest.
+- Manifest generatedFiles path-policy and lexicographic-order checks enforce deterministic file inventory formatting.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
 - CI-gate verifier fails fast when workflow no longer runs strict gate or required workflow invariants drift.

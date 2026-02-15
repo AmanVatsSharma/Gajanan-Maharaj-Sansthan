@@ -21,6 +21,7 @@ import {
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const MANIFEST_PATH = path.join(BLOG_ROOT, "_ops/generated-seo-cluster-manifest.json");
+const GENERATED_SLUG_SEGMENT_PATTERN = "[a-z0-9]+(?:-[a-z0-9]+)*";
 
 function normalizeManifestEntry(entry) {
   return typeof entry === "string" ? entry.trim().replace(/\\/g, "/") : "";
@@ -53,6 +54,10 @@ function getExpectedCategory(entry) {
   if (entry.startsWith("spiritual/")) return "spiritual";
   if (entry.startsWith("events/")) return "events";
   return "";
+}
+
+function escapeRegexToken(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function main() {
@@ -88,6 +93,22 @@ function main() {
   const entriesRaw = Array.isArray(parsed?.generatedFiles) ? parsed.generatedFiles : [];
   const entries = [...new Set(entriesRaw.map((entry) => normalizeManifestEntry(entry)).filter(Boolean))];
   const failures = [];
+  const normalizedEntriesRaw = entriesRaw
+    .map((entry) => normalizeManifestEntry(entry))
+    .filter(Boolean);
+  const sortedEntries = [...entries].sort();
+  if (JSON.stringify(entries) !== JSON.stringify(sortedEntries)) {
+    failures.push({
+      check: "manifest-generated-files-sorted",
+      reason: "Manifest generatedFiles[] entries must be lexicographically sorted for deterministic diffs.",
+    });
+  }
+  if (normalizedEntriesRaw.length !== entriesRaw.length) {
+    failures.push({
+      check: "manifest-generated-files-normalized",
+      reason: "Manifest generatedFiles[] contains empty or non-normalized path entries.",
+    });
+  }
   const manifestVersion =
     typeof parsed?.manifestVersion === "number" ? parsed.manifestVersion : null;
   const manifestFingerprint =
@@ -182,8 +203,19 @@ function main() {
   };
   let frontmatterCheckCount = 0;
   let checksumValidatedCount = 0;
+  const allowedNamespacePattern = new RegExp(
+    `^(locations\\/(?:${LOCATION_CLUSTER_KEYS.map((key) => escapeRegexToken(key)).join("|")})\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|guides\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|spiritual\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|events\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md)$`
+  );
 
   for (const entry of entries) {
+    if (!allowedNamespacePattern.test(entry)) {
+      failures.push({
+        check: "generated-entry-path-policy",
+        reason: `Generated manifest entry violates path policy: ${entry}`,
+      });
+      continue;
+    }
+
     const absolutePath = path.join(BLOG_ROOT, entry);
     if (!fs.existsSync(absolutePath)) {
       failures.push({
