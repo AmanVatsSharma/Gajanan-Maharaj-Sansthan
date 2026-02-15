@@ -11,6 +11,7 @@
     "validate:blog:strict": "node scripts/validate-blog-content.mjs --strict-warnings",
     "generate:blogs": "node scripts/generate-seo-blog-cluster.mjs",
     "verify:canonical": "node scripts/verify-canonical-consistency.mjs",
+    "verify:ci-gate": "node scripts/verify-ci-seo-gate.mjs",
     "verify:seo-chain": "node scripts/verify-seo-command-chain.mjs",
     "verify:docs-sync": "node scripts/verify-seo-docs-sync.mjs",
     "verify:generator": "node scripts/verify-generated-cluster-manifest.mjs",
@@ -21,8 +22,8 @@
     "verify:seo-build": "node scripts/verify-seo-build.mjs",
     "verify:sitemap": "node scripts/verify-sitemap-coverage.mjs",
     "verify:taxonomy": "node scripts/verify-taxonomy-prerender.mjs",
-    "seo:check": "npm run lint && npm run verify:seo-chain && npm run verify:generator && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog",
-    "seo:check:strict": "npm run lint && npm run verify:seo-chain && npm run verify:generator && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog:strict"
+    "seo:check": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog",
+    "seo:check:strict": "npm run lint && npm run verify:seo-chain && npm run verify:ci-gate && npm run verify:generator && npm run verify:docs-sync && npm run build && npm run verify:canonical && npm run verify:robots && npm run verify:locations && npm run verify:taxonomy && npm run verify:sitemap && npm run verify:pagination && npm run verify:rss && npm run verify:seo-build && npm run validate:blog:strict"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -23,6 +23,7 @@ npm run verify:robots
 npm run verify:locations
 npm run verify:generator
 npm run verify:seo-chain
+npm run verify:ci-gate
 npm run verify:docs-sync
 npm run verify:taxonomy
 npm run verify:sitemap
@@ -75,6 +76,8 @@ npm run seo:check:strict
 - `npm run verify:seo-chain` → pass
   - `seo:check` and `seo:check:strict` command chains match expected guarded order
   - all referenced npm scripts in both chains exist
+- `npm run verify:ci-gate` → pass
+  - workflow invariants present and strict gate run command exists exactly once
 - `npm run verify:docs-sync` → pass
   - validated inventory/count claims and command references across primary SEO docs
 
@@ -97,6 +100,7 @@ npm run seo:check:strict
   - Manifest version + checksum checks fail fast when managed generated files drift.
   - Manifest volatility checks prevent timestamp-only generator drift.
   - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
+  - CI-gate verifier protects workflow-level strict-gate execution invariants.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Generator verifier checks generated-file frontmatter invariants (slug/category/related/location namespace).
   - Link-graph checks enforce inbound internal linking coverage so generated clusters are crawl-connected.

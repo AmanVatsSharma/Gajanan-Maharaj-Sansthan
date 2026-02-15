@@ -89,6 +89,9 @@ npm run verify:generator
 # Verify SEO gate command-chain ordering
 npm run verify:seo-chain
 
+# Verify CI workflow strict-gate invariants
+npm run verify:ci-gate
+
 # Verify SEO docs stay synced with inventory claims
 npm run verify:docs-sync
 ```

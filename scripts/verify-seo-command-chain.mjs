@@ -15,6 +15,7 @@ const PACKAGE_JSON_PATH = path.join(process.cwd(), "package.json");
 const EXPECTED_SEO_CHECK_CHAIN = [
   "npm run lint",
   "npm run verify:seo-chain",
+  "npm run verify:ci-gate",
   "npm run verify:generator",
   "npm run verify:docs-sync",
   "npm run build",
@@ -32,6 +33,7 @@ const EXPECTED_SEO_CHECK_CHAIN = [
 const EXPECTED_SEO_STRICT_CHAIN = [
   "npm run lint",
   "npm run verify:seo-chain",
+  "npm run verify:ci-gate",
   "npm run verify:generator",
   "npm run verify:docs-sync",
   "npm run build",

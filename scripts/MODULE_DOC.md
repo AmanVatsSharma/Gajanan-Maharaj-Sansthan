@@ -12,6 +12,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `validate-blog-content.mjs` — strict markdown/frontmatter/link/coverage validator.
 - `verify-generated-cluster-manifest.mjs` — generator-manifest distribution/integrity verifier.
 - `verify-seo-command-chain.mjs` — enforces `seo:check` / `seo:check:strict` step order invariants.
+- `verify-ci-seo-gate.mjs` — validates GitHub Actions SEO-gate workflow invariants.
 - `verify-seo-docs-sync.mjs` — validates SEO inventory claims/command references across docs.
 - `verify-canonical-consistency.mjs` — canonical host/uniqueness verifier on prerendered SEO pages.
 - `verify-robots-policy.mjs` — robots directives/host/sitemap policy verifier.
@@ -36,10 +37,12 @@ flowchart TD
   gen --> manifest[_ops/generated-seo-cluster-manifest.json]
   manifest --> verifyGen[verify:generator]
   cfg --> verifyChain[verify:seo-chain]
+  ci[seo-quality-gate.yml] --> verifyCI[verify:ci-gate]
   manifest --> verifyDocs[verify:docs-sync]
   manifest --> validate[validate:blog:strict]
   validate --> seoCheck[seo:check:strict]
   verifyChain --> seoCheck
+  verifyCI --> seoCheck
   verifyGen --> seoCheck
   verifyDocs --> seoCheck
   build[next build] --> verifyCanon[verify:canonical]
@@ -72,6 +75,7 @@ flowchart TD
 - Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
 - Command-chain verifier fails fast when strict SEO gate ordering drifts in package scripts.
 - Command-chain verifier also confirms every referenced `npm run <script>` step exists in package scripts.
+- CI-gate verifier fails fast when workflow no longer runs strict gate or required workflow invariants drift.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.
 - Validator also enforces minimum outbound blog links on generated posts for better crawl continuity.

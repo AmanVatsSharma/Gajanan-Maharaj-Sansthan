@@ -321,6 +321,9 @@ npm run verify:generator
 # Verify SEO gate command composition and ordering
 npm run verify:seo-chain
 
+# Verify CI workflow still enforces strict SEO gate
+npm run verify:ci-gate
+
 # Verify SEO inventory claims stay synced across docs
 npm run verify:docs-sync
 
@@ -369,6 +372,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated checksum keyset alignment checks (no missing/extra checksum entries)
 - generated manifest volatility checks (no timestamp-only drift fields)
 - SEO gate command ordering/composition consistency (`verify:seo-chain`)
+- CI workflow strict-gate invariant checks (`verify:ci-gate`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters
 - generated-post outbound `/blog/*` link minimum enforcement for crawl continuity

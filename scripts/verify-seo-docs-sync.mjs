@@ -123,6 +123,12 @@ function main() {
   );
   assertIncludes(
     blogReadme,
+    "npm run verify:ci-gate",
+    failures,
+    "content/blog/README.md:verify-ci-gate-command"
+  );
+  assertIncludes(
+    blogReadme,
     "npm run verify:docs-sync",
     failures,
     "content/blog/README.md:verify-docs-sync-command"
@@ -145,6 +151,12 @@ function main() {
     "npm run verify:seo-chain",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-seo-chain-command"
+  );
+  assertIncludes(
+    setupGuide,
+    "npm run verify:ci-gate",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:verify-ci-gate-command"
   );
   assertIncludes(
     setupGuide,
@@ -182,6 +194,12 @@ function main() {
     "npm run verify:seo-chain",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-seo-chain-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "npm run verify:ci-gate",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-ci-gate-command"
   );
   assertIncludes(
     rolloutReport,
@@ -238,6 +256,12 @@ function main() {
     "verify:seo-chain",
     failures,
     "scripts/MODULE_DOC.md:verify-seo-chain-reference"
+  );
+  assertIncludes(
+    scriptsModuleDoc,
+    "verify:ci-gate",
+    failures,
+    "scripts/MODULE_DOC.md:verify-ci-gate-reference"
   );
   assertIncludes(
     scriptsModuleDoc,
