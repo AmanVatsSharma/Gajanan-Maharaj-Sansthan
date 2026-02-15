@@ -68,6 +68,7 @@ npm run verify:seo-build
 3. **Content quality controls**
    - Frontmatter + link integrity validator blocks malformed SEO posts.
    - Deterministic generator supports repeatable large-scale cluster publishing.
+  - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).
   - Brand-variant keyword coverage checks enforce Shri/Shree/Sri + Sansthan/Sanstan surface area.

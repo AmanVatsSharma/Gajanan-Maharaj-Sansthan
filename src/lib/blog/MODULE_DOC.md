@@ -27,6 +27,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
   - minimum post inventory (`>=100`),
   - `relatedSlugs` integrity,
   - internal `/blog/<slug>` and `/locations/<id>` target existence,
+  - generated cluster manifest integrity for deterministic generator output,
   - location-cluster minimum thresholds (`30/20/15/15` baseline),
   - Shri/Shree/Sri + Sansthan/Sanstan keyword-fragment coverage.
 - Prerender integrity checker available via `npm run verify:taxonomy` to ensure all tag/category/paginated archive pages are generated.

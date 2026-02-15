@@ -12,6 +12,10 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
+const GENERATED_MANIFEST_PATH = path.join(
+  BLOG_ROOT,
+  "_ops/generated-seo-cluster-manifest.json"
+);
 const MIN_REQUIRED_POSTS = 100;
 const STRICT_WARNINGS_MODE =
   process.env.BLOG_VALIDATE_STRICT_WARNINGS === "true" ||
@@ -90,6 +94,155 @@ function toArray(value) {
   }
 
   return [];
+}
+
+function isSafeBlogChildPath(candidatePath) {
+  const resolvedRoot = path.resolve(BLOG_ROOT);
+  const resolvedPath = path.resolve(candidatePath);
+  return resolvedPath === resolvedRoot || resolvedPath.startsWith(`${resolvedRoot}${path.sep}`);
+}
+
+function normalizeManifestEntry(entry) {
+  if (typeof entry !== "string") {
+    return "";
+  }
+
+  return entry.trim().replace(/\\/g, "/");
+}
+
+/**
+ * Validate generated cluster manifest integrity.
+ * This ensures generator-managed posts stay deterministic and traceable.
+ */
+function validateGeneratedManifest(failures) {
+  if (!fs.existsSync(GENERATED_MANIFEST_PATH)) {
+    console.warn("blog-validation-warning", {
+      timestamp: Date.now(),
+      file: path.relative(BLOG_ROOT, GENERATED_MANIFEST_PATH),
+      slug: "generated-seo-cluster-manifest",
+      warnings: [
+        "Generated cluster manifest not found. Run npm run generate:blogs to re-create deterministic manifest.",
+      ],
+    });
+    return;
+  }
+
+  let parsedManifest;
+  try {
+    parsedManifest = JSON.parse(fs.readFileSync(GENERATED_MANIFEST_PATH, "utf-8"));
+  } catch (error) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: path.relative(BLOG_ROOT, GENERATED_MANIFEST_PATH),
+      check: "manifest-json-parse",
+      reason: `Unable to parse generator manifest JSON: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    });
+    return;
+  }
+
+  const manifestFilePath = path.relative(BLOG_ROOT, GENERATED_MANIFEST_PATH);
+  const generatedFilesRaw = Array.isArray(parsedManifest?.generatedFiles)
+    ? parsedManifest.generatedFiles
+    : null;
+
+  if (!generatedFilesRaw) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-generated-files-array",
+      reason: "Manifest is missing generatedFiles[] array.",
+    });
+    return;
+  }
+
+  const normalizedEntries = generatedFilesRaw.map((entry) => normalizeManifestEntry(entry));
+  const invalidEntries = normalizedEntries.filter(
+    (entry) => !entry || entry.startsWith("../") || entry.includes("/../")
+  );
+  if (invalidEntries.length > 0) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-entry-safety",
+      reason: `Manifest contains unsafe generated file entries: ${invalidEntries
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+
+  const uniqueEntries = [...new Set(normalizedEntries)];
+  if (uniqueEntries.length !== normalizedEntries.length) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-duplicate-entries",
+      reason: "Manifest generatedFiles[] contains duplicate entries.",
+    });
+  }
+
+  const expectedCountFromManifest =
+    typeof parsedManifest?.generatedFileCount === "number"
+      ? parsedManifest.generatedFileCount
+      : null;
+  if (
+    expectedCountFromManifest !== null &&
+    expectedCountFromManifest !== uniqueEntries.length
+  ) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-count-match",
+      reason: `Manifest generatedFileCount (${expectedCountFromManifest}) does not match generatedFiles[] length (${uniqueEntries.length}).`,
+    });
+  }
+
+  const missingFiles = [];
+  for (const relativeEntry of uniqueEntries) {
+    const absolutePath = path.join(BLOG_ROOT, relativeEntry);
+    if (!isSafeBlogChildPath(absolutePath)) {
+      failures.push({
+        routeId: "generated-manifest",
+        filePath: manifestFilePath,
+        check: "manifest-entry-safe-root",
+        reason: `Manifest entry resolves outside content/blog: ${relativeEntry}`,
+      });
+      continue;
+    }
+
+    if (!relativeEntry.toLowerCase().endsWith(".md")) {
+      failures.push({
+        routeId: "generated-manifest",
+        filePath: manifestFilePath,
+        check: "manifest-entry-markdown",
+        reason: `Manifest entry is not a markdown file: ${relativeEntry}`,
+      });
+      continue;
+    }
+
+    if (!fs.existsSync(absolutePath)) {
+      missingFiles.push(relativeEntry);
+    }
+  }
+
+  if (missingFiles.length > 0) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-file-exists",
+      reason: `Manifest references missing generated markdown files: ${missingFiles
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+
+  console.info("blog-validation-generator-manifest", {
+    timestamp: Date.now(),
+    manifestPath: manifestFilePath,
+    generatedFileCount: uniqueEntries.length,
+    missingFileCount: missingFiles.length,
+  });
 }
 
 /**
@@ -468,6 +621,7 @@ function main() {
   const results = markdownFiles.map((filePath) => validatePost(filePath, slugRegistry));
   const crossPostFailures = [];
   const crossPostWarningsPayload = [];
+  validateGeneratedManifest(crossPostFailures);
   const crossPostWarnings = runCrossPostChecks(
     results,
     crossPostFailures,

@@ -88,6 +88,7 @@ Validation now includes cross-post integrity checks for:
 - minimum publishable post count (`>= 100`)
 - `relatedSlugs` existence
 - internal `/blog/<slug>` and `/locations/<id>` link-target existence
+- generated cluster manifest integrity (`_ops/generated-seo-cluster-manifest.json`)
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
 - location cluster minimum ownership thresholds (`shegaon>=30`, `omkareshwar>=20`, `pandharpur>=15`, `trimbakeshwar>=15`)
 - keyword-fragment brand coverage for Shri/Shree/Sri + Sansthan/Sanstan variants
