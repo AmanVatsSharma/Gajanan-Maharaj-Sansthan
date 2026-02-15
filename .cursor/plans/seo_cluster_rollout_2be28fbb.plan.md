@@ -4,19 +4,19 @@ overview: Implement a full English SEO content-cluster system to improve ranking
 todos:
   - id: technical-seo-hardening
     content: Implement geo metadata wiring, blog listing schema, sitemap expansion, and redirect/canonical hygiene
-    status: in_progress
+    status: completed
   - id: blog-cluster-engine
     content: Extend markdown loader to recursive mode and add tag/category/related-post APIs + routes
-    status: pending
+    status: completed
   - id: markdown-space-setup
     content: Create structured content/blog directories, markdown template, and editorial README
-    status: pending
+    status: completed
   - id: seed-location-content
     content: Publish initial English location-intent cluster posts for Shegaon and Omkareshwar with internal linking
-    status: pending
+    status: completed
   - id: docs-and-quality-gates
     content: Update MODULE_DOC changelogs and run PR checklist checks (madge, duplicate-file check, docs sync)
-    status: pending
+    status: completed
 isProject: false
 ---
 

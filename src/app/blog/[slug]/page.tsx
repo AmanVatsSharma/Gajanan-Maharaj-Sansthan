@@ -7,15 +7,23 @@
  */
 
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { format } from "date-fns";
 import { Calendar, Clock, User } from "lucide-react";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import {
+  getBlogPost,
+  getBlogPosts,
+  getRelatedPosts,
+  toTaxonomySlug,
+} from "@/lib/blog";
 import { BlogContent } from "@/features/blog/components/BlogContent";
+import { BlogCard } from "@/features/blog/components/BlogCard";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { getArticleSchema } from "@/lib/seo/structured-data";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Badge } from "@/components/ui/badge";
+import { sansthanLocations } from "@/data/sansthan-data";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,6 +61,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
+
+  const relatedPosts = await getRelatedPosts(post, 3);
+  const relatedLocations = (post.locationIds ?? [])
+    .map((locationId) => sansthanLocations.find((location) => location.id === locationId))
+    .filter((location): location is (typeof sansthanLocations)[number] => Boolean(location));
 
   const schema = getArticleSchema({
     title: post.title,
@@ -101,15 +114,19 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </div>
 
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap items-center gap-2">
+            {post.category && (
+              <Link href={`/blog/category/${toTaxonomySlug(post.category)}`}>
+                <Badge variant="outline">{post.category}</Badge>
+              </Link>
+            )}
+
+            {post.tags?.map((tag) => (
+              <Link key={tag} href={`/blog/tag/${toTaxonomySlug(tag)}`}>
+                <Badge variant="secondary">{tag}</Badge>
+              </Link>
+            ))}
+          </div>
         </header>
 
         <div className="border-t my-8" />
@@ -117,6 +134,40 @@ export default async function BlogPostPage({ params }: PageProps) {
         <article>
           <BlogContent content={post.content} />
         </article>
+
+        {relatedLocations.length > 0 && (
+          <section className="space-y-4 border-t pt-8">
+            <h2 className="text-2xl font-bold font-heading">Related Sansthan Locations</h2>
+            <p className="text-muted-foreground">
+              Planning a visit? Explore accommodation and contact details for these locations.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {relatedLocations.map((location) => (
+                <Link
+                  key={location.id}
+                  href={`/locations/${location.id}`}
+                  className="rounded-md border px-3 py-2 text-sm hover:border-primary hover:text-primary transition-colors"
+                >
+                  {location.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <section className="space-y-4 border-t pt-8">
+            <h2 className="text-2xl font-bold font-heading">Related Articles</h2>
+            <p className="text-muted-foreground">
+              Continue reading guides and updates connected to this topic.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {relatedPosts.map((relatedPost) => (
+                <BlogCard key={relatedPost.slug} post={relatedPost} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );
