@@ -1,6 +1,6 @@
 # ✅ SEO Implementation Complete
 
-> **Update (2026-02-15):** SEO content-cluster expansion added 105 new markdown blogs (110 total live posts), canonical host hardening, and automated blog quality validation (`npm run generate:blogs`, `npm run validate:blog`).
+> **Update (2026-02-15):** SEO content-cluster expansion added 105 new markdown blogs (110 total live posts), canonical host hardening, and automated blog quality validation (`npm run generate:blogs`, `npm run validate:blog`, `npm run verify:generator`).
 
 ## 🎉 All SEO Features Successfully Implemented!
 

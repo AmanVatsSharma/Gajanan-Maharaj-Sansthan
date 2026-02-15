@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { LOCATION_CLUSTER_KEYS, LOCATION_CLUSTER_TARGETS } from "./seo-cluster-config.mjs";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const GENERATED_MANIFEST_PATH = path.join(
@@ -30,13 +31,8 @@ const KNOWN_LOCATION_IDS = new Set([
 ]);
 const VALID_CATEGORIES = new Set(["locations", "guides", "spiritual", "events"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const REQUIRED_LOCATION_COVERAGE = ["shegaon", "omkareshwar", "pandharpur", "trimbakeshwar"];
-const LOCATION_CLUSTER_MINIMUMS = {
-  shegaon: 30,
-  omkareshwar: 20,
-  pandharpur: 15,
-  trimbakeshwar: 15,
-};
+const REQUIRED_LOCATION_COVERAGE = [...LOCATION_CLUSTER_KEYS];
+const LOCATION_CLUSTER_MINIMUMS = LOCATION_CLUSTER_TARGETS;
 const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
   "shri gajanan",
   "shree gajanan",

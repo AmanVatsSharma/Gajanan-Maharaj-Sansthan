@@ -315,6 +315,9 @@ npm run validate:blog
 # Strict mode: fail if warnings exist
 npm run validate:blog:strict
 
+# Verify generated-cluster manifest distribution and integrity
+npm run verify:generator
+
 # Verify canonical/meta/schema in prerendered HTML (run after build)
 npm run verify:seo-build
 
@@ -353,6 +356,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - required internal links to location + booking/contact + related blog pages
 - known location ID references
 - generated cluster manifest consistency for deterministic markdown generation
+- generated cluster distribution consistency (`verify:generator`) for location/non-location target counts
 - location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)
 - brand-variant keyword coverage across blog metadata (Shri/Shree/Sri + Sansthan/Sanstan)
 

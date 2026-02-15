@@ -21,6 +21,7 @@ npm run build
 npm run verify:canonical
 npm run verify:robots
 npm run verify:locations
+npm run verify:generator
 npm run verify:taxonomy
 npm run verify:sitemap
 npm run verify:pagination
@@ -53,6 +54,13 @@ npm run verify:seo-build
 - `npm run build` → pass
   - blog dynamic paths include 100+ additional slugs
   - tag/category archives generated for expanded taxonomy
+- `npm run verify:generator` → pass
+  - expected generated total: 105
+  - observed distribution:
+    - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15
+    - guides: 15
+    - spiritual: 5
+    - events: 5
 
 ## SEO Architecture Changes Verified
 
@@ -68,6 +76,7 @@ npm run verify:seo-build
 3. **Content quality controls**
    - Frontmatter + link integrity validator blocks malformed SEO posts.
    - Deterministic generator supports repeatable large-scale cluster publishing.
+  - Shared cluster config (`scripts/seo-cluster-config.mjs`) keeps generator and validators aligned.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
   - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).

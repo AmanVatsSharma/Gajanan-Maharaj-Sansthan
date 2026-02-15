@@ -30,6 +30,7 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
 
 - Content generation script: `npm run generate:blogs` (`scripts/generate-seo-blog-cluster.mjs`)
 - Validation script: `npm run validate:blog` (`scripts/validate-blog-content.mjs`)
+- Generator manifest verifier: `npm run verify:generator` (`scripts/verify-generated-cluster-manifest.mjs`)
 - Pagination navigation verifier: `npm run verify:pagination` (`scripts/verify-blog-pagination-links.mjs`)
 - RSS feed verifier: `npm run verify:rss` (`scripts/verify-rss-feed.mjs`)
 - Validation enforces:
@@ -40,6 +41,7 @@ The Blog module manages SEO-focused content clusters and the presentation of blo
 - Generator cleanup safety:
   - Tracks generated files in `content/blog/_ops/generated-seo-cluster-manifest.json`
   - Removes stale generated files on subsequent runs to keep cluster output deterministic when counts change
+  - Uses shared targets from `scripts/seo-cluster-config.mjs` to keep generator and validator sizing in sync
 
 ## Blog Rendering Flow
 

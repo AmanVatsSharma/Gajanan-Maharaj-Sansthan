@@ -23,6 +23,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
 - Emits debug and warning logs for parsing and metadata quality checks.
 - Catches per-file parser errors and emits structured diagnostics before failing.
 - Validator strict mode available via `npm run validate:blog:strict` to fail on warnings during stricter release checks.
+- Generator manifest distribution verifier available via `npm run verify:generator` to enforce deterministic cluster-size output.
 - Validator cross-post checks enforce:
   - minimum post inventory (`>=100`),
   - `relatedSlugs` integrity,

@@ -82,6 +82,9 @@ npm run validate:blog
 
 # Fail the run on any warning (strict mode)
 npm run validate:blog:strict
+
+# Verify generated cluster manifest distribution and integrity
+npm run verify:generator
 ```
 
 Validation now includes cross-post integrity checks for:
@@ -96,6 +99,7 @@ Validation now includes cross-post integrity checks for:
 
 Generator note: `npm run generate:blogs` now assigns topic-specific primary keywords per post so cross-post cannibalization warnings remain near zero.
 Generator determinism note: generation now tracks managed files in `content/blog/_ops/generated-seo-cluster-manifest.json` and cleans stale generated files on the next run before recreating the cluster.
+Cluster sizing source of truth: `scripts/seo-cluster-config.mjs` controls expected generated distribution.
 
 ## Content pipeline flowchart
 

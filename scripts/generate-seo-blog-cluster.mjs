@@ -13,6 +13,11 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import {
+  EXPECTED_GENERATED_TOTAL,
+  LOCATION_CLUSTER_TARGETS,
+  NON_LOCATION_CLUSTER_TARGETS,
+} from "./seo-cluster-config.mjs";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const GENERATOR_MANIFEST_PATH = path.join(
@@ -34,7 +39,7 @@ const LOCATION_CONFIGS = [
   {
     key: "shegaon",
     city: "Shegaon",
-    count: 30,
+    count: LOCATION_CLUSTER_TARGETS.shegaon,
     directory: "locations/shegaon",
     image: "/images/shegaon-temple.jpg",
     locationPage: "/locations/shegaon-bhakt-niwas",
@@ -51,7 +56,7 @@ const LOCATION_CONFIGS = [
   {
     key: "omkareshwar",
     city: "Omkareshwar",
-    count: 20,
+    count: LOCATION_CLUSTER_TARGETS.omkareshwar,
     directory: "locations/omkareshwar",
     image: "/images/omkareshwar.jpg",
     locationPage: "/locations/omkareshwar",
@@ -68,7 +73,7 @@ const LOCATION_CONFIGS = [
   {
     key: "pandharpur",
     city: "Pandharpur",
-    count: 15,
+    count: LOCATION_CLUSTER_TARGETS.pandharpur,
     directory: "locations/pandharpur",
     image: "/images/pandharpur.jpg",
     locationPage: "/locations/pandharpur-math",
@@ -85,7 +90,7 @@ const LOCATION_CONFIGS = [
   {
     key: "trimbakeshwar",
     city: "Trimbakeshwar",
-    count: 15,
+    count: LOCATION_CLUSTER_TARGETS.trimbakeshwar,
     directory: "locations/trimbakeshwar",
     image: "/images/trimbakeshwar.jpg",
     locationPage: "/locations/trimbakeshwar",
@@ -267,6 +272,31 @@ function assertGeneratorConfiguration() {
         `Location "${locationConfig.key}" count (${locationConfig.count}) exceeds topic variants (${LOCATION_TOPIC_VARIANTS.length}).`
       );
     }
+
+    const expectedClusterCount = LOCATION_CLUSTER_TARGETS[locationConfig.key];
+    if (locationConfig.count !== expectedClusterCount) {
+      throw new Error(
+        `Location "${locationConfig.key}" count (${locationConfig.count}) does not match shared cluster target (${expectedClusterCount}).`
+      );
+    }
+  }
+
+  if (CROSS_LOCATION_GUIDE_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.guides) {
+    throw new Error(
+      `Guide cluster size mismatch. Found ${CROSS_LOCATION_GUIDE_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.guides}.`
+    );
+  }
+
+  if (SPIRITUAL_POST_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.spiritual) {
+    throw new Error(
+      `Spiritual cluster size mismatch. Found ${SPIRITUAL_POST_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.spiritual}.`
+    );
+  }
+
+  if (EVENT_POST_VARIANTS.length !== NON_LOCATION_CLUSTER_TARGETS.events) {
+    throw new Error(
+      `Event cluster size mismatch. Found ${EVENT_POST_VARIANTS.length}, expected ${NON_LOCATION_CLUSTER_TARGETS.events}.`
+    );
   }
 }
 
@@ -651,6 +681,13 @@ function main() {
     ...generatedSpiritualPosts,
     ...generatedEventPosts,
   ];
+
+  if (generatedTotal !== EXPECTED_GENERATED_TOTAL) {
+    throw new Error(
+      `Generated post total mismatch. Found ${generatedTotal}, expected ${EXPECTED_GENERATED_TOTAL}.`
+    );
+  }
+
   writeGenerationManifest(generatedFiles);
 
   console.info("seo-blog-generator-complete", {
