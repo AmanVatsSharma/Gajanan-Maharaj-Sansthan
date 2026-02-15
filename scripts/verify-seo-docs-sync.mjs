@@ -121,6 +121,12 @@ function main() {
     failures,
     "content/blog/README.md:verify-docs-sync-command"
   );
+  assertIncludes(
+    blogReadme,
+    "manifestVersion",
+    failures,
+    "content/blog/README.md:manifest-version-reference"
+  );
 
   assertIncludes(
     setupGuide,
@@ -164,6 +170,12 @@ function main() {
     "npm run verify:docs-sync",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-docs-sync-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "manifestVersion: 2",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:manifest-version-reference"
   );
   assertIncludes(
     rolloutReport,

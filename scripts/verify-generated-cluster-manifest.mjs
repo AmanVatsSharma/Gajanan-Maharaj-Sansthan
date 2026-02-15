@@ -9,6 +9,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import matter from "gray-matter";
 import {
   CLUSTER_CONFIG_FINGERPRINT,
@@ -23,6 +24,10 @@ const MANIFEST_PATH = path.join(BLOG_ROOT, "_ops/generated-seo-cluster-manifest.
 
 function normalizeManifestEntry(entry) {
   return typeof entry === "string" ? entry.trim().replace(/\\/g, "/") : "";
+}
+
+function getChecksum(content) {
+  return crypto.createHash("sha256").update(content).digest("hex");
 }
 
 function toStringArray(value) {
@@ -83,13 +88,33 @@ function main() {
   const entriesRaw = Array.isArray(parsed?.generatedFiles) ? parsed.generatedFiles : [];
   const entries = [...new Set(entriesRaw.map((entry) => normalizeManifestEntry(entry)).filter(Boolean))];
   const failures = [];
+  const manifestVersion =
+    typeof parsed?.manifestVersion === "number" ? parsed.manifestVersion : null;
   const manifestFingerprint =
     typeof parsed?.configFingerprint === "string" ? parsed.configFingerprint : null;
+  const manifestChecksums =
+    parsed?.generatedFileChecksums &&
+    typeof parsed.generatedFileChecksums === "object" &&
+    !Array.isArray(parsed.generatedFileChecksums)
+      ? parsed.generatedFileChecksums
+      : null;
 
+  if (manifestVersion !== 2) {
+    failures.push({
+      check: "manifest-version",
+      reason: `Manifest version "${manifestVersion ?? "missing"}" does not match expected "2". Run npm run generate:blogs.`,
+    });
+  }
   if (manifestFingerprint !== CLUSTER_CONFIG_FINGERPRINT) {
     failures.push({
       check: "manifest-config-fingerprint",
       reason: `Manifest config fingerprint "${manifestFingerprint || "missing"}" does not match expected "${CLUSTER_CONFIG_FINGERPRINT}". Run npm run generate:blogs.`,
+    });
+  }
+  if (!manifestChecksums) {
+    failures.push({
+      check: "manifest-checksum-map",
+      reason: "Manifest is missing generatedFileChecksums map. Run npm run generate:blogs.",
     });
   }
 
@@ -116,6 +141,7 @@ function main() {
     events: 0,
   };
   let frontmatterCheckCount = 0;
+  let checksumValidatedCount = 0;
 
   for (const entry of entries) {
     const absolutePath = path.join(BLOG_ROOT, entry);
@@ -130,6 +156,11 @@ function main() {
     const expectedCategory = getExpectedCategory(entry);
     const expectedSlug = path.basename(entry, ".md");
     const fileContent = fs.readFileSync(absolutePath, "utf-8");
+    const currentChecksum = getChecksum(fileContent);
+    const expectedChecksum =
+      manifestChecksums && typeof manifestChecksums[entry] === "string"
+        ? manifestChecksums[entry]
+        : null;
     const { data } = matter(fileContent);
     const slug = typeof data.slug === "string" ? data.slug.trim() : "";
     const category = typeof data.category === "string" ? data.category.trim() : "";
@@ -166,6 +197,19 @@ function main() {
         check: "generated-keyword-brand-fragment",
         reason: `Generated entry ${entry} is missing sansthan/sanstan keyword fragments.`,
       });
+    }
+    if (!expectedChecksum) {
+      failures.push({
+        check: "generated-file-checksum-missing",
+        reason: `Manifest checksum is missing for generated entry: ${entry}`,
+      });
+    } else if (expectedChecksum !== currentChecksum) {
+      failures.push({
+        check: "generated-file-checksum-mismatch",
+        reason: `Checksum mismatch for generated entry ${entry}. Regenerate cluster to realign deterministic output.`,
+      });
+    } else {
+      checksumValidatedCount += 1;
     }
 
     if (expectedCategory === "locations") {
@@ -255,7 +299,9 @@ function main() {
     status: "passed",
     expectedTotal: EXPECTED_GENERATED_TOTAL,
     configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
+    manifestVersion,
     frontmatterCheckCount,
+    checksumValidatedCount,
     observedDistribution: distribution,
   });
 }

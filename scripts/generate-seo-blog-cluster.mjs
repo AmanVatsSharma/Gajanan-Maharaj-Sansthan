@@ -13,6 +13,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import {
   CLUSTER_CONFIG_FINGERPRINT,
   EXPECTED_GENERATED_TOTAL,
@@ -263,11 +264,25 @@ function cleanupPreviouslyGeneratedFiles(previousGeneratedFiles) {
 
 function writeGenerationManifest(generatedFiles) {
   ensureDirectory(path.dirname(GENERATOR_MANIFEST_PATH));
+  const normalizedGeneratedFiles = generatedFiles
+    .map((entry) => entry.replace(/\\/g, "/"))
+    .sort();
+  const generatedFileChecksums = Object.fromEntries(
+    normalizedGeneratedFiles.map((relativePath) => {
+      const absolutePath = path.join(BLOG_ROOT, relativePath);
+      const fileContent = fs.readFileSync(absolutePath, "utf-8");
+      const checksum = crypto.createHash("sha256").update(fileContent).digest("hex");
+      return [relativePath, checksum];
+    })
+  );
+
   const payload = {
     timestamp: Date.now(),
+    manifestVersion: 2,
     configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
-    generatedFileCount: generatedFiles.length,
-    generatedFiles: generatedFiles.sort(),
+    generatedFileCount: normalizedGeneratedFiles.length,
+    generatedFiles: normalizedGeneratedFiles,
+    generatedFileChecksums,
   };
   fs.writeFileSync(GENERATOR_MANIFEST_PATH, `${JSON.stringify(payload, null, 2)}\n`, "utf-8");
 }

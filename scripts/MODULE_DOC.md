@@ -64,6 +64,7 @@ flowchart TD
 - `seo:check:strict` is the canonical quality gate command used by CI workflow.
 - If cluster sizing changes, update `seo-cluster-config.mjs` first, then regenerate content.
 - Generator/validator/verifier use manifest config fingerprint checks to fail fast on stale generated content.
+- Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
 - Generator verifier checks generated-file frontmatter invariants (slug, category, relatedSlugs minimum, location namespace rules, brand fragment presence).
 - Validator includes inbound blog-link graph checks to prevent orphaned generated posts.
 - Validator also enforces minimum outbound blog links on generated posts for better crawl continuity.

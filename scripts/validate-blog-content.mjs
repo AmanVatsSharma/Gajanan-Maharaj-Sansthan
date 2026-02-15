@@ -154,9 +154,19 @@ function validateGeneratedManifest(failures) {
   const generatedFilesRaw = Array.isArray(parsedManifest?.generatedFiles)
     ? parsedManifest.generatedFiles
     : null;
+  const manifestVersion =
+    typeof parsedManifest?.manifestVersion === "number"
+      ? parsedManifest.manifestVersion
+      : null;
   const manifestConfigFingerprint =
     typeof parsedManifest?.configFingerprint === "string"
       ? parsedManifest.configFingerprint
+      : null;
+  const generatedFileChecksums =
+    parsedManifest?.generatedFileChecksums &&
+    typeof parsedManifest.generatedFileChecksums === "object" &&
+    !Array.isArray(parsedManifest.generatedFileChecksums)
+      ? parsedManifest.generatedFileChecksums
       : null;
 
   if (!generatedFilesRaw) {
@@ -177,6 +187,22 @@ function validateGeneratedManifest(failures) {
       reason: `Manifest config fingerprint "${
         manifestConfigFingerprint || "missing"
       }" does not match expected "${CLUSTER_CONFIG_FINGERPRINT}". Run npm run generate:blogs.`,
+    });
+  }
+  if (manifestVersion !== 2) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-version",
+      reason: `Manifest version "${manifestVersion ?? "missing"}" does not match expected "2". Run npm run generate:blogs.`,
+    });
+  }
+  if (!generatedFileChecksums) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-checksum-map",
+      reason: "Manifest is missing generatedFileChecksums map. Run npm run generate:blogs.",
     });
   }
 
@@ -222,6 +248,14 @@ function validateGeneratedManifest(failures) {
       reason: `Manifest generatedFileCount (${expectedCountFromManifest}) does not match generatedFiles[] length (${uniqueEntries.length}).`,
     });
   }
+  if (generatedFileChecksums && Object.keys(generatedFileChecksums).length !== uniqueEntries.length) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-checksum-count",
+      reason: `generatedFileChecksums count (${Object.keys(generatedFileChecksums).length}) does not match generated files count (${uniqueEntries.length}).`,
+    });
+  }
 
   const missingFiles = [];
   for (const relativeEntry of uniqueEntries) {
@@ -265,9 +299,11 @@ function validateGeneratedManifest(failures) {
   console.info("blog-validation-generator-manifest", {
     timestamp: Date.now(),
     manifestPath: manifestFilePath,
+    manifestVersion,
     configFingerprint: manifestConfigFingerprint,
     expectedConfigFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedFileCount: uniqueEntries.length,
+    checksumCount: generatedFileChecksums ? Object.keys(generatedFileChecksums).length : 0,
     missingFileCount: missingFiles.length,
   });
 
