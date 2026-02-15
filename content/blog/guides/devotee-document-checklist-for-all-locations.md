@@ -7,6 +7,7 @@ image: "/images/shegaon-temple.jpg"
 keywords:
   - "devotee document checklist for all locations pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
+  - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
   - "multi location temple accommodation guide"
 author: "Sansthan"

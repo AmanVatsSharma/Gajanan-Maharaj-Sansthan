@@ -38,6 +38,17 @@ npm run verify:seo-build
     - guides: 17
     - locations: 83
     - spiritual: 5
+  - location distribution (slug ownership):
+    - shegaon: 35
+    - omkareshwar: 22
+    - pandharpur: 16
+    - trimbakeshwar: 15
+  - brand variant keyword coverage:
+    - `shri gajanan`: 187
+    - `shree gajanan`: 106
+    - `sri gajanan`: 106
+    - `sansthan`: 288
+    - `sanstan`: 105
 - `npm run lint` → pass
 - `npm run build` → pass
   - blog dynamic paths include 100+ additional slugs
@@ -58,6 +69,8 @@ npm run verify:seo-build
    - Frontmatter + link integrity validator blocks malformed SEO posts.
    - Deterministic generator supports repeatable large-scale cluster publishing.
   - Cross-post checks enforce minimum post inventory, related slug existence, and location-cluster presence.
+  - Location-cluster minimum thresholds are enforced in validation (`30/20/15/15` baseline).
+  - Brand-variant keyword coverage checks enforce Shri/Shree/Sri + Sansthan/Sanstan surface area.
   - Topic-specific primary keyword generation reduces cannibalization warnings in validator output.
   - Internal markdown links now validate `/blog/<slug>` and `/locations/<id>` target existence.
 

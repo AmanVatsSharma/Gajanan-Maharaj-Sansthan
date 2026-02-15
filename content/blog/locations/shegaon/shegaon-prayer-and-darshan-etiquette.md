@@ -8,6 +8,7 @@ keywords:
   - "shegaon prayer and darshan etiquette guide"
   - "shegaon devotional planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

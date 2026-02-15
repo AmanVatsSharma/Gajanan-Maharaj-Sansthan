@@ -27,6 +27,19 @@ const KNOWN_LOCATION_IDS = new Set([
 const VALID_CATEGORIES = new Set(["locations", "guides", "spiritual", "events"]);
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const REQUIRED_LOCATION_COVERAGE = ["shegaon", "omkareshwar", "pandharpur", "trimbakeshwar"];
+const LOCATION_CLUSTER_MINIMUMS = {
+  shegaon: 30,
+  omkareshwar: 20,
+  pandharpur: 15,
+  trimbakeshwar: 15,
+};
+const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
+  "shri gajanan",
+  "shree gajanan",
+  "sri gajanan",
+  "sansthan",
+  "sanstan",
+];
 
 /**
  * Crawl markdown files recursively.
@@ -241,6 +254,52 @@ function detectLocationClusterCoverage(results) {
   return coverage;
 }
 
+/**
+ * Count how many posts are explicitly owned by each location cluster.
+ * Ownership heuristic uses slug prefixes so legacy location files are included too.
+ */
+function detectLocationClusterDistribution(results) {
+  const distribution = {
+    shegaon: 0,
+    omkareshwar: 0,
+    pandharpur: 0,
+    trimbakeshwar: 0,
+  };
+
+  for (const result of results) {
+    const normalizedSlug = (result.slug || "").toLowerCase();
+    for (const locationKey of Object.keys(distribution)) {
+      if (normalizedSlug.startsWith(`${locationKey}-`)) {
+        distribution[locationKey] += 1;
+      }
+    }
+  }
+
+  return distribution;
+}
+
+/**
+ * Ensure core brand variants remain present somewhere in blog metadata corpus.
+ */
+function detectBrandVariantCoverage(results) {
+  const coverage = Object.fromEntries(
+    REQUIRED_BRAND_VARIANT_FRAGMENTS.map((fragment) => [fragment, 0])
+  );
+
+  for (const result of results) {
+    for (const keyword of result.keywords || []) {
+      const normalizedKeyword = keyword.toLowerCase().trim();
+      for (const fragment of REQUIRED_BRAND_VARIANT_FRAGMENTS) {
+        if (normalizedKeyword.includes(fragment)) {
+          coverage[fragment] += 1;
+        }
+      }
+    }
+  }
+
+  return coverage;
+}
+
 function runCrossPostChecks(results, failures, warnings) {
   const knownSlugs = new Set(results.map((result) => result.slug).filter(Boolean));
   const knownLocationPaths = new Set(
@@ -311,6 +370,42 @@ function runCrossPostChecks(results, failures, warnings) {
         filePath: "content/blog/locations",
         check: "location-cluster-coverage",
         reason: `No location-intent posts detected for ${locationKey}`,
+      });
+    }
+  }
+
+  const locationDistribution = detectLocationClusterDistribution(results);
+  console.info("blog-validation-location-distribution", {
+    timestamp: Date.now(),
+    minimums: LOCATION_CLUSTER_MINIMUMS,
+    observed: locationDistribution,
+  });
+
+  for (const [locationKey, minimumCount] of Object.entries(LOCATION_CLUSTER_MINIMUMS)) {
+    if ((locationDistribution[locationKey] || 0) < minimumCount) {
+      failures.push({
+        routeId: `location-minimum-${locationKey}`,
+        filePath: "content/blog/locations",
+        check: "location-cluster-minimum",
+        reason: `Location cluster "${locationKey}" has ${locationDistribution[locationKey] || 0} posts, below minimum ${minimumCount}`,
+      });
+    }
+  }
+
+  const brandVariantCoverage = detectBrandVariantCoverage(results);
+  console.info("blog-validation-brand-coverage", {
+    timestamp: Date.now(),
+    requiredFragments: REQUIRED_BRAND_VARIANT_FRAGMENTS,
+    observed: brandVariantCoverage,
+  });
+
+  for (const [fragment, hitCount] of Object.entries(brandVariantCoverage)) {
+    if (hitCount === 0) {
+      failures.push({
+        routeId: `brand-coverage-${fragment}`,
+        filePath: "content/blog",
+        check: "brand-variant-coverage",
+        reason: `No keyword metadata includes required fragment "${fragment}"`,
       });
     }
   }

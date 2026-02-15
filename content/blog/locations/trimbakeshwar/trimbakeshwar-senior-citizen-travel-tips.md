@@ -8,6 +8,7 @@ keywords:
   - "trimbakeshwar senior citizen travel tips guide"
   - "trimbakeshwar family travel planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
+  - "shri gajanan maharaj sanstan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"
   - "trimbakeshwar accommodation"

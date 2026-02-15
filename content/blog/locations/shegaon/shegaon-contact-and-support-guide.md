@@ -8,6 +8,7 @@ keywords:
   - "shegaon contact and support guide guide"
   - "shegaon contact planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

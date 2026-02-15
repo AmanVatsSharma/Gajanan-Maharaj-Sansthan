@@ -8,6 +8,7 @@ keywords:
   - "shegaon temple circuit extension guide guide"
   - "shegaon pilgrimage circuit planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

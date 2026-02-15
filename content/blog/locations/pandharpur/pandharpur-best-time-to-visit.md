@@ -8,6 +8,7 @@ keywords:
   - "pandharpur best time to visit guide"
   - "pandharpur seasonal guide planning"
   - "shri gajanan maharaj sansthan pandharpur"
+  - "shri gajanan maharaj sanstan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"
   - "pandharpur temple stay"

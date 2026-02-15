@@ -7,6 +7,7 @@ image: "/images/shegaon-temple.jpg"
 keywords:
   - "festival darshan timing awareness guide"
   - "shree gajanan maharaj sansthan event planning"
+  - "shri gajanan maharaj sanstan event planning"
   - "sri gajanan maharaj darshan festival season"
   - "festival accommodation planning shegaon"
 author: "Sansthan"

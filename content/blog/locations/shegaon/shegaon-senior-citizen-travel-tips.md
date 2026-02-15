@@ -8,6 +8,7 @@ keywords:
   - "shegaon senior citizen travel tips guide"
   - "shegaon family travel planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

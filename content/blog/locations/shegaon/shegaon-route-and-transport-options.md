@@ -8,6 +8,7 @@ keywords:
   - "shegaon route and transport options guide"
   - "shegaon transport planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

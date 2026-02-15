@@ -8,6 +8,7 @@ keywords:
   - "trimbakeshwar first time visitor guide guide"
   - "trimbakeshwar beginner guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
+  - "shri gajanan maharaj sanstan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"
   - "trimbakeshwar accommodation"

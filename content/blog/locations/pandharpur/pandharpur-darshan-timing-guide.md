@@ -8,6 +8,7 @@ keywords:
   - "pandharpur darshan timing guide guide"
   - "pandharpur darshan planning"
   - "shri gajanan maharaj sansthan pandharpur"
+  - "shri gajanan maharaj sanstan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"
   - "pandharpur temple stay"

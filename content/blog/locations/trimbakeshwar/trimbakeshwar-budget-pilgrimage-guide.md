@@ -8,6 +8,7 @@ keywords:
   - "trimbakeshwar budget pilgrimage guide guide"
   - "trimbakeshwar budget guide planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
+  - "shri gajanan maharaj sanstan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"
   - "trimbakeshwar accommodation"

@@ -8,6 +8,7 @@ keywords:
   - "omkareshwar budget pilgrimage guide guide"
   - "omkareshwar budget guide planning"
   - "shri gajanan maharaj sansthan omkareshwar"
+  - "shri gajanan maharaj sanstan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"
   - "omkareshwar temple accommodation"

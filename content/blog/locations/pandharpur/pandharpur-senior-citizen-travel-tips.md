@@ -8,6 +8,7 @@ keywords:
   - "pandharpur senior citizen travel tips guide"
   - "pandharpur family travel planning"
   - "shri gajanan maharaj sansthan pandharpur"
+  - "shri gajanan maharaj sanstan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"
   - "pandharpur temple stay"

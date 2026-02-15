@@ -8,6 +8,7 @@ keywords:
   - "shegaon festival crowd management guide guide"
   - "shegaon festival planning planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

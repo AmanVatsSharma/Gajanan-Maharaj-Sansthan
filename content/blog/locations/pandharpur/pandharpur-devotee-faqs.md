@@ -8,6 +8,7 @@ keywords:
   - "pandharpur devotee faqs guide"
   - "pandharpur faq planning"
   - "shri gajanan maharaj sansthan pandharpur"
+  - "shri gajanan maharaj sanstan pandharpur"
   - "shree gajanan maharaj sansthan pandharpur"
   - "sri gajanan maharaj sansthan pandharpur"
   - "pandharpur temple stay"

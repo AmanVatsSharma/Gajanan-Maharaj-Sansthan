@@ -7,6 +7,7 @@ image: "/images/shegaon-temple.jpg"
 keywords:
   - "daily devotional routine for pilgrimage travelers"
   - "shree gajanan maharaj spiritual guidance"
+  - "shri gajanan maharaj sanstan spiritual guidance"
   - "sri gajanan maharaj devotee planning"
   - "sansthan devotional discipline"
 author: "Sansthan"

@@ -8,6 +8,7 @@ keywords:
   - "shegaon temple area food and facilities guide"
   - "shegaon facilities planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

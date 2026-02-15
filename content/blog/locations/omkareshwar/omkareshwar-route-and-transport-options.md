@@ -8,6 +8,7 @@ keywords:
   - "omkareshwar route and transport options guide"
   - "omkareshwar transport planning"
   - "shri gajanan maharaj sansthan omkareshwar"
+  - "shri gajanan maharaj sanstan omkareshwar"
   - "shree gajanan maharaj sansthan omkareshwar"
   - "sri gajanan maharaj sansthan omkareshwar"
   - "omkareshwar temple accommodation"

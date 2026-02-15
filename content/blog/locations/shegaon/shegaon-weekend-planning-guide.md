@@ -8,6 +8,7 @@ keywords:
   - "shegaon weekend planning guide guide"
   - "shegaon travel guide planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

@@ -8,6 +8,7 @@ keywords:
   - "shegaon winter visit guide guide"
   - "shegaon seasonal guide planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

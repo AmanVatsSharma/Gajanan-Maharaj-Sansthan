@@ -23,6 +23,12 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
 - Emits debug and warning logs for parsing and metadata quality checks.
 - Catches per-file parser errors and emits structured diagnostics before failing.
 - Validator strict mode available via `npm run validate:blog:strict` to fail on warnings during stricter release checks.
+- Validator cross-post checks enforce:
+  - minimum post inventory (`>=100`),
+  - `relatedSlugs` integrity,
+  - internal `/blog/<slug>` and `/locations/<id>` target existence,
+  - location-cluster minimum thresholds (`30/20/15/15` baseline),
+  - Shri/Shree/Sri + Sansthan/Sanstan keyword-fragment coverage.
 - Prerender integrity checker available via `npm run verify:taxonomy` to ensure all tag/category/paginated archive pages are generated.
 
 ## Blog data processing flow
@@ -42,3 +48,4 @@ flowchart TD
 - **2026-02-13**: Initial parser + markdown conversion utilities added.
 - **2026-02-15**: Recursive content discovery, taxonomy helpers, and related-post scoring introduced.
 - **2026-02-15**: Added runtime debug/error logging and metadata-quality warning instrumentation for SEO-scale content operations.
+- **2026-02-15**: Strengthened validator with location-cluster minimum and brand-variant keyword coverage assertions.

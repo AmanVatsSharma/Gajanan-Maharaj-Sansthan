@@ -8,6 +8,7 @@ keywords:
   - "trimbakeshwar family accommodation checklist guide"
   - "trimbakeshwar accommodation planning"
   - "shri gajanan maharaj sansthan trimbakeshwar"
+  - "shri gajanan maharaj sanstan trimbakeshwar"
   - "shree gajanan maharaj sansthan trimbakeshwar"
   - "sri gajanan maharaj sansthan trimbakeshwar"
   - "trimbakeshwar accommodation"

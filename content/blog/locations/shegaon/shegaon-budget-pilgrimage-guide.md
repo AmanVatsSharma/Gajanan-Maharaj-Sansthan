@@ -8,6 +8,7 @@ keywords:
   - "shegaon budget pilgrimage guide guide"
   - "shegaon budget guide planning"
   - "shri gajanan maharaj sansthan shegaon"
+  - "shri gajanan maharaj sanstan shegaon"
   - "shree gajanan maharaj sansthan shegaon"
   - "sri gajanan maharaj sansthan shegaon"
   - "shegaon temple accommodation"

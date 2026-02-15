@@ -89,6 +89,8 @@ Validation now includes cross-post integrity checks for:
 - `relatedSlugs` existence
 - internal `/blog/<slug>` and `/locations/<id>` link-target existence
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
+- location cluster minimum ownership thresholds (`shegaon>=30`, `omkareshwar>=20`, `pandharpur>=15`, `trimbakeshwar>=15`)
+- keyword-fragment brand coverage for Shri/Shree/Sri + Sansthan/Sanstan variants
 - duplicate primary keyword cannibalization warnings
 
 Generator note: `npm run generate:blogs` now assigns topic-specific primary keywords per post so cross-post cannibalization warnings remain near zero.

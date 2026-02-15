@@ -37,6 +37,7 @@ const LOCATION_CONFIGS = [
     locationIds: ["shegaon-bhakt-niwas", "shegaon-anand-vihar", "shegaon-visawa"],
     keywordSeed: [
       "shri gajanan maharaj sansthan shegaon",
+      "shri gajanan maharaj sanstan shegaon",
       "shree gajanan maharaj sansthan shegaon",
       "sri gajanan maharaj sansthan shegaon",
       "shegaon temple accommodation",
@@ -53,6 +54,7 @@ const LOCATION_CONFIGS = [
     locationIds: ["omkareshwar"],
     keywordSeed: [
       "shri gajanan maharaj sansthan omkareshwar",
+      "shri gajanan maharaj sanstan omkareshwar",
       "shree gajanan maharaj sansthan omkareshwar",
       "sri gajanan maharaj sansthan omkareshwar",
       "omkareshwar temple accommodation",
@@ -69,6 +71,7 @@ const LOCATION_CONFIGS = [
     locationIds: ["pandharpur-math"],
     keywordSeed: [
       "shri gajanan maharaj sansthan pandharpur",
+      "shri gajanan maharaj sanstan pandharpur",
       "shree gajanan maharaj sansthan pandharpur",
       "sri gajanan maharaj sansthan pandharpur",
       "pandharpur temple stay",
@@ -85,6 +88,7 @@ const LOCATION_CONFIGS = [
     locationIds: ["trimbakeshwar"],
     keywordSeed: [
       "shri gajanan maharaj sansthan trimbakeshwar",
+      "shri gajanan maharaj sanstan trimbakeshwar",
       "shree gajanan maharaj sansthan trimbakeshwar",
       "sri gajanan maharaj sansthan trimbakeshwar",
       "trimbakeshwar accommodation",
@@ -421,6 +425,7 @@ function generateCrossLocationGuides() {
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")} pilgrimage guide`,
         "shree gajanan maharaj sansthan pilgrimage",
+        "shri gajanan maharaj sanstan pilgrimage",
         "sri gajanan maharaj sansthan route planning",
         "multi location temple accommodation guide",
       ],
@@ -457,6 +462,7 @@ function generateSpiritualPosts() {
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj spiritual guidance",
+        "shri gajanan maharaj sanstan spiritual guidance",
         "sri gajanan maharaj devotee planning",
         "sansthan devotional discipline",
       ],
@@ -498,6 +504,7 @@ function generateEventPosts() {
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj sansthan event planning",
+        "shri gajanan maharaj sanstan event planning",
         "sri gajanan maharaj darshan festival season",
         "festival accommodation planning shegaon",
       ],
