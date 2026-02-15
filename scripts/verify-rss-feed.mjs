@@ -166,4 +166,13 @@ async function main() {
   });
 }
 
-await main();
+try {
+  await main();
+} catch (error) {
+  console.error("rss-verify-failure", {
+    timestamp: Date.now(),
+    reason: error instanceof Error ? error.message : String(error),
+    check: "unhandled-runtime-error",
+  });
+  process.exit(1);
+}

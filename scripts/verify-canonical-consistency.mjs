@@ -148,4 +148,13 @@ function main() {
   });
 }
 
-main();
+try {
+  main();
+} catch (error) {
+  console.error("canonical-verify-failure", {
+    timestamp: Date.now(),
+    check: "unhandled-runtime-error",
+    reason: error instanceof Error ? error.message : String(error),
+  });
+  process.exit(1);
+}

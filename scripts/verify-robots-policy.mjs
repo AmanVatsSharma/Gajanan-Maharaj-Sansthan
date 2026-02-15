@@ -94,4 +94,13 @@ function main() {
   });
 }
 
-main();
+try {
+  main();
+} catch (error) {
+  console.error("robots-verify-failure", {
+    timestamp: Date.now(),
+    reason: error instanceof Error ? error.message : String(error),
+    check: "unhandled-runtime-error",
+  });
+  process.exit(1);
+}
