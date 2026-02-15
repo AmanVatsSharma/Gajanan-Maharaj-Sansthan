@@ -15,6 +15,11 @@ export interface Location {
   amenities: string[];
   contact: string[];
   images: string[];
+  coordinates?: {
+    latitude: number;
+    longitude: number;
+    regionCode?: string;
+  };
   googleMapsLink?: string;
 }
 
@@ -42,6 +47,11 @@ export const sansthanLocations: Location[] = [
     amenities: ['Hot Water (Morning)', 'Mahaprasad Canteen', 'Free Bus Service', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/shegaon-temple.jpg'],
+    coordinates: {
+      latitude: 20.7934,
+      longitude: 76.6992,
+      regionCode: "IN-MH",
+    },
   },
   {
     id: 'shegaon-anand-vihar',
@@ -56,6 +66,11 @@ export const sansthanLocations: Location[] = [
     amenities: ['AC', 'Garden', 'Canteen', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/anand-sagar.jpg'],
+    coordinates: {
+      latitude: 20.7919,
+      longitude: 76.6937,
+      regionCode: "IN-MH",
+    },
   },
   {
     id: 'shegaon-visawa',
@@ -69,6 +84,11 @@ export const sansthanLocations: Location[] = [
     amenities: ['Parking', 'Canteen'],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/shegaon-temple.jpg'],
+    coordinates: {
+      latitude: 20.7924,
+      longitude: 76.706,
+      regionCode: "IN-MH",
+    },
   },
   {
     id: 'pandharpur-math',
@@ -83,6 +103,11 @@ export const sansthanLocations: Location[] = [
     amenities: ['Bhojan Kaksha', 'Hot Water'],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/pandharpur.jpg'],
+    coordinates: {
+      latitude: 17.6776,
+      longitude: 75.3237,
+      regionCode: "IN-MH",
+    },
   },
   {
     id: 'trimbakeshwar',
@@ -96,6 +121,11 @@ export const sansthanLocations: Location[] = [
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/trimbakeshwar.jpg'],
+    coordinates: {
+      latitude: 19.9418,
+      longitude: 73.5298,
+      regionCode: "IN-MH",
+    },
   },
   {
     id: 'omkareshwar',
@@ -109,6 +139,11 @@ export const sansthanLocations: Location[] = [
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
     images: ['/images/omkareshwar.jpg'],
+    coordinates: {
+      latitude: 22.2436,
+      longitude: 76.1513,
+      regionCode: "IN-MP",
+    },
   },
 ];
 
