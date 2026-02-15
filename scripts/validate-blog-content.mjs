@@ -15,6 +15,7 @@ import {
   CLUSTER_CONFIG_FINGERPRINT,
   LOCATION_CLUSTER_KEYS,
   LOCATION_CLUSTER_TARGETS,
+  MANUAL_SEED_POST_PATHS,
 } from "./seo-cluster-config.mjs";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
@@ -266,6 +267,39 @@ function validateGeneratedManifest(failures) {
       filePath: manifestFilePath,
       check: "manifest-generated-path-policy",
       reason: `generatedFiles[] contains invalid managed paths: ${invalidPathEntries
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+  const manualSeedPathSet = new Set(
+    MANUAL_SEED_POST_PATHS.map((entry) => normalizeManifestEntry(entry))
+  );
+  const managedNamespaceFiles = getMarkdownFiles(BLOG_ROOT)
+    .map((absolutePath) => normalizeManifestEntry(path.relative(BLOG_ROOT, absolutePath)))
+    .filter((relativePath) => allowedGeneratedPathPattern.test(relativePath));
+  const unmanagedNamespaceFiles = managedNamespaceFiles.filter(
+    (relativePath) => !uniqueEntries.includes(relativePath) && !manualSeedPathSet.has(relativePath)
+  );
+  if (unmanagedNamespaceFiles.length > 0) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "managed-namespace-untracked-files",
+      reason: `Managed namespace has untracked markdown files outside manifest/manual seed list: ${unmanagedNamespaceFiles
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+
+  const missingManualSeeds = [...manualSeedPathSet].filter(
+    (relativePath) => !fs.existsSync(path.join(BLOG_ROOT, relativePath))
+  );
+  if (missingManualSeeds.length > 0) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manual-seed-post-exists",
+      reason: `Expected manual seed posts are missing: ${missingManualSeeds
         .slice(0, 5)
         .join(", ")}`,
     });

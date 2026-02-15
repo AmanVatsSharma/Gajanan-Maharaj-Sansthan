@@ -16,6 +16,7 @@ import {
   EXPECTED_GENERATED_TOTAL,
   LOCATION_CLUSTER_KEYS,
   LOCATION_CLUSTER_TARGETS,
+  MANUAL_SEED_POST_PATHS,
   NON_LOCATION_CLUSTER_TARGETS,
 } from "./seo-cluster-config.mjs";
 
@@ -58,6 +59,38 @@ function getExpectedCategory(entry) {
 
 function escapeRegexToken(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getMarkdownFiles(directoryPath) {
+  if (!fs.existsSync(directoryPath)) {
+    return [];
+  }
+
+  const entries = fs.readdirSync(directoryPath, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    if (entry.name.startsWith("_")) {
+      continue;
+    }
+
+    const normalizedName = entry.name.toLowerCase();
+    if (normalizedName === "readme.md") {
+      continue;
+    }
+
+    const fullPath = path.join(directoryPath, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...getMarkdownFiles(fullPath));
+      continue;
+    }
+
+    if (entry.isFile() && normalizedName.endsWith(".md")) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
 }
 
 function main() {
@@ -206,6 +239,34 @@ function main() {
   const allowedNamespacePattern = new RegExp(
     `^(locations\\/(?:${LOCATION_CLUSTER_KEYS.map((key) => escapeRegexToken(key)).join("|")})\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|guides\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|spiritual\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md|events\\/${GENERATED_SLUG_SEGMENT_PATTERN}\\.md)$`
   );
+  const manualSeedPathSet = new Set(MANUAL_SEED_POST_PATHS.map((entry) => normalizeManifestEntry(entry)));
+
+  const managedNamespaceFiles = getMarkdownFiles(BLOG_ROOT)
+    .map((absolutePath) => normalizeManifestEntry(path.relative(BLOG_ROOT, absolutePath)))
+    .filter((relativePath) => allowedNamespacePattern.test(relativePath));
+  const unmanagedNamespaceFiles = managedNamespaceFiles.filter(
+    (relativePath) => !entries.includes(relativePath) && !manualSeedPathSet.has(relativePath)
+  );
+  if (unmanagedNamespaceFiles.length > 0) {
+    failures.push({
+      check: "managed-namespace-untracked-files",
+      reason: `Managed namespace has untracked markdown files outside manifest/manual seed list: ${unmanagedNamespaceFiles
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
+
+  const missingManualSeeds = [...manualSeedPathSet].filter(
+    (relativePath) => !fs.existsSync(path.join(BLOG_ROOT, relativePath))
+  );
+  if (missingManualSeeds.length > 0) {
+    failures.push({
+      check: "manual-seed-post-exists",
+      reason: `Expected manual seed posts are missing: ${missingManualSeeds
+        .slice(0, 5)
+        .join(", ")}`,
+    });
+  }
 
   for (const entry of entries) {
     if (!allowedNamespacePattern.test(entry)) {

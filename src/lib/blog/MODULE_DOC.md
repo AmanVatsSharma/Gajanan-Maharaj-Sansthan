@@ -32,6 +32,7 @@ Load markdown posts from `content/blog`, normalize frontmatter, parse markdown t
   - generated-post outbound blog-link minimums (>=3 links),
   - generated manifest config-fingerprint consistency with shared cluster config,
   - generated manifest version/checksum count consistency,
+  - managed namespace ownership consistency (manifest-owned files + explicit manual seeds),
   - generated cluster manifest integrity for deterministic generator output,
   - location-cluster minimum thresholds (`30/20/15/15` baseline),
   - Shri/Shree/Sri + Sansthan/Sanstan keyword-fragment coverage.

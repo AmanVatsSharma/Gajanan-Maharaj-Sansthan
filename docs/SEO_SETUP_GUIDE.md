@@ -376,6 +376,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - generated manifest volatility checks (no timestamp-only drift fields)
 - generator determinism checks via isolated temp regeneration comparison
 - generated manifest file-path policy + sorted-inventory checks
+- managed namespace ownership checks (generator-owned files vs explicit manual seed anchors)
 - SEO gate command ordering/composition consistency (`verify:seo-chain`)
 - CI workflow strict-gate invariant checks (`verify:ci-gate`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)

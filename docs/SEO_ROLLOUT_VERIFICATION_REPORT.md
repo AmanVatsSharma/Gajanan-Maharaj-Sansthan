@@ -69,6 +69,7 @@ npm run seo:check:strict
   - checksum keyset alignment passed (no missing/extra checksum entries)
   - manifest volatility check passed (no timestamp-only drift field)
   - generatedFiles path policy + lexicographic sorting checks passed
+  - managed namespace ownership checks passed (manifest-owned + manual seed allowlist only)
   - generated frontmatter checks passed for 105 managed posts
   - observed distribution:
     - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15
@@ -104,6 +105,7 @@ npm run seo:check:strict
   - Manifest version + checksum checks fail fast when managed generated files drift.
   - Manifest volatility checks prevent timestamp-only generator drift.
   - Determinism verifier ensures fresh temp regeneration exactly matches live manifest state.
+  - Managed namespace ownership checks prevent untracked markdown drift in generator-governed folders.
   - SEO gate chain verifier prevents accidental removal/reordering of mandatory checks in package scripts.
   - CI-gate verifier protects workflow-level strict-gate execution invariants.
   - Generator manifest integrity checks verify managed generated-file inventory consistency.

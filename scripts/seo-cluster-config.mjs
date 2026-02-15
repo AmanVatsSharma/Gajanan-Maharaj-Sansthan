@@ -39,3 +39,15 @@ export const CLUSTER_CONFIG_FINGERPRINT = crypto
   .update(JSON.stringify(CLUSTER_CONFIG_PAYLOAD))
   .digest("hex")
   .slice(0, 16);
+
+/**
+ * Legacy/manual seed posts intentionally kept outside generated manifest ownership.
+ * These act as historical anchors and should not be deleted by generator cleanup.
+ */
+export const MANUAL_SEED_POST_PATHS = [
+  "guides/shegaon-accommodation-guide.md",
+  "locations/omkareshwar/omkareshwar-darshan-timings.md",
+  "locations/shegaon/nearby-places-from-shegaon.md",
+  "locations/shegaon/shegaon-travel-guide.md",
+  "welcome-to-sansthan.md",
+];

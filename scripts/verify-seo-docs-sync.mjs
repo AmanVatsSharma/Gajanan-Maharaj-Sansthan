@@ -145,6 +145,12 @@ function main() {
     failures,
     "content/blog/README.md:manifest-version-reference"
   );
+  assertIncludes(
+    blogReadme,
+    "manual seed anchors",
+    failures,
+    "content/blog/README.md:manual-seed-reference"
+  );
 
   assertIncludes(
     setupGuide,
@@ -175,6 +181,12 @@ function main() {
     "npm run verify:docs-sync",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-docs-sync-command"
+  );
+  assertIncludes(
+    setupGuide,
+    "manual seed anchors",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:manual-seed-reference"
   );
   assertIncludes(
     setupGuide,
@@ -224,6 +236,12 @@ function main() {
     "npm run verify:docs-sync",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-docs-sync-command"
+  );
+  assertIncludes(
+    rolloutReport,
+    "managed namespace ownership checks",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:manual-seed-reference"
   );
   assertIncludes(
     rolloutReport,
