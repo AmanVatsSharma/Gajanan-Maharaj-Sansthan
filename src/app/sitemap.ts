@@ -1,25 +1,46 @@
 /**
  * File: src/app/sitemap.ts
  * Module: app
- * Purpose: Enhanced sitemap with images, optimized priorities, and better change frequencies
+ * Purpose: Generate sitemap entries for static pages, locations, blog posts, tags, and categories.
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-15
  * Notes:
- * - Base URL derives from NEXT_PUBLIC_SITE_URL / VERCEL_URL with localhost fallback
- * - Includes image sitemap data for better image SEO
- * - Optimized priorities: Home (1.0), Booking (0.9), Locations main (0.9), Individual locations (0.8)
- * - Change frequencies based on content update patterns
+ * - Uses post-level lastModified timestamps for fresher crawl signals.
+ * - Includes taxonomy archive URLs to improve discovery of content clusters.
  */
 import type { MetadataRoute } from "next";
 
 import { sansthanLocations } from "@/data/sansthan-data";
-import { getBlogPosts } from "@/lib/blog";
+import {
+  getAllCategories,
+  getAllTags,
+  getBlogPosts,
+  toTaxonomySlug,
+} from "@/lib/blog";
 import { getSiteUrl } from "@/lib/seo/site-url";
+
+function getLatestBlogDate(
+  posts: Array<{ date: string; lastModified?: string }>
+): Date | null {
+  if (posts.length === 0) {
+    return null;
+  }
+
+  const timestamps = posts.map((post) =>
+    new Date(post.lastModified || post.date).getTime()
+  );
+  return new Date(Math.max(...timestamps));
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
   const now = new Date();
-  const blogPosts = await getBlogPosts();
+  const [blogPosts, tags, categories] = await Promise.all([
+    getBlogPosts(),
+    getAllTags(),
+    getAllCategories(),
+  ]);
+  const latestBlogDate = getLatestBlogDate(blogPosts) ?? now;
 
   // Static routes with optimized priorities
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -43,9 +64,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${siteUrl}/blog`,
-      lastModified: now,
+      lastModified: latestBlogDate,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${siteUrl}/about`,
@@ -97,11 +118,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Dynamic blog routes
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.lastModified || post.date),
     changeFrequency: "weekly" as const,
-    priority: 0.7,
+    priority: 0.75,
   }));
 
-  return [...staticRoutes, ...locationRoutes, ...blogRoutes];
+  const tagRoutes: MetadataRoute.Sitemap = tags.map((tag) => {
+    const tagPosts = blogPosts.filter((post) =>
+      (post.tags ?? []).some((postTag) => toTaxonomySlug(postTag) === tag)
+    );
+
+    return {
+      url: `${siteUrl}/blog/tag/${tag}`,
+      lastModified: getLatestBlogDate(tagPosts) ?? latestBlogDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
+    };
+  });
+
+  const categoryRoutes: MetadataRoute.Sitemap = categories.map((category) => {
+    const categoryPosts = blogPosts.filter((post) =>
+      post.category ? toTaxonomySlug(post.category) === category : false
+    );
+
+    return {
+      url: `${siteUrl}/blog/category/${category}`,
+      lastModified: getLatestBlogDate(categoryPosts) ?? latestBlogDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    };
+  });
+
+  return [...staticRoutes, ...locationRoutes, ...blogRoutes, ...tagRoutes, ...categoryRoutes];
 }
 

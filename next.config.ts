@@ -3,14 +3,30 @@
  * Module: root
  * Purpose: Next.js configuration optimized for SEO and Core Web Vitals
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-15
  * Notes:
  * - Image optimization enabled for better LCP scores
  * - Compression enabled for faster page loads
  * - Static page generation where possible
- * - Remote image patterns for external CDNs (if needed in future)
+ * - Canonical redirect hygiene for legacy paths and feed aliases
  */
 import type { NextConfig } from "next";
+
+function getCanonicalHost(): string | null {
+  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!rawUrl) {
+    return null;
+  }
+
+  try {
+    const parsedUrl = new URL(rawUrl);
+    return parsedUrl.host.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+
+const canonicalHost = getCanonicalHost();
 
 const nextConfig: NextConfig = {
   // Enable image optimization
@@ -42,6 +58,42 @@ const nextConfig: NextConfig = {
 
   // Strict mode for better React practices
   reactStrictMode: true,
+
+  // Explicitly keep canonical no-trailing-slash URL style
+  trailingSlash: false,
+
+  async redirects() {
+    const redirects: NonNullable<NextConfig["redirects"]> extends () => Promise<infer R>
+      ? R
+      : never = [
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/feed",
+        destination: "/feed.xml",
+        permanent: true,
+      },
+    ];
+
+    if (canonicalHost) {
+      redirects.push({
+        source: "/:path*",
+        has: [{ type: "host", value: `www.${canonicalHost}` }],
+        destination: `https://${canonicalHost}/:path*`,
+        permanent: true,
+      });
+    }
+
+    return redirects;
+  },
 
   // Experimental features for better performance
   experimental: {
