@@ -105,6 +105,7 @@ Validation now includes cross-post integrity checks for:
 Generator note: `npm run generate:blogs` now assigns topic-specific primary keywords per post so cross-post cannibalization warnings remain near zero.
 Generator determinism note: generation now tracks managed files in `content/blog/_ops/generated-seo-cluster-manifest.json` and cleans stale generated files on the next run before recreating the cluster.
 Cluster sizing source of truth: `scripts/seo-cluster-config.mjs` controls expected generated distribution.
+Manifest drift guard: validator/verifier checks enforce `configFingerprint` alignment between manifest and shared cluster config.
 Internal-linking note: generated clusters now add deterministic sibling links (previous/next within each cluster) to improve crawl continuity and reduce orphaned pages.
 
 ## Content pipeline flowchart

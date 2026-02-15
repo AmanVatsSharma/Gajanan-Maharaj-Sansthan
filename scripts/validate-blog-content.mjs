@@ -10,7 +10,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { LOCATION_CLUSTER_KEYS, LOCATION_CLUSTER_TARGETS } from "./seo-cluster-config.mjs";
+import {
+  CLUSTER_CONFIG_FINGERPRINT,
+  LOCATION_CLUSTER_KEYS,
+  LOCATION_CLUSTER_TARGETS,
+} from "./seo-cluster-config.mjs";
 
 const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const GENERATED_MANIFEST_PATH = path.join(
@@ -150,6 +154,10 @@ function validateGeneratedManifest(failures) {
   const generatedFilesRaw = Array.isArray(parsedManifest?.generatedFiles)
     ? parsedManifest.generatedFiles
     : null;
+  const manifestConfigFingerprint =
+    typeof parsedManifest?.configFingerprint === "string"
+      ? parsedManifest.configFingerprint
+      : null;
 
   if (!generatedFilesRaw) {
     failures.push({
@@ -159,6 +167,17 @@ function validateGeneratedManifest(failures) {
       reason: "Manifest is missing generatedFiles[] array.",
     });
     return manifestState;
+  }
+
+  if (manifestConfigFingerprint !== CLUSTER_CONFIG_FINGERPRINT) {
+    failures.push({
+      routeId: "generated-manifest",
+      filePath: manifestFilePath,
+      check: "manifest-config-fingerprint",
+      reason: `Manifest config fingerprint "${
+        manifestConfigFingerprint || "missing"
+      }" does not match expected "${CLUSTER_CONFIG_FINGERPRINT}". Run npm run generate:blogs.`,
+    });
   }
 
   const normalizedEntries = generatedFilesRaw.map((entry) => normalizeManifestEntry(entry));
@@ -246,6 +265,8 @@ function validateGeneratedManifest(failures) {
   console.info("blog-validation-generator-manifest", {
     timestamp: Date.now(),
     manifestPath: manifestFilePath,
+    configFingerprint: manifestConfigFingerprint,
+    expectedConfigFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedFileCount: uniqueEntries.length,
     missingFileCount: missingFiles.length,
   });

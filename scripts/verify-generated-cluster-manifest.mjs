@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {
+  CLUSTER_CONFIG_FINGERPRINT,
   EXPECTED_GENERATED_TOTAL,
   LOCATION_CLUSTER_KEYS,
   LOCATION_CLUSTER_TARGETS,
@@ -27,6 +28,7 @@ function main() {
   console.info("generator-manifest-verify-start", {
     timestamp: Date.now(),
     manifestPath: MANIFEST_PATH,
+    expectedConfigFingerprint: CLUSTER_CONFIG_FINGERPRINT,
   });
 
   if (!fs.existsSync(MANIFEST_PATH)) {
@@ -55,6 +57,15 @@ function main() {
   const entriesRaw = Array.isArray(parsed?.generatedFiles) ? parsed.generatedFiles : [];
   const entries = [...new Set(entriesRaw.map((entry) => normalizeManifestEntry(entry)).filter(Boolean))];
   const failures = [];
+  const manifestFingerprint =
+    typeof parsed?.configFingerprint === "string" ? parsed.configFingerprint : null;
+
+  if (manifestFingerprint !== CLUSTER_CONFIG_FINGERPRINT) {
+    failures.push({
+      check: "manifest-config-fingerprint",
+      reason: `Manifest config fingerprint "${manifestFingerprint || "missing"}" does not match expected "${CLUSTER_CONFIG_FINGERPRINT}". Run npm run generate:blogs.`,
+    });
+  }
 
   if (entries.length !== EXPECTED_GENERATED_TOTAL) {
     failures.push({
@@ -156,6 +167,7 @@ function main() {
     timestamp: Date.now(),
     status: "passed",
     expectedTotal: EXPECTED_GENERATED_TOTAL,
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     observedDistribution: distribution,
   });
 }

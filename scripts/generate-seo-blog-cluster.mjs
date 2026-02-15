@@ -14,6 +14,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {
+  CLUSTER_CONFIG_FINGERPRINT,
   EXPECTED_GENERATED_TOTAL,
   LOCATION_CLUSTER_TARGETS,
   NON_LOCATION_CLUSTER_TARGETS,
@@ -264,6 +265,7 @@ function writeGenerationManifest(generatedFiles) {
   ensureDirectory(path.dirname(GENERATOR_MANIFEST_PATH));
   const payload = {
     timestamp: Date.now(),
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedFileCount: generatedFiles.length,
     generatedFiles: generatedFiles.sort(),
   };
@@ -724,6 +726,7 @@ function main() {
   console.info("seo-blog-generator-start", {
     timestamp: Date.now(),
     blogRoot: BLOG_ROOT,
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
   });
 
   const previousGeneratedFiles = readPreviousManifest();
@@ -756,6 +759,7 @@ function main() {
 
   console.info("seo-blog-generator-complete", {
     timestamp: Date.now(),
+    configFingerprint: CLUSTER_CONFIG_FINGERPRINT,
     generatedTotal,
     locationPosts: generatedLocationPosts.length,
     guidePosts: generatedGuidePosts.length,
