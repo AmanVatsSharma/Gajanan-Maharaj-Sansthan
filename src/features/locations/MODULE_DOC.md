@@ -32,6 +32,7 @@ flowchart TD
 - **Performance**: uses Next `Image` for cards and the primary detail image to reduce layout shift.
 - **Pre-rendered routes**: all known locations are statically generated for better crawlability and faster loads.
 - **Booking CTA**: primary CTAs use WhatsApp/Call. The `/booking` landing page supports `?location=<id>` to preselect a location when linking from location pages.
+- **Geo SEO signals**: each location now includes coordinates used to generate geo meta tags on detail pages (`geo.position`, `geo.placename`, `geo.region`, `ICBM`).
 
 **Dependencies:**
 - **Data**: `src/data/sansthan-data.ts`
@@ -49,4 +50,5 @@ flowchart TD
 - 2026-02-13: All location contacts now use single number 9217691636 (via `src/data/contact.ts`).
 - 2026-02-13: Standardized location names to "Shri Gajanan Maharaj Sansthan" + place (e.g., Shri Gajanan Maharaj Sansthan Shegaon, Shri Gajanan Maharaj Sansthan Pandharpur) across sansthan-data, FeaturedLocations, and Footer.
 - 2026-02-13: Pre-rendered all location detail pages (`generateStaticParams` + `dynamicParams=false`) and aligned booking guidance with the lightweight `/booking` landing page.
+- 2026-02-15: Added latitude/longitude metadata in `sansthan-data` and wired location geo meta tags through SEO metadata generation for stronger local search relevance.
 
