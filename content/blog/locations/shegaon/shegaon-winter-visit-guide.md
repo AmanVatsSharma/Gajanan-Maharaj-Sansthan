@@ -3,7 +3,7 @@ title: "Shegaon Winter Visit Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon winter visit guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-26"
 slug: "shegaon-winter-visit-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon winter visit guide guide"
   - "shegaon seasonal guide planning"

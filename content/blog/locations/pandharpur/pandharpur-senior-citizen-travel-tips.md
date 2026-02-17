@@ -3,7 +3,7 @@ title: "Pandharpur Senior Citizen Travel Tips | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur senior citizen travel tips for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-18"
 slug: "pandharpur-senior-citizen-travel-tips"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur senior citizen travel tips guide"
   - "pandharpur family travel planning"

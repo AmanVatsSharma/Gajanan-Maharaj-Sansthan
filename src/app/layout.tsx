@@ -32,7 +32,7 @@ const metadataBase = getSiteUrlAsUrl();
 const siteTitle = "Shri Gajanan Maharaj Sansthan";
 const siteDescription =
   "Official website for Shri Gajanan Maharaj Sansthan, Shegaon. Accommodation booking requests, locations, and devotee information.";
-const ogImage = "/images/shegaon-temple.jpg";
+const ogImage = "/opengraph-image";
 
 export const metadata: Metadata = {
   metadataBase,

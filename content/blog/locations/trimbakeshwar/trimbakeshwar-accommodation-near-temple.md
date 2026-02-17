@@ -3,7 +3,7 @@ title: "Trimbakeshwar Accommodation Near Temple | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar accommodation near temple for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-01"
 slug: "trimbakeshwar-accommodation-near-temple"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar accommodation near temple guide"
   - "trimbakeshwar accommodation planning"

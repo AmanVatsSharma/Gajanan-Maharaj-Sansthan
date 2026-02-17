@@ -8,14 +8,14 @@ If a file is missing, the app can still serve a generated placeholder for some p
 
 | Asset Path | Recommended Size | Used In | Priority |
 |---|---:|---|---|
-| `/gallery/hero-image-2026-02-05.jpeg` | 1920x1080+ | Homepage hero (LCP candidate) | P0 |
-| `/images/shegaon-temple.jpg` | 1200x630+ | Metadata fallback + location/blog surfaces | P0 |
-| `/images/anand-sagar.jpg` | 1200x630+ | Location cards/detail | P1 |
-| `/images/pandharpur.jpg` | 1200x630+ | Location cards/detail | P1 |
-| `/images/trimbakeshwar.jpg` | 1200x630+ | Location cards/detail | P1 |
-| `/images/omkareshwar.jpg` | 1200x630+ | Location cards/detail | P1 |
-| `/logo/images-1.png` | 512x512+ | Navbar branding | P0 |
-| `/logo/logo.png` | 512x512+ | Organization schema logo | P0 |
+| `/gallery/hero-image-2026-02-05.svg` | 1920x1080+ | Homepage hero (LCP candidate) | P0 |
+| `/images/shegaon-temple.svg` | 1200x630+ | Location/blog surfaces | P0 |
+| `/images/anand-sagar.svg` | 1200x630+ | Location cards/detail | P1 |
+| `/images/pandharpur.svg` | 1200x630+ | Location cards/detail | P1 |
+| `/images/trimbakeshwar.svg` | 1200x630+ | Location cards/detail | P1 |
+| `/images/omkareshwar.svg` | 1200x630+ | Location cards/detail | P1 |
+| `/logo/images-1.svg` | 512x512+ | Navbar branding | P0 |
+| `/logo/logo.svg` | 512x512+ | Organization schema logo | P0 |
 
 ## Format guidance
 

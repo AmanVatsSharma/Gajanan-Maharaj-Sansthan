@@ -3,7 +3,7 @@ title: "Pandharpur Weekend Planning Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur weekend planning guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-26"
 slug: "pandharpur-weekend-planning-guide"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur weekend planning guide guide"
   - "pandharpur travel guide planning"

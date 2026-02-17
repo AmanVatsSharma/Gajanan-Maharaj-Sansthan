@@ -37,7 +37,7 @@ export function generatePageMetadata({
   title,
   description,
   keywords = [],
-  image = "/images/shegaon-temple.jpg",
+  image = "/opengraph-image",
   path = "",
   noIndex = false,
   type = "website",

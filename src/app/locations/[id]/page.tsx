@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     location.name,
     location.city,
     location.description,
-    location.images[0] || "/images/shegaon-temple.jpg",
+    location.images[0] || "/images/shegaon-temple.svg",
     location.id,
     [...locationKeywords], // Convert readonly array to mutable array
     location.coordinates

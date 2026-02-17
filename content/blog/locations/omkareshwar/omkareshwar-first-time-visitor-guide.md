@@ -3,7 +3,7 @@ title: "Omkareshwar First Time Visitor Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar first time visitor guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-08"
 slug: "omkareshwar-first-time-visitor-guide"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar first time visitor guide guide"
   - "omkareshwar beginner guide planning"

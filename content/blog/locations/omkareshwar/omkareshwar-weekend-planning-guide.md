@@ -3,7 +3,7 @@ title: "Omkareshwar Weekend Planning Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar weekend planning guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-15"
 slug: "omkareshwar-weekend-planning-guide"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar weekend planning guide guide"
   - "omkareshwar travel guide planning"

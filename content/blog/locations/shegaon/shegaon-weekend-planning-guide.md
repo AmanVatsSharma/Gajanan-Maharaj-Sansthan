@@ -3,7 +3,7 @@ title: "Shegaon Weekend Planning Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon weekend planning guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-14"
 slug: "shegaon-weekend-planning-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon weekend planning guide guide"
   - "shegaon travel guide planning"

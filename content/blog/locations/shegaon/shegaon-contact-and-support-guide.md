@@ -3,7 +3,7 @@ title: "Shegaon Contact and Support Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon contact and support guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-17"
 slug: "shegaon-contact-and-support-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon contact and support guide guide"
   - "shegaon contact planning"

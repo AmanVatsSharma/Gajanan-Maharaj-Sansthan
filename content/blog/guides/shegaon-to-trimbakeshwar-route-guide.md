@@ -3,7 +3,7 @@ title: "Shegaon To Trimbakeshwar Route Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-15"
 slug: "shegaon-to-trimbakeshwar-route-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon to trimbakeshwar route guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

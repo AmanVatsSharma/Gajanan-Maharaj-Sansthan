@@ -3,7 +3,7 @@ title: "Shegaon Accommodation Guide - Bhakt Niwas, Anand Vihar, Visawa"
 description: "Find the right Sansthan stay in Shegaon. Compare Bhakt Niwas, Anand Vihar, and Visawa with practical booking tips for devotees."
 date: "2026-02-15"
 slug: "shegaon-accommodation-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon accommodation guide"
   - "bhakt niwas shegaon"

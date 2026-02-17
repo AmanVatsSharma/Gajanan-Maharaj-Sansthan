@@ -3,7 +3,7 @@ title: "Devotee Document Checklist For All Locations | Shri Gajanan Maharaj Sans
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-07"
 slug: "devotee-document-checklist-for-all-locations"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "devotee document checklist for all locations pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

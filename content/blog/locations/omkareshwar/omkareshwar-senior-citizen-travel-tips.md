@@ -3,7 +3,7 @@ title: "Omkareshwar Senior Citizen Travel Tips | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar senior citizen travel tips for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-07"
 slug: "omkareshwar-senior-citizen-travel-tips"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar senior citizen travel tips guide"
   - "omkareshwar family travel planning"

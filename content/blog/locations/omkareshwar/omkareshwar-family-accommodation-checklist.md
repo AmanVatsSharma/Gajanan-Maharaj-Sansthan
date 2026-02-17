@@ -3,7 +3,7 @@ title: "Omkareshwar Family Accommodation Checklist | Shri Gajanan Maharaj Sansth
 description: "Detailed omkareshwar family accommodation checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-14"
 slug: "omkareshwar-family-accommodation-checklist"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar family accommodation checklist guide"
   - "omkareshwar accommodation planning"

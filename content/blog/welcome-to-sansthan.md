@@ -3,7 +3,7 @@ title: "Welcome to Shri Gajanan Maharaj Sansthan"
 description: "Official introduction to Shri Gajanan Maharaj Sansthan with devotee services, accommodation support, and pilgrimage planning links."
 date: "2026-02-13"
 slug: "welcome-to-sansthan"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shri gajanan maharaj sansthan"
   - "shree gajanan maharaj sansthan"

@@ -3,7 +3,7 @@ title: "Jyotirlinga And Sansthan Combined Itinerary | Shri Gajanan Maharaj Sanst
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-12"
 slug: "jyotirlinga-and-sansthan-combined-itinerary"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "jyotirlinga and sansthan combined itinerary pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

@@ -3,7 +3,7 @@ title: "Pilgrimage Budget Planning For Families | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-09"
 slug: "pilgrimage-budget-planning-for-families"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "pilgrimage budget planning for families pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

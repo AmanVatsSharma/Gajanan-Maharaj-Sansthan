@@ -3,7 +3,7 @@ title: "Shegaon Kids Friendly Yatra Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon kids friendly yatra guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-18"
 slug: "shegaon-kids-friendly-yatra-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon kids friendly yatra guide guide"
   - "shegaon family travel planning"

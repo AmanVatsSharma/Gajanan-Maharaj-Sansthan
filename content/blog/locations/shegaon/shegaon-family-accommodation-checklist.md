@@ -3,7 +3,7 @@ title: "Shegaon Family Accommodation Checklist | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon family accommodation checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-13"
 slug: "shegaon-family-accommodation-checklist"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon family accommodation checklist guide"
   - "shegaon accommodation planning"

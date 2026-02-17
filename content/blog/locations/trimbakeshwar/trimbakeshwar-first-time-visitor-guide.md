@@ -3,7 +3,7 @@ title: "Trimbakeshwar First Time Visitor Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar first time visitor guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-04"
 slug: "trimbakeshwar-first-time-visitor-guide"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar first time visitor guide guide"
   - "trimbakeshwar beginner guide planning"

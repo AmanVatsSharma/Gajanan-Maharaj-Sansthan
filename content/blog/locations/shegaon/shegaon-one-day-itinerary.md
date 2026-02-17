@@ -3,7 +3,7 @@ title: "Shegaon One Day Itinerary | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon one day itinerary for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-10"
 slug: "shegaon-one-day-itinerary"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon one day itinerary guide"
   - "shegaon itinerary planning"

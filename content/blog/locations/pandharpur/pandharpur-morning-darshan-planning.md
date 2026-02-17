@@ -3,7 +3,7 @@ title: "Pandharpur Morning Darshan Planning | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur morning darshan planning for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-15"
 slug: "pandharpur-morning-darshan-planning"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur morning darshan planning guide"
   - "pandharpur darshan planning"

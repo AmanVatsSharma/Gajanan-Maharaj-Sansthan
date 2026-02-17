@@ -3,7 +3,7 @@ title: "Omkareshwar Budget Pilgrimage Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar budget pilgrimage guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-02"
 slug: "omkareshwar-budget-pilgrimage-guide"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar budget pilgrimage guide guide"
   - "omkareshwar budget guide planning"

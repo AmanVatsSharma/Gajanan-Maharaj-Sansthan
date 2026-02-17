@@ -62,7 +62,7 @@ export function Navbar() {
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 sm:gap-3">
           <Image
-            src="/logo/images-1.png"
+            src="/logo/images-1.svg"
             alt="Shri Gajanan Maharaj Sansthan Logo"
             width={isScrolled ? 40 : 50}
             height={isScrolled ? 40 : 50}
@@ -110,7 +110,7 @@ export function Navbar() {
               <DialogHeader className="p-6 pb-4 border-b text-left">
                 <div className="flex items-center gap-3 mb-2">
                   <Image
-                    src="/logo/images-1.png"
+                    src="/logo/images-1.svg"
                     alt="Shri Gajanan Maharaj Sansthan Logo"
                     width={40}
                     height={40}

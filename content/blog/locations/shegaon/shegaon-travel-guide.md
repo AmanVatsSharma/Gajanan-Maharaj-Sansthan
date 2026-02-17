@@ -3,7 +3,7 @@ title: "Complete Travel Guide to Shegaon - Temple, Darshan Timings, Accommodatio
 description: "Plan your Shegaon pilgrimage with this complete guide. Get darshan timings, Sansthan accommodation options, travel routes, and nearby places."
 date: "2026-02-15"
 slug: "shegaon-travel-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon travel guide"
   - "shegaon temple darshan timings"

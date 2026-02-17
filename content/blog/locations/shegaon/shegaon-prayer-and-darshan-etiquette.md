@@ -3,7 +3,7 @@ title: "Shegaon Prayer and Darshan Etiquette | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon prayer and darshan etiquette for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-30"
 slug: "shegaon-prayer-and-darshan-etiquette"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon prayer and darshan etiquette guide"
   - "shegaon devotional planning"

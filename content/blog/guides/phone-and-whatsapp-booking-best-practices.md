@@ -3,7 +3,7 @@ title: "Phone And Whatsapp Booking Best Practices | Shri Gajanan Maharaj Sanstha
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-06"
 slug: "phone-and-whatsapp-booking-best-practices"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "phone and whatsapp booking best practices pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

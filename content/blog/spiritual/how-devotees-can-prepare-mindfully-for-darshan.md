@@ -3,7 +3,7 @@ title: "How Devotees Can Prepare Mindfully For Darshan | Spiritual Guidance"
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
 date: "2025-09-05"
 slug: "how-devotees-can-prepare-mindfully-for-darshan"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "how devotees can prepare mindfully for darshan"
   - "shree gajanan maharaj spiritual guidance"

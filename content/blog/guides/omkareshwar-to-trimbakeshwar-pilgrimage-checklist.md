@@ -3,7 +3,7 @@ title: "Omkareshwar To Trimbakeshwar Pilgrimage Checklist | Shri Gajanan Maharaj
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-14"
 slug: "omkareshwar-to-trimbakeshwar-pilgrimage-checklist"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "omkareshwar to trimbakeshwar pilgrimage checklist pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

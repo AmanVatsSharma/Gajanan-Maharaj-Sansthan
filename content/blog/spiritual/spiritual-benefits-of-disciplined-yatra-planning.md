@@ -3,7 +3,7 @@ title: "Spiritual Benefits Of Disciplined Yatra Planning | Spiritual Guidance"
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
 date: "2025-09-04"
 slug: "spiritual-benefits-of-disciplined-yatra-planning"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "spiritual benefits of disciplined yatra planning"
   - "shree gajanan maharaj spiritual guidance"

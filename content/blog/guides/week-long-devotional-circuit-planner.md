@@ -3,7 +3,7 @@ title: "Week Long Devotional Circuit Planner | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-10"
 slug: "week-long-devotional-circuit-planner"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "week long devotional circuit planner pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

@@ -46,7 +46,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Hot Water (Morning)', 'Mahaprasad Canteen', 'Free Bus Service', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/shegaon-temple.jpg'],
+    images: ['/images/shegaon-temple.svg'],
     coordinates: {
       latitude: 20.7934,
       longitude: 76.6992,
@@ -66,7 +66,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['AC', 'Garden', 'Canteen', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/anand-sagar.jpg'],
+    images: ['/images/anand-sagar.svg'],
     coordinates: {
       latitude: 20.7919,
       longitude: 76.6937,
@@ -85,7 +85,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Parking', 'Canteen'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/shegaon-temple.jpg'],
+    images: ['/images/shegaon-temple.svg'],
     coordinates: {
       latitude: 20.7924,
       longitude: 76.706,
@@ -105,7 +105,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Bhojan Kaksha', 'Hot Water'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/pandharpur.jpg'],
+    images: ['/images/pandharpur.svg'],
     coordinates: {
       latitude: 17.6776,
       longitude: 75.3237,
@@ -124,7 +124,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/trimbakeshwar.jpg'],
+    images: ['/images/trimbakeshwar.svg'],
     coordinates: {
       latitude: 19.9418,
       longitude: 73.5298,
@@ -143,7 +143,7 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/omkareshwar.jpg'],
+    images: ['/images/omkareshwar.svg'],
     coordinates: {
       latitude: 22.2436,
       longitude: 76.1513,
