@@ -16,42 +16,137 @@ interface CanonicalHostConfig {
   canonicalOrigin: string;
   canonicalHost: string;
   redirectFromHost: string | null;
+  hostRedirectEnabled: boolean;
 }
 
-function getCanonicalHostConfig(): CanonicalHostConfig | null {
-  const rawUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!rawUrl) {
-    return null;
+const CANONICAL_DOMAIN_APEX = "shrigajananmaharajsanstan.com";
+const DEFAULT_CANONICAL_ORIGIN = `https://www.${CANONICAL_DOMAIN_APEX}`;
+const APP_HOST_REDIRECT_ENABLED =
+  process.env.SEO_ENABLE_APP_HOST_REDIRECTS === "true";
+
+/**
+ * Emit structured SEO configuration diagnostics.
+ * Keep payloads non-sensitive for safe CI/CD logs.
+ */
+function logSeoConfig(
+  level: "info" | "warn",
+  message: string,
+  data?: Record<string, unknown>
+) {
+  const payload = {
+    timestamp: Date.now(),
+    message,
+    ...(data ? { data } : {}),
+  };
+
+  if (level === "warn") {
+    console.warn("seo-config-warning", payload);
+    return;
   }
 
+  console.info("seo-config-info", payload);
+}
+
+/**
+ * Normalize canonical hostname to avoid split-host SEO drift.
+ * We enforce www host for this project domain unless local/dev.
+ */
+function normalizeCanonicalHostname(hostname: string): string {
+  if (hostname === CANONICAL_DOMAIN_APEX) {
+    logSeoConfig("warn", "Apex canonical host detected; normalized to www host.", {
+      detectedHost: hostname,
+      normalizedHost: `www.${CANONICAL_DOMAIN_APEX}`,
+    });
+    return `www.${CANONICAL_DOMAIN_APEX}`;
+  }
+
+  return hostname;
+}
+
+/**
+ * Parse and sanitize NEXT_PUBLIC_SITE_URL into canonical origin.
+ * Handles invalid env values defensively with actionable diagnostics.
+ */
+function getCanonicalOriginFromEnv(rawUrl: string): string | null {
+  const trimmedUrl = rawUrl.trim();
+  const withProtocol =
+    trimmedUrl.startsWith("http://") || trimmedUrl.startsWith("https://")
+      ? trimmedUrl
+      : `https://${trimmedUrl}`;
+
   try {
-    const parsedUrl = new URL(rawUrl);
-    const canonicalHost = parsedUrl.host;
-    const isLocalHost =
-      canonicalHost.includes("localhost") || canonicalHost.startsWith("127.0.0.1");
+    const parsedUrl = new URL(withProtocol);
+    parsedUrl.hostname = normalizeCanonicalHostname(parsedUrl.hostname);
+    parsedUrl.pathname = "/";
+    parsedUrl.search = "";
+    parsedUrl.hash = "";
 
-    if (isLocalHost) {
-      return null;
-    }
-
-    const redirectFromHost = canonicalHost.startsWith("www.")
-      ? canonicalHost.replace(/^www\./, "")
-      : `www.${canonicalHost}`;
-
-    return {
-      canonicalOrigin: `${parsedUrl.protocol}//${canonicalHost}`,
-      canonicalHost,
-      redirectFromHost:
-        redirectFromHost === canonicalHost ? null : redirectFromHost,
-    };
+    return parsedUrl.origin;
   } catch {
-    console.warn("seo-config-warning", {
-      timestamp: Date.now(),
-      message: "Invalid NEXT_PUBLIC_SITE_URL. Canonical redirect not configured.",
-      value: rawUrl,
+    logSeoConfig("warn", "Invalid NEXT_PUBLIC_SITE_URL. Falling back to default canonical origin.", {
+      rawUrl,
+      fallbackOrigin: DEFAULT_CANONICAL_ORIGIN,
     });
     return null;
   }
+}
+
+function getCanonicalHostConfig(): CanonicalHostConfig | null {
+  const canonicalOrigin =
+    (process.env.NEXT_PUBLIC_SITE_URL
+      ? getCanonicalOriginFromEnv(process.env.NEXT_PUBLIC_SITE_URL)
+      : null) ?? DEFAULT_CANONICAL_ORIGIN;
+
+  const parsedCanonicalUrl = new URL(canonicalOrigin);
+  const canonicalHost = parsedCanonicalUrl.host;
+  const isLocalHost =
+    canonicalHost.includes("localhost") || canonicalHost.startsWith("127.0.0.1");
+
+  if (isLocalHost) {
+    logSeoConfig(
+      "info",
+      "Local canonical host detected. App-level host redirect disabled.",
+      { canonicalOrigin, canonicalHost }
+    );
+    return {
+      canonicalOrigin,
+      canonicalHost,
+      redirectFromHost: null,
+      hostRedirectEnabled: false,
+    };
+  }
+
+  const redirectFromHost = canonicalHost.startsWith("www.")
+    ? canonicalHost.replace(/^www\./, "")
+    : `www.${canonicalHost}`;
+
+  if (!APP_HOST_REDIRECT_ENABLED) {
+    logSeoConfig(
+      "info",
+      "App-level canonical host redirect is disabled. Set SEO_ENABLE_APP_HOST_REDIRECTS=true only when platform host redirects are aligned.",
+      {
+        canonicalOrigin,
+        canonicalHost,
+      }
+    );
+  } else {
+    logSeoConfig("info", "App-level canonical host redirect is enabled.", {
+      canonicalOrigin,
+      canonicalHost,
+      redirectFromHost:
+        redirectFromHost === canonicalHost ? null : redirectFromHost,
+    });
+  }
+
+  return {
+    canonicalOrigin,
+    canonicalHost,
+    redirectFromHost:
+      APP_HOST_REDIRECT_ENABLED && redirectFromHost !== canonicalHost
+        ? redirectFromHost
+        : null,
+    hostRedirectEnabled: APP_HOST_REDIRECT_ENABLED,
+  };
 }
 
 const canonicalHostConfig = getCanonicalHostConfig();
