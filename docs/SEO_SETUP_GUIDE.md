@@ -597,8 +597,10 @@ Copy this checklist and track your progress:
 - Stay updated with Google algorithm changes
 - For rollout evidence and technical validation output, see `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
 - Use `docs/SEO_WEEKLY_TRACKER_TEMPLATE.md` for weekly KPI tracking
+- Use `docs/SEO_MEDIA_ASSET_INVENTORY.md` to track critical production images/logos
+- Use `docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md` after every deployment
 
 ---
 
-**Last Updated**: 2026-02-05
+**Last Updated**: 2026-02-17
 **Next Review**: 2026-05-05
