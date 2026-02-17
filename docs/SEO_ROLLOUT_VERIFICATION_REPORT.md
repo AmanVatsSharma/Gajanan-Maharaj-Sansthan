@@ -33,6 +33,7 @@ npm run verify:pagination
 npm run verify:rss
 npm run verify:blog-surfaces
 npm run verify:seo-build
+npm run verify:live-redirects
 npm run seo:check:strict
 ```
 
@@ -92,6 +93,9 @@ npm run seo:check:strict
   - validated inventory/count claims and command references across primary SEO docs
 - `npm run verify:blog-surfaces` → pass
   - validated canonical/meta/schema surfaces for all 110 markdown blog post routes
+- `npm run verify:live-redirects` (enabled against production) → fail
+  - detected live www/non-www redirect loop in deployed environment
+  - failure confirms external host redirect policy still needs alignment with canonical configuration
 
 ## SEO Architecture Changes Verified
 
