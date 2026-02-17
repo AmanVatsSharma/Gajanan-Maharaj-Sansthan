@@ -18,6 +18,8 @@ const DOC_PATHS = {
   quickstart: path.join(process.cwd(), "SEO_QUICKSTART.md"),
   blogReadme: path.join(BLOG_ROOT, "README.md"),
   setupGuide: path.join(process.cwd(), "docs/SEO_SETUP_GUIDE.md"),
+  mediaInventory: path.join(process.cwd(), "docs/SEO_MEDIA_ASSET_INVENTORY.md"),
+  postDeployChecklist: path.join(process.cwd(), "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md"),
   rolloutReport: path.join(process.cwd(), "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md"),
   technicalSummary: path.join(process.cwd(), "docs/SEO_TECHNICAL_IMPLEMENTATION.md"),
   completionSummary: path.join(process.cwd(), "SEO_IMPLEMENTATION_COMPLETE.md"),
@@ -98,6 +100,8 @@ function main() {
   const quickstart = fs.readFileSync(DOC_PATHS.quickstart, "utf-8");
   const blogReadme = fs.readFileSync(DOC_PATHS.blogReadme, "utf-8");
   const setupGuide = fs.readFileSync(DOC_PATHS.setupGuide, "utf-8");
+  const mediaInventory = fs.readFileSync(DOC_PATHS.mediaInventory, "utf-8");
+  const postDeployChecklist = fs.readFileSync(DOC_PATHS.postDeployChecklist, "utf-8");
   const rolloutReport = fs.readFileSync(DOC_PATHS.rolloutReport, "utf-8");
   const technicalSummary = fs.readFileSync(DOC_PATHS.technicalSummary, "utf-8");
   const completionSummary = fs.readFileSync(DOC_PATHS.completionSummary, "utf-8");
@@ -265,6 +269,50 @@ function main() {
     "npm run seo:check:strict",
     failures,
     "docs/SEO_SETUP_GUIDE.md:strict-gate-command"
+  );
+
+  assertIncludes(
+    mediaInventory,
+    "/gallery/hero-image-2026-02-05.svg",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:hero-asset-reference"
+  );
+  assertIncludes(
+    mediaInventory,
+    "/logo/logo.svg",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:logo-asset-reference"
+  );
+  assertIncludes(
+    mediaInventory,
+    "npm run seo:check",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:seo-check-command"
+  );
+
+  assertIncludes(
+    postDeployChecklist,
+    "SEO_VERIFY_LIVE_REDIRECTS=true",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:live-redirect-env"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:live-redirect-command"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "/robots.txt",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:robots-surface-reference"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "/sitemap.xml",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:sitemap-surface-reference"
   );
 
   assertIncludes(
