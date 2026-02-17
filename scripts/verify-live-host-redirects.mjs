@@ -26,18 +26,19 @@ function log(
     message,
     data,
   };
+  const serializedPayload = JSON.stringify(payload);
 
   if (level === "error") {
-    console.error("live-redirect-verify-error", payload);
+    console.error("live-redirect-verify-error", serializedPayload);
     return;
   }
 
   if (level === "warn") {
-    console.warn("live-redirect-verify-warning", payload);
+    console.warn("live-redirect-verify-warning", serializedPayload);
     return;
   }
 
-  console.info("live-redirect-verify-info", payload);
+  console.info("live-redirect-verify-info", serializedPayload);
 }
 
 function isEnabled(value) {

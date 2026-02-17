@@ -52,6 +52,7 @@ export const sansthanLocations: Location[] = [
       longitude: 76.6992,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7934,76.6992",
   },
   {
     id: 'shegaon-anand-vihar',
@@ -71,6 +72,7 @@ export const sansthanLocations: Location[] = [
       longitude: 76.6937,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7919,76.6937",
   },
   {
     id: 'shegaon-visawa',
@@ -89,6 +91,7 @@ export const sansthanLocations: Location[] = [
       longitude: 76.706,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7924,76.706",
   },
   {
     id: 'pandharpur-math',
@@ -108,6 +111,7 @@ export const sansthanLocations: Location[] = [
       longitude: 75.3237,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=17.6776,75.3237",
   },
   {
     id: 'trimbakeshwar',
@@ -126,6 +130,7 @@ export const sansthanLocations: Location[] = [
       longitude: 73.5298,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=19.9418,73.5298",
   },
   {
     id: 'omkareshwar',
@@ -144,6 +149,7 @@ export const sansthanLocations: Location[] = [
       longitude: 76.1513,
       regionCode: "IN-MP",
     },
+    googleMapsLink: "https://maps.google.com/?q=22.2436,76.1513",
   },
 ];
 

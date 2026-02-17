@@ -11,6 +11,10 @@
 
 ```env
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+# Keep canonical host stable
+NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+# Keep app-level host redirect disabled unless platform redirect rules are aligned
+SEO_ENABLE_APP_HOST_REDIRECTS=false
 ```
 
 ### Step 2: Deploy to Production (5 minutes)
@@ -24,6 +28,12 @@ npm run start
 
 # Or deploy to Vercel (recommended)
 # Just push to GitHub and connect to Vercel
+```
+
+### Step 2A: Verify deployed host redirect behavior (1 minute)
+
+```bash
+SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
 ```
 
 ### Step 3: Submit to Google (10 minutes)

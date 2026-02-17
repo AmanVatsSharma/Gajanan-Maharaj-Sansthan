@@ -32,6 +32,7 @@ flowchart TD
 - **Performance**: uses Next `Image` for cards and the primary detail image to reduce layout shift.
 - **Pre-rendered routes**: all known locations are statically generated for better crawlability and faster loads.
 - **Booking CTA**: primary CTAs use WhatsApp/Call. The `/booking` landing page supports `?location=<id>` to preselect a location when linking from location pages.
+- **Map trust signals**: each location includes a stable `googleMapsLink` for direct navigation from contact/location surfaces.
 - **Geo SEO signals**: each location now includes coordinates used to generate geo meta tags on detail pages (`geo.position`, `geo.placename`, `geo.region`, `ICBM`).
 - **Verification support**: `npm run verify:locations` validates canonical + geo meta + schema presence on all prerendered location detail pages.
 
