@@ -3,7 +3,7 @@ title: "Shegaon Festival Crowd Management Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon festival crowd management guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-21"
 slug: "shegaon-festival-crowd-management-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon festival crowd management guide guide"
   - "shegaon festival planning planning"

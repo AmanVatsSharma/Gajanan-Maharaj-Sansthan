@@ -3,7 +3,7 @@ title: "Pandharpur Group Yatra Planning | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur group yatra planning for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-17"
 slug: "pandharpur-group-yatra-planning"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur group yatra planning guide"
   - "pandharpur group travel planning"

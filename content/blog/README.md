@@ -28,7 +28,7 @@ title: "Page title with main keyword"
 description: "Meta description with location and intent"
 date: "2026-02-15"
 slug: "kebab-case-slug"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "primary keyword"
   - "secondary keyword"

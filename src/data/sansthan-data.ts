@@ -46,12 +46,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Hot Water (Morning)', 'Mahaprasad Canteen', 'Free Bus Service', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/shegaon-temple.jpg'],
+    images: ['/images/shegaon-temple.svg'],
     coordinates: {
       latitude: 20.7934,
       longitude: 76.6992,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7934,76.6992",
   },
   {
     id: 'shegaon-anand-vihar',
@@ -65,12 +66,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['AC', 'Garden', 'Canteen', 'Parking'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/anand-sagar.jpg'],
+    images: ['/images/anand-sagar.svg'],
     coordinates: {
       latitude: 20.7919,
       longitude: 76.6937,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7919,76.6937",
   },
   {
     id: 'shegaon-visawa',
@@ -83,12 +85,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Parking', 'Canteen'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/shegaon-temple.jpg'],
+    images: ['/images/shegaon-temple.svg'],
     coordinates: {
       latitude: 20.7924,
       longitude: 76.706,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=20.7924,76.706",
   },
   {
     id: 'pandharpur-math',
@@ -102,12 +105,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: ['Bhojan Kaksha', 'Hot Water'],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/pandharpur.jpg'],
+    images: ['/images/pandharpur.svg'],
     coordinates: {
       latitude: 17.6776,
       longitude: 75.3237,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=17.6776,75.3237",
   },
   {
     id: 'trimbakeshwar',
@@ -120,12 +124,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/trimbakeshwar.jpg'],
+    images: ['/images/trimbakeshwar.svg'],
     coordinates: {
       latitude: 19.9418,
       longitude: 73.5298,
       regionCode: "IN-MH",
     },
+    googleMapsLink: "https://maps.google.com/?q=19.9418,73.5298",
   },
   {
     id: 'omkareshwar',
@@ -138,12 +143,13 @@ export const sansthanLocations: Location[] = [
     ],
     amenities: [],
     contact: [CONTACT_DETAILS.booking.mobile],
-    images: ['/images/omkareshwar.jpg'],
+    images: ['/images/omkareshwar.svg'],
     coordinates: {
       latitude: 22.2436,
       longitude: 76.1513,
       regionCode: "IN-MP",
     },
+    googleMapsLink: "https://maps.google.com/?q=22.2436,76.1513",
   },
 ];
 

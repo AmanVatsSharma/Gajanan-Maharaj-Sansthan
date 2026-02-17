@@ -87,6 +87,16 @@ Add your production domain to `.env` so canonicals, sitemap, robots, and structu
 NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
 ```
 
+### Step 3B: Keep app-level host redirect safe (Recommended)
+
+By default, app-level host redirects are disabled to avoid conflicts with platform-level domain redirects:
+
+```env
+SEO_ENABLE_APP_HOST_REDIRECTS=false
+```
+
+Enable this only when you have confirmed your hosting provider redirect policy is aligned with your canonical host.
+
 ### Step 4: Configure Events
 
 The following events are already tracked:
@@ -359,6 +369,9 @@ npm run verify:rss
 
 # Verify every blog post prerendered page has canonical/meta/schema signals
 npm run verify:blog-surfaces
+
+# Verify deployed host redirect behavior (opt-in)
+SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
 ```
 
 `generate:blogs` now uses a managed-file manifest at `content/blog/_ops/generated-seo-cluster-manifest.json` to remove stale generated markdown files before recreating the current cluster set.
@@ -389,6 +402,7 @@ For CI/CD protection, `.github/workflows/seo-quality-gate.yml` runs `npm run seo
 - CI workflow strict-gate invariant checks (`verify:ci-gate`)
 - SEO inventory and command references consistency across primary docs (`verify:docs-sync`)
 - all blog post prerender SEO-surface checks for canonical/meta/schema (`verify:blog-surfaces`)
+- live host redirect-loop checks for canonical and alternate host (`verify:live-redirects`, opt-in)
 - internal blog-link graph health checks to avoid orphaned posts in large clusters
 - generated-post outbound `/blog/*` link minimum enforcement for crawl continuity
 - location-cluster minimum post thresholds (Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar)
@@ -474,6 +488,26 @@ Track monthly:
 3. Fix in `src/lib/seo/structured-data.ts`
 4. Redeploy website
 5. Test again
+
+### "Website keeps redirecting between www and non-www"
+
+**Symptoms:**
+- browser shows too many redirects
+- curl shows `www -> apex` and `apex -> www` bounce
+
+**Solution checklist:**
+1. Set canonical site URL explicitly:
+   ```env
+   NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+   ```
+2. Keep app-level host redirects disabled unless platform redirects are aligned:
+   ```env
+   SEO_ENABLE_APP_HOST_REDIRECTS=false
+   ```
+3. Run deployed redirect verification:
+   ```bash
+   SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
+   ```
 
 ---
 
@@ -563,8 +597,11 @@ Copy this checklist and track your progress:
 - Stay updated with Google algorithm changes
 - For rollout evidence and technical validation output, see `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
 - Use `docs/SEO_WEEKLY_TRACKER_TEMPLATE.md` for weekly KPI tracking
+- Use `docs/SEO_MEDIA_ASSET_INVENTORY.md` to track critical production images/logos
+- Use `docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md` after every deployment
+- Use `docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md` when configuring domain redirects
 
 ---
 
-**Last Updated**: 2026-02-05
+**Last Updated**: 2026-02-17
 **Next Review**: 2026-05-05

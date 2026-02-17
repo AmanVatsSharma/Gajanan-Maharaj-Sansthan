@@ -3,7 +3,7 @@ title: "Trimbakeshwar Weekend Planning Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar weekend planning guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-11"
 slug: "trimbakeshwar-weekend-planning-guide"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar weekend planning guide guide"
   - "trimbakeshwar travel guide planning"

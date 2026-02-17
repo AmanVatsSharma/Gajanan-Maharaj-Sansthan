@@ -3,7 +3,7 @@ title: "Festival Season Multi City Travel Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-08"
 slug: "festival-season-multi-city-travel-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "festival season multi city travel guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

@@ -3,7 +3,7 @@ title: "Pandharpur And Shegaon Family Yatra Plan | Shri Gajanan Maharaj Sansthan
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-13"
 slug: "pandharpur-and-shegaon-family-yatra-plan"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "pandharpur and shegaon family yatra plan pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

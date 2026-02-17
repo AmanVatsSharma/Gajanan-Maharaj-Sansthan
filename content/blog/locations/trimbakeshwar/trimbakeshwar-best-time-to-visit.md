@@ -3,7 +3,7 @@ title: "Trimbakeshwar Best Time to Visit | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar best time to visit for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-09"
 slug: "trimbakeshwar-best-time-to-visit"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar best time to visit guide"
   - "trimbakeshwar seasonal guide planning"

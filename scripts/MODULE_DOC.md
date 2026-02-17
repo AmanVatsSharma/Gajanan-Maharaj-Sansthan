@@ -25,6 +25,7 @@ This module provides deterministic content generation and strict SEO quality gat
 - `verify-rss-feed.mjs` — RSS route/output/item-count coverage checks.
 - `verify-blog-post-seo-surfaces.mjs` — all blog post prerender canonical/meta/schema checks.
 - `verify-seo-build.mjs` — critical route canonical/meta/schema/keyword fragment checks.
+- `verify-live-host-redirects.mjs` — optional deployed host redirect-loop/canonical convergence verifier.
 
 ## Shared configuration
 
@@ -61,6 +62,7 @@ flowchart TD
   build --> verifyRss[verify:rss]
   build --> verifyBlogSurfaces[verify:blog-surfaces]
   build --> verifySeoBuild[verify:seo-build]
+  deploy[deployed host] --> verifyLive[verify:live-redirects opt-in]
   verifyCanon --> seoCheck
   verifyRobots --> seoCheck
   verifyLocations --> seoCheck
@@ -82,6 +84,7 @@ flowchart TD
 - Generator writes manifest version + per-file SHA-256 checksums; verifier validates checksum integrity to detect manual drift.
 - Checksum map keyset validation ensures manifest checksums exactly match generated file inventory (no missing/extra entries).
 - Volatile timestamp fields are blocked in manifest format to keep generation idempotent across repeated runs.
+- Live redirect verifier is intentionally opt-in (`SEO_VERIFY_LIVE_REDIRECTS=true`) to keep CI deterministic in private/offline environments.
 - Determinism verifier runs generator in isolated temp root and compares resulting checksums to live manifest.
 - Determinism verifier captures generator stdout/stderr snippets and enforces temp-run timeout for actionable failure diagnostics.
 - Manifest generatedFiles path-policy and lexicographic-order checks enforce deterministic file inventory formatting.

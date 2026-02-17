@@ -1,6 +1,8 @@
 # ✅ SEO Implementation Complete
 
 > **Update (2026-02-15):** SEO content-cluster expansion added 105 new markdown blogs (110 total live posts), canonical host hardening, and automated blog quality validation (`npm run generate:blogs`, `npm run validate:blog`, `npm run verify:generator`).
+>
+> **Update (2026-02-17):** Added opt-in live redirect-loop verification (`npm run verify:live-redirects`) and app-level host redirect safety control (`SEO_ENABLE_APP_HOST_REDIRECTS`) to prevent www/non-www bounce regressions.
 
 ## 🎉 All SEO Features Successfully Implemented!
 
@@ -118,6 +120,8 @@ Every page now has optimized:
 ```bash
 # Edit .env file
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+SEO_ENABLE_APP_HOST_REDIRECTS=false
 ```
 
 Get your GA4 Measurement ID from:
@@ -128,6 +132,11 @@ https://analytics.google.com/
 npm run build
 npm run start
 # Or deploy to Vercel/Netlify
+```
+
+#### 2A. Verify deployed host redirects
+```bash
+SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
 ```
 
 #### 3. Submit Sitemap to Google Search Console

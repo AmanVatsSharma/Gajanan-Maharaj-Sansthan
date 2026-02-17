@@ -3,7 +3,7 @@ title: "Sansthan Location Selection Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-05"
 slug: "sansthan-location-selection-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "sansthan location selection guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

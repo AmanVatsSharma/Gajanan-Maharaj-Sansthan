@@ -3,7 +3,7 @@ title: "Shegaon Best Time to Visit | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon best time to visit for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-12"
 slug: "shegaon-best-time-to-visit"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon best time to visit guide"
   - "shegaon seasonal guide planning"

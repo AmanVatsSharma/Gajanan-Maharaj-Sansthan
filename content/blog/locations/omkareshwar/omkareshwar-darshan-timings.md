@@ -3,7 +3,7 @@ title: "Omkareshwar Darshan Timings Guide - Best Time, Stay, and Visit Tips"
 description: "Know Omkareshwar darshan timings, best visit windows, and Sansthan accommodation guidance for a smooth Jyotirlinga pilgrimage."
 date: "2026-02-15"
 slug: "omkareshwar-darshan-timings"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar darshan timings"
   - "omkareshwar temple accommodation"

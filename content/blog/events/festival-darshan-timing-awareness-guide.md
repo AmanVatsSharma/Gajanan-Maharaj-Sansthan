@@ -3,7 +3,7 @@ title: "Festival Darshan Timing Awareness Guide | Devotee Event Guide"
 description: "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods."
 date: "2025-08-16"
 slug: "festival-darshan-timing-awareness-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "festival darshan timing awareness guide"
   - "shree gajanan maharaj sansthan event planning"

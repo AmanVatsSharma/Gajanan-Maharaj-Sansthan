@@ -3,7 +3,7 @@ title: "Pandharpur Devotee FAQs | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur devotee faqs for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-20"
 slug: "pandharpur-devotee-faqs"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur devotee faqs guide"
   - "pandharpur faq planning"

@@ -3,7 +3,7 @@ title: "Shegaon Route and Transport Options | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon route and transport options for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-11"
 slug: "shegaon-route-and-transport-options"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon route and transport options guide"
   - "shegaon transport planning"

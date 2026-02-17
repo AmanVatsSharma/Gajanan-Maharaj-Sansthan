@@ -3,7 +3,7 @@ title: "Temple Accommodation Comparison Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
 date: "2025-10-11"
 slug: "temple-accommodation-comparison-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "temple accommodation comparison guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"

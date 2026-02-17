@@ -3,7 +3,7 @@ title: "Shegaon Devotee FAQs | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon devotee faqs for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-08"
 slug: "shegaon-devotee-faqs"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon devotee faqs guide"
   - "shegaon faq planning"

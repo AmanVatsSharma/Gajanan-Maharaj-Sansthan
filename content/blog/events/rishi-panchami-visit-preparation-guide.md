@@ -3,7 +3,7 @@ title: "Rishi Panchami Visit Preparation Guide | Devotee Event Guide"
 description: "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods."
 date: "2025-08-18"
 slug: "rishi-panchami-visit-preparation-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "rishi panchami visit preparation guide"
   - "shree gajanan maharaj sansthan event planning"

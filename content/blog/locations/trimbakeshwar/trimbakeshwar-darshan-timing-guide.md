@@ -3,7 +3,7 @@ title: "Trimbakeshwar Darshan Timing Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar darshan timing guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-12"
 slug: "trimbakeshwar-darshan-timing-guide"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar darshan timing guide guide"
   - "trimbakeshwar darshan planning"

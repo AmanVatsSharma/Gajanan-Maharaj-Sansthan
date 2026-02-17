@@ -3,7 +3,7 @@ title: "Community Seva Event Participation Guide | Devotee Event Guide"
 description: "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods."
 date: "2025-08-15"
 slug: "community-seva-event-participation-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "community seva event participation guide"
   - "shree gajanan maharaj sansthan event planning"

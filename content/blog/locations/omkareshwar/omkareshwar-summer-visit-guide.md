@@ -3,7 +3,7 @@ title: "Omkareshwar Summer Visit Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar summer visit guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-28"
 slug: "omkareshwar-summer-visit-guide"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar summer visit guide guide"
   - "omkareshwar seasonal guide planning"

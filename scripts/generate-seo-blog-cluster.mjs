@@ -53,7 +53,7 @@ const LOCATION_CONFIGS = [
     city: "Shegaon",
     count: LOCATION_CLUSTER_TARGETS.shegaon,
     directory: "locations/shegaon",
-    image: "/images/shegaon-temple.jpg",
+    image: "/images/shegaon-temple.svg",
     locationPage: "/locations/shegaon-bhakt-niwas",
     locationIds: ["shegaon-bhakt-niwas", "shegaon-anand-vihar", "shegaon-visawa"],
     keywordSeed: [
@@ -70,7 +70,7 @@ const LOCATION_CONFIGS = [
     city: "Omkareshwar",
     count: LOCATION_CLUSTER_TARGETS.omkareshwar,
     directory: "locations/omkareshwar",
-    image: "/images/omkareshwar.jpg",
+    image: "/images/omkareshwar.svg",
     locationPage: "/locations/omkareshwar",
     locationIds: ["omkareshwar"],
     keywordSeed: [
@@ -87,7 +87,7 @@ const LOCATION_CONFIGS = [
     city: "Pandharpur",
     count: LOCATION_CLUSTER_TARGETS.pandharpur,
     directory: "locations/pandharpur",
-    image: "/images/pandharpur.jpg",
+    image: "/images/pandharpur.svg",
     locationPage: "/locations/pandharpur-math",
     locationIds: ["pandharpur-math"],
     keywordSeed: [
@@ -104,7 +104,7 @@ const LOCATION_CONFIGS = [
     city: "Trimbakeshwar",
     count: LOCATION_CLUSTER_TARGETS.trimbakeshwar,
     directory: "locations/trimbakeshwar",
-    image: "/images/trimbakeshwar.jpg",
+    image: "/images/trimbakeshwar.svg",
     locationPage: "/locations/trimbakeshwar",
     locationIds: ["trimbakeshwar"],
     keywordSeed: [
@@ -607,7 +607,7 @@ function generateCrossLocationGuides() {
       description,
       date,
       slug,
-      image: "/images/shegaon-temple.jpg",
+      image: "/images/shegaon-temple.svg",
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")} pilgrimage guide`,
         "shree gajanan maharaj sansthan pilgrimage",
@@ -654,7 +654,7 @@ function generateSpiritualPosts() {
       description,
       date,
       slug,
-      image: "/images/shegaon-temple.jpg",
+      image: "/images/shegaon-temple.svg",
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj spiritual guidance",
@@ -707,7 +707,7 @@ function generateEventPosts() {
       description,
       date,
       slug,
-      image: "/images/shegaon-temple.jpg",
+      image: "/images/shegaon-temple.svg",
       keywords: [
         `${toSentenceKeyword(variant).replace(/-/g, " ")}`,
         "shree gajanan maharaj sansthan event planning",

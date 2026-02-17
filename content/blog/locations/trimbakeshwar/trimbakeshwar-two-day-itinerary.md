@@ -3,7 +3,7 @@ title: "Trimbakeshwar Two Day Itinerary | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar two day itinerary for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-06"
 slug: "trimbakeshwar-two-day-itinerary"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar two day itinerary guide"
   - "trimbakeshwar itinerary planning"

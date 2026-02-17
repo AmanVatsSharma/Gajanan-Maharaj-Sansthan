@@ -3,7 +3,7 @@ title: "Trimbakeshwar Morning Darshan Planning | Shri Gajanan Maharaj Sansthan"
 description: "Detailed trimbakeshwar morning darshan planning for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-11-30"
 slug: "trimbakeshwar-morning-darshan-planning"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar morning darshan planning guide"
   - "trimbakeshwar darshan planning"

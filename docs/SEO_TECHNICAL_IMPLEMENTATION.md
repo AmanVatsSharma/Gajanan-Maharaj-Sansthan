@@ -18,6 +18,7 @@ src/
 │   ├── opengraph-image.tsx           # Generated Open Graph image (PNG)
 │   ├── twitter-image.tsx             # Generated Twitter card image (PNG)
 │   ├── images/[...path]/route.ts     # Placeholder images for /images/*
+│   ├── gallery/[...path]/route.ts    # Placeholder images for /gallery/*
 │   ├── rooms/[...path]/route.ts      # Placeholder images for /rooms/*
 │   ├── logo/[...path]/route.ts       # Placeholder logos for /logo/*
 │   ├── locations/
@@ -168,6 +169,8 @@ trackBookingCTAClick(location, position)
 **Setup Required**:
 ```env
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+SEO_ENABLE_APP_HOST_REDIRECTS=false
 ```
 
 ### 6. Image Optimization
@@ -201,6 +204,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 - SWC minification
 - Package import optimization (lucide-react, framer-motion)
 - ETags for better caching
+- App-level canonical host redirect control via `SEO_ENABLE_APP_HOST_REDIRECTS`
 - Powered-by header removed
 
 **Core Web Vitals Targets**:
@@ -254,6 +258,7 @@ npm run generate:blogs
 npm run validate:blog
 npm run verify:generator
 npm run verify:docs-sync
+SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
 ```
 
 ---

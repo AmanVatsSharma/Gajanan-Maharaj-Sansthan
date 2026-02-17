@@ -3,7 +3,7 @@ title: "Shegaon Accommodation Near Temple | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon accommodation near temple for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-04"
 slug: "shegaon-accommodation-near-temple"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon accommodation near temple guide"
   - "shegaon accommodation planning"

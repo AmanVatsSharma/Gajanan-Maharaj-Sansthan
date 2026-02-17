@@ -40,6 +40,7 @@ flowchart TD
 **Env vars:**
 - `NEXT_PUBLIC_SITE_URL` (recommended): ensures correct canonical URLs for SEO.
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` (optional): enables GA4 tracking in production.
+- `SEO_ENABLE_APP_HOST_REDIRECTS` (optional): app-level host redirects (default false for safety).
 
 **Tests:**
 - Not yet added.

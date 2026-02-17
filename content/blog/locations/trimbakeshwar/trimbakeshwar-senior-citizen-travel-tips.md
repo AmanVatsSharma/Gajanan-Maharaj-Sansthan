@@ -3,7 +3,7 @@ title: "Trimbakeshwar Senior Citizen Travel Tips | Shri Gajanan Maharaj Sansthan
 description: "Detailed trimbakeshwar senior citizen travel tips for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Trimbakeshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-03"
 slug: "trimbakeshwar-senior-citizen-travel-tips"
-image: "/images/trimbakeshwar.jpg"
+image: "/images/trimbakeshwar.svg"
 keywords:
   - "trimbakeshwar senior citizen travel tips guide"
   - "trimbakeshwar family travel planning"

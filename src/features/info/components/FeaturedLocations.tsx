@@ -34,7 +34,7 @@ const featuredLocations: Location[] = [
     name: "Shri Gajanan Maharaj Sansthan Shegaon",
     city: "Shegaon, Maharashtra",
     description: "The main pilgrimage center housing the holy Samadhi of Shri Gajanan Maharaj. Experience divine peace and spiritual serenity.",
-    image: "/images/shegaon-temple.jpg",
+    image: "/images/shegaon-temple.svg",
     highlight: "Main Pilgrimage Center",
   },
   {
@@ -42,7 +42,7 @@ const featuredLocations: Location[] = [
     name: "Shri Gajanan Maharaj Sansthan Pandharpur",
     city: "Pandharpur, Maharashtra",
     description: "A sacred complex near the holy city of Pandharpur, offering devotees a peaceful stay during their pilgrimage to Lord Vitthal.",
-    image: "/images/pandharpur.jpg",
+    image: "/images/pandharpur.svg",
     highlight: "Spiritual Retreat",
   },
   {
@@ -50,7 +50,7 @@ const featuredLocations: Location[] = [
     name: "Shri Gajanan Maharaj Sansthan Shegaon Anand Vihar",
     city: "Shegaon, Maharashtra",
     description: "A beautiful spiritual and recreational park with meditation centers, gardens, and serene water features for peaceful contemplation.",
-    image: "/images/anand-sagar.jpg",
+    image: "/images/anand-sagar.svg",
     highlight: "Spiritual Garden",
   },
 ];

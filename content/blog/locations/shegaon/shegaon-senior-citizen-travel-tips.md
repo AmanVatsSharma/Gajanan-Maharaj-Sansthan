@@ -3,7 +3,7 @@ title: "Shegaon Senior Citizen Travel Tips | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon senior citizen travel tips for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-06"
 slug: "shegaon-senior-citizen-travel-tips"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon senior citizen travel tips guide"
   - "shegaon family travel planning"

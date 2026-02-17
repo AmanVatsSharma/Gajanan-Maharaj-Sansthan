@@ -3,7 +3,7 @@ title: "Daily Devotional Routine For Pilgrimage Travelers | Spiritual Guidance"
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
 date: "2025-09-07"
 slug: "daily-devotional-routine-for-pilgrimage-travelers"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "daily devotional routine for pilgrimage travelers"
   - "shree gajanan maharaj spiritual guidance"

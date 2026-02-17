@@ -3,7 +3,7 @@ title: "Omkareshwar Morning Darshan Planning | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar morning darshan planning for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-04"
 slug: "omkareshwar-morning-darshan-planning"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar morning darshan planning guide"
   - "omkareshwar darshan planning"

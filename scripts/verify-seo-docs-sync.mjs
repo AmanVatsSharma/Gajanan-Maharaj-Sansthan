@@ -14,8 +14,16 @@ const BLOG_ROOT = path.join(process.cwd(), "content/blog");
 const MANIFEST_PATH = path.join(BLOG_ROOT, "_ops/generated-seo-cluster-manifest.json");
 
 const DOC_PATHS = {
+  rootReadme: path.join(process.cwd(), "README.md"),
+  quickstart: path.join(process.cwd(), "SEO_QUICKSTART.md"),
   blogReadme: path.join(BLOG_ROOT, "README.md"),
   setupGuide: path.join(process.cwd(), "docs/SEO_SETUP_GUIDE.md"),
+  mediaInventory: path.join(process.cwd(), "docs/SEO_MEDIA_ASSET_INVENTORY.md"),
+  postDeployChecklist: path.join(process.cwd(), "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md"),
+  canonicalHostGuide: path.join(
+    process.cwd(),
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md"
+  ),
   rolloutReport: path.join(process.cwd(), "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md"),
   technicalSummary: path.join(process.cwd(), "docs/SEO_TECHNICAL_IMPLEMENTATION.md"),
   completionSummary: path.join(process.cwd(), "SEO_IMPLEMENTATION_COMPLETE.md"),
@@ -92,8 +100,13 @@ function main() {
     generatedPostCount,
   });
 
+  const rootReadme = fs.readFileSync(DOC_PATHS.rootReadme, "utf-8");
+  const quickstart = fs.readFileSync(DOC_PATHS.quickstart, "utf-8");
   const blogReadme = fs.readFileSync(DOC_PATHS.blogReadme, "utf-8");
   const setupGuide = fs.readFileSync(DOC_PATHS.setupGuide, "utf-8");
+  const mediaInventory = fs.readFileSync(DOC_PATHS.mediaInventory, "utf-8");
+  const postDeployChecklist = fs.readFileSync(DOC_PATHS.postDeployChecklist, "utf-8");
+  const canonicalHostGuide = fs.readFileSync(DOC_PATHS.canonicalHostGuide, "utf-8");
   const rolloutReport = fs.readFileSync(DOC_PATHS.rolloutReport, "utf-8");
   const technicalSummary = fs.readFileSync(DOC_PATHS.technicalSummary, "utf-8");
   const completionSummary = fs.readFileSync(DOC_PATHS.completionSummary, "utf-8");
@@ -102,6 +115,38 @@ function main() {
   const scriptsModuleDoc = fs.readFileSync(DOC_PATHS.scriptsModuleDoc, "utf-8");
   const seoLibModuleDoc = fs.readFileSync(DOC_PATHS.seoLibModuleDoc, "utf-8");
   const ciWorkflow = fs.readFileSync(DOC_PATHS.ciWorkflow, "utf-8");
+
+  assertIncludes(
+    rootReadme,
+    ".env.example",
+    failures,
+    "README.md:env-template-reference"
+  );
+  assertIncludes(
+    rootReadme,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "README.md:host-redirect-env-reference"
+  );
+  assertIncludes(
+    rootReadme,
+    "SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects",
+    failures,
+    "README.md:verify-live-redirects-command"
+  );
+
+  assertIncludes(
+    quickstart,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "SEO_QUICKSTART.md:host-redirect-env-reference"
+  );
+  assertIncludes(
+    quickstart,
+    "SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects",
+    failures,
+    "SEO_QUICKSTART.md:verify-live-redirects-command"
+  );
 
   assertIncludes(
     blogReadme,
@@ -202,6 +247,18 @@ function main() {
   );
   assertIncludes(
     setupGuide,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:host-redirect-env-reference"
+  );
+  assertIncludes(
+    setupGuide,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_SETUP_GUIDE.md:verify-live-redirects-command"
+  );
+  assertIncludes(
+    setupGuide,
     "npm run verify:docs-sync",
     failures,
     "docs/SEO_SETUP_GUIDE.md:verify-docs-sync-command"
@@ -217,6 +274,75 @@ function main() {
     "npm run seo:check:strict",
     failures,
     "docs/SEO_SETUP_GUIDE.md:strict-gate-command"
+  );
+
+  assertIncludes(
+    mediaInventory,
+    "/gallery/hero-image-2026-02-05.svg",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:hero-asset-reference"
+  );
+  assertIncludes(
+    mediaInventory,
+    "/logo/logo.svg",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:logo-asset-reference"
+  );
+  assertIncludes(
+    mediaInventory,
+    "npm run seo:check",
+    failures,
+    "docs/SEO_MEDIA_ASSET_INVENTORY.md:seo-check-command"
+  );
+
+  assertIncludes(
+    postDeployChecklist,
+    "SEO_VERIFY_LIVE_REDIRECTS=true",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:live-redirect-env"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:live-redirect-command"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "/robots.txt",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:robots-surface-reference"
+  );
+  assertIncludes(
+    postDeployChecklist,
+    "/sitemap.xml",
+    failures,
+    "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:sitemap-surface-reference"
+  );
+
+  assertIncludes(
+    canonicalHostGuide,
+    "NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:canonical-origin-reference"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:host-redirect-flag-reference"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:live-redirect-command"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "www",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:www-reference"
   );
 
   assertIncludes(
@@ -275,6 +401,12 @@ function main() {
   );
   assertIncludes(
     rolloutReport,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:verify-live-redirects-command"
+  );
+  assertIncludes(
+    rolloutReport,
     "managed namespace ownership checks",
     failures,
     "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md:manual-seed-reference"
@@ -298,6 +430,18 @@ function main() {
     failures,
     "docs/SEO_TECHNICAL_IMPLEMENTATION.md:inventory-counts"
   );
+  assertIncludes(
+    technicalSummary,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "docs/SEO_TECHNICAL_IMPLEMENTATION.md:host-redirect-env-reference"
+  );
+  assertIncludes(
+    technicalSummary,
+    "SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects",
+    failures,
+    "docs/SEO_TECHNICAL_IMPLEMENTATION.md:verify-live-redirects-command"
+  );
 
   assertIncludes(
     completionSummary,
@@ -310,6 +454,12 @@ function main() {
     "npm run verify:generator",
     failures,
     "SEO_IMPLEMENTATION_COMPLETE.md:verify-generator-command"
+  );
+  assertIncludes(
+    completionSummary,
+    "npm run verify:live-redirects",
+    failures,
+    "SEO_IMPLEMENTATION_COMPLETE.md:verify-live-redirects-command"
   );
   assertIncludes(
     featureBlogModuleDoc,

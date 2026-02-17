@@ -26,7 +26,7 @@ export const SITE_CONFIG = {
 export const ORGANIZATION_INFO = {
   legalName: "Shri Gajanan Maharaj Sansthan",
   alternateName: "Gajanan Maharaj Mandir Shegaon",
-  logo: "/logo/logo.png",
+  logo: "/logo/logo.svg",
   email: "contact@gajananmaharaj.org",
   phone: CONTACT_DETAILS.booking.mobile,
   address: {

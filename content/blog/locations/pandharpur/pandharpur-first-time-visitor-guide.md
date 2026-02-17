@@ -3,7 +3,7 @@ title: "Pandharpur First Time Visitor Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed pandharpur first time visitor guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-19"
 slug: "pandharpur-first-time-visitor-guide"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur first time visitor guide guide"
   - "pandharpur beginner guide planning"

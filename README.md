@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shri Gajanan Maharaj Sansthan Website
 
-## Getting Started
+Official Next.js website for Shri Gajanan Maharaj Sansthan with:
 
-First, run the development server:
+- SEO-first page metadata and structured data
+- location + booking conversion flows
+- markdown-driven devotional/blog content cluster
+- strict automated SEO quality gates
+
+## Quick Start
+
+1. Install dependencies:
+
+```bash
+npm ci
+```
+
+2. Copy env template and update values:
+
+```bash
+cp .env.example .env
+```
+
+3. Run local dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Use `.env.example` as the single source template.
 
-To learn more about Next.js, take a look at the following resources:
+Critical variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_DEBUG_SEO=false
+BUILD_STANDALONE=false
+SEO_ENABLE_APP_HOST_REDIRECTS=false
+SEO_VERIFY_LIVE_REDIRECTS=false
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Canonical-host safety note
 
-## Deploy on Vercel
+`SEO_ENABLE_APP_HOST_REDIRECTS` is disabled by default to avoid host bounce loops when deployment platform redirects are configured separately.  
+Enable it only when DNS/platform redirect policy is confirmed to match your canonical host.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## SEO Verification Commands
+
+### Full gate
+
+```bash
+npm run seo:check
+```
+
+### Strict gate (used by CI)
+
+```bash
+npm run seo:check:strict
+```
+
+### Live redirect loop check (opt-in)
+
+```bash
+SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects
+```
+
+---
+
+## SEO/Content pipeline flow
+
+```mermaid
+flowchart TD
+  content[content/blog/*.md] --> validate[npm run validate:blog]
+  content --> build[next build]
+  build --> verify[npm run seo:check]
+  verify --> deploy[Deploy]
+  deploy --> liveCheck[SEO_VERIFY_LIVE_REDIRECTS=true npm run verify:live-redirects]
+```
+
+---
+
+## Useful Docs
+
+- `SEO_QUICKSTART.md`
+- `SEO_IMPLEMENTATION_COMPLETE.md`
+- `docs/SEO_SETUP_GUIDE.md`
+- `docs/SEO_TECHNICAL_IMPLEMENTATION.md`
+- `docs/SEO_ROLLOUT_VERIFICATION_REPORT.md`
+- `docs/SEO_MEDIA_ASSET_INVENTORY.md`
+- `docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md`
+- `docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md`
+
+---
+
+## Deployment Reminder
+
+After each deployment:
+
+1. run live host redirect check
+2. verify `/robots.txt` and `/sitemap.xml`
+3. inspect homepage canonical + OG tags
+4. review Google Search Console coverage changes

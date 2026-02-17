@@ -3,7 +3,7 @@ title: "Shegaon Packing Checklist | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon packing checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-29"
 slug: "shegaon-packing-checklist"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon packing checklist guide"
   - "shegaon travel tips planning"

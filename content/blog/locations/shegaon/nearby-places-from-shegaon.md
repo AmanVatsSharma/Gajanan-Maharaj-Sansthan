@@ -3,7 +3,7 @@ title: "Nearby Places from Shegaon - Devotional and Family Itinerary Guide"
 description: "Explore nearby places from Shegaon after darshan. Plan a balanced spiritual and family-friendly itinerary with practical travel tips."
 date: "2026-02-15"
 slug: "nearby-places-from-shegaon"
-image: "/images/anand-sagar.jpg"
+image: "/images/anand-sagar.svg"
 keywords:
   - "nearby places from shegaon"
   - "anand sagar shegaon guide"

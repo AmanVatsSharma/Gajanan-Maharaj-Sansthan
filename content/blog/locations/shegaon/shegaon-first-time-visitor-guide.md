@@ -3,7 +3,7 @@ title: "Shegaon First Time Visitor Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon first time visitor guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-02-07"
 slug: "shegaon-first-time-visitor-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon first time visitor guide guide"
   - "shegaon beginner guide planning"

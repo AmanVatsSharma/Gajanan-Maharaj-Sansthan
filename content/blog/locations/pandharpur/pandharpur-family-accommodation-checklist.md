@@ -3,7 +3,7 @@ title: "Pandharpur Family Accommodation Checklist | Shri Gajanan Maharaj Sanstha
 description: "Detailed pandharpur family accommodation checklist for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Pandharpur. Includes booking links, travel tips, and internal route guidance."
 date: "2025-12-25"
 slug: "pandharpur-family-accommodation-checklist"
-image: "/images/pandharpur.jpg"
+image: "/images/pandharpur.svg"
 keywords:
   - "pandharpur family accommodation checklist guide"
   - "pandharpur accommodation planning"

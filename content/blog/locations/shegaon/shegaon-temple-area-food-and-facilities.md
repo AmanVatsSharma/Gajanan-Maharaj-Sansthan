@@ -3,7 +3,7 @@ title: "Shegaon Temple Area Food and Facilities | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon temple area food and facilities for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-25"
 slug: "shegaon-temple-area-food-and-facilities"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon temple area food and facilities guide"
   - "shegaon facilities planning"

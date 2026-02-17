@@ -3,7 +3,7 @@ title: "Shegaon Rainy Season Visit Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed shegaon rainy season visit guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Shegaon. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-28"
 slug: "shegaon-rainy-season-visit-guide"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "shegaon rainy season visit guide guide"
   - "shegaon seasonal guide planning"

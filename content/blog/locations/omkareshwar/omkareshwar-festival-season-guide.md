@@ -3,7 +3,7 @@ title: "Omkareshwar Festival Season Guide | Shri Gajanan Maharaj Sansthan"
 description: "Detailed omkareshwar festival season guide for devotees searching Shri/Shree/Sri Gajanan Maharaj Sansthan Omkareshwar. Includes booking links, travel tips, and internal route guidance."
 date: "2026-01-03"
 slug: "omkareshwar-festival-season-guide"
-image: "/images/omkareshwar.jpg"
+image: "/images/omkareshwar.svg"
 keywords:
   - "omkareshwar festival season guide guide"
   - "omkareshwar festival planning planning"

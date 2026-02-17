@@ -3,7 +3,7 @@ title: "Teachings Of Shri Gajanan Maharaj For Modern Families | Spiritual Guidan
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
 date: "2025-09-08"
 slug: "teachings-of-shri-gajanan-maharaj-for-modern-families"
-image: "/images/shegaon-temple.jpg"
+image: "/images/shegaon-temple.svg"
 keywords:
   - "teachings of shri gajanan maharaj for modern families"
   - "shree gajanan maharaj spiritual guidance"
