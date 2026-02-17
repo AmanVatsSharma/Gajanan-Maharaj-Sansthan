@@ -20,6 +20,10 @@ const DOC_PATHS = {
   setupGuide: path.join(process.cwd(), "docs/SEO_SETUP_GUIDE.md"),
   mediaInventory: path.join(process.cwd(), "docs/SEO_MEDIA_ASSET_INVENTORY.md"),
   postDeployChecklist: path.join(process.cwd(), "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md"),
+  canonicalHostGuide: path.join(
+    process.cwd(),
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md"
+  ),
   rolloutReport: path.join(process.cwd(), "docs/SEO_ROLLOUT_VERIFICATION_REPORT.md"),
   technicalSummary: path.join(process.cwd(), "docs/SEO_TECHNICAL_IMPLEMENTATION.md"),
   completionSummary: path.join(process.cwd(), "SEO_IMPLEMENTATION_COMPLETE.md"),
@@ -102,6 +106,7 @@ function main() {
   const setupGuide = fs.readFileSync(DOC_PATHS.setupGuide, "utf-8");
   const mediaInventory = fs.readFileSync(DOC_PATHS.mediaInventory, "utf-8");
   const postDeployChecklist = fs.readFileSync(DOC_PATHS.postDeployChecklist, "utf-8");
+  const canonicalHostGuide = fs.readFileSync(DOC_PATHS.canonicalHostGuide, "utf-8");
   const rolloutReport = fs.readFileSync(DOC_PATHS.rolloutReport, "utf-8");
   const technicalSummary = fs.readFileSync(DOC_PATHS.technicalSummary, "utf-8");
   const completionSummary = fs.readFileSync(DOC_PATHS.completionSummary, "utf-8");
@@ -313,6 +318,31 @@ function main() {
     "/sitemap.xml",
     failures,
     "docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md:sitemap-surface-reference"
+  );
+
+  assertIncludes(
+    canonicalHostGuide,
+    "NEXT_PUBLIC_SITE_URL=https://www.shrigajananmaharajsanstan.com",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:canonical-origin-reference"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "SEO_ENABLE_APP_HOST_REDIRECTS=false",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:host-redirect-flag-reference"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "npm run verify:live-redirects",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:live-redirect-command"
+  );
+  assertIncludes(
+    canonicalHostGuide,
+    "www",
+    failures,
+    "docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md:www-reference"
   );
 
   assertIncludes(

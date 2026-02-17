@@ -599,6 +599,7 @@ Copy this checklist and track your progress:
 - Use `docs/SEO_WEEKLY_TRACKER_TEMPLATE.md` for weekly KPI tracking
 - Use `docs/SEO_MEDIA_ASSET_INVENTORY.md` to track critical production images/logos
 - Use `docs/SEO_POST_DEPLOY_SMOKE_CHECKLIST.md` after every deployment
+- Use `docs/SEO_CANONICAL_HOST_DEPLOYMENT_GUIDE.md` when configuring domain redirects
 
 ---
 
