@@ -8,7 +8,7 @@
  * - Features parallax scroll effect on background
  * - Enhanced animations with staggered reveals
  * - Decorative motifs for premium spiritual feel
- * - Hero image path uses static gallery asset under `public/gallery`.
+ * - Hero image: hero-image-2026-02-05.jpeg (259KB)
  */
 "use client";
 
@@ -44,7 +44,7 @@ export function Hero() {
       >
         <div className="absolute inset-0 bg-linear-to-b from-black/75 via-black/50 to-black/80 z-10" />
         <Image
-          src="/gallery/hero-image-2026-02-05.svg"
+          src="/gallery/hero-image-2026-02-05.jpeg"
           alt="Shri Gajanan Maharaj Temple Shegaon - Main entrance and temple complex with devotees"
           fill
           priority

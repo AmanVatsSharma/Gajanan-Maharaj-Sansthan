@@ -83,3 +83,4 @@ flowchart TD
 - 2026-02-13: Reintroduced a lightweight `/booking` landing page (WhatsApp/Call intent form + FAQ) and re-added it to sitemap/navigation. Unified canonical site URL handling across metadata/robots/sitemap/JSON-LD and added placeholder image routes to prevent 404s until real assets are added.
 - 2026-02-13: Updated booking mobile/WhatsApp number to 9217691636 (via `src/data/contact.ts`); Hero, RoomTypesSection, EnhancedRoomsSection, Footer, Navbar, Contact page all consume this single source.
 - 2026-02-13: Removed all other phone numbers; site now uses only 9217691636 for contact everywhere.
+- 2026-02-18: Restored hero section to use temple photo (hero-image-2026-02-05.jpeg) after SEO PR had switched to SVG placeholder; ensures hero displays proper aligned image post-pull.
