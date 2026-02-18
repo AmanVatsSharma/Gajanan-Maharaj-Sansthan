@@ -1,5 +1,6 @@
 # ✅ SEO Implementation Complete
 
+> **Update (2026-02-18):** SEO content-cluster expansion added 211 new markdown blogs (216 total live posts), Sheogaon/Triambakeshwar/Bhakta Niwas keyword variants, and 100+ new location/guide/spiritual/event posts for top ranking.
 > **Update (2026-02-15):** SEO content-cluster expansion added 105 new markdown blogs (110 total live posts), canonical host hardening, and automated blog quality validation (`npm run generate:blogs`, `npm run validate:blog`, `npm run verify:generator`).
 >
 > **Update (2026-02-17):** Added opt-in live redirect-loop verification (`npm run verify:live-redirects`) and app-level host redirect safety control (`SEO_ENABLE_APP_HOST_REDIRECTS`) to prevent www/non-www bounce regressions.
