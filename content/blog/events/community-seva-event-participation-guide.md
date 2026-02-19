@@ -24,6 +24,8 @@ relatedSlugs:
   - "festival-darshan-timing-awareness-guide"
   - "gudi-padwa-sansthan-visit-guide"
   - "diwali-darshan-planning-tips"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "phone-and-whatsapp-booking-best-practices"
@@ -58,6 +60,8 @@ Devotees often find that a few days of light fasting or simplified meals before 
 - [Festival Darshan Timing Awareness Guide](/blog/festival-darshan-timing-awareness-guide)
 - [Gudi Padwa Sansthan Visit Guide](/blog/gudi-padwa-sansthan-visit-guide)
 - [Diwali Darshan Planning Tips](/blog/diwali-darshan-planning-tips)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)

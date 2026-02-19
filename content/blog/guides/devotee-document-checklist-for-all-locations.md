@@ -27,6 +27,8 @@ relatedSlugs:
   - "festival-season-multi-city-travel-guide"
   - "phone-and-whatsapp-booking-best-practices"
   - "sansthan-location-selection-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
@@ -63,6 +65,8 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Festival Season Multi City Travel Guide](/blog/festival-season-multi-city-travel-guide)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
 - [Sansthan Location Selection Guide](/blog/sansthan-location-selection-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)

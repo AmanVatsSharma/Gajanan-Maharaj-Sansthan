@@ -27,11 +27,12 @@ relatedSlugs:
   - "gajanan-maharaj-sansthan-booking-guide"
   - "senior-devotee-multi-city-itinerary"
   - "best-accommodation-for-large-groups"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Family Pilgrimage With Children Tips | Shri Gajanan Maharaj Sansthan
 
@@ -64,11 +65,12 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Gajanan Maharaj Sansthan Booking Guide](/blog/gajanan-maharaj-sansthan-booking-guide)
 - [Senior Devotee Multi City Itinerary](/blog/senior-devotee-multi-city-itinerary)
 - [Best Accommodation For Large Groups](/blog/best-accommodation-for-large-groups)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 

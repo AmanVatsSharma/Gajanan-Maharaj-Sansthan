@@ -27,11 +27,12 @@ relatedSlugs:
   - "month-wise-pilgrimage-planning-calendar"
   - "sheogaon-and-omkareshwar-combined-yatra"
   - "triambakeshwar-pandharpur-route-planning"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Bhakta Niwas Across Locations Comparison | Shri Gajanan Maharaj Sansthan
 
@@ -64,11 +65,12 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Month Wise Pilgrimage Planning Calendar](/blog/month-wise-pilgrimage-planning-calendar)
 - [Sheogaon And Omkareshwar Combined Yatra](/blog/sheogaon-and-omkareshwar-combined-yatra)
 - [Triambakeshwar Pandharpur Route Planning](/blog/triambakeshwar-pandharpur-route-planning)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 

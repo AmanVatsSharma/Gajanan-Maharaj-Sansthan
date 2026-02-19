@@ -24,6 +24,8 @@ relatedSlugs:
   - "major-utsav-crowd-planning-checklist"
   - "community-seva-event-participation-guide"
   - "gudi-padwa-sansthan-visit-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "phone-and-whatsapp-booking-best-practices"
@@ -58,6 +60,8 @@ Devotees often find that a few days of light fasting or simplified meals before 
 - [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
 - [Community Seva Event Participation Guide](/blog/community-seva-event-participation-guide)
 - [Gudi Padwa Sansthan Visit Guide](/blog/gudi-padwa-sansthan-visit-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)

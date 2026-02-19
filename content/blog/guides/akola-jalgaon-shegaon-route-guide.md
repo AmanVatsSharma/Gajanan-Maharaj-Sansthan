@@ -27,11 +27,12 @@ relatedSlugs:
   - "buldhana-temple-stays"
   - "vidarbha-temple-stay-network"
   - "mumbai-to-shegaon-weekend-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Akola Jalgaon Shegaon Route Guide | Shri Gajanan Maharaj Sansthan
 
@@ -64,11 +65,12 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Buldhana Temple Stays](/blog/buldhana-temple-stays)
 - [Vidarbha Temple Stay Network](/blog/vidarbha-temple-stay-network)
 - [Mumbai To Shegaon Weekend Guide](/blog/mumbai-to-shegaon-weekend-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 

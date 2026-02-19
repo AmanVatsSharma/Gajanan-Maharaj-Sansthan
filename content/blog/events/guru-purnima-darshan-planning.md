@@ -23,12 +23,13 @@ relatedSlugs:
   - "special-darshan-dates-calendar"
   - "maha-shivaratri-sansthan-visit"
   - "sankranti-pilgrimage-tips"
-  - "ram-navami-devotee-planning-guide"
+  - "ashadhi-ekadashi-pandharpur-wari-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "major-utsav-crowd-planning-checklist"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Guru Purnima Darshan Planning | Devotee Event Guide
 
@@ -58,12 +59,13 @@ Devotees often find that a few days of light fasting or simplified meals before 
 - [Special Darshan Dates Calendar](/blog/special-darshan-dates-calendar)
 - [Maha Shivaratri Sansthan Visit](/blog/maha-shivaratri-sansthan-visit)
 - [Sankranti Pilgrimage Tips](/blog/sankranti-pilgrimage-tips)
-- [Ram Navami Devotee Planning Guide](/blog/ram-navami-devotee-planning-guide)
+- [Ashadhi Ekadashi Pandharpur Wari Guide](/blog/ashadhi-ekadashi-pandharpur-wari-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Devotee takeaway
 

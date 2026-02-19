@@ -1,11 +1,11 @@
 ---
-title: "Maha Shivaratri Sansthan Visit | Devotee Event Guide"
+title: "Ashadhi Ekadashi Pandharpur Wari Guide | Devotee Event Guide"
 description: "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods."
-date: "2025-07-29"
-slug: "maha-shivaratri-sansthan-visit"
+date: "2025-07-26"
+slug: "ashadhi-ekadashi-pandharpur-wari-guide"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "maha shivaratri sansthan visit"
+  - "ashadhi ekadashi pandharpur wari guide"
   - "shree gajanan maharaj sansthan event planning"
   - "shri gajanan maharaj sanstan event planning"
   - "sri gajanan maharaj darshan festival season"
@@ -20,10 +20,10 @@ category: "events"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "anniversary-utsav-booking-tips"
-  - "special-darshan-dates-calendar"
   - "guru-purnima-darshan-planning"
   - "sankranti-pilgrimage-tips"
+  - "kartik-ekadashi-pandharpur-darshan-guide"
+  - "ganesh-chaturthi-sansthan-visit-planning"
   - "gajanan-maharaj-sansthan-complete-guide"
   - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
@@ -31,7 +31,7 @@ relatedSlugs:
   - "major-utsav-crowd-planning-checklist"
   - "phone-and-whatsapp-booking-best-practices"
 ---
-# Maha Shivaratri Sansthan Visit | Devotee Event Guide
+# Ashadhi Ekadashi Pandharpur Wari Guide | Devotee Event Guide
 
 Sansthan festival darshan planning is frequently searched by devotees who want both spiritual clarity and practical planning support. This article provides structured guidance aligned with Sansthan discipline and family-friendly travel needs.
 
@@ -56,10 +56,10 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Anniversary Utsav Booking Tips](/blog/anniversary-utsav-booking-tips)
-- [Special Darshan Dates Calendar](/blog/special-darshan-dates-calendar)
 - [Guru Purnima Darshan Planning](/blog/guru-purnima-darshan-planning)
 - [Sankranti Pilgrimage Tips](/blog/sankranti-pilgrimage-tips)
+- [Kartik Ekadashi Pandharpur Darshan Guide](/blog/kartik-ekadashi-pandharpur-darshan-guide)
+- [Ganesh Chaturthi Sansthan Visit Planning](/blog/ganesh-chaturthi-sansthan-visit-planning)
 - [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
 - [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)

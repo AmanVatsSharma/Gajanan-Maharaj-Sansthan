@@ -1,11 +1,11 @@
 ---
-title: "All 12 Jyotirlinga Planning | Shri Gajanan Maharaj Sansthan"
+title: "Emergency Contact During Pilgrimage | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-08-25"
-slug: "all-12-jyotirlinga-planning"
+date: "2025-08-02"
+slug: "emergency-contact-during-pilgrimage"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "all 12 jyotirlinga planning pilgrimage guide"
+  - "emergency contact during pilgrimage pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,10 +23,10 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "hyderabad-to-omkareshwar-route"
-  - "indore-omkareshwar-shegaon-yatra"
-  - "mahaprasad-and-food-guide"
-  - "temple-volunteer-seva-guide"
+  - "all-sansthan-contact-numbers-complete-list"
+  - "how-to-reach-sansthan-office-shegaon"
+  - "multi-location-pilgrimage-planning-guide"
+  - "shegaon-to-omkareshwar-route-guide"
   - "gajanan-maharaj-sansthan-complete-guide"
   - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
@@ -34,7 +34,7 @@ relatedSlugs:
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
 ---
-# All 12 Jyotirlinga Planning | Shri Gajanan Maharaj Sansthan
+# Emergency Contact During Pilgrimage | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -61,10 +61,10 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Hyderabad To Omkareshwar Route](/blog/hyderabad-to-omkareshwar-route)
-- [Indore Omkareshwar Shegaon Yatra](/blog/indore-omkareshwar-shegaon-yatra)
-- [Mahaprasad And Food Guide](/blog/mahaprasad-and-food-guide)
-- [Temple Volunteer Seva Guide](/blog/temple-volunteer-seva-guide)
+- [All Sansthan Contact Numbers Complete List](/blog/all-sansthan-contact-numbers-complete-list)
+- [How To Reach Sansthan Office Shegaon](/blog/how-to-reach-sansthan-office-shegaon)
+- [Multi Location Pilgrimage Planning Guide](/blog/multi-location-pilgrimage-planning-guide)
+- [Shegaon To Omkareshwar Route Guide](/blog/shegaon-to-omkareshwar-route-guide)
 - [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
 - [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)

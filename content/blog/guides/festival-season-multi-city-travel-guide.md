@@ -27,6 +27,8 @@ relatedSlugs:
   - "pilgrimage-budget-planning-for-families"
   - "devotee-document-checklist-for-all-locations"
   - "phone-and-whatsapp-booking-best-practices"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
@@ -63,6 +65,8 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Pilgrimage Budget Planning For Families](/blog/pilgrimage-budget-planning-for-families)
 - [Devotee Document Checklist For All Locations](/blog/devotee-document-checklist-for-all-locations)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)

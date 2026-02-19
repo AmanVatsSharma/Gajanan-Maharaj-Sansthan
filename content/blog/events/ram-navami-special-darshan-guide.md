@@ -24,11 +24,12 @@ relatedSlugs:
   - "crowd-management-during-peak-days"
   - "gudi-padwa-visit-planning"
   - "diwali-darshan-and-accommodation"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "major-utsav-crowd-planning-checklist"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Ram Navami Special Darshan Guide | Devotee Event Guide
 
@@ -59,11 +60,12 @@ Devotees often find that a few days of light fasting or simplified meals before 
 - [Crowd Management During Peak Days](/blog/crowd-management-during-peak-days)
 - [Gudi Padwa Visit Planning](/blog/gudi-padwa-visit-planning)
 - [Diwali Darshan And Accommodation](/blog/diwali-darshan-and-accommodation)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Devotee takeaway
 

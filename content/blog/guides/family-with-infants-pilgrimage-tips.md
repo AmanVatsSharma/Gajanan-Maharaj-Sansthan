@@ -27,11 +27,12 @@ relatedSlugs:
   - "omkareshwar-pandharpur-combined-yatra"
   - "solo-female-devotee-safety-guide"
   - "wheelchair-accessible-locations-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Family With Infants Pilgrimage Tips | Shri Gajanan Maharaj Sansthan
 
@@ -64,11 +65,12 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Omkareshwar Pandharpur Combined Yatra](/blog/omkareshwar-pandharpur-combined-yatra)
 - [Solo Female Devotee Safety Guide](/blog/solo-female-devotee-safety-guide)
 - [Wheelchair Accessible Locations Guide](/blog/wheelchair-accessible-locations-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 

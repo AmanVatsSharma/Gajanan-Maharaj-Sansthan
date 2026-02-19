@@ -20,10 +20,12 @@ category: "events"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "sankranti-pilgrimage-tips"
+  - "new-year-weekend-darshan-planning-guide"
   - "ram-navami-devotee-planning-guide"
   - "major-utsav-crowd-planning-checklist"
   - "festival-darshan-timing-awareness-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "phone-and-whatsapp-booking-best-practices"
@@ -54,10 +56,12 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Sankranti Pilgrimage Tips](/blog/sankranti-pilgrimage-tips)
+- [New Year Weekend Darshan Planning Guide](/blog/new-year-weekend-darshan-planning-guide)
 - [Ram Navami Devotee Planning Guide](/blog/ram-navami-devotee-planning-guide)
 - [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
 - [Festival Darshan Timing Awareness Guide](/blog/festival-darshan-timing-awareness-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)

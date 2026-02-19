@@ -20,10 +20,12 @@ category: "events"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "guru-purnima-darshan-planning"
-  - "sankranti-pilgrimage-tips"
+  - "monsoon-festival-calendar-pilgrimage-planning"
+  - "new-year-weekend-darshan-planning-guide"
   - "rishi-panchami-visit-preparation-guide"
   - "major-utsav-crowd-planning-checklist"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "phone-and-whatsapp-booking-best-practices"
@@ -54,10 +56,12 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Guru Purnima Darshan Planning](/blog/guru-purnima-darshan-planning)
-- [Sankranti Pilgrimage Tips](/blog/sankranti-pilgrimage-tips)
+- [Monsoon Festival Calendar Pilgrimage Planning](/blog/monsoon-festival-calendar-pilgrimage-planning)
+- [New Year Weekend Darshan Planning Guide](/blog/new-year-weekend-darshan-planning-guide)
 - [Rishi Panchami Visit Preparation Guide](/blog/rishi-panchami-visit-preparation-guide)
 - [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
