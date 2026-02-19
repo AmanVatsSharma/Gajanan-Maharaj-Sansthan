@@ -15,6 +15,8 @@ import Image from "next/image";
 import { sansthanLocations } from "@/data/sansthan-data";
 import { AmenityList } from "@/features/locations/components/AmenityList";
 import { LocationBookingCtas } from "@/features/locations/components/LocationBookingCtas";
+import { BlogCard } from "@/features/blog/components/BlogCard";
+import { getPostsByLocationId } from "@/lib/blog";
 import { MapPin, Phone, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { generateLocationMetadata } from "@/lib/seo/metadata";
@@ -82,6 +84,8 @@ export default async function LocationDetailPage({ params }: PageProps) {
   const placeOfWorshipSchema = getPlaceOfWorshipSchema(location);
   const localBusinessSchema = getLocalBusinessSchema(location);
   const lodgingBusinessSchema = getLodgingBusinessSchema(location);
+
+  const relatedPosts = await getPostsByLocationId(location.id, 6);
 
   return (
     <>
@@ -201,6 +205,28 @@ export default async function LocationDetailPage({ params }: PageProps) {
           )}
         </div>
       </div>
+
+      {relatedPosts.length > 0 && (
+        <section className="container py-12 border-t">
+          <h2 className="text-2xl font-bold font-heading text-brand-maroon mb-4">
+            Related Guides
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            Planning a visit? Explore these guides for darshan, accommodation, and travel tips.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {relatedPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+          <Link
+            href="/blog"
+            className="inline-block mt-6 text-sm font-medium text-brand-saffron hover:text-brand-maroon transition-colors"
+          >
+            View all guides →
+          </Link>
+        </section>
+      )}
       </div>
     </>
   );

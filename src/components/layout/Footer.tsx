@@ -44,6 +44,17 @@ export function Footer() {
           </div>
 
           <div className="space-y-3 md:space-y-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Popular Guides</h4>
+            <ul className="space-y-2 text-sm text-gray-200">
+              <li><Link href="/blog/shegaon-travel-guide" className="hover:text-brand-gold transition-colors">Shegaon Travel Guide</Link></li>
+              <li><Link href="/blog/omkareshwar-darshan-timings" className="hover:text-brand-gold transition-colors">Omkareshwar Darshan Timings</Link></li>
+              <li><Link href="/blog/shegaon-bhakta-niwas-booking-process" className="hover:text-brand-gold transition-colors">Bhakta Niwas Booking</Link></li>
+              <li><Link href="/blog/phone-and-whatsapp-booking-best-practices" className="hover:text-brand-gold transition-colors">Phone & WhatsApp Booking</Link></li>
+              <li><Link href="/blog/gajanan-maharaj-sansthan-booking-guide" className="hover:text-brand-gold transition-colors">Accommodation Booking</Link></li>
+            </ul>
+          </div>
+
+          <div className="space-y-3 md:space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-gold">Locations</h4>
             <ul className="space-y-2 text-sm text-gray-200">
               <li>Shri Gajanan Maharaj Sansthan Shegaon</li>
