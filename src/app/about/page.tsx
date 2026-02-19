@@ -3,14 +3,26 @@
  * Module: app
  * Purpose: About page with Sansthan history, mission, and values
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-18
  * Notes:
  * - Entity-building SEO page
  * - Includes organization information for search engines
+ * - Plan 3: "Explore Our Guides" section for blog interlinking
  */
+import Link from "next/link";
 import { sansthanHistory } from "@/data/sansthan-data";
+import { getPostsBySlugs } from "@/lib/blog";
+import { BlogCard } from "@/features/blog/components/BlogCard";
 import { BRAND_VARIANTS, getUniqueKeywords } from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
+
+const ABOUT_EXPLORE_GUIDE_SLUGS = [
+  "shegaon-travel-guide",
+  "welcome-to-sansthan",
+  "shegaon-accommodation-guide",
+  "legacy-of-shri-gajanan-maharaj",
+  "phone-and-whatsapp-booking-best-practices",
+];
 
 export const metadata = generatePageMetadata({
   title: "About Shri Gajanan Maharaj Sansthan | History & Mission",
@@ -26,7 +38,9 @@ export const metadata = generatePageMetadata({
   path: "/about",
 });
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const explorePosts = await getPostsBySlugs(ABOUT_EXPLORE_GUIDE_SLUGS);
+
   return (
     <div className="container py-12 max-w-4xl">
       <h1 className="text-4xl font-bold font-heading text-brand-maroon mb-6 text-center">About Sansthan</h1>
@@ -62,6 +76,29 @@ export default function AboutPage() {
              </ul>
           </div>
         </div>
+
+        {explorePosts.length > 0 && (
+          <div className="mt-12 pt-8 border-t">
+            <h2 className="text-2xl font-bold font-heading text-brand-maroon mb-4">Explore Our Guides</h2>
+            <p className="text-muted-foreground mb-6">
+              Plan your pilgrimage with our guides on Sansthan history, travel, accommodation, and devotional practices.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {explorePosts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+            <div className="mt-6 text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 font-medium text-brand-saffron hover:text-brand-maroon transition-colors"
+              >
+                View all guides
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

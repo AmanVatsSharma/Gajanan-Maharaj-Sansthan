@@ -19,7 +19,7 @@ import {
 import { BlogContent } from "@/features/blog/components/BlogContent";
 import { BlogCard } from "@/features/blog/components/BlogCard";
 import { generatePageMetadata } from "@/lib/seo/metadata";
-import { getArticleSchema } from "@/lib/seo/structured-data";
+import { getArticleSchema, getHowToSchema } from "@/lib/seo/structured-data";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Badge } from "@/components/ui/badge";
@@ -62,12 +62,12 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const relatedPosts = await getRelatedPosts(post, 3);
+  const relatedPosts = await getRelatedPosts(post, 5);
   const relatedLocations = (post.locationIds ?? [])
     .map((locationId) => sansthanLocations.find((location) => location.id === locationId))
     .filter((location): location is (typeof sansthanLocations)[number] => Boolean(location));
 
-  const schema = getArticleSchema({
+  const articleSchema = getArticleSchema({
     title: post.title,
     date: post.date,
     dateModified: post.lastModified,
@@ -80,9 +80,30 @@ export default async function BlogPostPage({ params }: PageProps) {
     category: post.category,
   });
 
+  const isGuide = post.category === "guides";
+  const howToSteps = isGuide
+    ? [
+        "Plan your travel dates and darshan priority",
+        "Contact Sansthan office for accommodation",
+        "Prepare valid ID documents for all travelers",
+        "Review our guides for route and timing details",
+        "Visit the temple and complete your pilgrimage",
+      ]
+    : [];
+
   return (
     <main className="container py-12">
-      <StructuredData data={schema} />
+      <StructuredData data={articleSchema} />
+      {isGuide && howToSteps.length > 0 && (
+        <StructuredData
+          data={getHowToSchema(
+            post.title,
+            post.description || "",
+            howToSteps,
+            `/blog/${post.slug}`
+          )}
+        />
+      )}
       
       <div className="max-w-4xl mx-auto space-y-8">
         <Breadcrumbs 
@@ -170,6 +191,22 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <BlogCard key={relatedPost.slug} post={relatedPost} />
               ))}
             </div>
+          </section>
+        )}
+
+        {post.category && (
+          <section className="space-y-2 border-t pt-8">
+            <h2 className="text-lg font-semibold font-heading">Browse by Category</h2>
+            <p className="text-muted-foreground text-sm">
+              Explore more in{" "}
+              <Link
+                href={`/blog/category/${toTaxonomySlug(post.category)}`}
+                className="font-medium text-brand-maroon hover:text-brand-saffron hover:underline"
+              >
+                {post.category}
+              </Link>
+              .
+            </p>
           </section>
         )}
       </div>

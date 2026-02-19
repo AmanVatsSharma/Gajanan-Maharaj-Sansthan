@@ -16,6 +16,7 @@ import { FeaturedLocations } from "@/features/info/components/FeaturedLocations"
 import EnhancedRoomsSection from "@/features/info/components/EnhancedRoomsSection";
 import { Testimonials } from "@/features/info/components/Testimonials";
 import { PlanYourVisit } from "@/features/info/components/PlanYourVisit";
+import { FeaturedGuides } from "@/features/info/components/FeaturedGuides";
 import { CTABanner } from "@/features/info/components/CTABanner";
 import { SectionDivider } from "@/features/info/components/SectionDivider";
 import { generatePageMetadata } from "@/lib/seo/metadata";
@@ -58,6 +59,7 @@ export default function Home() {
         <SectionDivider variant="ornate" />
         <Testimonials />
         <SectionDivider variant="minimal" />
+        <FeaturedGuides />
         <PlanYourVisit />
         <CTABanner />
       </div>
