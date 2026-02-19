@@ -71,6 +71,14 @@ const TERTIARY_PILLAR_SLUGS = [
   "sansthan-contact-numbers-all-locations",
 ];
 
+/** Plan 4: Pillar guide slugs for stronger topic authority */
+const PILLAR_GUIDE_SLUGS = [
+  "gajanan-maharaj-sansthan-complete-guide",
+  "bhakta-niwas-complete-booking-guide",
+  "how-to-book-bhakta-niwas-online",
+  "all-sansthan-contact-numbers-complete-list",
+];
+
 const LOCATION_CONFIGS = [
   {
     key: "shegaon",
@@ -251,6 +259,42 @@ const LOCATION_TOPIC_VARIANTS = [
   { suffix: "corporate-yatra-planning", title: "Corporate Yatra Planning", intent: "group-travel" },
   { suffix: "lunar-eclipse-darshan-tips", title: "Lunar Eclipse Darshan Tips", intent: "darshan" },
   { suffix: "solar-eclipse-visit-guide", title: "Solar Eclipse Visit Guide", intent: "seasonal-guide" },
+  // Plan 4: 35 more for 135 Shegaon posts
+  { suffix: "bhakta-niwas-room-types-and-facilities", title: "Bhakta Niwas Room Types and Facilities", intent: "accommodation" },
+  { suffix: "bhakta-niwas-check-in-check-out-timings", title: "Bhakta Niwas Check-in and Check-out Timings", intent: "accommodation" },
+  { suffix: "bhakta-niwas-refund-and-cancellation-guide", title: "Bhakta Niwas Refund and Cancellation Guide", intent: "booking" },
+  { suffix: "bhakta-niwas-online-booking-vs-whatsapp", title: "Bhakta Niwas Online Booking vs WhatsApp", intent: "booking" },
+  { suffix: "bhakta-niwas-dormitory-vs-family-rooms", title: "Bhakta Niwas Dormitory vs Family Rooms", intent: "accommodation" },
+  { suffix: "bhakta-niwas-whatsapp-message-template", title: "Bhakta Niwas WhatsApp Message Template", intent: "booking" },
+  { suffix: "bhakta-niwas-rules-and-conduct", title: "Bhakta Niwas Rules and Conduct", intent: "devotional" },
+  { suffix: "bhakta-niwas-safety-and-security-guide", title: "Bhakta Niwas Safety and Security Guide", intent: "family-travel" },
+  { suffix: "bhakta-niwas-amenities-hot-water-and-services", title: "Bhakta Niwas Amenities, Hot Water, and Services", intent: "facilities" },
+  { suffix: "bhakta-niwas-food-canteen-and-mahaprasad", title: "Bhakta Niwas Food, Canteen, and Mahaprasad", intent: "facilities" },
+  { suffix: "booking-follow-up-and-confirmation-tips", title: "Booking Follow-up and Confirmation Tips", intent: "booking" },
+  { suffix: "festival-advance-booking-window", title: "Festival Advance Booking Window", intent: "festival-planning" },
+  { suffix: "train-and-bus-arrival-planning", title: "Train and Bus Arrival Planning", intent: "transport" },
+  { suffix: "night-stay-checklist-for-devotees", title: "Night Stay Checklist for Devotees", intent: "travel-tips" },
+  { suffix: "local-communication-and-helpline-tips", title: "Local Communication and Helpline Tips", intent: "contact" },
+  { suffix: "bhakta-niwas-payment-modes-and-receipts", title: "Bhakta Niwas Payment Modes and Receipts", intent: "booking" },
+  { suffix: "bhakta-niwas-id-proof-requirements", title: "Bhakta Niwas ID Proof Requirements", intent: "travel-tips" },
+  { suffix: "bhakta-niwas-extension-and-extra-day-policy", title: "Bhakta Niwas Extension and Extra Day Policy", intent: "booking" },
+  { suffix: "bhakta-niwas-late-check-in-guidance", title: "Bhakta Niwas Late Check-in Guidance", intent: "accommodation" },
+  { suffix: "bhakta-niwas-checkout-process-guide", title: "Bhakta Niwas Checkout Process Guide", intent: "accommodation" },
+  { suffix: "bhakta-niwas-baggage-and-locker-facilities", title: "Bhakta Niwas Baggage and Locker Facilities", intent: "facilities" },
+  { suffix: "bhakta-niwas-cleanliness-and-discipline", title: "Bhakta Niwas Cleanliness and Discipline", intent: "devotional" },
+  { suffix: "bhakta-niwas-senior-citizen-comfort-guide", title: "Bhakta Niwas Senior Citizen Comfort Guide", intent: "family-travel" },
+  { suffix: "bhakta-niwas-family-stay-tips", title: "Bhakta Niwas Family Stay Tips", intent: "family-travel" },
+  { suffix: "bhakta-niwas-accessibility-and-wheelchair-support", title: "Bhakta Niwas Accessibility and Wheelchair Support", intent: "facilities" },
+  { suffix: "bhakta-niwas-common-booking-mistakes", title: "Bhakta Niwas Common Booking Mistakes", intent: "booking" },
+  { suffix: "bhakta-niwas-peak-season-strategy", title: "Bhakta Niwas Peak Season Strategy", intent: "festival-planning" },
+  { suffix: "bhakta-niwas-offline-helpdesk-guide", title: "Bhakta Niwas Offline Helpdesk Guide", intent: "contact" },
+  { suffix: "bhakta-niwas-contact-and-escalation-matrix", title: "Bhakta Niwas Contact and Escalation Matrix", intent: "contact" },
+  { suffix: "bhakta-niwas-parking-and-drop-off-guide", title: "Bhakta Niwas Parking and Drop-off Guide", intent: "transport" },
+  { suffix: "nashik-to-shegaon-route", title: "Nashik to Shegaon Route", intent: "transport" },
+  { suffix: "bhopal-to-shegaon-route", title: "Bhopal to Shegaon Route", intent: "transport" },
+  { suffix: "indore-to-shegaon-route", title: "Indore to Shegaon Route", intent: "transport" },
+  { suffix: "hyderabad-to-shegaon-route", title: "Hyderabad to Shegaon Route", intent: "transport" },
+  { suffix: "delhi-to-shegaon-travel-plan", title: "Delhi to Shegaon Travel Plan", intent: "transport" },
 ];
 
 const CROSS_LOCATION_GUIDE_VARIANTS = [
@@ -314,6 +358,27 @@ const CROSS_LOCATION_GUIDE_VARIANTS = [
   "mahaprasad-and-food-guide",
   "temple-volunteer-seva-guide",
   "pilgrimage-photo-documentation",
+  // Plan 4: 20 more for 78 total
+  "gajanan-maharaj-sansthan-complete-guide",
+  "bhakta-niwas-complete-booking-guide",
+  "bhakta-niwas-frequently-asked-questions",
+  "bhakta-niwas-refund-and-cancellation-policy",
+  "how-to-book-bhakta-niwas-online",
+  "whatsapp-booking-step-by-step-guide",
+  "phone-booking-process-detailed-guide",
+  "last-minute-booking-success-tips",
+  "group-booking-for-50-plus-devotees",
+  "sheogaon-travel-guide",
+  "sheogaon-accommodation-guide",
+  "sheogaon-bhakta-niwas-booking",
+  "sheogaon-darshan-timing-guide",
+  "triambakeshwar-travel-guide",
+  "triambakeshwar-accommodation-guide",
+  "triambakeshwar-darshan-timing-guide",
+  "triambakeshwar-best-time-to-visit",
+  "all-sansthan-contact-numbers-complete-list",
+  "how-to-reach-sansthan-office-shegaon",
+  "emergency-contact-during-pilgrimage",
 ];
 
 const SPIRITUAL_POST_VARIANTS = [
@@ -343,6 +408,15 @@ const SPIRITUAL_POST_VARIANTS = [
   "morning-prayer-routine-for-travelers",
   "evening-aarti-participation-guide",
   "pilgrimage-as-spiritual-retreat",
+  // Plan 4: 8 more for 32 total
+  "bhakta-niwas-spiritual-significance",
+  "spiritual-benefits-of-bhakta-niwas-stay",
+  "seva-and-devotion-in-sansthan-tradition",
+  "devotional-discipline-during-temple-stay",
+  "pilgrimage-as-spiritual-transformation",
+  "mindful-darshan-preparation-spiritual-guide",
+  "gajanan-maharaj-teachings-for-daily-life",
+  "gratitude-and-seva-during-yatra",
 ];
 
 const EVENT_POST_VARIANTS = [
@@ -372,6 +446,14 @@ const EVENT_POST_VARIANTS = [
   "maha-shivaratri-sansthan-visit",
   "guru-purnima-darshan-planning",
   "sankranti-pilgrimage-tips",
+  // Plan 4: 7 more for 31 total
+  "ashadhi-ekadashi-pandharpur-wari-guide",
+  "kartik-ekadashi-pandharpur-darshan-guide",
+  "ganesh-chaturthi-sansthan-visit-planning",
+  "navratri-festival-season-booking-guide",
+  "summer-holiday-rush-booking-guide",
+  "monsoon-festival-calendar-pilgrimage-planning",
+  "new-year-weekend-darshan-planning-guide",
 ];
 
 function formatDateByOffset(offset) {
@@ -792,8 +874,10 @@ function generateLocationClusterPosts() {
       const extendedNeighbors = getExtendedNeighborSlugs(locationClusterSlugs, index);
       const crossClusterPillars = CROSS_CLUSTER_PILLAR_MAP[config.key] || [];
       const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+      const pillarSlugs = PILLAR_GUIDE_SLUGS.slice(0, 2);
       const relatedSlugs = dedupeSlugs([
         ...extendedNeighbors.slice(0, 4),
+        ...pillarSlugs,
         ...CORE_RELATED_SLUGS.slice(0, 2),
         ...crossClusterPillars.slice(0, 3),
         ...tertiaryPillars,
@@ -815,8 +899,10 @@ function generateLocationClusterPosts() {
               ),
             }
           : null;
-      const inlineLink3 = tertiaryPillars[0]
-        ? { slug: tertiaryPillars[0], label: getBlogLinkLabel(tertiaryPillars[0]) }
+      const inlineLink3 = pillarSlugs[0]
+        ? { slug: pillarSlugs[0], label: getBlogLinkLabel(pillarSlugs[0]) }
+        : tertiaryPillars[0]
+          ? { slug: tertiaryPillars[0], label: getBlogLinkLabel(tertiaryPillars[0]) }
         : null;
 
       const frontmatter = buildFrontmatter({
@@ -866,8 +952,10 @@ function generateCrossLocationGuides() {
     const extendedNeighbors = getExtendedNeighborSlugs(guideSlugs, index);
     const crossPillars = ["shegaon-travel-guide", "omkareshwar-darshan-timings"];
     const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+    const pillarSlugs = PILLAR_GUIDE_SLUGS.slice(0, 2);
     const relatedSlugs = dedupeSlugs([
       ...extendedNeighbors.slice(0, 4),
+      ...pillarSlugs,
       ...CORE_RELATED_SLUGS.slice(0, 2),
       ...crossPillars,
       ...tertiaryPillars,
@@ -917,11 +1005,15 @@ function generateSpiritualPosts() {
     const date = formatDateByOffset(160 + index);
     const extendedNeighbors = getExtendedNeighborSlugs(spiritualSlugs, index);
     const crossPillars = ["shegaon-travel-guide", "shegaon-accommodation-guide"];
+    const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+    const pillarSlugs = PILLAR_GUIDE_SLUGS.slice(0, 2);
     const relatedSlugs = dedupeSlugs([
-      ...extendedNeighbors.slice(0, 3),
+      ...extendedNeighbors.slice(0, 4),
+      ...pillarSlugs,
       ...CORE_RELATED_SLUGS.slice(0, 2),
       ...crossPillars,
-    ]).slice(0, 7);
+      ...tertiaryPillars,
+    ]).slice(0, 10);
     const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
       slug: relatedSlug,
       label: getBlogLinkLabel(relatedSlug),
@@ -974,8 +1066,10 @@ function generateEventPosts() {
     const extendedNeighbors = getExtendedNeighborSlugs(eventSlugs, index);
     const crossPillars = ["shegaon-travel-guide", "major-utsav-crowd-planning-checklist"];
     const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+    const pillarSlugs = PILLAR_GUIDE_SLUGS.slice(0, 2);
     const relatedSlugs = dedupeSlugs([
       ...extendedNeighbors.slice(0, 4),
+      ...pillarSlugs,
       ...CORE_RELATED_SLUGS.slice(0, 2),
       ...crossPillars,
       ...tertiaryPillars,

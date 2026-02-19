@@ -5,7 +5,7 @@ Commit pending blog markdown changes under content/blog/.
 Default behavior:
 - Commits only blog post markdown files: content/blog/**/*.md
   - Excludes: content/blog/README.md, content/blog/_ops/**, content/blog/_templates/**, any content/blog/_* paths
-- Skips deletions
+- Skips deletions (use --include-deletions to include them)
 - Batches commits (default batch size: 25) to avoid creating hundreds of commits
 - Commit subject format: "blog post added - <slug>"
   - Uses the first slug in the batch for the subject
@@ -24,11 +24,23 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Iterable, Iterator, List, Sequence, Tuple
+from typing import Iterator, List, Sequence, Tuple, TypeVar
 
 
 def run(cmd: Sequence[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, check=check, text=True, capture_output=True)
+    try:
+        return subprocess.run(cmd, check=check, text=True, capture_output=True)
+    except subprocess.CalledProcessError as exc:
+        stdout = (exc.stdout or "").strip()
+        stderr = (exc.stderr or "").strip()
+        details = []
+        if stdout:
+            details.append(f"stdout:\n{stdout}")
+        if stderr:
+            details.append(f"stderr:\n{stderr}")
+        detail_text = "\n\n".join(details)
+        cmd_text = " ".join(cmd)
+        raise RuntimeError(f"Command failed: {cmd_text}\n\n{detail_text}".strip()) from exc
 
 
 def git(args: Sequence[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -42,7 +54,10 @@ def get_repo_root() -> Path:
     return Path(root)
 
 
-def chunk(items: Sequence[str], size: int) -> List[List[str]]:
+T = TypeVar("T")
+
+
+def chunk(items: Sequence[T], size: int) -> List[List[T]]:
     return [list(items[i : i + size]) for i in range(0, len(items), size)]
 
 
@@ -91,19 +106,27 @@ def is_blog_post_markdown(path: str) -> bool:
     return True
 
 
-def get_changed_blog_posts(repo_root: Path) -> List[Tuple[str, str]]:
-    raw = git(["status", "--porcelain=v1", "-z", "--", "content/blog"]).stdout
+def get_changed_blog_posts(repo_root: Path, *, include_deletions: bool) -> List[Tuple[str, str]]:
+    raw = git(
+        [
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all",
+            "--",
+            "content/blog",
+        ]
+    ).stdout
     changed: List[Tuple[str, str]] = []
     for status, path in parse_porcelain_z(raw):
         if not path:
             continue
         if not is_blog_post_markdown(path):
             continue
-        # Skip deletions
-        if "D" in status:
-            continue
         abs_path = repo_root / path
-        if not abs_path.exists():
+        if ("D" in status) and not include_deletions:
+            continue
+        if ("D" not in status) and (not abs_path.exists()):
             continue
         changed.append((status, path))
 
@@ -118,6 +141,8 @@ _SLUG_RE = re.compile(r'^\s*slug:\s*["\']?([^"\']+)["\']?\s*$', re.MULTILINE)
 
 def extract_slug(repo_root: Path, rel_path: str) -> str:
     abs_path = repo_root / rel_path
+    if not abs_path.exists():
+        return abs_path.stem
     text = abs_path.read_text(encoding="utf-8", errors="replace")
     # Find frontmatter block
     matches = list(_FRONTMATTER_RE.finditer(text))
@@ -155,7 +180,8 @@ def ensure_no_non_blog_staged_changes() -> None:
 def git_add(paths: Sequence[str]) -> None:
     if not paths:
         return
-    git(["add", "--", *paths])
+    # -A ensures deletions are staged when explicitly included.
+    git(["add", "-A", "--", *paths])
 
 
 def git_commit(subject: str, body: str) -> None:
@@ -168,6 +194,28 @@ def main(argv: Sequence[str]) -> int:
     parser.add_argument("--dry-run", action="store_true", help="Print planned commits without committing.")
     parser.add_argument("--batch-size", type=int, default=25, help="Files per commit (default: 25).")
     parser.add_argument("--per-file", action="store_true", help="Commit one file per commit (slow).")
+    parser.add_argument(
+        "--include-deletions",
+        action="store_true",
+        help="Include deleted blog markdown files and stage deletions.",
+    )
+    filter_group = parser.add_mutually_exclusive_group()
+    filter_group.add_argument(
+        "--only-untracked",
+        action="store_true",
+        help="Commit only untracked (new) blog post markdown files.",
+    )
+    filter_group.add_argument(
+        "--only-tracked",
+        action="store_true",
+        help="Commit only tracked changes (modified/renamed) to blog post markdown files.",
+    )
+    parser.add_argument(
+        "--max-commits",
+        type=int,
+        default=0,
+        help="Stop after N commits (0 means no limit). Useful for very large batches.",
+    )
     args = parser.parse_args(list(argv))
 
     if args.batch_size <= 0:
@@ -177,12 +225,29 @@ def main(argv: Sequence[str]) -> int:
     repo_root = get_repo_root()
     ensure_no_non_blog_staged_changes()
 
-    changed = get_changed_blog_posts(repo_root)
+    changed = get_changed_blog_posts(repo_root, include_deletions=args.include_deletions)
     if not changed:
         print("No pending blog markdown changes under content/blog/.")
         return 0
 
-    paths = [p for _, p in changed]
+    def is_untracked(status: str) -> bool:
+        return status == "??"
+
+    filtered = changed
+    if args.only_untracked:
+        filtered = [entry for entry in changed if is_untracked(entry[0])]
+    elif args.only_tracked:
+        filtered = [entry for entry in changed if not is_untracked(entry[0])]
+
+    if not filtered:
+        print("No matching blog post files for the selected filters.")
+        return 0
+
+    untracked_count = sum(1 for status, _ in filtered if is_untracked(status))
+    deletion_count = sum(1 for status, _ in filtered if "D" in status)
+    tracked_count = len(filtered) - untracked_count - deletion_count
+
+    paths = [p for _, p in filtered]
     slug_by_path = {p: extract_slug(repo_root, p) for p in paths}
 
     # Build commit groups
@@ -191,7 +256,17 @@ def main(argv: Sequence[str]) -> int:
     else:
         groups = chunk(paths, args.batch_size)
 
-    print(f"Found {len(paths)} blog post files to commit.")
+    if args.max_commits < 0:
+        print("max-commits must be >= 0", file=sys.stderr)
+        return 2
+    if args.max_commits:
+        groups = groups[: args.max_commits]
+
+    print(f"Found {len(paths)} blog post file(s) to commit.")
+    print(f"- tracked: {tracked_count}")
+    print(f"- untracked: {untracked_count}")
+    if args.include_deletions:
+        print(f"- deletions: {deletion_count}")
     print(f"Planned commits: {len(groups)} (per_file={args.per_file}, batch_size={args.batch_size})")
 
     for idx, group in enumerate(groups, start=1):

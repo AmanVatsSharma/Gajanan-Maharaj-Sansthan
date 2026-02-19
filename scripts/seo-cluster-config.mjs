@@ -10,16 +10,16 @@
 import crypto from "node:crypto";
 
 export const LOCATION_CLUSTER_TARGETS = {
-  shegaon: 100,
-  omkareshwar: 75,
-  pandharpur: 55,
-  trimbakeshwar: 55,
+  shegaon: 135,
+  omkareshwar: 87,
+  pandharpur: 65,
+  trimbakeshwar: 63,
 };
 
 export const NON_LOCATION_CLUSTER_TARGETS = {
-  guides: 58,
-  spiritual: 24,
-  events: 24,
+  guides: 78,
+  spiritual: 32,
+  events: 31,
 };
 
 export const LOCATION_CLUSTER_KEYS = Object.keys(LOCATION_CLUSTER_TARGETS);
