@@ -45,7 +45,31 @@ const CORE_RELATED_LINK_LABELS = {
   "nearby-places-from-shegaon": "Nearby Places from Shegaon",
   "omkareshwar-darshan-timings": "Omkareshwar Darshan Timings Guide",
   "welcome-to-sansthan": "Welcome to Sansthan",
+  "pandharpur-and-shegaon-family-yatra-plan": "Pandharpur and Shegaon Family Yatra Plan",
+  "jyotirlinga-and-sansthan-combined-itinerary": "Jyotirlinga and Sansthan Combined Itinerary",
+  "trimbakeshwar-nashik-shegaon-route": "Trimbakeshwar Nashik Shegaon Route",
+  "shegaon-bhakta-niwas-vs-anand-vihar": "Shegaon Bhakta Niwas vs Anand Vihar",
+  "phone-and-whatsapp-booking-best-practices": "Phone and WhatsApp Booking Best Practices",
+  "shegaon-bhakta-niwas-booking-process": "Shegaon Bhakta Niwas Booking Process",
+  "sansthan-contact-numbers-all-locations": "Sansthan Contact Numbers All Locations",
 };
+
+/**
+ * Cross-cluster pillar slugs for robust interlinking. Each location cluster links to 2-3 pillars from other clusters.
+ */
+const CROSS_CLUSTER_PILLAR_MAP = {
+  shegaon: ["omkareshwar-darshan-timings", "pandharpur-and-shegaon-family-yatra-plan", "jyotirlinga-and-sansthan-combined-itinerary"],
+  omkareshwar: ["shegaon-travel-guide", "jyotirlinga-and-sansthan-combined-itinerary", "shegaon-to-omkareshwar-route-guide"],
+  pandharpur: ["shegaon-travel-guide", "pandharpur-and-shegaon-family-yatra-plan", "shegaon-accommodation-guide"],
+  trimbakeshwar: ["trimbakeshwar-nashik-shegaon-route", "jyotirlinga-and-sansthan-combined-itinerary", "shegaon-travel-guide"],
+};
+
+/** Plan 3: Tertiary pillar slugs for guides/spiritual/events - location posts also link to these */
+const TERTIARY_PILLAR_SLUGS = [
+  "phone-and-whatsapp-booking-best-practices",
+  "shegaon-bhakta-niwas-booking-process",
+  "sansthan-contact-numbers-all-locations",
+];
 
 const LOCATION_CONFIGS = [
   {
@@ -63,6 +87,9 @@ const LOCATION_CONFIGS = [
       "sri gajanan maharaj sansthan shegaon",
       "shegaon temple accommodation",
       "shegaon darshan planning",
+      "sheogaon temple",
+      "bhakta niwas shegaon",
+      "bhakt niwas shegaon",
     ],
   },
   {
@@ -113,6 +140,7 @@ const LOCATION_CONFIGS = [
       "shree gajanan maharaj sansthan trimbakeshwar",
       "sri gajanan maharaj sansthan trimbakeshwar",
       "trimbakeshwar accommodation",
+      "triambakeshwar accommodation",
       "trimbakeshwar darshan planning",
     ],
   },
@@ -149,6 +177,80 @@ const LOCATION_TOPIC_VARIANTS = [
   { suffix: "temple-circuit-extension-guide", title: "Temple Circuit Extension Guide", intent: "pilgrimage-circuit" },
   { suffix: "kids-friendly-yatra-guide", title: "Kids Friendly Yatra Guide", intent: "family-travel" },
   { suffix: "contact-and-support-guide", title: "Contact and Support Guide", intent: "contact" },
+  // Bhakta Niwas and Sheogaon focus (Shegaon cluster)
+  { suffix: "bhakta-niwas-accommodation-guide", title: "Bhakta Niwas Accommodation Guide", intent: "accommodation" },
+  { suffix: "bhakta-niwas-booking-process", title: "Bhakta Niwas Booking Process", intent: "booking" },
+  { suffix: "bhakta-niwas-vs-anand-vihar", title: "Bhakta Niwas vs Anand Vihar", intent: "accommodation" },
+  { suffix: "bhakta-niwas-sheogaon-contact", title: "Bhakta Niwas Sheogaon Contact", intent: "contact" },
+  { suffix: "bhakta-niwas-facilities-and-amenities", title: "Bhakta Niwas Facilities and Amenities", intent: "facilities" },
+  { suffix: "sheogaon-temple-darshan-guide", title: "Sheogaon Temple Darshan Guide", intent: "darshan" },
+  { suffix: "sheogaon-accommodation-guide", title: "Sheogaon Accommodation Guide", intent: "accommodation" },
+  { suffix: "sheogaon-travel-tips", title: "Sheogaon Travel Tips", intent: "travel-guide" },
+  // Triambakeshwar variant and Omkareshwar Bhakt Niwas
+  { suffix: "triambakeshwar-jyotirlinga-stay", title: "Triambakeshwar Jyotirlinga Stay", intent: "accommodation" },
+  { suffix: "triambakeshwar-darshan-tips", title: "Triambakeshwar Darshan Tips", intent: "darshan" },
+  { suffix: "omkareshwar-bhakt-niwas-guide", title: "Omkareshwar Bhakt Niwas Guide", intent: "accommodation" },
+  { suffix: "omkareshwar-temple-stay-tips", title: "Omkareshwar Temple Stay Tips", intent: "accommodation" },
+  { suffix: "jyotirlinga-yatra-planning", title: "Jyotirlinga Yatra Planning", intent: "pilgrimage-circuit" },
+  { suffix: "nashik-trimbakeshwar-combo-guide", title: "Nashik Trimbakeshwar Combo Guide", intent: "travel-guide" },
+  { suffix: "pandharpur-wari-planning", title: "Pandharpur Wari Planning", intent: "festival-planning" },
+  { suffix: "vitthal-darshan-timing-guide", title: "Vitthal Darshan Timing Guide", intent: "darshan" },
+  { suffix: "math-stay-booking-tips", title: "Math Stay Booking Tips", intent: "booking" },
+  { suffix: "seasonal-pilgrimage-calendar", title: "Seasonal Pilgrimage Calendar", intent: "seasonal-guide" },
+  { suffix: "devotee-id-and-document-guide", title: "Devotee ID and Document Guide", intent: "travel-tips" },
+  { suffix: "temple-stay-rules-and-etiquette", title: "Temple Stay Rules and Etiquette", intent: "devotional" },
+  { suffix: "emergency-contact-and-support", title: "Emergency Contact and Support", intent: "contact" },
+  { suffix: "multi-generation-family-yatra", title: "Multi-Generation Family Yatra", intent: "family-travel" },
+  { suffix: "off-peak-visit-benefits", title: "Off-Peak Visit Benefits", intent: "seasonal-guide" },
+  { suffix: "canteen-and-mahaprasad-guide", title: "Canteen and Mahaprasad Guide", intent: "facilities" },
+  { suffix: "parking-and-local-transport", title: "Parking and Local Transport", intent: "transport" },
+  { suffix: "how-to-book-bhakta-niwas", title: "How to Book Bhakta Niwas", intent: "booking" },
+  { suffix: "sheogaon-bhakta-niwas-facilities", title: "Sheogaon Bhakta Niwas Facilities", intent: "facilities" },
+  // Plan 2: Additional variants for 72+ location posts
+  { suffix: "solo-traveler-guide", title: "Solo Traveler Guide", intent: "travel-guide" },
+  { suffix: "wheelchair-accessibility", title: "Wheelchair Accessibility", intent: "facilities" },
+  { suffix: "medical-facilities-nearby", title: "Medical Facilities Nearby", intent: "facilities" },
+  { suffix: "local-markets-and-shopping", title: "Local Markets and Shopping", intent: "travel-tips" },
+  { suffix: "three-day-itinerary", title: "Three Day Itinerary", intent: "itinerary" },
+  { suffix: "week-long-stay-planning", title: "Week Long Stay Planning", intent: "accommodation" },
+  { suffix: "early-morning-darshan-tips", title: "Early Morning Darshan Tips", intent: "darshan" },
+  { suffix: "monsoon-visit-guide", title: "Monsoon Visit Guide", intent: "seasonal-guide" },
+  { suffix: "holiday-rush-planning", title: "Holiday Rush Planning", intent: "festival-planning" },
+  { suffix: "first-aid-and-safety", title: "First Aid and Safety", intent: "family-travel" },
+  { suffix: "photography-tips-for-devotees", title: "Photography Tips for Devotees", intent: "family-travel" },
+  { suffix: "prasad-and-offerings-guide", title: "Prasad and Offerings Guide", intent: "devotional" },
+  { suffix: "nearby-attractions-day-trip", title: "Nearby Attractions Day Trip", intent: "travel-guide" },
+  { suffix: "evening-aarti-timing-guide", title: "Evening Aarti Timing Guide", intent: "darshan" },
+  { suffix: "temple-complex-map-and-directions", title: "Temple Complex Map and Directions", intent: "transport" },
+  // Plan 3: 28 more for 100 Shegaon posts
+  { suffix: "buldhana-district-guide", title: "Buldhana District Guide", intent: "travel-guide" },
+  { suffix: "akola-to-shegaon-route", title: "Akola to Shegaon Route", intent: "transport" },
+  { suffix: "jalgaon-pilgrimage-route", title: "Jalgaon Pilgrimage Route", intent: "transport" },
+  { suffix: "maharashtra-temple-circuit", title: "Maharashtra Temple Circuit", intent: "pilgrimage-circuit" },
+  { suffix: "anand-sagar-visit-guide", title: "Anand Sagar Visit Guide", intent: "travel-guide" },
+  { suffix: "visawa-accommodation-tips", title: "Visawa Accommodation Tips", intent: "accommodation" },
+  { suffix: "vidarbha-pilgrimage-planning", title: "Vidarbha Pilgrimage Planning", intent: "travel-guide" },
+  { suffix: "amravati-to-shegaon-route", title: "Amravati to Shegaon Route", intent: "transport" },
+  { suffix: "four-day-itinerary", title: "Four Day Itinerary", intent: "itinerary" },
+  { suffix: "five-day-extended-stay", title: "Five Day Extended Stay", intent: "accommodation" },
+  { suffix: "late-evening-darshan-tips", title: "Late Evening Darshan Tips", intent: "darshan" },
+  { suffix: "spring-visit-guide", title: "Spring Visit Guide", intent: "seasonal-guide" },
+  { suffix: "post-monsoon-visit-guide", title: "Post Monsoon Visit Guide", intent: "seasonal-guide" },
+  { suffix: "new-year-darshan-planning", title: "New Year Darshan Planning", intent: "festival-planning" },
+  { suffix: "travel-insurance-for-pilgrimage", title: "Travel Insurance for Pilgrimage", intent: "travel-tips" },
+  { suffix: "mobile-photography-tips", title: "Mobile Photography Tips", intent: "family-travel" },
+  { suffix: "flower-offering-guide", title: "Flower Offering Guide", intent: "devotional" },
+  { suffix: "weekend-getaway-from-mumbai", title: "Weekend Getaway from Mumbai", intent: "travel-guide" },
+  { suffix: "nagpur-to-shegaon-route", title: "Nagpur to Shegaon Route", intent: "transport" },
+  { suffix: "pune-to-shegaon-route", title: "Pune to Shegaon Route", intent: "transport" },
+  { suffix: "anand-vihar-vs-visawa", title: "Anand Vihar vs Visawa", intent: "accommodation" },
+  { suffix: "buldhana-temple-stays", title: "Buldhana Temple Stays", intent: "accommodation" },
+  { suffix: "local-bus-and-auto-guide", title: "Local Bus and Auto Guide", intent: "transport" },
+  { suffix: "temple-museum-and-heritage", title: "Temple Museum and Heritage", intent: "travel-guide" },
+  { suffix: "group-darshan-booking", title: "Group Darshan Booking", intent: "booking" },
+  { suffix: "corporate-yatra-planning", title: "Corporate Yatra Planning", intent: "group-travel" },
+  { suffix: "lunar-eclipse-darshan-tips", title: "Lunar Eclipse Darshan Tips", intent: "darshan" },
+  { suffix: "solar-eclipse-visit-guide", title: "Solar Eclipse Visit Guide", intent: "seasonal-guide" },
 ];
 
 const CROSS_LOCATION_GUIDE_VARIANTS = [
@@ -167,6 +269,51 @@ const CROSS_LOCATION_GUIDE_VARIANTS = [
   "phone-and-whatsapp-booking-best-practices",
   "sansthan-location-selection-guide",
   "month-wise-pilgrimage-planning-calendar",
+  "bhakta-niwas-across-locations-comparison",
+  "sheogaon-and-omkareshwar-combined-yatra",
+  "triambakeshwar-pandharpur-route-planning",
+  "gajanan-maharaj-sansthan-booking-guide",
+  "family-pilgrimage-with-children-tips",
+  "senior-devotee-multi-city-itinerary",
+  "best-accommodation-for-large-groups",
+  "darshan-and-stay-priority-planning",
+  "rainy-season-multi-location-travel",
+  "festival-rush-booking-strategies",
+  "shegaon-pandharpur-omkareshwar-circuit",
+  "trimbakeshwar-nashik-shegaon-route",
+  "devotee-testimonials-and-tips",
+  "sansthan-contact-numbers-all-locations",
+  "last-minute-booking-options-guide",
+  "extended-stay-planning-for-devotees",
+  // Plan 2: Additional guides for 46 total
+  "shegaon-omkareshwar-3-day-itinerary",
+  "pandharpur-wari-accommodation-tips",
+  "trimbakeshwar-to-shegaon-route-guide",
+  "omkareshwar-pandharpur-combined-yatra",
+  "family-with-infants-pilgrimage-tips",
+  "solo-female-devotee-safety-guide",
+  "wheelchair-accessible-locations-guide",
+  "monsoon-season-multi-city-travel",
+  "festival-dates-and-booking-windows",
+  "id-proof-and-document-checklist",
+  "what-to-carry-pilgrimage-essentials",
+  "return-journey-planning-tips",
+  "group-booking-coordination-guide",
+  "senior-citizen-special-needs-guide",
+  "kids-activities-during-yatra",
+  // Plan 3: 12 more for 58 total
+  "maharashtra-pilgrimage-circuit",
+  "buldhana-temple-stays",
+  "akola-jalgaon-shegaon-route-guide",
+  "vidarbha-temple-stay-network",
+  "mumbai-to-shegaon-weekend-guide",
+  "pune-shegaon-pandharpur-circuit",
+  "hyderabad-to-omkareshwar-route",
+  "indore-omkareshwar-shegaon-yatra",
+  "all-12-jyotirlinga-planning",
+  "mahaprasad-and-food-guide",
+  "temple-volunteer-seva-guide",
+  "pilgrimage-photo-documentation",
 ];
 
 const SPIRITUAL_POST_VARIANTS = [
@@ -175,6 +322,27 @@ const SPIRITUAL_POST_VARIANTS = [
   "importance-of-seva-in-sansthan-tradition",
   "how-devotees-can-prepare-mindfully-for-darshan",
   "spiritual-benefits-of-disciplined-yatra-planning",
+  "gajanan-maharaj-mantra-and-prayer-guide",
+  "significance-of-temple-stay-in-devotion",
+  "mindful-pilgrimage-preparation-tips",
+  "devotional-discipline-for-family-yatra",
+  "spiritual-meaning-of-bhakta-niwas",
+  "connecting-with-sansthan-tradition",
+  // Plan 2: Additional spiritual for 19 total
+  "bhakti-and-surrender-in-pilgrimage",
+  "importance-of-sankalp-before-yatra",
+  "meditation-and-darshan-preparation",
+  "family-values-in-sansthan-tradition",
+  "gratitude-practices-for-devotees",
+  "overcoming-travel-anxiety-spiritually",
+  "community-and-sangha-in-pilgrimage",
+  "legacy-of-shri-gajanan-maharaj",
+  // Plan 3: 5 more for 24 total
+  "sankalp-and-vow-during-yatra",
+  "prasad-distribution-etiquette",
+  "morning-prayer-routine-for-travelers",
+  "evening-aarti-participation-guide",
+  "pilgrimage-as-spiritual-retreat",
 ];
 
 const EVENT_POST_VARIANTS = [
@@ -183,6 +351,27 @@ const EVENT_POST_VARIANTS = [
   "major-utsav-crowd-planning-checklist",
   "festival-darshan-timing-awareness-guide",
   "community-seva-event-participation-guide",
+  "gudi-padwa-sansthan-visit-guide",
+  "diwali-darshan-planning-tips",
+  "special-darshan-days-calendar",
+  "utsav-accommodation-booking-tips",
+  "festival-season-what-to-expect",
+  "crowd-management-during-peak-days",
+  // Plan 2: Additional events for 21 total
+  "ram-navami-special-darshan-guide",
+  "gudi-padwa-visit-planning",
+  "diwali-darshan-and-accommodation",
+  "makar-sankranti-pilgrimage-tips",
+  "shivaratri-night-darshan-planning",
+  "chaitra-navratri-crowd-guide",
+  "guru-purnima-devotee-planning",
+  "janmashtami-sansthan-visit",
+  "anniversary-utsav-booking-tips",
+  "special-darshan-dates-calendar",
+  // Plan 3: 3 more for 24 total
+  "maha-shivaratri-sansthan-visit",
+  "guru-purnima-darshan-planning",
+  "sankranti-pilgrimage-tips",
 ];
 
 function formatDateByOffset(offset) {
@@ -347,16 +536,24 @@ function dedupeSlugs(slugs) {
 }
 
 /**
- * Create deterministic previous/next links for internal-link graph continuity.
+ * Extended neighbors (index ± 1 and ± 2) for denser cluster graphs. Returns up to 4 slugs.
  */
-function getCircularNeighborSlugs(slugs, index) {
+function getExtendedNeighborSlugs(slugs, index) {
   if (slugs.length <= 1) {
     return [];
   }
 
-  const previousSlug = slugs[(index - 1 + slugs.length) % slugs.length];
-  const nextSlug = slugs[(index + 1) % slugs.length];
-  return dedupeSlugs([previousSlug, nextSlug]);
+  const indices = [
+    (index - 2 + slugs.length) % slugs.length,
+    (index - 1 + slugs.length) % slugs.length,
+    (index + 1) % slugs.length,
+    (index + 2) % slugs.length,
+  ];
+  const neighborSlugs = indices
+    .filter((i) => i !== index)
+    .map((i) => slugs[i])
+    .filter(Boolean);
+  return dedupeSlugs(neighborSlugs);
 }
 
 function getBlogLinkLabel(slug) {
@@ -404,10 +601,23 @@ function buildLocationPostContent({
   locationPage,
   topicTitle,
   relatedBlogLinks,
+  inlineLink1,
+  inlineLink2,
+  inlineLink3,
+  category = "locations",
+  primaryTag = "shegaon",
 }) {
+  const inlineParts = [inlineLink1, inlineLink2, inlineLink3].filter(Boolean);
+  const inlineParagraph =
+    inlineParts.length > 0
+      ? ` For related planning, see our ${inlineParts
+          .map((l) => `[${l.label}](/blog/${l.slug})`)
+          .join(", ")}.`
+      : "";
+
   return `# ${city} ${topicTitle}
 
-${city} remains one of the most searched pilgrimage destinations by devotees looking for trusted temple guidance, darshan clarity, and Sansthan accommodation support. This guide on **${city} ${topicTitle.toLowerCase()}** is written for families who want a practical and peaceful yatra experience.
+${city} remains one of the most searched pilgrimage destinations by devotees looking for trusted temple guidance, darshan clarity, and Sansthan accommodation support. This guide on **${city} ${topicTitle.toLowerCase()}** is written for families who want a practical and peaceful yatra experience.${inlineParagraph}
 
 ## Why this ${city} guide matters for devotees
 
@@ -427,6 +637,18 @@ When devotees search for terms like “Shri Gajanan Maharaj Sansthan ${city}”,
 4. Plan local movement in advance for senior citizens and children.
 5. Use official Sansthan communication channels for confirmations.
 
+## Location-specific tips for devotees
+
+Families visiting ${city} often benefit from arriving early to avoid peak queues, especially on weekends and festival days. The temple complex and accommodation areas are well-maintained, with clear signage and helpful staff. Keep a copy of your booking confirmation handy, and carry light snacks and water for children. Senior devotees may prefer morning or late-afternoon darshan when crowds are typically lighter.
+
+## Frequently asked questions
+
+**When is the best time to visit ${city}?** Weekdays generally see fewer crowds than weekends. Early morning darshan offers a peaceful experience. Festival periods require advance booking and extra time for queues.
+
+**What documents do I need for accommodation?** Valid government-issued ID for all adults, and proof of family relationship if traveling with dependents. The office may request additional details during peak season.
+
+**How do I confirm my booking?** After submitting your request via WhatsApp or phone, the office will confirm availability. Keep your phone accessible for follow-up calls or messages.
+
 ## Related guides for deeper planning
 
 ${relatedBlogLinks
@@ -436,6 +658,10 @@ ${relatedBlogLinks
 ## Practical conclusion for ${city} devotees
 
 This ${city} planning resource is built to make your pilgrimage smoother, more spiritual, and better organized. For best outcomes, complete your route planning early, confirm accommodation through official support, and keep your itinerary realistic for all age groups.
+
+---
+
+Browse more in [${category.charAt(0).toUpperCase() + category.slice(1)}](/blog/category/${category}). Tags: [${primaryTag}](/blog/tag/${primaryTag})
 `;
 }
 
@@ -450,6 +676,10 @@ This guide helps devotees compare multiple locations connected to Shri Gajanan M
 2. Assign travel days with enough rest intervals.
 3. Keep accommodation communication centralized.
 4. Prepare emergency contacts and health essentials.
+
+## Cross-location travel tips
+
+When visiting multiple Sansthan locations, allow buffer time between cities for rest and local travel. Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar each have distinct peak hours and crowd patterns. Book accommodation for each stop in advance through official channels. Carry essential medicines and keep emergency contacts saved. Senior citizens and children may need extra rest days between long journeys.
 
 ## Official pages to use during planning
 
@@ -470,6 +700,10 @@ ${relatedBlogLinks
 ## Final note
 
 For the best pilgrimage experience, keep your plan devotional but practical: focus on darshan flow, family comfort, and official communication clarity at every stage.
+
+---
+
+Browse more in [Guides](/blog/category/guides). Tags: [guides](/blog/tag/guides)
 `;
 }
 
@@ -488,6 +722,10 @@ ${focusKeyword} is frequently searched by devotees who want both spiritual clari
 - Confirm accommodation and communication channels in advance.
 - Focus on seva, discipline, and mindful conduct throughout the journey.
 
+## Practical preparation
+
+Devotees often find that a few days of light fasting or simplified meals before travel helps maintain energy and focus during the yatra. Pack modest, comfortable clothing suitable for temple visits and varying weather. Keep a small notebook for reflections and important contact numbers. Arrive at each location with an open heart and flexible schedule, allowing the divine to guide your pace.
+
 ## Helpful official links
 
 - [Sansthan Locations](/locations)
@@ -505,6 +743,10 @@ ${relatedBlogLinks
 ## Devotee takeaway
 
 Use this guidance as a planning companion, and rely on official channels for final operational details, availability, and schedule-sensitive updates.
+
+---
+
+Browse more in [${category.charAt(0).toUpperCase() + category.slice(1)}](/blog/category/${category}). Tags: [${category}](/blog/tag/${category})
 `;
 }
 
@@ -547,12 +789,35 @@ function generateLocationClusterPosts() {
         "pilgrimage-guide",
       ];
 
-      const neighborSlugs = getCircularNeighborSlugs(locationClusterSlugs, index);
-      const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
+      const extendedNeighbors = getExtendedNeighborSlugs(locationClusterSlugs, index);
+      const crossClusterPillars = CROSS_CLUSTER_PILLAR_MAP[config.key] || [];
+      const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+      const relatedSlugs = dedupeSlugs([
+        ...extendedNeighbors.slice(0, 4),
+        ...CORE_RELATED_SLUGS.slice(0, 2),
+        ...crossClusterPillars.slice(0, 3),
+        ...tertiaryPillars,
+      ]).slice(0, 10);
       const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
         slug: relatedSlug,
         label: getBlogLinkLabel(relatedSlug),
       }));
+
+      const inlineLink1 = crossClusterPillars[0]
+        ? { slug: crossClusterPillars[0], label: getBlogLinkLabel(crossClusterPillars[0]) }
+        : null;
+      const inlineLink2 =
+        locationClusterSlugs[index + 1] || locationClusterSlugs[index - 1]
+          ? {
+              slug: locationClusterSlugs[index + 1] || locationClusterSlugs[index - 1],
+              label: getBlogLinkLabel(
+                locationClusterSlugs[index + 1] || locationClusterSlugs[index - 1]
+              ),
+            }
+          : null;
+      const inlineLink3 = tertiaryPillars[0]
+        ? { slug: tertiaryPillars[0], label: getBlogLinkLabel(tertiaryPillars[0]) }
+        : null;
 
       const frontmatter = buildFrontmatter({
         title,
@@ -572,6 +837,11 @@ function generateLocationClusterPosts() {
         locationPage: config.locationPage,
         topicTitle: topic.title,
         relatedBlogLinks,
+        inlineLink1,
+        inlineLink2,
+        inlineLink3,
+        category: "locations",
+        primaryTag: config.key,
       });
 
       const relativePath = `${config.directory}/${slug}.md`;
@@ -593,14 +863,19 @@ function generateCrossLocationGuides() {
     const description =
       "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support.";
     const date = formatDateByOffset(120 + index);
-    const neighborSlugs = getCircularNeighborSlugs(guideSlugs, index);
-    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
-    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
-      (relatedSlug) => ({
-        slug: relatedSlug,
-        label: getBlogLinkLabel(relatedSlug),
-      })
-    );
+    const extendedNeighbors = getExtendedNeighborSlugs(guideSlugs, index);
+    const crossPillars = ["shegaon-travel-guide", "omkareshwar-darshan-timings"];
+    const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+    const relatedSlugs = dedupeSlugs([
+      ...extendedNeighbors.slice(0, 4),
+      ...CORE_RELATED_SLUGS.slice(0, 2),
+      ...crossPillars,
+      ...tertiaryPillars,
+    ]).slice(0, 10);
+    const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
+      slug: relatedSlug,
+      label: getBlogLinkLabel(relatedSlug),
+    }));
 
     const frontmatter = buildFrontmatter({
       title,
@@ -640,14 +915,17 @@ function generateSpiritualPosts() {
     const description =
       "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline.";
     const date = formatDateByOffset(160 + index);
-    const neighborSlugs = getCircularNeighborSlugs(spiritualSlugs, index);
-    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
-    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
-      (relatedSlug) => ({
-        slug: relatedSlug,
-        label: getBlogLinkLabel(relatedSlug),
-      })
-    );
+    const extendedNeighbors = getExtendedNeighborSlugs(spiritualSlugs, index);
+    const crossPillars = ["shegaon-travel-guide", "shegaon-accommodation-guide"];
+    const relatedSlugs = dedupeSlugs([
+      ...extendedNeighbors.slice(0, 3),
+      ...CORE_RELATED_SLUGS.slice(0, 2),
+      ...crossPillars,
+    ]).slice(0, 7);
+    const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
+      slug: relatedSlug,
+      label: getBlogLinkLabel(relatedSlug),
+    }));
 
     const frontmatter = buildFrontmatter({
       title,
@@ -693,14 +971,19 @@ function generateEventPosts() {
     const description =
       "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods.";
     const date = formatDateByOffset(180 + index);
-    const neighborSlugs = getCircularNeighborSlugs(eventSlugs, index);
-    const relatedSlugs = dedupeSlugs([...neighborSlugs, ...CORE_RELATED_SLUGS.slice(0, 2)]);
-    const relatedBlogLinks = dedupeSlugs([...CORE_RELATED_SLUGS.slice(0, 2), ...neighborSlugs]).map(
-      (relatedSlug) => ({
-        slug: relatedSlug,
-        label: getBlogLinkLabel(relatedSlug),
-      })
-    );
+    const extendedNeighbors = getExtendedNeighborSlugs(eventSlugs, index);
+    const crossPillars = ["shegaon-travel-guide", "major-utsav-crowd-planning-checklist"];
+    const tertiaryPillars = TERTIARY_PILLAR_SLUGS.slice(0, 2);
+    const relatedSlugs = dedupeSlugs([
+      ...extendedNeighbors.slice(0, 4),
+      ...CORE_RELATED_SLUGS.slice(0, 2),
+      ...crossPillars,
+      ...tertiaryPillars,
+    ]).slice(0, 10);
+    const relatedBlogLinks = relatedSlugs.map((relatedSlug) => ({
+      slug: relatedSlug,
+      label: getBlogLinkLabel(relatedSlug),
+    }));
 
     const frontmatter = buildFrontmatter({
       title,

@@ -48,7 +48,7 @@ const REQUIRED_BRAND_VARIANT_FRAGMENTS = [
 ];
 const MAX_ALLOWED_ORPHAN_POSTS = 0;
 const EXEMPT_ORPHAN_SLUGS = new Set(["welcome-to-sansthan"]);
-const MIN_GENERATED_OUTBOUND_BLOG_LINKS = 3;
+const MIN_GENERATED_OUTBOUND_BLOG_LINKS = 5;
 const GENERATED_SLUG_SEGMENT_PATTERN = "[a-z0-9]+(?:-[a-z0-9]+)*";
 
 /**
