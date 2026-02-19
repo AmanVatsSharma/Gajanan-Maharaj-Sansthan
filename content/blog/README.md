@@ -4,12 +4,12 @@ This directory contains markdown content used to generate `/blog` pages and SEO 
 
 ## Current cluster status
 
-- Total publishable posts: **216**
+- Total publishable posts: **396**
 - Cluster categories:
-  - `locations` (Shegaon 57 / Omkareshwar 41 / Pandharpur 30 / Trimbakeshwar 30 intent pages)
-  - `guides` (31 cross-location planning pages)
-  - `spiritual` (11 devotional planning context)
-  - `events` (11 festival and crowd-planning support)
+  - `locations` (Shegaon 100 / Omkareshwar 75 / Pandharpur 55 / Trimbakeshwar 55 intent pages)
+  - `guides` (58 cross-location planning pages)
+  - `spiritual` (24 devotional planning context)
+  - `events` (24 festival and crowd-planning support)
 
 ## Directory structure
 
@@ -113,7 +113,7 @@ Validation now includes cross-post integrity checks for:
 - inbound blog-link graph health (orphan-post prevention with controlled exemptions)
 - generated-post outbound blog-link minimum enforcement (`>=3` links per generated post)
 - location cluster coverage for Shegaon/Omkareshwar/Pandharpur/Trimbakeshwar
-- location cluster minimum ownership thresholds (`shegaon>=57`, `omkareshwar>=41`, `pandharpur>=30`, `trimbakeshwar>=30`)
+- location cluster minimum ownership thresholds (`shegaon>=100`, `omkareshwar>=75`, `pandharpur>=55`, `trimbakeshwar>=55`)
 - keyword-fragment brand coverage for Shri/Shree/Sri + Sansthan/Sanstan variants
 - duplicate primary keyword cannibalization warnings
 
