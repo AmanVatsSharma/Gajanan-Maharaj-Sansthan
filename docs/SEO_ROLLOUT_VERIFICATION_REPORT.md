@@ -1,12 +1,12 @@
 # SEO Rollout Verification Report
 
-**Date:** 2026-02-15  
-**Scope:** SEO keyword expansion + technical hardening + 100+ markdown blog rollout
+**Date:** 2026-02-18  
+**Scope:** SEO Plan 4 expansion + technical hardening + 491+ markdown blog rollout
 
 ## Outcome Snapshot
 
-- Publishable markdown blogs: **396**
-- Generated new blog posts: **391**
+- Publishable markdown blogs: **496**
+- Generated new blog posts: **491**
 - Canonical redirect hardening: **implemented**
 - Blog quality validator: **implemented**
 - Module docs and flowcharts: **updated**
@@ -40,45 +40,45 @@ npm run seo:check:strict
 ## Latest Validation Results
 
 - `npm run validate:blog`
-  - markdownFileCount: 110
+  - markdownFileCount: 496
   - totalErrors: 0
   - categoryCounts:
-    - events: 5
-    - guides: 17
-    - locations: 83
-    - spiritual: 5
+    - events: 31
+    - guides: 80
+    - locations: 353
+    - spiritual: 32
   - location distribution (slug ownership):
-    - shegaon: 35
-    - omkareshwar: 22
-    - pandharpur: 16
-    - trimbakeshwar: 15
+    - shegaon: 142
+    - omkareshwar: 90
+    - pandharpur: 67
+    - trimbakeshwar: 65
   - brand variant keyword coverage:
-    - `shri gajanan`: 187
-    - `shree gajanan`: 106
-    - `sri gajanan`: 106
-    - `sansthan`: 288
-    - `sanstan`: 105
+    - `shri gajanan`: 844
+    - `shree gajanan`: 492
+    - `sri gajanan`: 492
+    - `sansthan`: 1289
+    - `sanstan`: 491
   - link graph health:
     - orphanPostCount: 0 (with explicit exemption: `welcome-to-sansthan`)
-    - generated outbound blog-link minimum: 3 (enforced)
+    - generated outbound blog-link minimum: 5 (enforced)
 - `npm run lint` → pass
 - `npm run build` → pass
   - blog dynamic paths include 100+ additional slugs
   - tag/category archives generated for expanded taxonomy
 - `npm run verify:generator` → pass
-  - expected generated total: 105
+  - expected generated total: 491
   - config fingerprint aligned with shared cluster config
-  - manifest version/checksum validation passed (`manifestVersion: 2`, `checksumValidatedCount: 105`)
+  - manifest version/checksum validation passed (`manifestVersion: 2`, `checksumValidatedCount: 491`)
   - checksum keyset alignment passed (no missing/extra checksum entries)
   - manifest volatility check passed (no timestamp-only drift field)
   - generatedFiles path policy + lexicographic sorting checks passed
   - managed namespace ownership checks passed (manifest-owned + manual seed allowlist only)
-  - generated frontmatter checks passed for 105 managed posts
+  - generated frontmatter checks passed for 491 managed posts
   - observed distribution:
-    - locations: shegaon 30, omkareshwar 20, pandharpur 15, trimbakeshwar 15
-    - guides: 15
-    - spiritual: 5
-    - events: 5
+    - locations: shegaon 135, omkareshwar 87, pandharpur 65, trimbakeshwar 63
+    - guides: 78
+    - spiritual: 32
+    - events: 31
 - `npm run verify:manual-seeds` → pass
   - manual seed anchors validated for slug/frontmatter/links and manifest exclusion
 - `npm run verify:generator:determinism` → pass

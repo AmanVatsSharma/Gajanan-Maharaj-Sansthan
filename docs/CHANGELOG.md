@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-02-18 — SEO Plan 4: +100 Blogs + Stronger Topic Authority (Generator-only)
+
+### Summary
+
+- **Content**: 496 total posts (491 generated), +100 generated posts added via deterministic cluster expansion
+- **Topic authority**: Pillar guide injection into `relatedSlugs` + inline contextual link for every generated post
+- **Taxonomy hubs**: Category/tag pages now surface a small featured-pillars block for stronger hub-to-article discovery
+- **Keywords**: Expanded Bhakta/Bhakt Niwas booking + contact + refund/cancellation + check-in/out + route long-tails
+
+### Changes
+
+1. **Cluster config** (`scripts/seo-cluster-config.mjs`)
+   - Shegaon: 100 → 135, Omkareshwar: 75 → 87, Pandharpur: 55 → 65, Trimbakeshwar: 55 → 63
+   - Guides: 58 → 78, Spiritual: 24 → 32, Events: 24 → 31
+
+2. **Generator** (`scripts/generate-seo-blog-cluster.mjs`)
+   - LOCATION_TOPIC_VARIANTS: 100 → 135 (Bhakta Niwas room types, check-in/out, refunds, WhatsApp templates, additional routes)
+   - CROSS_LOCATION_GUIDE_VARIANTS: 58 → 78 (Bhakta Niwas pillars + Sheogaon/Triambakeshwar spelling-intent guides)
+   - SPIRITUAL_POST_VARIANTS: 24 → 32, EVENT_POST_VARIANTS: 24 → 31
+   - Added `PILLAR_GUIDE_SLUGS` and ensured every generated post includes pillar slugs in `relatedSlugs` plus an inline contextual pillar link
+
+3. **SEO constants** (`src/lib/seo/constants.ts`)
+   - Added exact-match long-tail keywords: Bhakta/Bhakt Niwas online booking, WhatsApp/phone variants, refund/cancellation, check-in/out, room types
+   - Added additional route keywords (Mumbai/Pune/Nagpur corridors + MP connectors)
+
+4. **Taxonomy hub UX** (`src/app/blog/category/[category]/page.tsx`, `src/app/blog/tag/[tag]/page.tsx`)
+   - Added “Featured planning guides” block using `getPostsBySlugs` for curated pillar discovery
+
 ## 2026-02-18 — SEO Plan 3: 100 More Blogs and Enhanced Interlinking
 
 ### Summary

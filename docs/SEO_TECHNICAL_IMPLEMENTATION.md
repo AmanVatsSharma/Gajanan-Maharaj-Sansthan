@@ -249,7 +249,7 @@ SEO_ENABLE_APP_HOST_REDIRECTS=false
 - Deterministic cluster generation for high-intent location/content variants
 - Shared cluster sizing config (`scripts/seo-cluster-config.mjs`) for generator/validator alignment
 - Validation script for slug uniqueness, frontmatter quality, and internal linking rules
-- Blog inventory expanded to 396 posts (391 generated cluster posts + existing seed posts)
+- Blog inventory expanded to 496 posts (491 generated cluster posts + existing seed posts)
 - Paginated archive support at `/blog/page/[page]` with sitemap inclusion for deeper crawl coverage
 
 **Commands**:
