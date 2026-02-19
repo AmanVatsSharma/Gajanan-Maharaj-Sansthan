@@ -20,7 +20,8 @@ category: "spiritual"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "spiritual-benefits-of-disciplined-yatra-planning"
+  - "evening-aarti-participation-guide"
+  - "pilgrimage-as-spiritual-retreat"
   - "daily-devotional-routine-for-pilgrimage-travelers"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
@@ -36,6 +37,10 @@ Shri Gajanan Maharaj spiritual planning is frequently searched by devotees who w
 - Confirm accommodation and communication channels in advance.
 - Focus on seva, discipline, and mindful conduct throughout the journey.
 
+## Practical preparation
+
+Devotees often find that a few days of light fasting or simplified meals before travel helps maintain energy and focus during the yatra. Pack modest, comfortable clothing suitable for temple visits and varying weather. Keep a small notebook for reflections and important contact numbers. Arrive at each location with an open heart and flexible schedule, allowing the divine to guide your pace.
+
 ## Helpful official links
 
 - [Sansthan Locations](/locations)
@@ -46,11 +51,16 @@ Shri Gajanan Maharaj spiritual planning is frequently searched by devotees who w
 
 ## Continue reading
 
+- [Evening Aarti Participation Guide](/blog/evening-aarti-participation-guide)
+- [Pilgrimage As Spiritual Retreat](/blog/pilgrimage-as-spiritual-retreat)
+- [Daily Devotional Routine For Pilgrimage Travelers](/blog/daily-devotional-routine-for-pilgrimage-travelers)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
-- [Spiritual Benefits Of Disciplined Yatra Planning](/blog/spiritual-benefits-of-disciplined-yatra-planning)
-- [Daily Devotional Routine For Pilgrimage Travelers](/blog/daily-devotional-routine-for-pilgrimage-travelers)
 
 ## Devotee takeaway
 
 Use this guidance as a planning companion, and rely on official channels for final operational details, availability, and schedule-sensitive updates.
+
+---
+
+Browse more in [Spiritual](/blog/category/spiritual). Tags: [spiritual](/blog/tag/spiritual)
