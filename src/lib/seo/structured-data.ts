@@ -60,7 +60,8 @@ export function getOrganizationSchema() {
 }
 
 /**
- * WebSite schema for improved entity understanding
+ * WebSite schema for improved entity understanding.
+ * Includes SearchAction for blog discovery.
  */
 export function getWebSiteSchema() {
   const baseUrl = getSiteUrl();
@@ -75,6 +76,14 @@ export function getWebSiteSchema() {
     inLanguage: SITE_CONFIG.locale,
     publisher: {
       "@id": `${baseUrl}#organization`,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${baseUrl}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   };
 }
@@ -357,7 +366,8 @@ function toAbsoluteUrl(baseUrl: string, urlPath: string): string {
 }
 
 /**
- * Article/BlogPosting schema for blog posts
+ * Article/BlogPosting schema for blog posts.
+ * Includes speakable for voice search (first 1-2 paragraphs).
  */
 export function getArticleSchema(post: BlogPost) {
   const baseUrl = getSiteUrl();
@@ -372,7 +382,7 @@ export function getArticleSchema(post: BlogPost) {
 
   const articleKeywords = post.keywords ?? post.tags ?? [];
 
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "@id": `${postUrl}#article`,
@@ -411,6 +421,41 @@ export function getArticleSchema(post: BlogPost) {
       name: `${ORGANIZATION_INFO.legalName} Blog`,
       url: `${baseUrl}/blog`,
     },
+  };
+
+  // Speakable for voice search: first 1-2 paragraphs
+  schema.speakable = {
+    "@type": "SpeakableSpecification",
+    cssSelector: [".prose p:nth-of-type(1)", ".prose p:nth-of-type(2)"],
+  };
+
+  return schema;
+}
+
+/**
+ * HowTo schema for guide-style posts (category === "guides").
+ * Helps with rich snippets for step-by-step content.
+ */
+export function getHowToSchema(
+  title: string,
+  description: string,
+  steps: string[],
+  url?: string
+) {
+  const baseUrl = getSiteUrl();
+  const howToUrl = url ? (url.startsWith("http") ? url : `${baseUrl}${url}`) : baseUrl;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: title,
+    description,
+    url: howToUrl,
+    step: steps.map((text, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      text,
+    })),
   };
 }
 

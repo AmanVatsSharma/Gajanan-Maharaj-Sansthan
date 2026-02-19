@@ -3,7 +3,7 @@
  * Module: lib/seo
  * Purpose: SEO-related constants including keywords, site info, and configuration
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-06
+ * Last-updated: 2026-02-18
  * Notes:
  * - Centralized SEO configuration for consistency across pages
  * - Keywords organized by category for better targeting
@@ -68,7 +68,10 @@ export const PRIMARY_KEYWORDS = [
   "sri gajanan maharaj sansthan booking",
   "shegaon temple accommodation",
   "bhakt niwas shegaon",
+  "bhakta niwas shegaon",
   "shegaon bhakta niwas booking",
+  "bhakta niwas booking",
+  "bhakt niwas accommodation",
   "temple stay maharashtra",
   "dharamshala booking shegaon",
   "gajanan maharaj room booking",
@@ -98,12 +101,16 @@ export const LONGTAIL_KEYWORDS = [
   "how to book room in shri gajanan maharaj sansthan",
   "how to book shree gajanan maharaj sansthan accommodation",
   "shegaon bhakt niwas room booking",
+  "bhakta niwas shegaon contact number",
+  "bhakta niwas sheogaon booking process",
   "family accommodation near shegaon temple",
   "gajanan maharaj temple stay facilities",
   "book dharamshala near pandharpur",
   "best time to visit shegaon gajanan maharaj temple",
   "omkareshwar darshan timings and stay guide",
+  "omkareshwar bhakt niwas accommodation",
   "trimbakeshwar accommodation for devotees",
+  "triambakeshwar jyotirlinga stay and darshan",
   "pandharpur pilgrimage stay booking tips",
 ] as const;
 
@@ -115,9 +122,20 @@ export const LOCATION_KEYWORDS = {
     "sri gajanan maharaj sansthan shegaon",
     "shegaon temple booking",
     "shegaon gajanan maharaj booking",
+    "sheogaon temple",
+    "sheogaon accommodation",
+    "sheogaon bhakta niwas",
+    "sheogaon darshan",
     "bhakt niwas shegaon",
     "bhakta niwas shegaon",
     "anand vihar shegaon",
+    "visawa shegaon",
+    "anand sagar shegaon",
+    "buldhana temple",
+    "maharashtra pilgrimage",
+    "vidarbha temple stay",
+    "akola to shegaon",
+    "jalgaon to shegaon",
     "shegaon accommodation",
     "shegaon dharamshala",
     "shegaon mandir accommodation",
@@ -137,9 +155,12 @@ export const LOCATION_KEYWORDS = {
     "shri gajanan maharaj sansthan trimbakeshwar",
     "shree gajanan maharaj sansthan trimbakeshwar",
     "trimbakeshwar accommodation",
+    "triambakeshwar accommodation",
     "trimbakeshwar jyotirlinga stay",
+    "triambakeshwar jyotirlinga",
     "trimbakeshwar darshan guide",
     "trimbakeshwar temple room booking",
+    "triambakeshwar temple stay",
   ],
   omkareshwar: [
     "shri gajanan maharaj sansthan omkareshwar",
@@ -158,12 +179,16 @@ export const LOCATION_KEYWORDS = {
 export const LOCATION_INTENT_KEYWORDS = {
   shegaon: [
     "shegaon travel guide",
+    "sheogaon travel guide",
     "shegaon accommodation guide",
     "shegaon darshan timing guide",
     "how to reach shegaon temple",
     "shegaon family trip planning",
     "shegaon temple nearby places",
     "shegaon bhakt niwas contact number",
+    "sheogaon temple accommodation",
+    "buldhana district temple guide",
+    "akola to shegaon route",
   ],
   pandharpur: [
     "pandharpur travel guide",
@@ -174,7 +199,9 @@ export const LOCATION_INTENT_KEYWORDS = {
   ],
   trimbakeshwar: [
     "trimbakeshwar travel guide",
+    "triambakeshwar travel guide",
     "trimbakeshwar jyotirlinga darshan guide",
+    "triambakeshwar jyotirlinga stay",
     "how to reach trimbakeshwar",
     "trimbakeshwar stay for families",
     "trimbakeshwar darshan timing tips",

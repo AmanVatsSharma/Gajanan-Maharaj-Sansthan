@@ -49,3 +49,4 @@ flowchart TD
 - **2026-02-05**: Initial SEO helper modules and schema generation added.
 - **2026-02-15**: Expanded keyword variant coverage for Shri/Shree/Sri + Sansthan/Sanstan permutations and strengthened page metadata keyword mapping.
 - **2026-02-15**: Canonical redirect handling hardened to redirect alternate host → configured canonical host.
+- **2026-02-18**: Added Sheogaon, Triambakeshwar, and Bhakta Niwas keyword variants to constants for improved search coverage.
