@@ -23,15 +23,16 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "pilgrimage-photo-documentation"
+  - "emergency-contact-during-pilgrimage"
   - "multi-location-pilgrimage-planning-guide"
   - "shegaon-to-pandharpur-route-guide"
   - "shegaon-to-trimbakeshwar-route-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Shegaon To Omkareshwar Route Guide | Shri Gajanan Maharaj Sansthan
 
@@ -60,15 +61,16 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Pilgrimage Photo Documentation](/blog/pilgrimage-photo-documentation)
+- [Emergency Contact During Pilgrimage](/blog/emergency-contact-during-pilgrimage)
 - [Multi Location Pilgrimage Planning Guide](/blog/multi-location-pilgrimage-planning-guide)
 - [Shegaon To Pandharpur Route Guide](/blog/shegaon-to-pandharpur-route-guide)
 - [Shegaon To Trimbakeshwar Route Guide](/blog/shegaon-to-trimbakeshwar-route-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 

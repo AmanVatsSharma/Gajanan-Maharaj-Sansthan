@@ -25,8 +25,8 @@ locationIds:
 relatedSlugs:
   - "mahaprasad-and-food-guide"
   - "temple-volunteer-seva-guide"
-  - "multi-location-pilgrimage-planning-guide"
-  - "shegaon-to-omkareshwar-route-guide"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
@@ -62,8 +62,8 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 - [Mahaprasad And Food Guide](/blog/mahaprasad-and-food-guide)
 - [Temple Volunteer Seva Guide](/blog/temple-volunteer-seva-guide)
-- [Multi Location Pilgrimage Planning Guide](/blog/multi-location-pilgrimage-planning-guide)
-- [Shegaon To Omkareshwar Route Guide](/blog/shegaon-to-omkareshwar-route-guide)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)

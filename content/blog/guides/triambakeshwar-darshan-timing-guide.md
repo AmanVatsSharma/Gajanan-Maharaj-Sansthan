@@ -1,11 +1,11 @@
 ---
-title: "Pandharpur And Shegaon Family Yatra Plan | Shri Gajanan Maharaj Sansthan"
+title: "Triambakeshwar Darshan Timing Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-10-13"
-slug: "pandharpur-and-shegaon-family-yatra-plan"
+date: "2025-08-06"
+slug: "triambakeshwar-darshan-timing-guide"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "pandharpur and shegaon family yatra plan pilgrimage guide"
+  - "triambakeshwar darshan timing guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,10 +23,10 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "shegaon-to-trimbakeshwar-route-guide"
-  - "omkareshwar-to-trimbakeshwar-pilgrimage-checklist"
-  - "jyotirlinga-and-sansthan-combined-itinerary"
-  - "temple-accommodation-comparison-guide"
+  - "triambakeshwar-travel-guide"
+  - "triambakeshwar-accommodation-guide"
+  - "triambakeshwar-best-time-to-visit"
+  - "all-sansthan-contact-numbers-complete-list"
   - "gajanan-maharaj-sansthan-complete-guide"
   - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
@@ -34,7 +34,7 @@ relatedSlugs:
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
 ---
-# Pandharpur And Shegaon Family Yatra Plan | Shri Gajanan Maharaj Sansthan
+# Triambakeshwar Darshan Timing Guide | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -61,10 +61,10 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Shegaon To Trimbakeshwar Route Guide](/blog/shegaon-to-trimbakeshwar-route-guide)
-- [Omkareshwar To Trimbakeshwar Pilgrimage Checklist](/blog/omkareshwar-to-trimbakeshwar-pilgrimage-checklist)
-- [Jyotirlinga and Sansthan Combined Itinerary](/blog/jyotirlinga-and-sansthan-combined-itinerary)
-- [Temple Accommodation Comparison Guide](/blog/temple-accommodation-comparison-guide)
+- [Triambakeshwar Travel Guide](/blog/triambakeshwar-travel-guide)
+- [Triambakeshwar Accommodation Guide](/blog/triambakeshwar-accommodation-guide)
+- [Triambakeshwar Best Time To Visit](/blog/triambakeshwar-best-time-to-visit)
+- [All Sansthan Contact Numbers Complete List](/blog/all-sansthan-contact-numbers-complete-list)
 - [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
 - [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)

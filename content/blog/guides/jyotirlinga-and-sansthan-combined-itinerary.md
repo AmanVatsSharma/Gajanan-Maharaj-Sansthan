@@ -27,11 +27,12 @@ relatedSlugs:
   - "pandharpur-and-shegaon-family-yatra-plan"
   - "temple-accommodation-comparison-guide"
   - "week-long-devotional-circuit-planner"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
-  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Jyotirlinga And Sansthan Combined Itinerary | Shri Gajanan Maharaj Sansthan
 
@@ -64,11 +65,12 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 - [Pandharpur and Shegaon Family Yatra Plan](/blog/pandharpur-and-shegaon-family-yatra-plan)
 - [Temple Accommodation Comparison Guide](/blog/temple-accommodation-comparison-guide)
 - [Week Long Devotional Circuit Planner](/blog/week-long-devotional-circuit-planner)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
 
