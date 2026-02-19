@@ -1,11 +1,11 @@
 ---
-title: "Importance Of Seva In Sansthan Tradition | Spiritual Guidance"
+title: "Family Values In Sansthan Tradition | Spiritual Guidance"
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
-date: "2025-09-06"
-slug: "importance-of-seva-in-sansthan-tradition"
+date: "2025-08-25"
+slug: "family-values-in-sansthan-tradition"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "importance of seva in sansthan tradition"
+  - "family values in sansthan tradition"
   - "shree gajanan maharaj spiritual guidance"
   - "shri gajanan maharaj sanstan spiritual guidance"
   - "sri gajanan maharaj devotee planning"
@@ -20,13 +20,13 @@ category: "spiritual"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "teachings-of-shri-gajanan-maharaj-for-modern-families"
-  - "daily-devotional-routine-for-pilgrimage-travelers"
-  - "how-devotees-can-prepare-mindfully-for-darshan"
+  - "importance-of-sankalp-before-yatra"
+  - "meditation-and-darshan-preparation"
+  - "gratitude-practices-for-devotees"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
 ---
-# Importance Of Seva In Sansthan Tradition | Spiritual Guidance
+# Family Values In Sansthan Tradition | Spiritual Guidance
 
 Shri Gajanan Maharaj spiritual planning is frequently searched by devotees who want both spiritual clarity and practical planning support. This article provides structured guidance aligned with Sansthan discipline and family-friendly travel needs.
 
@@ -51,9 +51,9 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Teachings Of Shri Gajanan Maharaj For Modern Families](/blog/teachings-of-shri-gajanan-maharaj-for-modern-families)
-- [Daily Devotional Routine For Pilgrimage Travelers](/blog/daily-devotional-routine-for-pilgrimage-travelers)
-- [How Devotees Can Prepare Mindfully For Darshan](/blog/how-devotees-can-prepare-mindfully-for-darshan)
+- [Importance Of Sankalp Before Yatra](/blog/importance-of-sankalp-before-yatra)
+- [Meditation And Darshan Preparation](/blog/meditation-and-darshan-preparation)
+- [Gratitude Practices For Devotees](/blog/gratitude-practices-for-devotees)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 
