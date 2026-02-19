@@ -1,11 +1,11 @@
 ---
-title: "Temple Accommodation Comparison Guide | Shri Gajanan Maharaj Sansthan"
+title: "Kids Activities During Yatra | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-10-11"
-slug: "temple-accommodation-comparison-guide"
+date: "2025-09-03"
+slug: "kids-activities-during-yatra"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "temple accommodation comparison guide pilgrimage guide"
+  - "kids activities during yatra pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,17 +23,17 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "pandharpur-and-shegaon-family-yatra-plan"
-  - "jyotirlinga-and-sansthan-combined-itinerary"
-  - "week-long-devotional-circuit-planner"
-  - "pilgrimage-budget-planning-for-families"
+  - "group-booking-coordination-guide"
+  - "senior-citizen-special-needs-guide"
+  - "maharashtra-pilgrimage-circuit"
+  - "buldhana-temple-stays"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
   - "shegaon-bhakta-niwas-booking-process"
 ---
-# Temple Accommodation Comparison Guide | Shri Gajanan Maharaj Sansthan
+# Kids Activities During Yatra | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -60,10 +60,10 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Pandharpur and Shegaon Family Yatra Plan](/blog/pandharpur-and-shegaon-family-yatra-plan)
-- [Jyotirlinga and Sansthan Combined Itinerary](/blog/jyotirlinga-and-sansthan-combined-itinerary)
-- [Week Long Devotional Circuit Planner](/blog/week-long-devotional-circuit-planner)
-- [Pilgrimage Budget Planning For Families](/blog/pilgrimage-budget-planning-for-families)
+- [Group Booking Coordination Guide](/blog/group-booking-coordination-guide)
+- [Senior Citizen Special Needs Guide](/blog/senior-citizen-special-needs-guide)
+- [Maharashtra Pilgrimage Circuit](/blog/maharashtra-pilgrimage-circuit)
+- [Buldhana Temple Stays](/blog/buldhana-temple-stays)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)

@@ -1,11 +1,11 @@
 ---
-title: "Temple Accommodation Comparison Guide | Shri Gajanan Maharaj Sansthan"
+title: "Gajanan Maharaj Sansthan Booking Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-10-11"
-slug: "temple-accommodation-comparison-guide"
+date: "2025-09-30"
+slug: "gajanan-maharaj-sansthan-booking-guide"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "temple accommodation comparison guide pilgrimage guide"
+  - "gajanan maharaj sansthan booking guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,17 +23,17 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "pandharpur-and-shegaon-family-yatra-plan"
-  - "jyotirlinga-and-sansthan-combined-itinerary"
-  - "week-long-devotional-circuit-planner"
-  - "pilgrimage-budget-planning-for-families"
+  - "sheogaon-and-omkareshwar-combined-yatra"
+  - "triambakeshwar-pandharpur-route-planning"
+  - "family-pilgrimage-with-children-tips"
+  - "senior-devotee-multi-city-itinerary"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
   - "shegaon-bhakta-niwas-booking-process"
 ---
-# Temple Accommodation Comparison Guide | Shri Gajanan Maharaj Sansthan
+# Gajanan Maharaj Sansthan Booking Guide | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -60,10 +60,10 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Pandharpur and Shegaon Family Yatra Plan](/blog/pandharpur-and-shegaon-family-yatra-plan)
-- [Jyotirlinga and Sansthan Combined Itinerary](/blog/jyotirlinga-and-sansthan-combined-itinerary)
-- [Week Long Devotional Circuit Planner](/blog/week-long-devotional-circuit-planner)
-- [Pilgrimage Budget Planning For Families](/blog/pilgrimage-budget-planning-for-families)
+- [Sheogaon And Omkareshwar Combined Yatra](/blog/sheogaon-and-omkareshwar-combined-yatra)
+- [Triambakeshwar Pandharpur Route Planning](/blog/triambakeshwar-pandharpur-route-planning)
+- [Family Pilgrimage With Children Tips](/blog/family-pilgrimage-with-children-tips)
+- [Senior Devotee Multi City Itinerary](/blog/senior-devotee-multi-city-itinerary)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
