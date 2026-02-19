@@ -23,8 +23,13 @@ relatedSlugs:
   - "gratitude-practices-for-devotees"
   - "overcoming-travel-anxiety-spiritually"
   - "legacy-of-shri-gajanan-maharaj"
+  - "sankalp-and-vow-during-yatra"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
+  - "phone-and-whatsapp-booking-best-practices"
+  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Community And Sangha In Pilgrimage | Spiritual Guidance
 
@@ -54,8 +59,13 @@ Devotees often find that a few days of light fasting or simplified meals before 
 - [Gratitude Practices For Devotees](/blog/gratitude-practices-for-devotees)
 - [Overcoming Travel Anxiety Spiritually](/blog/overcoming-travel-anxiety-spiritually)
 - [Legacy Of Shri Gajanan Maharaj](/blog/legacy-of-shri-gajanan-maharaj)
+- [Sankalp And Vow During Yatra](/blog/sankalp-and-vow-during-yatra)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
+- [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
+- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Devotee takeaway
 

@@ -20,11 +20,16 @@ category: "spiritual"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "evening-aarti-participation-guide"
-  - "pilgrimage-as-spiritual-retreat"
+  - "gajanan-maharaj-teachings-for-daily-life"
+  - "gratitude-and-seva-during-yatra"
   - "daily-devotional-routine-for-pilgrimage-travelers"
+  - "importance-of-seva-in-sansthan-tradition"
+  - "gajanan-maharaj-sansthan-complete-guide"
+  - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
+  - "phone-and-whatsapp-booking-best-practices"
+  - "shegaon-bhakta-niwas-booking-process"
 ---
 # Teachings Of Shri Gajanan Maharaj For Modern Families | Spiritual Guidance
 
@@ -51,11 +56,16 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Evening Aarti Participation Guide](/blog/evening-aarti-participation-guide)
-- [Pilgrimage As Spiritual Retreat](/blog/pilgrimage-as-spiritual-retreat)
+- [Gajanan Maharaj Teachings For Daily Life](/blog/gajanan-maharaj-teachings-for-daily-life)
+- [Gratitude And Seva During Yatra](/blog/gratitude-and-seva-during-yatra)
 - [Daily Devotional Routine For Pilgrimage Travelers](/blog/daily-devotional-routine-for-pilgrimage-travelers)
+- [Importance Of Seva In Sansthan Tradition](/blog/importance-of-seva-in-sansthan-tradition)
+- [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
+- [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
+- [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
+- [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Devotee takeaway
 

@@ -1,11 +1,11 @@
 ---
-title: "Sankalp And Vow During Yatra | Spiritual Guidance"
+title: "Pilgrimage As Spiritual Transformation | Spiritual Guidance"
 description: "Spiritual and practical devotional guidance for Sansthan devotees planning darshan and accommodation with discipline."
-date: "2025-08-20"
-slug: "sankalp-and-vow-during-yatra"
+date: "2025-08-11"
+slug: "pilgrimage-as-spiritual-transformation"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "sankalp and vow during yatra"
+  - "pilgrimage as spiritual transformation"
   - "shree gajanan maharaj spiritual guidance"
   - "shri gajanan maharaj sanstan spiritual guidance"
   - "sri gajanan maharaj devotee planning"
@@ -20,10 +20,10 @@ category: "spiritual"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "community-and-sangha-in-pilgrimage"
-  - "legacy-of-shri-gajanan-maharaj"
-  - "prasad-distribution-etiquette"
-  - "morning-prayer-routine-for-travelers"
+  - "seva-and-devotion-in-sansthan-tradition"
+  - "devotional-discipline-during-temple-stay"
+  - "mindful-darshan-preparation-spiritual-guide"
+  - "gajanan-maharaj-teachings-for-daily-life"
   - "gajanan-maharaj-sansthan-complete-guide"
   - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
@@ -31,7 +31,7 @@ relatedSlugs:
   - "phone-and-whatsapp-booking-best-practices"
   - "shegaon-bhakta-niwas-booking-process"
 ---
-# Sankalp And Vow During Yatra | Spiritual Guidance
+# Pilgrimage As Spiritual Transformation | Spiritual Guidance
 
 Shri Gajanan Maharaj spiritual planning is frequently searched by devotees who want both spiritual clarity and practical planning support. This article provides structured guidance aligned with Sansthan discipline and family-friendly travel needs.
 
@@ -56,10 +56,10 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Community And Sangha In Pilgrimage](/blog/community-and-sangha-in-pilgrimage)
-- [Legacy Of Shri Gajanan Maharaj](/blog/legacy-of-shri-gajanan-maharaj)
-- [Prasad Distribution Etiquette](/blog/prasad-distribution-etiquette)
-- [Morning Prayer Routine For Travelers](/blog/morning-prayer-routine-for-travelers)
+- [Seva And Devotion In Sansthan Tradition](/blog/seva-and-devotion-in-sansthan-tradition)
+- [Devotional Discipline During Temple Stay](/blog/devotional-discipline-during-temple-stay)
+- [Mindful Darshan Preparation Spiritual Guide](/blog/mindful-darshan-preparation-spiritual-guide)
+- [Gajanan Maharaj Teachings For Daily Life](/blog/gajanan-maharaj-teachings-for-daily-life)
 - [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
 - [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
