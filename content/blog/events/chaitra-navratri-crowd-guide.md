@@ -1,11 +1,11 @@
 ---
-title: "Community Seva Event Participation Guide | Devotee Event Guide"
+title: "Chaitra Navratri Crowd Guide | Devotee Event Guide"
 description: "Festival/event support guide for devotees searching Sansthan darshan timing and accommodation planning during high-rush periods."
-date: "2025-08-15"
-slug: "community-seva-event-participation-guide"
+date: "2025-08-03"
+slug: "chaitra-navratri-crowd-guide"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "community seva event participation guide"
+  - "chaitra navratri crowd guide"
   - "shree gajanan maharaj sansthan event planning"
   - "shri gajanan maharaj sanstan event planning"
   - "sri gajanan maharaj darshan festival season"
@@ -20,16 +20,17 @@ category: "events"
 locationIds:
   - "shegaon-bhakt-niwas"
 relatedSlugs:
-  - "major-utsav-crowd-planning-checklist"
-  - "festival-darshan-timing-awareness-guide"
-  - "gudi-padwa-sansthan-visit-guide"
-  - "diwali-darshan-planning-tips"
+  - "makar-sankranti-pilgrimage-tips"
+  - "shivaratri-night-darshan-planning"
+  - "guru-purnima-devotee-planning"
+  - "janmashtami-sansthan-visit"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
+  - "major-utsav-crowd-planning-checklist"
   - "phone-and-whatsapp-booking-best-practices"
   - "shegaon-bhakta-niwas-booking-process"
 ---
-# Community Seva Event Participation Guide | Devotee Event Guide
+# Chaitra Navratri Crowd Guide | Devotee Event Guide
 
 Sansthan festival darshan planning is frequently searched by devotees who want both spiritual clarity and practical planning support. This article provides structured guidance aligned with Sansthan discipline and family-friendly travel needs.
 
@@ -54,12 +55,13 @@ Devotees often find that a few days of light fasting or simplified meals before 
 
 ## Continue reading
 
-- [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
-- [Festival Darshan Timing Awareness Guide](/blog/festival-darshan-timing-awareness-guide)
-- [Gudi Padwa Sansthan Visit Guide](/blog/gudi-padwa-sansthan-visit-guide)
-- [Diwali Darshan Planning Tips](/blog/diwali-darshan-planning-tips)
+- [Makar Sankranti Pilgrimage Tips](/blog/makar-sankranti-pilgrimage-tips)
+- [Shivaratri Night Darshan Planning](/blog/shivaratri-night-darshan-planning)
+- [Guru Purnima Devotee Planning](/blog/guru-purnima-devotee-planning)
+- [Janmashtami Sansthan Visit](/blog/janmashtami-sansthan-visit)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
+- [Major Utsav Crowd Planning Checklist](/blog/major-utsav-crowd-planning-checklist)
 - [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
 - [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
