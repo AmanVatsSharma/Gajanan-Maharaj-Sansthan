@@ -508,6 +508,33 @@ export async function getPostsByCategory(category: string): Promise<BlogPost[]> 
 }
 
 /**
+ * Get posts that reference a specific location (by locationId).
+ * Used for location page "Related Guides" sections.
+ */
+export async function getPostsByLocationId(
+  locationId: string,
+  limit = 6
+): Promise<BlogPost[]> {
+  const posts = await getBlogPosts();
+  const filtered = posts.filter((post) =>
+    (post.locationIds ?? []).includes(locationId)
+  );
+  return filtered.slice(0, limit);
+}
+
+/**
+ * Get posts by a list of slugs. Preserves order of slugs; skips missing.
+ * Used for homepage "Featured Guides" and curated link sections.
+ */
+export async function getPostsBySlugs(slugs: string[]): Promise<BlogPost[]> {
+  const posts = await getBlogPosts();
+  const ordered = slugs
+    .map((slug) => posts.find((p) => p.slug === slug))
+    .filter((p): p is BlogPost => Boolean(p));
+  return ordered;
+}
+
+/**
  * Get summarized tag data for listing/filter UI.
  */
 export async function getTagSummaries(): Promise<TaxonomySummary[]> {
