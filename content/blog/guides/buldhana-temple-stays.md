@@ -1,11 +1,11 @@
 ---
-title: "Devotee Document Checklist For All Locations | Shri Gajanan Maharaj Sansthan"
+title: "Buldhana Temple Stays | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-10-07"
-slug: "devotee-document-checklist-for-all-locations"
+date: "2025-09-01"
+slug: "buldhana-temple-stays"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "devotee document checklist for all locations pilgrimage guide"
+  - "buldhana temple stays pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,16 +23,17 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "pilgrimage-budget-planning-for-families"
-  - "festival-season-multi-city-travel-guide"
-  - "phone-and-whatsapp-booking-best-practices"
-  - "sansthan-location-selection-guide"
+  - "kids-activities-during-yatra"
+  - "maharashtra-pilgrimage-circuit"
+  - "akola-jalgaon-shegaon-route-guide"
+  - "vidarbha-temple-stay-network"
   - "shegaon-travel-guide"
   - "shegaon-accommodation-guide"
   - "omkareshwar-darshan-timings"
+  - "phone-and-whatsapp-booking-best-practices"
   - "shegaon-bhakta-niwas-booking-process"
 ---
-# Devotee Document Checklist For All Locations | Shri Gajanan Maharaj Sansthan
+# Buldhana Temple Stays | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -59,13 +60,14 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Pilgrimage Budget Planning For Families](/blog/pilgrimage-budget-planning-for-families)
-- [Festival Season Multi City Travel Guide](/blog/festival-season-multi-city-travel-guide)
-- [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
-- [Sansthan Location Selection Guide](/blog/sansthan-location-selection-guide)
+- [Kids Activities During Yatra](/blog/kids-activities-during-yatra)
+- [Maharashtra Pilgrimage Circuit](/blog/maharashtra-pilgrimage-circuit)
+- [Akola Jalgaon Shegaon Route Guide](/blog/akola-jalgaon-shegaon-route-guide)
+- [Vidarbha Temple Stay Network](/blog/vidarbha-temple-stay-network)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
 - [Shegaon Accommodation Guide](/blog/shegaon-accommodation-guide)
 - [Omkareshwar Darshan Timings Guide](/blog/omkareshwar-darshan-timings)
+- [Phone and WhatsApp Booking Best Practices](/blog/phone-and-whatsapp-booking-best-practices)
 - [Shegaon Bhakta Niwas Booking Process](/blog/shegaon-bhakta-niwas-booking-process)
 
 ## Final note
