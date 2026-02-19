@@ -111,6 +111,40 @@ export default function BookingPage() {
           />
         </section>
 
+        <section className="rounded-2xl border bg-muted/20 p-6 sm:p-8" aria-label="Planning resources">
+          <h2 className="text-2xl font-bold font-heading text-brand-maroon mb-3">
+            Planning Resources
+          </h2>
+          <p className="text-muted-foreground mb-4">
+            Before you book, explore these guides for accommodation details, booking tips, and location information.
+          </p>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/blog/shegaon-accommodation-guide" className="underline underline-offset-4 hover:text-brand-saffron transition-colors">
+                Shegaon Accommodation Guide
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/shegaon-bhakta-niwas-booking-process" className="underline underline-offset-4 hover:text-brand-saffron transition-colors">
+                Bhakta Niwas Booking Process
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/phone-and-whatsapp-booking-best-practices" className="underline underline-offset-4 hover:text-brand-saffron transition-colors">
+                Phone and WhatsApp Booking Best Practices
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog/gajanan-maharaj-sansthan-booking-guide" className="underline underline-offset-4 hover:text-brand-saffron transition-colors">
+                Gajanan Maharaj Sansthan Booking Guide
+              </Link>
+            </li>
+          </ul>
+          <Link href="/blog" className="inline-block mt-4 text-sm font-medium text-brand-saffron hover:text-brand-maroon transition-colors">
+            View all guides →
+          </Link>
+        </section>
+
         <section className="text-center text-sm text-muted-foreground">
           Need direct contact details? Visit{" "}
           <Link href="/contact" className="underline underline-offset-4 hover:text-foreground">

@@ -3,10 +3,11 @@
  * Module: app
  * Purpose: Contact page with office details, phone numbers, and location map
  * Author: Aman Sharma / Novologic/ Cursor AI
- * Last-updated: 2026-02-05
+ * Last-updated: 2026-02-18
  * Notes:
  * - Includes contact structured data for local SEO
  * - NAP (Name, Address, Phone) consistency maintained
+ * - Plan 3: "Planning Guides" section for blog interlinking
  */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
@@ -130,6 +131,35 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-12 max-w-5xl mx-auto">
+        <h2 className="text-2xl font-bold font-heading text-brand-maroon mb-4">Planning Guides</h2>
+        <p className="text-muted-foreground mb-6">
+          Before you reach out, explore these guides for booking, contact details, and support.
+        </p>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li>
+            <Link href="/blog/phone-and-whatsapp-booking-best-practices" className="text-brand-maroon hover:text-brand-saffron hover:underline font-medium">
+              Phone and WhatsApp Booking Best Practices
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog/shegaon-bhakta-niwas-booking-process" className="text-brand-maroon hover:text-brand-saffron hover:underline font-medium">
+              Shegaon Bhakta Niwas Booking Process
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog/sansthan-contact-numbers-all-locations" className="text-brand-maroon hover:text-brand-saffron hover:underline font-medium">
+              Sansthan Contact Numbers All Locations
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog/shegaon-contact-and-support-guide" className="text-brand-maroon hover:text-brand-saffron hover:underline font-medium">
+              Contact and Support Guide
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
