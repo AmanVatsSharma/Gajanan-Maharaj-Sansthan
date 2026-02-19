@@ -1,11 +1,11 @@
 ---
-title: "Trimbakeshwar To Shegaon Route Guide | Shri Gajanan Maharaj Sansthan"
+title: "Triambakeshwar Travel Guide | Shri Gajanan Maharaj Sansthan"
 description: "Cross-location pilgrimage planning guide for devotees searching Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar accommodation and route support."
-date: "2025-09-15"
-slug: "trimbakeshwar-to-shegaon-route-guide"
+date: "2025-08-08"
+slug: "triambakeshwar-travel-guide"
 image: "/images/shegaon-temple.svg"
 keywords:
-  - "trimbakeshwar to shegaon route guide pilgrimage guide"
+  - "triambakeshwar travel guide pilgrimage guide"
   - "shree gajanan maharaj sansthan pilgrimage"
   - "shri gajanan maharaj sanstan pilgrimage"
   - "sri gajanan maharaj sansthan route planning"
@@ -23,10 +23,10 @@ locationIds:
   - "pandharpur-math"
   - "trimbakeshwar"
 relatedSlugs:
-  - "shegaon-omkareshwar-3-day-itinerary"
-  - "pandharpur-wari-accommodation-tips"
-  - "omkareshwar-pandharpur-combined-yatra"
-  - "family-with-infants-pilgrimage-tips"
+  - "sheogaon-bhakta-niwas-booking"
+  - "sheogaon-darshan-timing-guide"
+  - "triambakeshwar-accommodation-guide"
+  - "triambakeshwar-darshan-timing-guide"
   - "gajanan-maharaj-sansthan-complete-guide"
   - "bhakta-niwas-complete-booking-guide"
   - "shegaon-travel-guide"
@@ -34,7 +34,7 @@ relatedSlugs:
   - "omkareshwar-darshan-timings"
   - "phone-and-whatsapp-booking-best-practices"
 ---
-# Trimbakeshwar To Shegaon Route Guide | Shri Gajanan Maharaj Sansthan
+# Triambakeshwar Travel Guide | Shri Gajanan Maharaj Sansthan
 
 This guide helps devotees compare multiple locations connected to Shri Gajanan Maharaj Sansthan and related pilgrimage circuits. It is ideal for families planning a structured trip across Shegaon, Omkareshwar, Pandharpur, and Trimbakeshwar.
 
@@ -61,10 +61,10 @@ When visiting multiple Sansthan locations, allow buffer time between cities for 
 
 ## Related reading
 
-- [Shegaon Omkareshwar 3 Day Itinerary](/blog/shegaon-omkareshwar-3-day-itinerary)
-- [Pandharpur Wari Accommodation Tips](/blog/pandharpur-wari-accommodation-tips)
-- [Omkareshwar Pandharpur Combined Yatra](/blog/omkareshwar-pandharpur-combined-yatra)
-- [Family With Infants Pilgrimage Tips](/blog/family-with-infants-pilgrimage-tips)
+- [Sheogaon Bhakta Niwas Booking](/blog/sheogaon-bhakta-niwas-booking)
+- [Sheogaon Darshan Timing Guide](/blog/sheogaon-darshan-timing-guide)
+- [Triambakeshwar Accommodation Guide](/blog/triambakeshwar-accommodation-guide)
+- [Triambakeshwar Darshan Timing Guide](/blog/triambakeshwar-darshan-timing-guide)
 - [Gajanan Maharaj Sansthan Complete Guide](/blog/gajanan-maharaj-sansthan-complete-guide)
 - [Bhakta Niwas Complete Booking Guide](/blog/bhakta-niwas-complete-booking-guide)
 - [Complete Travel Guide to Shegaon](/blog/shegaon-travel-guide)
