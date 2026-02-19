@@ -5,8 +5,8 @@
 
 ## Outcome Snapshot
 
-- Publishable markdown blogs: **110**
-- Generated new blog posts: **105**
+- Publishable markdown blogs: **396**
+- Generated new blog posts: **391**
 - Canonical redirect hardening: **implemented**
 - Blog quality validator: **implemented**
 - Module docs and flowcharts: **updated**
