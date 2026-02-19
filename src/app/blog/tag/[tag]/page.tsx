@@ -17,10 +17,19 @@ import {
   formatTaxonomyLabel,
   getAllTags,
   getPostsByTag,
+  getPostsBySlugs,
 } from "@/lib/blog";
 import { BRAND_VARIANTS, getUniqueKeywords } from "@/lib/seo/constants";
 import { generatePageMetadata } from "@/lib/seo/metadata";
 import { getCollectionPageSchema } from "@/lib/seo/structured-data";
+
+const FEATURED_PILLAR_SLUGS = [
+  "gajanan-maharaj-sansthan-complete-guide",
+  "bhakta-niwas-complete-booking-guide",
+  "how-to-book-bhakta-niwas-online",
+  "phone-and-whatsapp-booking-best-practices",
+  "shegaon-travel-guide",
+];
 
 interface PageProps {
   params: Promise<{ tag: string }>;
@@ -55,6 +64,7 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function BlogTagPage({ params }: PageProps) {
   const { tag } = await params;
   const posts = await getPostsByTag(tag);
+  const featuredPosts = await getPostsBySlugs(FEATURED_PILLAR_SLUGS);
 
   if (posts.length === 0) {
     notFound();
@@ -94,6 +104,23 @@ export default async function BlogTagPage({ params }: PageProps) {
           Explore related updates and guidance from the Sansthan.
         </p>
       </div>
+
+      {featuredPosts.length > 0 ? (
+        <section className="rounded-lg border bg-card p-6 space-y-4">
+          <div className="space-y-1">
+            <h2 className="text-xl font-semibold">Featured planning guides</h2>
+            <p className="text-muted-foreground">
+              Pillar guides curated for faster discovery across tags.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredPosts.slice(0, 3).map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
