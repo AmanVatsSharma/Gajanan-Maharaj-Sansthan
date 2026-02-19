@@ -7,13 +7,13 @@ todos:
     status: completed
   - id: ui-spot-checks
     content: Spot-check internal-link sections and taxonomy surfaces in UI for SEO + UX correctness.
-    status: in_progress
+    status: completed
   - id: schema-spot-checks
     content: Validate Article/HowTo/Breadcrumb structured data on representative pages via Rich Results Test.
-    status: pending
+    status: completed
   - id: post-deploy-gsc
     content: Complete GSC sitemap submission + indexing + monitoring checklist.
-    status: pending
+    status: completed
 isProject: false
 ---
 
